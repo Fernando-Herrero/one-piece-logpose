@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { SagaContext } from "./SagaContext";
 import { storage } from "../helpers/storage";
+import { useStorage } from "../hooks/useStorage";
 
 export const UserContext = createContext(null);
 
@@ -22,21 +23,10 @@ export const UserContextProvider = ({ children }) => {
 		if (savedSaga && isLoggedIn) setSaga(savedSaga);
 	}, []);
 
-	useEffect(() => {
-		if (user.id) storage.save("user", user);
-	}, [user]);
-
-	useEffect(() => {
-		storage.save("loggedIn", isLoggedIn);
-	}, [isLoggedIn]);
-
-	useEffect(() => {
-		if (avatar) storage.save("avatar", avatar);
-	}, [avatar]);
-
-	useEffect(() => {
-		if (saga.saga !== "" && isLoggedIn) storage.save("saga");
-	}, [saga, isLoggedIn]);
+	useStorage("user", user);
+	useStorage("loggedIn", isLoggedIn);
+	useStorage("avatar", avatar);
+	useStorage("saga", isLoggedIn ? saga : null);
 
 	const login = (form) => {
 		const existingUserData = storage.get(`user_${form.username}`);
