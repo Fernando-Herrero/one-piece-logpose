@@ -9,11 +9,11 @@ import { LanguagesContextProvider } from "./context/LanguagesContext.jsx";
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<LanguagesContextProvider>
-			<UserContextProvider>
-				<SagaContextProvider>
+			<SagaContextProvider>
+				<UserContextProvider>
 					<App />
-				</SagaContextProvider>
-			</UserContextProvider>
+				</UserContextProvider>
+			</SagaContextProvider>
 		</LanguagesContextProvider>
 	</StrictMode>
 );

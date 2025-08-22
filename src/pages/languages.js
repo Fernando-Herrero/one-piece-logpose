@@ -18,7 +18,9 @@ export const languages = {
 
 		errorMessage: {
 			username: `Inserte un nombre nakama!`,
+			usernameLength: `El username debe tener al menos 3 caracteres`,
 			password: `Inserte una contraseña nakama!`,
+			passwordLength: `La contraseña debe tener al menos 6 caracteres`,
 		},
 	},
 

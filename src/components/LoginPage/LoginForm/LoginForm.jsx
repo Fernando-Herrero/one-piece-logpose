@@ -6,6 +6,7 @@ import Eye from "../../../assets/icons/eye-solid-full.svg";
 import EyeSlash from "../../../assets/icons/eye-slash-solid-full.svg";
 import { useToggle } from "../../../hooks/useToggle";
 import { UserContext } from "../../../context/userContext";
+import { useFormValidation } from "../../../hooks/useFormValidation";
 
 const emptyUser = { id: "", username: "", password: "", experience: "" };
 
@@ -14,17 +15,19 @@ export const LoginForm = () => {
 	const { login } = useContext(UserContext);
 	const [isVisible, toggleVisible] = useToggle();
 	const [form, setForm] = useState(emptyUser);
-	const [error, setError] = useState(null);
+	const { error, validateForm, clearError } = useFormValidation();
 
 	const handleInputForm = ({ target: { name, value } }) => {
-		setError(null);
+		clearError();
 		setForm((prev) => ({ ...prev, [name]: value }));
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (!form.username) return setError(languages[lang].errorMessage.username);
-		if (!form.password) return setError(languages[lang].errorMessage.password);
+
+		const validationError = validateForm(form, lang);
+		if (validationError) return;
+
 		login(form);
 	};
 
