@@ -26,7 +26,25 @@ export const languages = {
 
 	en: {
 		login: {
-			summary: ``,
+			summary: `LogPose is a fan app for One Piece that lets you track your progress by saga and chapter. 
+                As you advance, you’ll unlock chapters, earn experience, and collect unique items. 
+                Level up, customize your avatar, and get ready to sail the seas like a true pirate!`,
+			username: `Pirate name...`,
+			password: `Treasure password...`,
+			notRegistered: `Not registered yet, nakama?`,
+			registered: `Register`,
+		},
+
+		footer: {
+			disclaimer: `LogPose is a fan app for tracking One Piece progress. Content is for personal use only, no commercial purposes.`,
+			copyright: `LogPose. All rights reserved.`,
+		},
+
+		errorMessage: {
+			username: `Please enter a name, nakama!`,
+			usernameLength: `Username must be at least 3 characters`,
+			password: `Please enter a password, nakama!`,
+			passwordLength: `Password must be at least 6 characters`,
 		},
 	},
 };
