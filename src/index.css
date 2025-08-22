@@ -76,10 +76,10 @@ a {
 	--contrast-color: #fff;
 
 	/* COLORES DE ACCENTO / BOTONES */
-	--accent-color: #ffcc00;
+	--accent-color: #ffd700;
 	--accent-hover: #e6b800;
-	--primary-color: #400d40;
-	--primary-color-dark: #4a154b;
+	--primary-color: #8b0000;
+	--primary-color-dark: #300101;
 
 	/* TIPOGRAFÍAS */
 	--font-title: "OnePiece", serif;
@@ -94,7 +94,7 @@ a {
 	--font-size-large: 20px;
 	--font-size-xlarge: 28px;
 	--font-size-xxlarge: 32px;
-	--font-size-big: 38px;
+	--font-size-title: 70px;
 
 	/* SPACING */
 	--spacing-xs: 4px;
@@ -106,7 +106,7 @@ a {
 	/* CONTENEDORES */
 	--container-width: 95%;
 	--max-container-width: 1200px;
-	--border-radius: 12px;
+	--border-radius: 6px;
 	--section-padding: 2rem;
 	--card-padding: 1rem;
 
