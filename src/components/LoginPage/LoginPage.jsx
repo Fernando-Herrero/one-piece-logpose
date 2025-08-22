@@ -8,9 +8,7 @@ export const LoginPage = () => {
 			<div className="login-text">
 				<h1>One Piece</h1>
 				<h2>LogPose</h2>
-				<p>
-					{languages[lang]}
-				</p>
+				<p></p>
 			</div>
 
 			<LoginForm />

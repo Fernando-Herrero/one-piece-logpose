@@ -3,10 +3,10 @@ import { LanguagesContext } from "../../context/LanguagesContext";
 import "./LanguageSelect.css";
 
 export const LanguageSelect = () => {
-	const lang = useContext(LanguagesContext);
+	const { lang, handleLang } = useContext(LanguagesContext);
 
 	return (
-		<select name="select" id="select" value={lang} onChange={(e) => handleLang(e.target.value)}>
+		<select className="language-select" name="select" id="select" value={lang} onChange={(e) => handleLang(e.target)}>
 			<option value="es">🇪🇸 Español</option>
 			<option value="en">🇬🇧 English</option>
 		</select>

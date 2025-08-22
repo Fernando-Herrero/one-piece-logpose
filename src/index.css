@@ -7,7 +7,8 @@
 html,
 body {
 	font-family: "RoadCaptain", sans-serif;
-	background-color: var(--bg-color);
+	margin: 0;
+	padding: 0;
 }
 
 h1,
@@ -61,8 +62,8 @@ a {
 
 :root {
 	/* FONDOS */
-	--bg-color: #f4f0ed;
-	--section-bg: #f4ede4;
+	--bg-color: #f4ede4;
+	--section-bg: #e0d7c9;
 	--card-bg: #fff;
 	--line-color: #414141b0;
 	--color-hover: #d4d6d8;
@@ -86,7 +87,7 @@ a {
 	--font-card: "GreatVibes", cursive;
 
 	/* TAMAÑOS DE FUENTE */
-	--font-size-xsmall: 10px;
+	--font-size-xs: 10px;
 	--font-size-small: 14px;
 	--font-size-base: 16px;
 	--font-size-medium: 18px;

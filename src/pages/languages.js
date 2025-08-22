@@ -6,6 +6,10 @@ export const languages = {
 					únicos. ¡Sube de nivel, personaliza tu avatar y prepárate para surcar los mares como un verdadero
 					pirata!`,
 		},
+		footer: {
+			disclaimer: `LogPose es una app de fans para seguimiento de progreso de One Piece. Contenido para uso personal, sin fines comerciales.`,
+			copyright: `LogPose. Todos los derechos reservados.`,
+		},
 	},
 
 	en: {
