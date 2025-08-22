@@ -1,9 +1,12 @@
 import "./App.css";
+import { Footer } from "./components/Footer/Footer";
+import { LoginPage } from "./components/LoginPage/LoginPage";
 
 export const App = () => {
 	return (
 		<>
-			<h1>One-Piece-LogPose</h1>
+			<LoginPage />
+			<Footer />
 		</>
 	);
 };

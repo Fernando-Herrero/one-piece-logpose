@@ -1,0 +1,27 @@
+html {
+	position: relative;
+	background: linear-gradient(135deg, var(--bg-color) 0%, var(--section-bg) 100%);
+	background-blend-mode: multiply;
+	overflow: hidden;
+}
+
+html::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+
+	background-image: repeating-linear-gradient(
+		45deg,
+		rgba(0, 0, 0, 0.015) 0px,
+		rgba(0, 0, 0, 0.015) 2px,
+		transparent 2px,
+		transparent 8px
+	);
+	transform: skewY(-6deg);
+}
+
+body {
+	font-size: var(--font-size-small);
+}
