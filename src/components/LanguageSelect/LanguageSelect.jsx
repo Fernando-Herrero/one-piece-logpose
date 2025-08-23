@@ -8,8 +8,8 @@ export const LanguageSelect = () => {
 	return (
 		<select
 			className="language-select"
-			name="select"
-			id="select"
+			name="language"
+			id="language"
 			value={lang}
 			onChange={(e) => handleLang(e.target.value)}
 		>

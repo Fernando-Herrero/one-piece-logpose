@@ -1,9 +1,14 @@
 import { createContext, useState } from "react";
+import { storage } from "../helpers/storage";
+import { useStorage } from "../hooks/useStorage";
 
 export const SagaContext = createContext(null);
 
 export const SagaContextProvider = ({ children }) => {
-	const [saga, setSaga] = useState({ saga: "", chapter: "" });
+	const savedSaga = storage.get("saga");
+	const [saga, setSaga] = useState(savedSaga || { saga: "", chapter: "" });
+
+	useStorage("saga", saga);
 
 	const nextChapter = () => {
 		setSaga((prev) => ({ ...prev, chapter: prev.chapter + 1 }));
@@ -13,5 +18,9 @@ export const SagaContextProvider = ({ children }) => {
 		setSaga((prev) => ({ ...prev, saga: prev.saga + 1, chapter: 0 }));
 	};
 
-	return <SagaContext.Provider value={{ saga, setSaga, nextChapter, nextSaga }}>{children}</SagaContext.Provider>;
+	return (
+		<SagaContext.Provider value={{ saga, setSaga, nextChapter, nextSaga }}>
+			{children}
+		</SagaContext.Provider>
+	);
 };

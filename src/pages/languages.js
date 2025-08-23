@@ -1,14 +1,29 @@
 export const languages = {
 	es: {
 		login: {
-			summary: `LogPose es una app para fans de One Piece que te permite seguir tu progreso por saga y capítulo. A
-					medida que avances, irás desbloqueando capítulos, ganando experiencia y coleccionando artículos
-					únicos. ¡Sube de nivel, personaliza tu avatar y prepárate para surcar los mares como un verdadero
-					pirata!`,
-			username: `Nombre pirata...`,
-			password: `Clave del tesoro..`,
-			notRegistered: `Aun no estas registrado nakama?`,
-			registered: `Registrate`,
+			summary: `LogPose es una app para fans de One Piece que te permite seguir tu progreso por saga y capítulo. 
+A medida que avances, irás desbloqueando capítulos, ganando experiencia y coleccionando artículos únicos. 
+¡Sube de nivel, personaliza tu avatar y prepárate para surcar los mares como un verdadero pirata!`,
+			username: `Su username, nakama...`,
+			password: `Contraseña`,
+			passwordMessage: `Clave del tesoro...`,
+			notRegistered: `¿Aún no estás registrado, nakama?`,
+			registered: `Regístrate`,
+			registerTitle: `Formulario de registro`,
+			registerName: `Nombre`,
+			registerNameMessage: `Escriba su nombre...`,
+			registerSurname: `Apellidos`,
+			registerSurnameMessage: `Escriba sus apellidos...`,
+			registerEmail: `Correo`,
+			registerEmailMessage: `Escriba su correo electrónico...`,
+			registerDate: `Fecha de nacimiento`,
+			registerLang: `Idioma`,
+			registerSelectLang: `Selecciona tu idioma`,
+			registerUsername: `Elige tu username, nakama...`,
+			registerPassword: `Contraseña`,
+			registerPasswordMessage: `Elija una contraseña...`,
+			registerConfirm: `Confirmar contraseña...`,
+			registerSubmit: `Enviar`,
 		},
 
 		footer: {
@@ -17,22 +32,49 @@ export const languages = {
 		},
 
 		errorMessage: {
-			username: `Inserte un nombre nakama!`,
+			username: `Usuario no registrado. Por favor, regístrate primero.`,
 			usernameLength: `El username debe tener al menos 3 caracteres`,
-			password: `Inserte una contraseña nakama!`,
+			password: `Contraseña incorrecta.`,
 			passwordLength: `La contraseña debe tener al menos 6 caracteres`,
+			name: `Nombre requerido`,
+			surname: `Apellidos requeridos`,
+			email: `Email requerido`,
+			registerUsername: `Introduce un username personalizado`,
+			registerPassword: `Cree una contraseña`,
+			confirmPassword: `La contraseña no coincide`,
+			date: `Introduce tu fecha de nacimiento`,
+			language: `Elige tu idioma preferido`,
+			emailFormat: `Introduce un email válido`,
+			passwordMatch: `La contraseña no coincide`,
+			userExists: `El username ya existe, por favor elige otro`,
 		},
 	},
 
 	en: {
 		login: {
 			summary: `LogPose is a fan app for One Piece that lets you track your progress by saga and chapter. 
-                As you advance, you’ll unlock chapters, earn experience, and collect unique items. 
-                Level up, customize your avatar, and get ready to sail the seas like a true pirate!`,
+As you advance, you’ll unlock chapters, earn experience, and collect unique items. 
+Level up, customize your avatar, and get ready to sail the seas like a true pirate!`,
 			username: `Pirate name...`,
-			password: `Treasure password...`,
+			password: `Password`,
+			passwordMessage: `Treasure password...`,
 			notRegistered: `Not registered yet, nakama?`,
 			registered: `Register`,
+			registerTitle: `Registration Form`,
+			registerName: `Name`,
+			registerNameMessage: `Enter your name...`,
+			registerSurname: `Surname`,
+			registerSurnameMessage: `Enter your surname...`,
+			registerEmail: `Email`,
+			registerEmailMessage: `Enter your email...`,
+			registerDate: `Birthdate`,
+			registerLang: `Language`,
+			registerSelectLang: `Select your language`,
+			registerUsername: `Choose your username...`,
+			registerPassword: `Password`,
+			registerPasswordMessage: `Enter a password...`,
+			registerConfirm: `Confirm password...`,
+			registerSubmit: `Submit`,
 		},
 
 		footer: {
@@ -41,10 +83,21 @@ export const languages = {
 		},
 
 		errorMessage: {
-			username: `Please enter a name, nakama!`,
+			username: `Please enter a username, nakama!`,
 			usernameLength: `Username must be at least 3 characters`,
-			password: `Please enter a password, nakama!`,
+			password: `Incorrect password.`,
 			passwordLength: `Password must be at least 6 characters`,
+			name: `Name is required`,
+			surname: `Surname is required`,
+			email: `Email is required`,
+			registerUsername: `Enter a custom username`,
+			registerPassword: `Create a password`,
+			confirmPassword: `Password does not match`,
+			date: `Enter your birthdate`,
+			language: `Select your preferred language`,
+			emailFormat: `Enter a valid email`,
+			passwordMatch: `Password does not match`,
+			userExists: `Username already exists, choose another`,
 		},
 	},
 };

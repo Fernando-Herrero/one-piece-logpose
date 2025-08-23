@@ -1,27 +1,20 @@
 import { useState } from "react";
+import { storage } from "../helpers/storage";
 import { languages } from "../pages/languages";
 
-export const useFormValidation = () => {
+export const useLoginValidation = () => {
 	const [error, setError] = useState(null);
 
 	const validateForm = (form, lang) => {
-		if (!form.username || form.username.trim() === "") {
+		const getUser = storage.get(`user_${form.username}`);
+
+		if (!getUser) {
 			setError(languages[lang].errorMessage.username);
 			return true;
 		}
 
-		if (!form.password || form.password.trim() === "") {
+		if (getUser.nakamaData.password !== form.password) {
 			setError(languages[lang].errorMessage.password);
-			return true;
-		}
-
-		if (form.username.trim().length < 3) {
-			setError(languages[lang].errorMessage.usernameLength);
-			return true;
-		}
-
-		if (form.username.trim().length < 6) {
-			setError(languages[lang].errorMessage.passwordLength);
 			return true;
 		}
 

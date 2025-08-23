@@ -6,31 +6,35 @@ import Eye from "../../../assets/icons/eye-solid-full.svg";
 import EyeSlash from "../../../assets/icons/eye-slash-solid-full.svg";
 import { useToggle } from "../../../hooks/useToggle";
 import { UserContext } from "../../../context/userContext";
-import { useFormValidation } from "../../../hooks/useFormValidation";
+import { useLoginValidation } from "../../../hooks/useLoginValidation";
 import { storage } from "../../../helpers/storage";
+import { ModalContext } from "../../../context/ModalContext";
+import { RegisterForm } from "../RegisterForm/RegisterForm";
 
 const emptyUser = { id: "", username: "", password: "", experience: "" };
 
 export const LoginForm = () => {
-	const savedForm = storage.get("inputs");
+	const savedForm = storage.get("loginInputs");
+	const [form, setForm] = useState(savedForm || emptyUser);
+
+	const [isVisible, toggleVisible] = useToggle();
+	const { error, validateForm, clearError } = useLoginValidation();
 
 	const { lang } = useContext(LanguagesContext);
 	const { login } = useContext(UserContext);
-	const [isVisible, toggleVisible] = useToggle();
-	const [form, setForm] = useState(savedForm || emptyUser);
-	const { error, validateForm, clearError } = useFormValidation();
+	const { openModal } = useContext(ModalContext);
 
 	const handleInputForm = ({ target: { name, value } }) => {
 		clearError();
 		setForm((prev) => {
 			const newForm = { ...prev, [name]: value };
-			storage.save("inputs", newForm);
+			storage.save("loginInputs", newForm);
 			return newForm;
 		});
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
+	const handleSubmit = (event) => {
+		event.preventDefault();
 
 		const validationError = validateForm(form, lang);
 		if (validationError) return;
@@ -43,9 +47,9 @@ export const LoginForm = () => {
 			<label className="login-label-input">
 				Username:
 				<input
+					className="no-focus"
 					type="text"
 					name="username"
-					id="username"
 					autoComplete="off"
 					placeholder={languages[lang].login.username}
 					value={form.username}
@@ -54,14 +58,14 @@ export const LoginForm = () => {
 			</label>
 
 			<label className="login-label-input">
-				Password:
+				{languages[lang].login.password}
 				<div className="login-input-button">
 					<input
+						className="no-focus"
 						type={isVisible ? "text" : "password"}
 						name="password"
-						id="password"
 						autoComplete="off"
-						placeholder={languages[lang].login.password}
+						placeholder={languages[lang].login.passwordMessage}
 						value={form.password}
 						onChange={handleInputForm}
 					/>
@@ -73,12 +77,19 @@ export const LoginForm = () => {
 
 			<p className="register-message">
 				{languages[lang].login.notRegistered}{" "}
-				<a className="registered-link" href="#">
+				<a
+					className="registered-link"
+					href="#"
+					onClick={(event) => {
+						event.preventDefault();
+						openModal(<RegisterForm />, "register");
+					}}
+				>
 					{languages[lang].login.registered}
 				</a>
 			</p>
 
-			<button type="submit" className="login-btn">
+			<button type="submit" className="submit-btn">
 				Login
 			</button>
 
