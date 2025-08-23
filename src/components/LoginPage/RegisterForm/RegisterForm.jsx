@@ -146,7 +146,7 @@ export const RegisterForm = () => {
 						onChange={handleRegisterInputs}
 					/>
 					<button className="eye-btn" type="button" onClick={toggleVisible}>
-						<img src={isVisible ? Eye : EyeSlash} alt={isVisible ? "Hide password" : "Show password"} />
+						<img src={isVisible ? EyeSlash : Eye} alt={isVisible ? "Hide password" : "Show password"} />
 					</button>
 				</div>
 			</label>
@@ -166,7 +166,7 @@ export const RegisterForm = () => {
 					/>
 					<button className="eye-btn" type="button" onClick={toggleConfirmVisible}>
 						<img
-							src={isConfirmVisible ? Eye : EyeSlash}
+							src={isConfirmVisible ? EyeSlash : Eye}
 							alt={isConfirmVisible ? "Hide password" : "Show password"}
 						/>
 					</button>

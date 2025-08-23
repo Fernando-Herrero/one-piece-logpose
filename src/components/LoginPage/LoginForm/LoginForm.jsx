@@ -70,7 +70,7 @@ export const LoginForm = () => {
 						onChange={handleInputForm}
 					/>
 					<button className="eye-btn" type="button" onClick={toggleVisible}>
-						<img src={isVisible ? Eye : EyeSlash} alt={isVisible ? "Hide password" : "Show password"} />
+						<img src={isVisible ? EyeSlash : Eye} alt={isVisible ? "Hide password" : "Show password"} />
 					</button>
 				</div>
 			</label>
