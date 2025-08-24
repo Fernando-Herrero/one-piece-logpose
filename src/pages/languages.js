@@ -7,6 +7,7 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
 			username: `Su username, nakama...`,
 			password: `Contraseña`,
 			passwordMessage: `Clave del tesoro...`,
+			passwordConfirm: `Confirmar contraseña...`,
 			notRegistered: `¿Aún no estás registrado, nakama?`,
 			registered: `Regístrate`,
 			registerTitle: `Formulario de registro`,
@@ -37,8 +38,11 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
 			password: `Contraseña incorrecta.`,
 			passwordLength: `La contraseña debe tener al menos 6 caracteres`,
 			name: `Nombre requerido`,
+			nameLength: `El nombre debe tener al menos 2 caracteres`,
 			surname: `Apellidos requeridos`,
+			surnameLength: `Los apellidos deben tener al menos 2 caracteres`, 
 			email: `Email requerido`,
+			emailExists: `Este email ya está registrado`, 
 			registerUsername: `Introduce un username personalizado`,
 			registerPassword: `Cree una contraseña`,
 			confirmPassword: `La contraseña no coincide`,
@@ -53,11 +57,12 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
 	en: {
 		login: {
 			summary: `LogPose is a fan app for One Piece that lets you track your progress by saga and chapter. 
-As you advance, you’ll unlock chapters, earn experience, and collect unique items. 
+As you advance, you'll unlock chapters, earn experience, and collect unique items. 
 Level up, customize your avatar, and get ready to sail the seas like a true pirate!`,
 			username: `Pirate name...`,
 			password: `Password`,
 			passwordMessage: `Treasure password...`,
+			passwordConfirm: `Confirm password...`,
 			notRegistered: `Not registered yet, nakama?`,
 			registered: `Register`,
 			registerTitle: `Registration Form`,
@@ -88,8 +93,11 @@ Level up, customize your avatar, and get ready to sail the seas like a true pira
 			password: `Incorrect password.`,
 			passwordLength: `Password must be at least 6 characters`,
 			name: `Name is required`,
+			nameLength: `Name must be at least 2 characters`,
 			surname: `Surname is required`,
+			surnameLength: `Surname must be at least 2 characters`,
 			email: `Email is required`,
+			emailExists: `This email is already registered`,
 			registerUsername: `Enter a custom username`,
 			registerPassword: `Create a password`,
 			confirmPassword: `Password does not match`,

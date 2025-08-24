@@ -5,55 +5,64 @@ import { storage } from "../helpers/storage";
 export const useRegisterValidation = () => {
 	const [error, setError] = useState(null);
 
+	const isEmailRegistered = (email) => {
+		try {
+			const normalizedEmail = email.toLowerCase();
+
+			for (let i = 0; i < localStorage.length; i++) {
+				const key = localStorage.key(i);
+				if (key && key.startsWith("user_")) {
+					const userData = storage.get(key);
+					if (userData?.nakamaData?.email?.toLowerCase() === normalizedEmail) {
+						return true;
+					}
+				}
+			}
+			return false;
+		} catch (error) {
+			console.error("Error checking email registration:", error);
+			return false;
+		}
+	};
+
+	const validateEmptyField = (value, fieldName, lang) => {
+		if (!value || value.trim() === "") {
+			setError(languages[lang].errorMessage[fieldName] || `${fieldName} is required`);
+			return true;
+		}
+		return false;
+	};
+
+	const validateFieldLength = (value, fieldName, length, lang) => {
+		if (value.trim().length < length) {
+			setError(languages[lang].errorMessage[fieldName] || `${fieldName} has a minimum of ${length} characters`);
+			return true;
+		}
+		return false;
+	};
+
 	const validateRegisterForm = (form, lang) => {
-		if (!form.name || form.name.trim() === "") {
-			setError(languages[lang].errorMessage.name || "Name is required");
-			return true;
-		}
+		if (validateEmptyField(form.name, "name", lang)) return true;
+		if (validateEmptyField(form.surname, "surname", lang)) return true;
+		if (validateEmptyField(form.email, "email", lang)) return true;
+		if (validateEmptyField(form.username, "registerUsername", lang)) return true;
+		if (validateEmptyField(form.password, "registerPassword", lang)) return true;
+		if (validateEmptyField(form.confirmPassword, "confirmPassword", lang)) return true;
+		if (validateEmptyField(form.language, "language", lang)) return true;
 
-		if (!form.surname || form.surname.trim() === "") {
-			setError(languages[lang].errorMessage.surname || "Surname is required");
-			return true;
-		}
-
-		if (!form.email || form.email.trim() === "") {
-			setError(languages[lang].errorMessage.email || "Email is required");
-			return true;
-		}
-
-		if (!form.username || form.username.trim() === "") {
-			setError(languages[lang].errorMessage.registrUsername);
-			return true;
-		}
-
-		if (!form.password || form.password.trim() === "") {
-			setError(languages[lang].errorMessage.registerPassword);
-			return true;
-		}
-
-		if (!form.confirmPassword || form.confirmPassword.trim() === "") {
-			setError(languages[lang].errorMessage.confirmPassword || "Please confirm your password");
-			return true;
-		}
-
-		if (!form.language || form.language.trim() === "") {
-			setError(languages[lang].errorMessage.language || "Please select a language");
-			return true;
-		}
-
-		if (form.username.trim().length < 3) {
-			setError(languages[lang].errorMessage.usernameLength);
-			return true;
-		}
-
-		if (form.password.trim().length < 6) {
-			setError(languages[lang].errorMessage.passwordLength);
-			return true;
-		}
+		if (validateFieldLength(form.name, "nameLength", 2, lang)) return true;
+		if (validateFieldLength(form.surname, "surnameLength", 2, lang)) return true;
+		if (validateFieldLength(form.username, "usernameLength", 3, lang)) return true;
+		if (validateFieldLength(form.password, "passwordLength", 6, lang)) return true;
 
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(form.email.trim())) {
 			setError(languages[lang].errorMessage.emailFormat || "Please enter a valid email address");
+			return true;
+		}
+
+		if (isEmailRegistered(form.email.trim())) {
+			setError(languages[lang].errorMessage.emailExists || "This email is already registered");
 			return true;
 		}
 

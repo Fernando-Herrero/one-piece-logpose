@@ -2,6 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--spacing-sm);
+	min-width: 200px;
 }
 
 .login-label-input {
@@ -67,6 +68,7 @@
 	border: 2px solid var(--primary-color);
 	border-radius: var(--border-radius);
 	padding: var(--spacing-sm);
+	margin-top: var(--spacing-sm);
 	width: 80px;
 	box-shadow: var(--button-shadow);
 	transition: all 0.3s ease-in-out;
