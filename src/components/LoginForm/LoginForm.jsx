@@ -1,15 +1,14 @@
 import { useContext, useState } from "react";
 import "./LoginForm.css";
-import { languages } from "../../../pages/languages";
-import { LanguagesContext } from "../../../context/LanguagesContext";
-import Eye from "../../../assets/icons/eye-solid-full.svg";
-import EyeSlash from "../../../assets/icons/eye-slash-solid-full.svg";
-import { useToggle } from "../../../hooks/useToggle";
-import { UserContext } from "../../../context/userContext";
-import { useLoginValidation } from "../../../hooks/useLoginValidation";
-import { storage } from "../../../helpers/storage";
-import { ModalContext } from "../../../context/ModalContext";
-import { RegisterForm } from "../RegisterForm/RegisterForm";
+import { languages } from "../../data/languages";
+import { LanguagesContext } from "../../context/LanguagesContext";
+import Eye from "../../assets/icons/eye-solid-full.svg";
+import EyeSlash from "../../assets/icons/eye-slash-solid-full.svg";
+import { useToggle } from "../../hooks/useToggle";
+import { UserContext } from "../../context/userContext";
+import { useLoginValidation } from "../../hooks/useLoginValidation";
+import { storage } from "../../helpers/storage";
+import { Link } from "react-router-dom";
 
 const emptyUser = { id: "", username: "", password: "", experience: "" };
 
@@ -22,7 +21,6 @@ export const LoginForm = () => {
 
 	const { lang } = useContext(LanguagesContext);
 	const { login } = useContext(UserContext);
-	const { openModal } = useContext(ModalContext);
 
 	const handleInputForm = ({ target: { name, value } }) => {
 		clearError();
@@ -47,7 +45,7 @@ export const LoginForm = () => {
 			<label className="login-label-input">
 				Username:
 				<input
-					className="no-focus"
+					className="no-focus bg-white"
 					type="text"
 					name="username"
 					autoComplete="off"
@@ -61,7 +59,7 @@ export const LoginForm = () => {
 				{languages[lang].login.password}
 				<div className="login-input-button">
 					<input
-						className="no-focus"
+						className="no-focus bg-white"
 						type={isVisible ? "text" : "password"}
 						name="password"
 						autoComplete="off"
@@ -77,16 +75,9 @@ export const LoginForm = () => {
 
 			<p className="register-message">
 				{languages[lang].login.notRegistered}{" "}
-				<a
-					className="registered-link"
-					href="#"
-					onClick={(event) => {
-						event.preventDefault();
-						openModal(<RegisterForm />, "register");
-					}}
-				>
+				<Link className="registered-link" to="/login/register">
 					{languages[lang].login.registered}
-				</a>
+				</Link>
 			</p>
 
 			<button type="submit" className="submit-btn">

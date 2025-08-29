@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { languages } from "../pages/languages";
+import { languages } from "../data/languages";
 import { storage } from "../helpers/storage";
 
 export const useRegisterValidation = () => {

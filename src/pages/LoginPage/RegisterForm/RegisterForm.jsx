@@ -1,8 +1,8 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import "./RegisterForm.css";
-import { registerForm } from "../../../pages/registerForm";
+import { registerForm } from "../../../data/registerForm";
 import { useToggle } from "../../../hooks/useToggle";
-import { languages } from "../../../pages/languages";
+import { languages } from "../../../data/languages";
 import { LanguagesContext } from "../../../context/LanguagesContext";
 import Eye from "../../../assets/icons/eye-solid-full.svg";
 import EyeSlash from "../../../assets/icons/eye-slash-solid-full.svg";
@@ -20,10 +20,8 @@ export const RegisterForm = () => {
 	const [isConfirmVisible, toggleConfirmVisible] = useToggle();
 	const { error, validateRegisterForm, clearError } = useRegisterValidation();
 
-	const { lang } = useContext(LanguagesContext);
+	const { lang, setLang } = useContext(LanguagesContext);
 	const { closeModal } = useContext(ModalContext);
-
-	const nextId = useRef(1);
 
 	const handleRegisterInputs = ({ target: { name, value } }) => {
 		clearError();
@@ -41,7 +39,7 @@ export const RegisterForm = () => {
 		if (validationError) return;
 
 		const completeUser = {
-			id: Date.now() + nextId.current,
+			id: crypto.randomUUID(),
 			...form,
 		};
 
@@ -50,12 +48,16 @@ export const RegisterForm = () => {
 			sagaProgress: { saga: 0, chapter: 0 },
 		};
 
-		nextId.current++;
-
 		storage.save(`user_${form.username}`, userWithSaga);
+		storage.remove("registerInputs");
+
+		setForm(registerForm);
+		setIsChecked(false);
+
 		closeModal();
 
-		console.log(userWithSaga);
+		console.log("ID generada:", crypto.randomUUID());
+		console.log("Usuario completo", userWithSaga);
 	};
 
 	return (

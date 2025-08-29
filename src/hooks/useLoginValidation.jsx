@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { storage } from "../helpers/storage";
-import { languages } from "../pages/languages";
+import { languages } from "../data/languages";
 
 export const useLoginValidation = () => {
 	const [error, setError] = useState(null);

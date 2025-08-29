@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
-import { languages } from "../../pages/languages";
-import { LoginForm } from "./LoginForm/LoginForm";
+import { useContext } from "react";
+import { languages } from "../../data/languages";
 import "./LoginPage.css";
 import { LanguagesContext } from "../../context/LanguagesContext";
+import { Outlet } from "react-router-dom";
+import { LoginForm } from "../../components/LoginForm/LoginForm";
 
 export const LoginPage = () => {
 	const { lang } = useContext(LanguagesContext);
@@ -16,6 +17,7 @@ export const LoginPage = () => {
 			</header>
 
 			<LoginForm />
+			<Outlet />
 		</section>
 	);
 };

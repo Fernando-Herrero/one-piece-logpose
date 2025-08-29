@@ -12,5 +12,5 @@ export const LanguagesContextProvider = ({ children }) => {
 		storage.save("lang", value);
 	};
 
-	return <LanguagesContext.Provider value={{ lang, handleLang }}>{children}</LanguagesContext.Provider>;
+	return <LanguagesContext.Provider value={{ lang, setLang, handleLang }}>{children}</LanguagesContext.Provider>;
 };

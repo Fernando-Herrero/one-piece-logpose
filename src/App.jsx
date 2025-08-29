@@ -1,25 +1,30 @@
-import { useContext } from "react";
 import "./App.css";
-import { Footer } from "./components/Footer/Footer";
-import { LoginPage } from "./components/LoginPage/LoginPage";
+import { Footer } from "./layouts/Footer/Footer";
 import { Overlay } from "./components/Overlay/Overlay";
-import { ModalContext } from "./context/ModalContext";
-import { UserContext } from "./context/userContext";
+import { LoginPage } from "./pages/LoginPage/LoginPage";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { RegisterForm } from "./pages/LoginPage/RegisterForm/RegisterForm";
 
 export const App = () => {
-	const { modalContent, closeModal } = useContext(ModalContext);
-	const { isLoggedIn } = useContext(UserContext);
-
 	return (
 		<>
-			<LoginPage />
+			<main>
+				<Routes>
+					<Route path="/" element={<Navigate to="/login" />} />
+					<Route path="/login" element={<LoginPage />}>
+						<Route
+							path="register"
+							element={
+								<Overlay>
+									<RegisterForm />
+								</Overlay>
+							}
+						/>
+					</Route>
+					<Route path="*" element={<Navigate to="/login" />} />
+				</Routes>
+			</main>
 			<Footer />
-
-			{modalContent && (
-				<Overlay isOpen={true} onClose={closeModal}>
-					{modalContent.component}
-				</Overlay>
-			)}
 		</>
 	);
 };
