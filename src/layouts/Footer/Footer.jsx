@@ -1,8 +1,8 @@
-import { LanguageSelect } from "../LanguageSelect/LanguageSelect";
-import { languages } from "../../pages/languages";
 import "./Footer.css";
 import { useContext } from "react";
 import { LanguagesContext } from "../../context/LanguagesContext";
+import { languages } from "../../data/languages";
+import { LanguageSelect } from "../../components/LanguageSelect/LanguageSelect";
 
 export const Footer = () => {
 	const { lang } = useContext(LanguagesContext);
