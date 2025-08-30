@@ -8,7 +8,6 @@ import Eye from "../../../assets/icons/eye-solid-full.svg";
 import EyeSlash from "../../../assets/icons/eye-slash-solid-full.svg";
 import { storage } from "../../../helpers/storage";
 import { useRegisterValidation } from "../../../hooks/useRegisterValidation";
-import { ModalContext } from "../../../context/ModalContext";
 
 export const RegisterForm = () => {
 	const savedForm = storage.get("registerInputs");
@@ -20,8 +19,7 @@ export const RegisterForm = () => {
 	const [isConfirmVisible, toggleConfirmVisible] = useToggle();
 	const { error, validateRegisterForm, clearError } = useRegisterValidation();
 
-	const { lang, setLang } = useContext(LanguagesContext);
-	const { closeModal } = useContext(ModalContext);
+	const { lang } = useContext(LanguagesContext);
 
 	const handleRegisterInputs = ({ target: { name, value } }) => {
 		clearError();
@@ -67,7 +65,7 @@ export const RegisterForm = () => {
 			<label className="login-label-input">
 				📝 {languages[lang].login.registerName}:
 				<input
-					className="no-focus"
+					className="no-focus bg-white"
 					type="text"
 					name="name"
 					id="name"
@@ -81,7 +79,7 @@ export const RegisterForm = () => {
 			<label className="login-label-input">
 				📝 {languages[lang].login.registerSurname}:
 				<input
-					className="no-focus"
+					className="no-focus bg-white"
 					type="text"
 					name="surname"
 					id="surname"
@@ -95,7 +93,7 @@ export const RegisterForm = () => {
 			<label className="login-label-input">
 				✉️ {languages[lang].login.registerEmail}:
 				<input
-					className="no-focus"
+					className="no-focus bg-white"
 					type="email"
 					name="email"
 					id="email"
@@ -109,7 +107,7 @@ export const RegisterForm = () => {
 			<label className="login-label-input">
 				🌍 {languages[lang].login.registerLang}:
 				<select
-					className="no-focus register-languages"
+					className="no-focus register-languages bg-white"
 					name="language"
 					value={language}
 					onChange={handleRegisterInputs}
@@ -123,7 +121,7 @@ export const RegisterForm = () => {
 			<label className="login-label-input">
 				👤 Username:
 				<input
-					className="no-focus"
+					className="no-focus bg-white"
 					type="text"
 					name="username"
 					id="username"
@@ -138,7 +136,7 @@ export const RegisterForm = () => {
 				🔒 {languages[lang].login.registerPassword}:
 				<div className="login-input-button">
 					<input
-						className="no-focus"
+						className="no-focus bg-white"
 						type={isVisible ? "text" : "password"}
 						name="password"
 						id="password"
@@ -157,7 +155,7 @@ export const RegisterForm = () => {
 				🔒 {languages[lang].login.registerPassword}:
 				<div className="login-input-button">
 					<input
-						className="no-focus"
+						className="no-focus bg-white"
 						type={isConfirmVisible ? "text" : "password"}
 						name="confirmPassword"
 						id="confirmPassword"

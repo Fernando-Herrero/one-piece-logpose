@@ -4,6 +4,7 @@ import "./LoginPage.css";
 import { LanguagesContext } from "../../context/LanguagesContext";
 import { Outlet } from "react-router-dom";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
+import { AvatarSelected } from "../../components/avatarSelected/AvatarSelected";
 
 export const LoginPage = () => {
 	const { lang } = useContext(LanguagesContext);
@@ -17,6 +18,7 @@ export const LoginPage = () => {
 			</header>
 
 			<LoginForm />
+			<AvatarSelected />
 			<Outlet />
 		</section>
 	);
