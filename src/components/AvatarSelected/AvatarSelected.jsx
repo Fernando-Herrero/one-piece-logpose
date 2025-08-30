@@ -39,9 +39,16 @@ import usoppH700 from "/src/assets/images/avatars/usopp/usopp-happy-700.webp";
 import usoppH1024 from "/src/assets/images/avatars/usopp/usopp-happy-1024.webp";
 import { useContext } from "react";
 import { AvatarContext } from "../../context/AvatarContext";
+import { storage } from "../../helpers/storage";
 
 export const AvatarSelected = () => {
-	const { setSelectedAvatar } = useContext(AvatarContext);
+	const { selectedAvatar, setSelectedAvatar } = useContext(AvatarContext);
+
+	const handleAvatar = (name) => {
+		setSelectedAvatar((prev) => (prev === name ? null : name));
+		storage.save("avatar", name);
+		console.log(name);
+	};
 
 	const characters = [
 		{ name: "Luffy", serious: [luffyS400, luffyS700, luffyS1024], happy: [luffyH400, luffyH700, luffyH1024] },
@@ -57,9 +64,15 @@ export const AvatarSelected = () => {
 				<article
 					key={character.name}
 					className="flex flex-col items-center justify-center"
-					onClick={setSelectedAvatar(character.name)}
+					onClick={() => handleAvatar(character.name)}
 				>
-					<div className="avatar-wrapper group w-[60px] rounded-full overflow-hidden relative transition-transform duration-500 ease-in-out hover:scale-110 hover:-translate-y-1.5">
+					<div
+						className={`avatar-wrapper group w-[60px] rounded-full overflow-hidden relative transition-transform duration-500 ease-in-out hover:scale-110 hover:-translate-y-1.5 ${
+							selectedAvatar === character.name
+								? "ring-4 ring-pink-400 rounded-full scale-110 transition-transform"
+								: ""
+						}`}
+					>
 						<picture className="block w-full object-cover">
 							<source srcSet={character.serious[2]} media="(min-width: 1024px)" type="image/webp" />
 							<source srcSet={character.serious[1]} media="(min-width: 700px)" type="image/webp" />
@@ -70,7 +83,11 @@ export const AvatarSelected = () => {
 								className="block w-full object-cover"
 							/>
 						</picture>
-						<picture className="absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none">
+						<picture
+							className={`absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none ${
+								selectedAvatar === character.name ? "opacity-100" : ""
+							}`}
+						>
 							<source srcSet={character.happy[2]} media="(min-width: 1024px)" type="image/webp" />
 							<source srcSet={character.happy[1]} media="(min-width: 700px)" type="image/webp" />
 							<source srcSet={character.happy[0]} media="(min-width: 400px)" type="image/webp" />
