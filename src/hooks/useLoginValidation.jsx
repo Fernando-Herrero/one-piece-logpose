@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { storage } from "../helpers/storage";
 import { languages } from "../data/languages";
+import { AvatarContext } from "../context/AvatarContext";
 
 export const useLoginValidation = () => {
 	const [error, setError] = useState(null);
+	const { selectedAvatar } = useContext(AvatarContext);
 
 	const validateForm = (form, lang) => {
 		const getUser = storage.get(`user_${form.username}`);
@@ -15,6 +17,11 @@ export const useLoginValidation = () => {
 
 		if (getUser.nakamaData.password !== form.password) {
 			setError(languages[lang].errorMessage.password);
+			return true;
+		}
+
+		if (!selectedAvatar) {
+			setError(languages[lang].errorMessage.selectedAvatar);
 			return true;
 		}
 
