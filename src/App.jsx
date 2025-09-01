@@ -4,6 +4,7 @@ import { Overlay } from "./components/Overlay/Overlay";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { RegisterForm } from "./pages/LoginPage/RegisterForm/RegisterForm";
+import { MainPage } from "./pages/MainPage/MainPage";
 
 export const App = () => {
 	return (
@@ -21,6 +22,7 @@ export const App = () => {
 							}
 						/>
 					</Route>
+					<Route path="/main" element={<MainPage />} />
 					<Route path="*" element={<Navigate to="/login" />} />
 				</Routes>
 			</main>
