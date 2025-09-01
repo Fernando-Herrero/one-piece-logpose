@@ -45,9 +45,15 @@ export const AvatarSelected = () => {
 	const { selectedAvatar, setSelectedAvatar } = useContext(AvatarContext);
 
 	const handleAvatar = (name) => {
-		setSelectedAvatar((prev) => (prev === name ? null : name));
-		storage.save("avatar", name);
-		console.log(name);
+		setSelectedAvatar((prev) => {
+			if (prev === name) {
+				storage.remove("avatar");
+				return null;
+			} else {
+				stroage.save("avatar", name);
+				return name;
+			}
+		});
 	};
 
 	const characters = [
