@@ -50,7 +50,7 @@ export const AvatarSelected = () => {
 				storage.remove("avatar");
 				return null;
 			} else {
-				stroage.save("avatar", name);
+				storage.save("avatar", name);
 				return name;
 			}
 		});
