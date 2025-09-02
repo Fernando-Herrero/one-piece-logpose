@@ -77,8 +77,8 @@ html::after {
     --text-lg: 18px;
     --text-xl: 20px;
     --text-2xl: 28px;
-    --text-3xl: 32px;
-    --text-4xl: 70px;
+    --text-subtitle: 52px;
+    --text-title: 100px;
 
     /* ESPACIADO */
     --spacing-1: 4px;
@@ -132,6 +132,12 @@ html::after {
     --button-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
+.title-glow {
+    @apply text-[#c9a066] tracking-wider -mt-8;
+    text-shadow: 2px 2px 0px #3b2f2f, -1px -1px 0px #3b2f2f, 1px -1px 0px #3b2f2f, -1px 1px 0px #3b2f2f,
+        0 0 15px #c9a066, 0 0 25px rgba(201, 160, 102, 0.4);
+}
+
 .btn {
     @apply self-center py-1 px-1.5 border-2 min-w-20 border-linePrimary rounded cursor-pointer 
         transition-all duration-200 ease-in-out appearance-none relative 
@@ -143,7 +149,7 @@ html::after {
 }
 
 .shadow-title {
-    @apply text-shadow-[-2px_-2px_0_#8b0000,_2px_-2px_0_#8b0000,_-2px_2px_0_#8b0000,_2px_2px_0_#8b0000,_0_0_10px_#000];
+    @apply text-shadow-[2px_4px_5px_#8b0000,_-3px_-3px_6px_#8b0000,_10px_9px_5px_#000];
 }
 
 .no-focus:focus {

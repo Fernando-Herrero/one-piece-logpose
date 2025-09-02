@@ -41,8 +41,8 @@ export const LoginForm = () => {
 
     return (
         <form className="flex flex-col items-center gap-2" onSubmit={handleSubmit}>
-            <div className="w-52">
-                <label className="flex flex-col">
+            <div className="flex flex-col gap-2 w-52 border border-linePrimary p-2 rounded shadow-default bg-secondary">
+                <label className="flex flex-col text-base ">
                     Username:
                     <input
                         className="no-focus rounded p-1 bg-white"
@@ -55,7 +55,7 @@ export const LoginForm = () => {
                     />
                 </label>
 
-                <label className="flex flex-col">
+                <label className="flex flex-col text-base">
                     {languages[lang].login.password}
                     <div className="flex items-center relative">
                         <input

@@ -77,7 +77,7 @@ export const AvatarSelected = () => {
     ];
 
     return (
-        <section className="mt-8 w-full flex items-center justify-center gap-2.5">
+        <section className="w-full flex items-center justify-center gap-2.5 pt-2">
             {characters.map((character) => (
                 <article
                     key={character.name}
