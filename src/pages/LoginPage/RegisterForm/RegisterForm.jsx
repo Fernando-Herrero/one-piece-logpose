@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import EyeSlash from "../../../assets/icons/eye-slash-solid-full.svg";
-import Eye from "../../../assets/icons/eye-solid-full.svg";
 import { Button } from "../../../components/button";
 import { LabelInput } from "../../../components/LabelInput";
+import { LabelPassword } from "../../../components/LabelPassword";
 import { LanguagesContext } from "../../../context/LanguagesContext";
 import { languages } from "../../../data/languages";
+import { passwordFields } from "../../../data/passwordFields";
 import { registerFields } from "../../../data/registerFields";
 import { registerForm } from "../../../data/registerForm";
 import { storage } from "../../../helpers/storage";
@@ -14,7 +14,7 @@ import { useToggle } from "../../../hooks/useToggle";
 export const RegisterForm = () => {
     const savedForm = storage.get("registerInputs");
     const [form, setForm] = useState(savedForm || registerForm);
-    const { name, surname, username, email, language, password, confirmPassword } = form;
+    const { language, password, confirmPassword } = form;
     const [isChecked, setIsChecked] = useState(false);
 
     const [isVisible, toggleVisible] = useToggle();
@@ -61,6 +61,7 @@ export const RegisterForm = () => {
     };
 
     const fields = registerFields(lang, form);
+    const passwordFieldsData = passwordFields(lang, form, isVisible, isConfirmVisible);
 
     return (
         <form className="flex flex-col gap-2 p-4 bg-primary rounded shadow-white" onSubmit={handleSubmit}>
@@ -79,6 +80,21 @@ export const RegisterForm = () => {
                 />
             ))}
 
+            {passwordFieldsData.map(({ id, name, label, placeholder, value, isVisible, toggleType }) => (
+                <LabelPassword
+                    key={id}
+                    label={label}
+                    isVisible={isVisible}
+                    name={name}
+                    id={id}
+                    autoComplete="off"
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={handleRegisterInputs}
+                    toggleVisible={toggleType === "password" ? toggleVisible : toggleConfirmVisible}
+                />
+            ))}
+
             <label className="flex flex-col">
                 🌍 {languages[lang].login.registerLang}:
                 <select
@@ -91,58 +107,6 @@ export const RegisterForm = () => {
                     <option value="es">Español 🇪🇸</option>
                     <option value="en">English 🇬🇧</option>
                 </select>
-            </label>
-
-            <label className="flex flex-col">
-                🔒 {languages[lang].login.registerPassword}:
-                <div className="flex items-center relative">
-                    <input
-                        className="w-full p-1 rounded no-focus bg-white"
-                        type={isVisible ? "text" : "password"}
-                        name="password"
-                        id="password"
-                        autoComplete="off"
-                        placeholder={languages[lang].login.password}
-                        value={password}
-                        onChange={handleRegisterInputs}
-                    />
-                    <button
-                        className="absolute right-1 flex items-center w-4 bg-transparent cursor-pointer"
-                        type="button"
-                        onClick={toggleVisible}
-                    >
-                        <img
-                            src={isVisible ? EyeSlash : Eye}
-                            alt={isVisible ? "Hide password" : "Show password"}
-                        />
-                    </button>
-                </div>
-            </label>
-
-            <label className="flex flex-col">
-                🔒 {languages[lang].login.registerPassword}:
-                <div className="flex items-center relative">
-                    <input
-                        className="w-full p-1 rounded no-focus bg-white"
-                        type={isConfirmVisible ? "text" : "password"}
-                        name="confirmPassword"
-                        id="confirmPassword"
-                        autoComplete="off"
-                        placeholder={languages[lang].login.passwordConfirm}
-                        value={confirmPassword}
-                        onChange={handleRegisterInputs}
-                    />
-                    <button
-                        className="absolute right-1 flex items-center w-4 bg-transparent cursor-pointer"
-                        type="button"
-                        onClick={toggleConfirmVisible}
-                    >
-                        <img
-                            src={isConfirmVisible ? EyeSlash : Eye}
-                            alt={isConfirmVisible ? "Hide password" : "Show password"}
-                        />
-                    </button>
-                </div>
             </label>
 
             <label className="flex flex-col gap-1">
