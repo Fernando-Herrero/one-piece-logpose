@@ -14,7 +14,7 @@ import { useToggle } from "../../../hooks/useToggle";
 export const RegisterForm = () => {
     const savedForm = storage.get("registerInputs");
     const [form, setForm] = useState(savedForm || registerForm);
-    const { language, password, confirmPassword } = form;
+    const { language } = form;
     const [isChecked, setIsChecked] = useState(false);
 
     const [isVisible, toggleVisible] = useToggle();

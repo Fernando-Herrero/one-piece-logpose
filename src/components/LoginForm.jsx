@@ -1,7 +1,5 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import EyeSlash from "../assets/icons/eye-slash-solid-full.svg";
-import Eye from "../assets/icons/eye-solid-full.svg";
 import { LanguagesContext } from "../context/LanguagesContext";
 import { UserContext } from "../context/UserContext";
 import { languages } from "../data/languages";
@@ -9,6 +7,7 @@ import { storage } from "../helpers/storage";
 import { useLoginValidation } from "../hooks/useLoginValidation";
 import { useToggle } from "../hooks/useToggle";
 import { Button } from "./button";
+import { LabelPassword } from "./LabelPassword";
 
 const emptyUser = { id: "", username: "", password: "", experience: "" };
 
@@ -56,30 +55,17 @@ export const LoginForm = () => {
                     />
                 </label>
 
-                <label className="flex flex-col text-base">
-                    {languages[lang].login.password}
-                    <div className="flex items-center relative">
-                        <input
-                            className="w-full p-1 rounded no-focus bg-white"
-                            type={isVisible ? "text" : "password"}
-                            name="password"
-                            autoComplete="off"
-                            placeholder={languages[lang].login.passwordMessage}
-                            value={form.password}
-                            onChange={handleInputForm}
-                        />
-                        <button
-                            className="absolute right-1 flex items-center w-4 bg-transparent cursor-pointer"
-                            type="button"
-                            onClick={toggleVisible}
-                        >
-                            <img
-                                src={isVisible ? EyeSlash : Eye}
-                                alt={isVisible ? "Hide password" : "Show password"}
-                            />
-                        </button>
-                    </div>
-                </label>
+                <LabelPassword
+                    className="text-base"
+                    label={languages[lang].login.password}
+                    isVisible={isVisible}
+                    name="paswsword"
+                    autoComplete="off"
+                    placeholder={languages[lang].login.passwordMessage}
+                    value={form.password}
+                    onChange={handleInputForm}
+                    toggleVisible={toggleVisible}
+                />
             </div>
 
             <p className="self-center">
