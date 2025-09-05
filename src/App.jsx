@@ -5,6 +5,7 @@ import { Footer } from "./layouts/Footer";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { RegisterForm } from "./pages/LoginPage/RegisterForm/RegisterForm";
 import { MainPage } from "./pages/MainPage/MainPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 export const App = () => {
     return (
@@ -24,7 +25,7 @@ export const App = () => {
                         />
                     </Route>
                     <Route path="/main" element={<MainPage />} />
-                    <Route path="*" element={<Navigate to="/login" />} />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </main>
             <Footer />

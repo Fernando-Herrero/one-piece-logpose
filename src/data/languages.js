@@ -32,6 +32,8 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
             copyright: `LogPose. Todos los derechos reservados.`,
         },
 
+        notFoundPage: { inicio: "Volver al inicio" },
+
         errorMessage: {
             username: `Usuario no registrado. Por favor, regístrate primero.`,
             usernameLength: `El username debe tener al menos 3 caracteres`,
@@ -52,6 +54,7 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
             passwordMatch: `La contraseña no coincide`,
             userExists: `El username ya existe, por favor elige otro`,
             selectedAvatar: `Debes seleccionar un avatar para iniciar sesión`,
+            notFoundMessage: "Oops! No pudimos encontrar esta página",
         },
     },
 
