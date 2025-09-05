@@ -1,205 +1,141 @@
 import { useContext, useState } from "react";
-import "./RegisterForm.css";
-import { registerForm } from "../../../data/registerForm";
-import { useToggle } from "../../../hooks/useToggle";
-import { languages } from "../../../data/languages";
+import { Button } from "../../../components/button";
+import { LabelInput } from "../../../components/LabelInput";
+import { LabelPassword } from "../../../components/LabelPassword";
 import { LanguagesContext } from "../../../context/LanguagesContext";
-import Eye from "../../../assets/icons/eye-solid-full.svg";
-import EyeSlash from "../../../assets/icons/eye-slash-solid-full.svg";
+import { languages } from "../../../data/languages";
+import { passwordFields } from "../../../data/passwordFields";
+import { registerFields } from "../../../data/registerFields";
+import { registerForm } from "../../../data/registerForm";
 import { storage } from "../../../helpers/storage";
 import { useRegisterValidation } from "../../../hooks/useRegisterValidation";
+import { useToggle } from "../../../hooks/useToggle";
 
 export const RegisterForm = () => {
-	const savedForm = storage.get("registerInputs");
-	const [form, setForm] = useState(savedForm || registerForm);
-	const { name, surname, username, email, language, password, confirmPassword } = form;
-	const [isChecked, setIsChecked] = useState(false);
+    const savedForm = storage.get("registerInputs");
+    const [form, setForm] = useState(savedForm || registerForm);
+    const { language } = form;
+    const [isChecked, setIsChecked] = useState(false);
 
-	const [isVisible, toggleVisible] = useToggle();
-	const [isConfirmVisible, toggleConfirmVisible] = useToggle();
-	const { error, validateRegisterForm, clearError } = useRegisterValidation();
+    const [isVisible, toggleVisible] = useToggle();
+    const [isConfirmVisible, toggleConfirmVisible] = useToggle();
+    const { error, validateRegisterForm, clearError } = useRegisterValidation();
 
-	const { lang } = useContext(LanguagesContext);
+    const { lang } = useContext(LanguagesContext);
 
-	const handleRegisterInputs = ({ target: { name, value } }) => {
-		clearError();
-		setForm((prev) => {
-			const newForm = { ...prev, [name]: value };
-			storage.save("registerInputs", newForm);
-			return newForm;
-		});
-	};
+    const handleRegisterInputs = ({ target: { name, value } }) => {
+        clearError();
+        setForm((prev) => {
+            const newForm = { ...prev, [name]: value };
+            storage.save("registerInputs", newForm);
+            return newForm;
+        });
+    };
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
 
-		const validationError = validateRegisterForm(form, lang);
-		if (validationError) return;
+        const validationError = validateRegisterForm(form, lang);
+        if (validationError) return;
 
-		const completeUser = {
-			id: crypto.randomUUID(),
-			...form,
-		};
+        const completeUser = {
+            id: crypto.randomUUID(),
+            ...form,
+        };
 
-		const userWithSaga = {
-			nakamaData: completeUser,
-			sagaProgress: { saga: 0, chapter: 0 },
-		};
+        const userWithSaga = {
+            nakamaData: completeUser,
+            sagaProgress: { saga: 0, chapter: 0 },
+        };
 
-		storage.save(`user_${form.username}`, userWithSaga);
-		storage.remove("registerInputs");
+        storage.save(`user_${form.username}`, userWithSaga);
+        storage.remove("registerInputs");
 
-		setForm(registerForm);
-		setIsChecked(false);
+        setForm(registerForm);
+        setIsChecked(false);
 
-		closeModal();
+        closeModal();
 
-		console.log("ID generada:", crypto.randomUUID());
-		console.log("Usuario completo", userWithSaga);
-	};
+        console.log("ID generada:", crypto.randomUUID());
+        console.log("Usuario completo", userWithSaga);
+    };
 
-	return (
-		<form className="register-form" onSubmit={handleSubmit}>
-			<h3>{languages[lang].login.registerTitle}</h3>
+    const fields = registerFields(lang, form);
+    const passwordFieldsData = passwordFields(lang, form, isVisible, isConfirmVisible);
 
-			<label className="login-label-input">
-				📝 {languages[lang].login.registerName}:
-				<input
-					className="no-focus bg-white"
-					type="text"
-					name="name"
-					id="name"
-					autoComplete="off"
-					placeholder={languages[lang].login.registerNameMessage}
-					value={name}
-					onChange={handleRegisterInputs}
-				/>
-			</label>
+    return (
+        <form className="flex flex-col gap-2 p-4 bg-primary rounded shadow-white" onSubmit={handleSubmit}>
+            <h3 className="self-center text-2xl">{languages[lang].login.registerTitle}</h3>
 
-			<label className="login-label-input">
-				📝 {languages[lang].login.registerSurname}:
-				<input
-					className="no-focus bg-white"
-					type="text"
-					name="surname"
-					id="surname"
-					autoComplete="off"
-					placeholder={languages[lang].login.registerSurnameMessage}
-					value={surname}
-					onChange={handleRegisterInputs}
-				/>
-			</label>
+            {fields.map(({ label, type, name, value, placeholder, id }) => (
+                <LabelInput
+                    key={id}
+                    label={label}
+                    type={type}
+                    name={name}
+                    value={value}
+                    placeholder={placeholder}
+                    id={id}
+                    onChange={handleRegisterInputs}
+                />
+            ))}
 
-			<label className="login-label-input">
-				✉️ {languages[lang].login.registerEmail}:
-				<input
-					className="no-focus bg-white"
-					type="email"
-					name="email"
-					id="email"
-					autoComplete="off"
-					placeholder={languages[lang].login.registerEmailMessage}
-					value={email}
-					onChange={handleRegisterInputs}
-				/>
-			</label>
+            {passwordFieldsData.map(({ id, name, label, placeholder, value, isVisible, toggleType }) => (
+                <LabelPassword
+                    key={id}
+                    label={label}
+                    isVisible={isVisible}
+                    name={name}
+                    id={id}
+                    autoComplete="off"
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={handleRegisterInputs}
+                    toggleVisible={toggleType === "password" ? toggleVisible : toggleConfirmVisible}
+                />
+            ))}
 
-			<label className="login-label-input">
-				🌍 {languages[lang].login.registerLang}:
-				<select
-					className="no-focus register-languages bg-white"
-					name="language"
-					value={language}
-					onChange={handleRegisterInputs}
-				>
-					<option value="">--{languages[lang].login.registerSelectLang}--</option>
-					<option value="es">Español 🇪🇸</option>
-					<option value="en">English 🇬🇧</option>
-				</select>
-			</label>
+            <label className="flex flex-col">
+                🌍 {languages[lang].login.registerLang}:
+                <select
+                    className="no-focus p-1 rounded bg-white"
+                    name="language"
+                    value={language}
+                    onChange={handleRegisterInputs}
+                >
+                    <option value="">--{languages[lang].login.registerSelectLang}--</option>
+                    <option value="es">Español 🇪🇸</option>
+                    <option value="en">English 🇬🇧</option>
+                </select>
+            </label>
 
-			<label className="login-label-input">
-				👤 Username:
-				<input
-					className="no-focus bg-white"
-					type="text"
-					name="username"
-					id="username"
-					autoComplete="off"
-					placeholder={languages[lang].login.registerUsername}
-					value={username}
-					onChange={handleRegisterInputs}
-				/>
-			</label>
+            <label className="flex flex-col gap-1">
+                <div className="flex items-center gap-1">
+                    <input
+                        required
+                        className="no-focus"
+                        type="checkbox"
+                        name="checked"
+                        id="checked"
+                        checked={isChecked}
+                        onChange={(event) => setIsChecked(event.target.checked)}
+                    />
 
-			<label className="login-label-input">
-				🔒 {languages[lang].login.registerPassword}:
-				<div className="login-input-button">
-					<input
-						className="no-focus bg-white"
-						type={isVisible ? "text" : "password"}
-						name="password"
-						id="password"
-						autoComplete="off"
-						placeholder={languages[lang].login.password}
-						value={password}
-						onChange={handleRegisterInputs}
-					/>
-					<button className="eye-btn" type="button" onClick={toggleVisible}>
-						<img src={isVisible ? EyeSlash : Eye} alt={isVisible ? "Hide password" : "Show password"} />
-					</button>
-				</div>
-			</label>
+                    <p>Acepto los términos y condiciones y la política de privacidad.</p>
+                </div>
+                <span className="text-xs">
+                    * Al registrarte aceptas nuestros Términos y Condiciones y reconoces haber leído nuestra
+                    Política de Privacidad. Nos comprometemos a proteger tus datos personales y a utilizarlos
+                    únicamente para proporcionarte el servicio. No compartiremos tu información con terceros
+                    sin tu consentimiento. Puedes solicitar la eliminación de tu cuenta en cualquier momento.
+                </span>
+            </label>
 
-			<label className="login-label-input">
-				🔒 {languages[lang].login.registerPassword}:
-				<div className="login-input-button">
-					<input
-						className="no-focus bg-white"
-						type={isConfirmVisible ? "text" : "password"}
-						name="confirmPassword"
-						id="confirmPassword"
-						autoComplete="off"
-						placeholder={languages[lang].login.passwordConfirm}
-						value={confirmPassword}
-						onChange={handleRegisterInputs}
-					/>
-					<button className="eye-btn" type="button" onClick={toggleConfirmVisible}>
-						<img
-							src={isConfirmVisible ? EyeSlash : Eye}
-							alt={isConfirmVisible ? "Hide password" : "Show password"}
-						/>
-					</button>
-				</div>
-			</label>
+            {error && <p className="error-message">{error}</p>}
 
-			<label className="register-checked">
-				<div className="register-checked-terms">
-					<input
-						required
-						className="no-focus"
-						type="checkbox"
-						name="checked"
-						id="checked"
-						checked={isChecked}
-						onChange={(event) => setIsChecked(event.target.checked)}
-					/>
-
-					<p>Acepto los términos y condiciones y la política de privacidad.</p>
-				</div>
-				<span className="terms-message">
-					* Al registrarte aceptas nuestros Términos y Condiciones y reconoces haber leído nuestra Política de
-					Privacidad. Nos comprometemos a proteger tus datos personales y a utilizarlos únicamente para
-					proporcionarte el servicio. No compartiremos tu información con terceros sin tu consentimiento.
-					Puedes solicitar la eliminación de tu cuenta en cualquier momento.
-				</span>
-			</label>
-
-			{error && <p className="error-message">{error}</p>}
-
-			<button type="submit" className="submit-btn">
-				{languages[lang].login.registerSubmit}
-			</button>
-		</form>
-	);
+            <Button type="submit" className="bg-accent hover:bg-accentSecondary">
+                {languages[lang].login.registerSubmit}
+            </Button>
+        </form>
+    );
 };
