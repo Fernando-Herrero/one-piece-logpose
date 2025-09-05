@@ -1,8 +1,11 @@
 import { useContext, useState } from "react";
 import EyeSlash from "../../../assets/icons/eye-slash-solid-full.svg";
 import Eye from "../../../assets/icons/eye-solid-full.svg";
+import { Button } from "../../../components/button";
+import { LabelInput } from "../../../components/LabelInput";
 import { LanguagesContext } from "../../../context/LanguagesContext";
 import { languages } from "../../../data/languages";
+import { registerFields } from "../../../data/registerFields";
 import { registerForm } from "../../../data/registerForm";
 import { storage } from "../../../helpers/storage";
 import { useRegisterValidation } from "../../../hooks/useRegisterValidation";
@@ -57,51 +60,24 @@ export const RegisterForm = () => {
         console.log("Usuario completo", userWithSaga);
     };
 
+    const fields = registerFields(lang, form);
+
     return (
         <form className="flex flex-col gap-2 p-4 bg-primary rounded shadow-white" onSubmit={handleSubmit}>
             <h3 className="self-center text-2xl">{languages[lang].login.registerTitle}</h3>
 
-            <label className="flex flex-col">
-                📝 {languages[lang].login.registerName}:
-                <input
-                    className="no-focus p-1 rounded bg-white"
-                    type="text"
-                    name="name"
-                    id="name"
-                    autoComplete="off"
-                    placeholder={languages[lang].login.registerNameMessage}
-                    value={name}
+            {fields.map(({ label, type, name, value, placeholder, id }) => (
+                <LabelInput
+                    key={id}
+                    label={label}
+                    type={type}
+                    name={name}
+                    value={value}
+                    placeholder={placeholder}
+                    id={id}
                     onChange={handleRegisterInputs}
                 />
-            </label>
-
-            <label className="flex flex-col">
-                📝 {languages[lang].login.registerSurname}:
-                <input
-                    className="no-focus p-1 rounded bg-white"
-                    type="text"
-                    name="surname"
-                    id="surname"
-                    autoComplete="off"
-                    placeholder={languages[lang].login.registerSurnameMessage}
-                    value={surname}
-                    onChange={handleRegisterInputs}
-                />
-            </label>
-
-            <label className="flex flex-col">
-                ✉️ {languages[lang].login.registerEmail}:
-                <input
-                    className="no-focus p-1 rounded bg-white"
-                    type="email"
-                    name="email"
-                    id="email"
-                    autoComplete="off"
-                    placeholder={languages[lang].login.registerEmailMessage}
-                    value={email}
-                    onChange={handleRegisterInputs}
-                />
-            </label>
+            ))}
 
             <label className="flex flex-col">
                 🌍 {languages[lang].login.registerLang}:
@@ -115,20 +91,6 @@ export const RegisterForm = () => {
                     <option value="es">Español 🇪🇸</option>
                     <option value="en">English 🇬🇧</option>
                 </select>
-            </label>
-
-            <label className="flex flex-col">
-                👤 Username:
-                <input
-                    className="no-focu p-1 rounded bg-white"
-                    type="text"
-                    name="username"
-                    id="username"
-                    autoComplete="off"
-                    placeholder={languages[lang].login.registerUsername}
-                    value={username}
-                    onChange={handleRegisterInputs}
-                />
             </label>
 
             <label className="flex flex-col">
@@ -207,9 +169,9 @@ export const RegisterForm = () => {
 
             {error && <p className="error-message">{error}</p>}
 
-            <button type="submit" className="btn bg-accent hover:bg-accentSecondary">
+            <Button type="submit" className="bg-accent hover:bg-accentSecondary">
                 {languages[lang].login.registerSubmit}
-            </button>
+            </Button>
         </form>
     );
 };

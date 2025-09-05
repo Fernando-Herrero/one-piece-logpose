@@ -8,6 +8,7 @@ import { languages } from "../data/languages";
 import { storage } from "../helpers/storage";
 import { useLoginValidation } from "../hooks/useLoginValidation";
 import { useToggle } from "../hooks/useToggle";
+import { Button } from "./button";
 
 const emptyUser = { id: "", username: "", password: "", experience: "" };
 
@@ -88,9 +89,9 @@ export const LoginForm = () => {
                 </Link>
             </p>
 
-            <button type="submit" className="btn  bg-accent hover:bg-accentHover">
+            <Button type="submit" className="bg-accent hover:bg-accentHover">
                 Login
-            </button>
+            </Button>
 
             {error && <p className="self-center text-linePrimary">{error}</p>}
         </form>
