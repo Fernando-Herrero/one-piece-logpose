@@ -69,7 +69,7 @@ export const LoginForm = () => {
             </div>
 
             <p className="self-center">
-                {languages[lang].login.notRegistered}{" "}
+                {languages[lang].login.notRegistered}
                 <Link className="underline text-secondary" to="/login/register">
                     {languages[lang].login.registered}
                 </Link>
