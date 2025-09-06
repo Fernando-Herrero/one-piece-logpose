@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import backgroundImg from "../assets/images/background-not-found.jpg";
+import backgroundImg from "../assets/images/backgrounds/background-not-found.jpg";
 import logo from "../assets/images/one-piece-logo.png";
 import crewImg from "../assets/images/sombrero-first-crew.png";
 import { Container } from "../components/Container";
@@ -23,7 +23,7 @@ export const NotFoundPage = () => {
             <Container className="flex flex-col gap-6">
                 <div className="flex flex-col items-center relative text-white">
                     <img src={logo} alt="One Piece logo" />
-                    <h1 className="text-4xl md:text-title">404 Page Not Found</h1>
+                    <h1 className="text-5xl md:text-title">404 Page Not Found</h1>
                     <p className="text-lg md:text-2xl">{languages[lang].errorMessage.notFoundMessage}</p>
                 </div>
 

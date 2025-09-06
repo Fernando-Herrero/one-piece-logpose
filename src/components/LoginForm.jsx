@@ -59,7 +59,7 @@ export const LoginForm = () => {
                     className="text-base"
                     label={languages[lang].login.password}
                     isVisible={isVisible}
-                    name="paswsword"
+                    name="password"
                     autoComplete="off"
                     placeholder={languages[lang].login.passwordMessage}
                     value={form.password}

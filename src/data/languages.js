@@ -91,6 +91,10 @@ Level up, customize your avatar, and get ready to sail the seas like a true pira
             copyright: `LogPose. All rights reserved.`,
         },
 
+        notFoundPage: {
+            inicio: "Back to home",
+        },
+
         errorMessage: {
             username: `Username not registered. Please sign up first.`,
             usernameLength: `Username must be at least 3 characters`,
@@ -111,6 +115,7 @@ Level up, customize your avatar, and get ready to sail the seas like a true pira
             passwordMatch: `Passwords do not match`,
             userExists: `Username already exists, please choose another`,
             selectedAvatar: `You must select an avatar to log in`,
+            notFoundMessage: "Oops! We couldn't find this page",
         },
     },
 };
