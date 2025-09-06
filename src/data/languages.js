@@ -27,6 +27,15 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
             registerSubmit: `Enviar`,
         },
 
+        navbar: {
+            home: "Inicio",
+            cards: "Cartas",
+            profile: "Perfil",
+            avatar: "Avatar",
+            logOut: "Cerrar Sesion",
+            reset: "Eliminar Cuenta",
+        },
+
         footer: {
             disclaimer: `LogPose es una app de fans para el seguimiento de progreso de One Piece. Contenido para uso personal, sin fines comerciales.`,
             copyright: `LogPose. Todos los derechos reservados.`,
@@ -86,13 +95,22 @@ Level up, customize your avatar, and get ready to sail the seas like a true pira
             registerSubmit: `Submit`,
         },
 
+        navbar: {
+            home: "Home",
+            cards: "Cards",
+            profile: "Profile",
+            avatar: "Avatar",
+            logOut: "Log Out",
+            reset: "Delete Account",
+        },
+
         footer: {
             disclaimer: `LogPose is a fan app for tracking One Piece progress. Content is for personal use only, no commercial purposes.`,
             copyright: `LogPose. All rights reserved.`,
         },
 
         notFoundPage: {
-            inicio: "Back to home",
+            inicio: "Back to Home",
         },
 
         errorMessage: {

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Button } from "../../../components/button";
+import { Button } from "../../../components/Button";
 import { LabelInput } from "../../../components/LabelInput";
 import { LabelPassword } from "../../../components/LabelPassword";
 import { LanguagesContext } from "../../../context/LanguagesContext";

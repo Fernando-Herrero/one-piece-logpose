@@ -6,7 +6,7 @@ import { languages } from "../data/languages";
 import { storage } from "../helpers/storage";
 import { useLoginValidation } from "../hooks/useLoginValidation";
 import { useToggle } from "../hooks/useToggle";
-import { Button } from "./button";
+import { Button } from "./Button";
 import { LabelPassword } from "./LabelPassword";
 
 const emptyUser = { id: "", username: "", password: "", experience: "" };
