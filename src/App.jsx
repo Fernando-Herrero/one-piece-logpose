@@ -1,8 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Overlay } from "./components/Overlay";
+import { PrivateRoute } from "./components/PrivateRoute";
 import { Footer } from "./layouts/Footer";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { RegisterForm } from "./pages/LoginPage/RegisterForm/RegisterForm";
+import { MainPage } from "./pages/MainPage/MainPage.jsx";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 export const App = () => {
@@ -21,7 +23,9 @@ export const App = () => {
                             }
                         />
                     </Route>
-                    {/* <Route path="/main" element={<MainPage />} /> */}
+                    <Route element={<PrivateRoute />}>
+                        <Route path="/main" element={<MainPage />} />
+                    </Route>
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
