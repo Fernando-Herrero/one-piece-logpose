@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../components/Button";
 import { LabelInput } from "../../../components/LabelInput";
 import { LabelPassword } from "../../../components/LabelPassword";
@@ -22,6 +23,8 @@ export const RegisterForm = () => {
     const { error, validateRegisterForm, clearError } = useRegisterValidation();
 
     const { lang } = useContext(LanguagesContext);
+
+    const navigate = useNavigate();
 
     const handleRegisterInputs = ({ target: { name, value } }) => {
         clearError();
@@ -54,9 +57,8 @@ export const RegisterForm = () => {
         setForm(registerForm);
         setIsChecked(false);
 
-        closeModal();
+        navigate("/login");
 
-        console.log("ID generada:", crypto.randomUUID());
         console.log("Usuario completo", userWithSaga);
     };
 
@@ -121,7 +123,7 @@ export const RegisterForm = () => {
                         onChange={(event) => setIsChecked(event.target.checked)}
                     />
 
-                    <p>Acepto los términos y condiciones y la política de privacidad.</p>
+                    <p className="text-xs">Acepto los términos y condiciones y la política de privacidad.</p>
                 </div>
                 <span className="text-xs">
                     * Al registrarte aceptas nuestros Términos y Condiciones y reconoces haber leído nuestra

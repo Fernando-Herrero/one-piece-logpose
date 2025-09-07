@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import luffy from "../assets/images/luffy-modal.png";
 import { Button } from "./Button";
 
@@ -10,20 +9,6 @@ export const Modal = ({
     confirmText = "Ok",
     cancelText = "Cancel",
 }) => {
-    useEffect(() => {
-        const handleEscape = (event) => {
-            if (event.key === "Escape") onClose?.();
-        };
-
-        window.addEventListener("keydown", handleEscape);
-        document.body.style.overflow = "hidden";
-
-        return () => {
-            window.removeEventListener("keydown", handleEscape);
-            document.body.style.overflow = "unset";
-        };
-    }, [onClose]);
-
     const defaultMessage =
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa eligendi labore, consequatur quis vero ipsum. Minima, consequatur praesentium! Saepe dolore unde ullam nulla deserunt ex? Cumque adipisci minus earum rerum!";
 

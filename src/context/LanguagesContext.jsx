@@ -3,14 +3,18 @@ import { storage } from "../helpers/storage";
 
 export const LanguagesContext = createContext(null);
 
-export const LanguagesContextProvider = ({ children }) => {
-	const savedLang = storage.get("lang");
-	const [lang, setLang] = useState(savedLang || "es");
+export const LanguagesProvider = ({ children }) => {
+    const savedLang = storage.get("lang");
+    const [lang, setLang] = useState(savedLang || "es");
 
-	const handleLang = (value) => {
-		setLang(value);
-		storage.save("lang", value);
-	};
+    const handleLang = (value) => {
+        setLang(value);
+        storage.save("lang", value);
+    };
 
-	return <LanguagesContext.Provider value={{ lang, setLang, handleLang }}>{children}</LanguagesContext.Provider>;
+    return (
+        <LanguagesContext.Provider value={{ lang, setLang, handleLang }}>
+            {children}
+        </LanguagesContext.Provider>
+    );
 };

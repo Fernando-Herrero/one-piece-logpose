@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Modal } from "./components/Modal";
 import { Overlay } from "./components/Overlay";
 import { Footer } from "./layouts/Footer";
-import { MainPage } from "./pages/MainPage/MainPage";
+import { LoginPage } from "./pages/LoginPage/LoginPage";
+import { RegisterForm } from "./pages/LoginPage/RegisterForm/RegisterForm";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 export const App = () => {
@@ -11,7 +11,7 @@ export const App = () => {
             <main>
                 <Routes>
                     <Route path="/" element={<Navigate to="/login" />} />
-                    {/* <Route path="/login" element={<LoginPage />}>
+                    <Route path="/login" element={<LoginPage />}>
                         <Route
                             path="register"
                             element={
@@ -20,17 +20,9 @@ export const App = () => {
                                 </Overlay>
                             }
                         />
-                    </Route> */}
-                    <Route path="/main" element={<MainPage />}>
-                        <Route
-                            path="reset"
-                            element={
-                                <Overlay>
-                                    <Modal />
-                                </Overlay>
-                            }
-                        />
                     </Route>
+                    {/* <Route path="/main" element={<MainPage />} /> */}
+
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </main>
