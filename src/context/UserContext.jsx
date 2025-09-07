@@ -7,9 +7,7 @@ export const UserContext = createContext(null);
 export const UserProvider = ({ children }) => {
     const savedUser = storage.get("existingUser");
     const userIsLoggedIn = storage.get("isLoggedIn");
-    const [user, setUser] = useState(
-        savedUser?.nakamaData || { id: "", username: "", password: "", experience: 0 }
-    );
+    const [user, setUser] = useState(savedUser?.nakamaData || null);
     const [isLoggedIn, setIsloggedIn] = useState(userIsLoggedIn || false);
 
     const { setSaga } = useContext(SagaContext);
