@@ -6,7 +6,7 @@ import { AvatarProvider } from "./context/AvatarContext.jsx";
 import { LanguagesProvider } from "./context/LanguagesContext.jsx";
 import { ModdalProvider } from "./context/ModalContext.jsx";
 import { SagaProvider } from "./context/SagaContext.jsx";
-import { UserProvider } from "./context/userContext.jsx";
+import { UserProvider } from "./context/UserContext.jsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(

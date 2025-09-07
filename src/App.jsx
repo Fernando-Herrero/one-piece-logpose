@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { Modal } from "./components/Modal.jsx";
 import { Overlay } from "./components/Overlay";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { ModalContext } from "./context/ModalContext.jsx";
 import { Footer } from "./layouts/Footer";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { RegisterForm } from "./pages/LoginPage/RegisterForm/RegisterForm";
@@ -8,6 +11,9 @@ import { MainPage } from "./pages/MainPage/MainPage.jsx";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 export const App = () => {
+    const { modalData } = useContext(ModalContext);
+    const { isOpen } = modalData;
+
     return (
         <div className="h-dvh min-h-screen grid grid-rows-[1fr_auto] font-family-body text-sm">
             <main>
@@ -31,6 +37,12 @@ export const App = () => {
                 </Routes>
             </main>
             <Footer />
+
+            {isOpen && (
+                <Overlay>
+                    <Modal {...modalData} />
+                </Overlay>
+            )}
         </div>
     );
 };

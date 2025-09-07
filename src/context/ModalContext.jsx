@@ -1,17 +1,33 @@
 import { createContext, useState } from "react";
 
-const ModalContext = createContext(null);
+export const ModalContext = createContext(null);
 
 export const ModdalProvider = ({ children }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [modalData, setModalData] = useState({
+        isOpen: false,
+        message: "",
+        onConfirm: null,
+        onCancel: null,
+        confirmText: "Ok",
+        cancelText: "Cancel",
+    });
 
-    const showModal = () => {
-        setIsOpen(true);
+    const showModal = (config) => {
+        setModalData({
+            isOpen: true,
+            message: config.message || "",
+            onConfirm: config.onConfirm || null,
+            onCancel: config.onCancel || null,
+            confirmText: config.confirmText || "Ok",
+            cancelText: config.cancelText || "Cancel",
+        });
     };
 
     const hideModal = () => {
-        setIsOpen(false);
+        setModalData((prev) => ({ ...prev, isOpen: false }));
     };
 
-    return <ModalContext.Provider value={{ isOpen, showModal, hideModal }}>{children}</ModalContext.Provider>;
+    return (
+        <ModalContext.Provider value={{ modalData, showModal, hideModal }}>{children}</ModalContext.Provider>
+    );
 };

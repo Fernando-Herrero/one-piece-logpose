@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LanguagesContext } from "../context/LanguagesContext";
+import { ModalContext } from "../context/ModalContext";
 import { UserContext } from "../context/UserContext";
 import { languages } from "../data/languages";
 import { storage } from "../helpers/storage";
@@ -20,6 +21,9 @@ export const LoginForm = () => {
 
     const { lang } = useContext(LanguagesContext);
     const { login } = useContext(UserContext);
+    const { showModal, hideModal } = useContext(ModalContext);
+
+    const navigate = useNavigate();
 
     const handleInputForm = ({ target: { name, value } }) => {
         clearError();
@@ -37,6 +41,14 @@ export const LoginForm = () => {
         if (validationError) return;
 
         login(form);
+        navigate("/main");
+
+        showModal({
+            message:
+                "✨ Déjame guiarte, nakama. Con esta aplicación podrás seguir el progreso de tu serie favorita de manera sencilla. Ten en cuenta que, al desbloquear un capítulo, se revelará información importante que puede contener spoilers. Así que avanza con cuidado y disfruta de la experiencia. ¡Espero que la disfrutes, nakama! ✨",
+            onConfirm: hideModal,
+            confirmText: "Entendido!",
+        });
     };
 
     return (
