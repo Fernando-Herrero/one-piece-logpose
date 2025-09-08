@@ -133,7 +133,7 @@ export const RegisterForm = () => {
                 </span>
             </label>
 
-            {error && <p className="error-message">{error}</p>}
+            {error && <p className="text-linePrimary self-center">{error}</p>}
 
             <Button type="submit" className="bg-accent hover:bg-accentSecondary">
                 {languages[lang].login.registerSubmit}

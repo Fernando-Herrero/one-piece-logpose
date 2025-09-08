@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/one-piece-logo.png";
+import menuImg from "../assets/images/timon-madera-menu.png";
 import { LanguagesContext } from "../context/LanguagesContext";
 import { languages } from "../data/languages";
 import { useToggle } from "../hooks/useToggle";
@@ -71,8 +72,8 @@ export const Header = () => {
                     </div>
                 </div>
 
-                <div className="w-fit flex justify-end cursor-pointer md:hidden" onClick={toggleMenu}>
-                    <span className="w-full">🍔</span>
+                <div className="w-8 flex justify-end cursor-pointer md:hidden" onClick={toggleMenu}>
+                    <img className="w-full" src={menuImg} alt="Rudder with One Piece flag in the center" />
                 </div>
             </Container>
         </header>
