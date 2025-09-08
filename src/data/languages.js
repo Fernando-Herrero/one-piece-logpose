@@ -65,6 +65,20 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
             selectedAvatar: `Debes seleccionar un avatar para iniciar sesión`,
             notFoundMessage: "Oops! No pudimos encontrar esta página",
         },
+
+        sagaData: {
+            1: { title: "East Blue", saga_episode: "1 a 100" },
+            2: { title: "Alabasta", saga_episode: "101 a 216" },
+            3: { title: "Isla del Cielo", saga_episode: "217 a 303" },
+            4: { title: "Water Seven / CP9", saga_episode: "304 a 441" },
+            5: { title: "Thriller Bark", saga_episode: "442 a 490" },
+            6: { title: "Guerra en la Cumbre", saga_episode: "491 a 597" },
+            7: { title: "Isla Gyojin (Hombres-Pez)", saga_episode: "598 a 653" },
+            8: { title: "Dressrosa / Alianza Pirata", saga_episode: "654 a 801" },
+            9: { title: "Los Cuatro Emperadores", saga_episode: "802 a ?" },
+            10: { title: "Saga Final", saga_episode: "-" },
+            sagaLoading: "Cargando Saga",
+        },
     },
 
     en: {
@@ -134,6 +148,20 @@ Level up, customize your avatar, and get ready to sail the seas like a true pira
             userExists: `Username already exists, please choose another`,
             selectedAvatar: `You must select an avatar to log in`,
             notFoundMessage: "Oops! We couldn't find this page",
+        },
+
+        sagaData: {
+            1: { title: "East Blue", saga_episode: "1 to 100" },
+            2: { title: "Alabasta", saga_episode: "101 to 216" },
+            3: { title: "Sky Island", saga_episode: "217 to 303" },
+            4: { title: "Water Seven / CP9", saga_episode: "304 to 441" },
+            5: { title: "Thriller Bark", saga_episode: "442 to 490" },
+            6: { title: "War at the Top", saga_episode: "491 to 597" },
+            7: { title: "Fishman Island", saga_episode: "598 to 653" },
+            8: { title: "Dressrosa / Pirate Alliance", saga_episode: "654 to 801" },
+            9: { title: "Four Emperors", saga_episode: "802 to ?" },
+            10: { title: "Final Saga", saga_episode: "-" },
+            sagaLoading: "Loading Saga",
         },
     },
 };

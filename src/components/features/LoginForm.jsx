@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LanguagesContext } from "../context/LanguagesContext";
-import { ModalContext } from "../context/ModalContext";
-import { UserContext } from "../context/UserContext";
-import { languages } from "../data/languages";
-import { storage } from "../helpers/storage";
-import { useLoginValidation } from "../hooks/useLoginValidation";
-import { useToggle } from "../hooks/useToggle";
-import { Button } from "./Button";
-import { LabelPassword } from "./LabelPassword";
+import { LanguagesContext } from "../../context/LanguagesContext";
+import { ModalContext } from "../../context/ModalContext";
+import { UserContext } from "../../context/UserContext";
+import { languages } from "../../data/languages";
+import { storage } from "../../helpers/storage";
+import { useLoginValidation } from "../../hooks/useLoginValidation";
+import { useToggle } from "../../hooks/useToggle";
+import { Button } from "../ui/Button";
+import { LabelPassword } from "../ui/LabelPassword";
 
 const emptyUser = { id: "", username: "", password: "", experience: "" };
 

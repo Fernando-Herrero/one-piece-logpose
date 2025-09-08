@@ -32,8 +32,8 @@ import sanjiS700 from "/src/assets/images/avatars/sanji/sanji-serious-700.webp";
 
 // Usopp
 import { useContext } from "react";
-import { AvatarContext } from "../context/AvatarContext";
-import { storage } from "../helpers/storage";
+import { AvatarContext } from "../../context/AvatarContext";
+import { storage } from "../../helpers/storage";
 import usoppH1024 from "/src/assets/images/avatars/usopp/usopp-happy-1024.webp";
 import usoppH400 from "/src/assets/images/avatars/usopp/usopp-happy-400.webp";
 import usoppH700 from "/src/assets/images/avatars/usopp/usopp-happy-700.webp";

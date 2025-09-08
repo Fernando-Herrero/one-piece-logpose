@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import backgroundImg from "../assets/images/backgrounds/background-not-found.jpg";
 import logo from "../assets/images/one-piece-logo.png";
 import crewImg from "../assets/images/sombrero-first-crew.png";
-import { Container } from "../components/Container";
+import { Container } from "../components/ui/Container";
 import { LanguagesContext } from "../context/LanguagesContext";
+import { UserContext } from "../context/UserContext";
 import { languages } from "../data/languages";
 
 export const NotFoundPage = () => {
     const { lang } = useContext(LanguagesContext);
+    const { isLoggedIn } = useContext(UserContext);
+
+    const redirectPath = isLoggedIn ? "/main" : "/login";
 
     return (
         <div className="h-screen w-screen relative flex items-center justify-center overflow-hidden">
@@ -33,7 +37,7 @@ export const NotFoundPage = () => {
                     </div>
                     <Link
                         className="text-xl text-secondary underline rounded p-1 bg-white/30 hover:bg-white/50"
-                        to="/"
+                        to={redirectPath}
                     >
                         {languages[lang].notFoundPage.inicio}
                     </Link>

@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/one-piece-logo.png";
-import menuImg from "../assets/images/timon-madera-menu.png";
+import menuImg from "../assets/images/timon-flag-menu.png";
+import { Button } from "../components/ui/Button";
+import { Container } from "../components/ui/Container";
 import { LanguagesContext } from "../context/LanguagesContext";
 import { languages } from "../data/languages";
 import { useToggle } from "../hooks/useToggle";
-import { Button } from "./Button";
-import { Container } from "./Container";
-import { Navbar } from "./Navbar";
+import { Navbar } from "../layouts/Navbar.jsx";
 
 export const Header = () => {
     const [showMenu, toggleMenu] = useToggle(false);
@@ -20,8 +20,8 @@ export const Header = () => {
     };
 
     return (
-        <header className="h-fit">
-            <Container className="relative flex items-center justify-between h-fit w-full py-2 text-white border-b border-lineDark md:text-primary">
+        <header className="h-fit bg-sunny">
+            <Container className="relative flex items-center justify-between h-fit w-full py-1 text-white border-b border-lineDark md:text-primary">
                 <div className="w-20">
                     <img className="w-full" src={logo} alt="Logo One Piece" />
                 </div>
@@ -72,7 +72,10 @@ export const Header = () => {
                     </div>
                 </div>
 
-                <div className="w-8 flex justify-end cursor-pointer md:hidden" onClick={toggleMenu}>
+                <div
+                    className="w-10 flex justify-end cursor-pointer md:hidden rounded-2xl transition hover:bg-secondary/30"
+                    onClick={toggleMenu}
+                >
                     <img className="w-full" src={menuImg} alt="Rudder with One Piece flag in the center" />
                 </div>
             </Container>

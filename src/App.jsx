@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Modal } from "./components/Modal.jsx";
-import { Overlay } from "./components/Overlay";
-import { PrivateRoute } from "./components/PrivateRoute";
+import { PrivateRoute } from "./components/features/PrivateRoute.jsx";
+import { Modal } from "./components/ui/Modal.jsx";
+import { Overlay } from "./components/ui/Overlay.jsx";
 import { ModalContext } from "./context/ModalContext.jsx";
 import { Footer } from "./layouts/Footer";
 import { LoginPage } from "./pages/LoginPage/LoginPage";

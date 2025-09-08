@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { LabelInput } from "../../../components/LabelInput";
-import { LabelPassword } from "../../../components/LabelPassword";
+import { Button } from "../../../components/ui/Button";
+import { LabelInput } from "../../../components/ui/LabelInput";
+import { LabelPassword } from "../../../components/ui/LabelPassword";
 import { LanguagesContext } from "../../../context/LanguagesContext";
 import { languages } from "../../../data/languages";
 import { passwordFields } from "../../../data/passwordFields";

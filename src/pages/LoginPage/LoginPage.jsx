@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Outlet } from "react-router-dom";
-import { AnimationTitle } from "../../components/AnimationTitle";
-import { AvatarSelected } from "../../components/AvatarSelected";
-import { Container } from "../../components/Container";
-import { LoginForm } from "../../components/LoginForm";
+import { AvatarSelected } from "../../components/features/AvatarSelected";
+import { LoginForm } from "../../components/features/LoginForm";
+import { AnimationTitle } from "../../components/ui/AnimationTitle";
+import { Container } from "../../components/ui/Container";
 import { LanguagesContext } from "../../context/LanguagesContext";
 import { languages } from "../../data/languages";
 
