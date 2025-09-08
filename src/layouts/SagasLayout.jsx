@@ -3,6 +3,7 @@ import plusIcon from "../assets/icons/plus-icon.svg";
 import { Container } from "../components/ui/Container";
 import { LoadingDots } from "../components/ui/LoadingDots";
 import { LanguagesContext } from "../context/LanguagesContext";
+import { ALL_SAGAS } from "../data/allSagas";
 import { languages } from "../data/languages";
 import { useFetch } from "../hooks/useFetch";
 import { useToggle } from "../hooks/useToggle";
@@ -27,7 +28,7 @@ export const SagasLayout = ({ children }) => {
     return (
         <Container>
             <div className="pt-4 text-primary space-y-2">
-                {data?.map(({ id, title, saga_episode }) => {
+                {data?.slice(0, 8).map(({ id, title }) => {
                     const isExpanded = show[id];
 
                     return (
@@ -37,10 +38,18 @@ export const SagasLayout = ({ children }) => {
                                     isExpanded ? "rounded-tr rounded-tl" : "rounded"
                                 }`}
                             >
-                                <h3 className="font-bold text-2xl flex items-center gap-4">
-                                    {title}
-                                    <span className="text-sm">{saga_episode}</span>
-                                </h3>
+                                <div className="flex flex-col">
+                                    <h3 className="font-bold text-2xl">{title}</h3>
+                                    <div className="text-xs text-muted/60">
+                                        {ALL_SAGAS.map((saga) => (
+                                            <span key={saga?.id}>
+                                                {saga?.id === id
+                                                    ? `${saga.name_japanese} - ${saga.total_episodes} ${languages[lang].sagaData.episodes}`
+                                                    : ""}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
 
                                 <button
                                     type="button"
