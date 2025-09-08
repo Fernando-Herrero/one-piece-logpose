@@ -10,7 +10,7 @@ import { useToggle } from "../hooks/useToggle";
 import { Navbar } from "../layouts/Navbar.jsx";
 
 export const Header = () => {
-    const [showMenu, toggleMenu] = useToggle(false);
+    const [showMenu, toggleMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
     const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ export const Header = () => {
                 </div>
 
                 <div
-                    className={`flex flex-col gap-3 absolute top-0 right-0 w-full bg-black/90 p-4 transition-all duration-500 ${
+                    className={`flex flex-col gap-3 absolute top-0 right-0 w-full bg-black p-4 transition-all duration-500 z-100 ${
                         showMenu ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
                     }`}
                 >

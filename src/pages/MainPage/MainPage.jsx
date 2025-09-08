@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { useFetch } from "../../hooks/useFecth.jsx";
+import { useFetch } from "../../hooks/useFetch.jsx";
 import { Header } from "../../layouts/Header.jsx";
 import { SagasLayout } from "../../layouts/SagasLayout.jsx";
 
