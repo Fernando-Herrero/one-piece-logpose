@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/images/one-piece-logo.png";
@@ -43,20 +44,36 @@ export const Header = () => {
                 </div>
 
                 <div
-                    className={`flex flex-col gap-3 absolute top-0 right-0 w-full bg-black p-4 transition-all duration-500 z-100 ${
-                        showMenu ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-                    }`}
+                    id="mobile-menu"
+                    className={classNames(
+                        "flex flex-col gap-3 absolute top-0 right-0 w-full p-2 bg-gradient-to-br from-black to-gray-700 z-10",
+                        "transition-all duration-500 ease-out shadow-default",
+                        {
+                            "translate-x-0 opacity-100 visible": showMenu,
+                            "translate-x-full opacity-0 invisible": !showMenu,
+                        }
+                    )}
                 >
-                    <div
-                        className="self-end rounded p-1 transition hover:bg-secondary/20"
-                        onClick={toggleMenu}
-                    >
-                        <span>X</span>
+                    <div className="flex justify-end">
+                        <button
+                            className={classNames(
+                                "w-10 h-10 flex items-center justify-center rounded-full",
+                                "transition-all duration-300 cursor-pointer text-white",
+                                "hover:bg-orangeAce/20 focus:bg-orangeAce/30 focus:outline-none",
+                                "border border-primary/20 hover:border-orangeAce/30"
+                            )}
+                            onClick={toggleMenu}
+                            aria-label="Cerrar menú"
+                        >
+                            X
+                        </button>
                     </div>
 
-                    <Navbar />
+                    <div className="border-t border-white/20 pt-4">
+                        <Navbar />
+                    </div>
 
-                    <div className="w-full flex items-center gap-2">
+                    <div className="w-full flex items-center gap-3 border-t border-white/20 pt-4 pb-2">
                         <Button
                             className="w-1/2 box-border bg-linePrimary transition hover:bg-lineDark"
                             onClick={handleLogOut}

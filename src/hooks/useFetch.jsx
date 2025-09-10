@@ -20,6 +20,8 @@ export const useFetch = (url) => {
         let isCancelled = false;
 
         const fetchData = async () => {
+            if (loading) return;
+
             try {
                 setLoading(true);
                 setError(null);

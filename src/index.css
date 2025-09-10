@@ -92,7 +92,7 @@ html::after {
 
     /* DIMENSIONES DE CONTENEDORES */
     --width-container: 95%;
-    --max-width-container: 1200px;
+    --max-width-container: 800px;
     --rounded: 6px;
     --padding-section: 2rem;
     --padding-card: 1rem;
