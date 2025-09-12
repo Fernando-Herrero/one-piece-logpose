@@ -2,8 +2,12 @@
 
 html {
     position: relative;
-    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-    background-blend-mode: multiply;
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        rgba(255, 127, 50, 0.2) 50%,
+        var(--color-secondary) 100%
+    );
     overflow: hidden;
 }
 
@@ -13,15 +17,7 @@ html::after {
     inset: 0;
     pointer-events: none;
     z-index: 0;
-
-    background-image: repeating-linear-gradient(
-        45deg,
-        rgba(0, 0, 0, 0.015) 0px,
-        rgba(0, 0, 0, 0.015) 2px,
-        transparent 2px,
-        transparent 8px
-    );
-    transform: skewY(-6deg);
+    background: radial-gradient(circle at top left, rgba(255, 69, 0, 0.2), transparent 70%);
 }
 
 @font-face {
@@ -45,6 +41,13 @@ html::after {
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Pricedown";
+    src: url("./assets/fonts/Pricedown Bl.otf") format("otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
 @theme {
     /* COLORES DE FONDO */
     --color-primary: #f4ede4;
@@ -52,6 +55,9 @@ html::after {
     --color-card: #fff;
     --color-default: #414141b0;
     --color-hover: #d4d6d8;
+    --color-orangeAce: #ff4500;
+    --color-orange: #ff7f32;
+    --color-sunny: #ffa500;
 
     /* COLORES DE TEXTO */
     --text-color-primary: #1d1d1d;
@@ -67,8 +73,9 @@ html::after {
 
     /* FAMILIAS DE FUENTES */
     --font-family-title: "OnePiece", serif;
-    --font-family-body: "RoadCaptain", sans-serif;
+    --font-family-pirate: "RoadCaptain", sans-serif;
     --font-family-decorative: "GreatVibes", cursive;
+    --font-family-body: "Pricedown", serif;
 
     /* TAMAÑOS DE FUENTE */
     --text-xs: 10px;
@@ -89,7 +96,7 @@ html::after {
 
     /* DIMENSIONES DE CONTENEDORES */
     --width-container: 95%;
-    --max-width-container: 1200px;
+    --max-width-container: 800px;
     --rounded: 6px;
     --padding-section: 2rem;
     --padding-card: 1rem;
@@ -104,32 +111,6 @@ html::after {
     /* TRANSICIONES */
     --transition-fast: 0.2s ease-in-out;
     --transition-default: 0.4s ease-in-out;
-}
-
-.light-theme {
-    /* FONDOS */
-    --bg-color: #ffffff;
-    --section-bg: #f9f9f9;
-    --card-bg: #ffffff;
-    --line-color: #e0e0e0;
-    --color-hover: #d4d6d8;
-
-    /* COLORES DE TEXTO */
-    --text-color: #222222;
-    --text-secondary: #555555;
-    --text-light: #888888;
-    --title-color: #000000;
-    --contrast-color: #ffffff;
-
-    --accent-color: #0073e6;
-    --accent-hover: #005bb5;
-    --primary-color: #400d40;
-    --primary-color-dark: #4a154b;
-
-    /* SOMBRAS */
-    --box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-    --button-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .title-glow {
@@ -150,6 +131,7 @@ html::after {
 
 .shadow-title {
     @apply text-shadow-[2px_4px_5px_#8b0000,_-3px_-3px_6px_#8b0000,_10px_9px_5px_#000];
+    -webkit-text-stroke: 2px #0a0a0a;
 }
 
 .no-focus:focus {

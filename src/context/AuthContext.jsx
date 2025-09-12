@@ -2,9 +2,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { storage } from "../helpers/storage";
 import { SagaContext } from "./SagaContext";
 
-export const UserContext = createContext(null);
+export const AuthContext = createContext(null);
 
-export const UserProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
     const savedUser = storage.get("existingUser");
     const userIsLoggedIn = storage.get("isLoggedIn");
     const [user, setUser] = useState(savedUser?.nakamaData || null);
@@ -75,8 +75,8 @@ export const UserProvider = ({ children }) => {
     };
 
     return (
-        <UserContext.Provider value={{ user, login, isLoggedIn, logout, deleteUser }}>
+        <AuthContext.Provider value={{ user, setUser, login, isLoggedIn, logout, deleteUser }}>
             {children}
-        </UserContext.Provider>
+        </AuthContext.Provider>
     );
 };

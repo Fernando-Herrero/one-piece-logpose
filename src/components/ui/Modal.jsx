@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import luffy from "../assets/images/modalImgs/luffy-modal.png";
-import nami from "../assets/images/ModalImgs/nami-modal.png";
-import sanji from "../assets/images/ModalImgs/sanji-modal.png";
-import usopp from "../assets/images/ModalImgs/usopp-modal.png";
-import zoro from "../assets/images/ModalImgs/zoro-modal.png";
+import luffy from "../../assets/images/ModalImgs/luffy-modal.png";
+import nami from "../../assets/images/ModalImgs/nami-modal.png";
+import sanji from "../../assets/images/ModalImgs/sanji-modal.png";
+import usopp from "../../assets/images/ModalImgs/usopp-modal.png";
+import zoro from "../../assets/images/ModalImgs/zoro-modal.png";
 import { Button } from "./Button";
 
 const images = [luffy, zoro, sanji, nami, usopp];

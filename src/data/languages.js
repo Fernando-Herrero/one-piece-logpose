@@ -1,9 +1,6 @@
 export const languages = {
     es: {
         login: {
-            summary: `LogPose es una app para fans de One Piece que te permite seguir tu progreso por saga y capítulo. 
-A medida que avances, irás desbloqueando capítulos, ganando experiencia y coleccionando artículos únicos. 
-¡Sube de nivel, personaliza tu avatar y prepárate para surcar los mares como un verdadero pirata!`,
             username: `Su username, nakama...`,
             password: `Contraseña`,
             passwordMessage: `Clave del tesoro...`,
@@ -28,10 +25,16 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
         },
 
         navbar: {
-            home: "Inicio",
+            onepiece: "One Piece",
+            characters: "Personajes",
+            dashboard: "Dashboard",
             cards: "Cartas",
-            profile: "Perfil",
-            avatar: "Avatar",
+            community: "Comunidad",
+            serie: "Serie",
+            about: "Sobre esta Web",
+            help: "Ayuda",
+            signIn: "Login",
+            signUp: "Registrarse",
             logOut: "Cerrar Sesion",
             reset: "Eliminar Cuenta",
         },
@@ -65,13 +68,23 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
             selectedAvatar: `Debes seleccionar un avatar para iniciar sesión`,
             notFoundMessage: "Oops! No pudimos encontrar esta página",
         },
+
+        sagaData: {
+            1: { title: "East Blue", saga_episode: "1 a 100" },
+            2: { title: "Alabasta", saga_episode: "101 a 216" },
+            3: { title: "Skypiea", saga_episode: "217 a 303" },
+            4: { title: "Water Seven", saga_episode: "304 a 441" },
+            5: { title: "Thriller Bark", saga_episode: "442 a 490" },
+            6: { title: "Guerra de Marineford", saga_episode: "491 a 597" },
+            7: { title: "Isla Gyojin", saga_episode: "598 a 653" },
+            8: { title: "Dressrosa", saga_episode: "654 a 801" },
+            sagaLoading: "Cargando Saga",
+            episodes: "Capitulos",
+        },
     },
 
     en: {
         login: {
-            summary: `LogPose is a fan app for One Piece that lets you track your progress by saga and chapter. 
-As you advance, you'll unlock chapters, gain experience, and collect unique items. 
-Level up, customize your avatar, and get ready to sail the seas like a true pirate!`,
             username: `Your username, nakama...`,
             password: `Password`,
             passwordMessage: `Treasure key...`,
@@ -96,10 +109,16 @@ Level up, customize your avatar, and get ready to sail the seas like a true pira
         },
 
         navbar: {
-            home: "Home",
+            onepiece: "One Piece",
+            characters: "Characters",
+            dashboard: "Dashboard",
             cards: "Cards",
-            profile: "Profile",
-            avatar: "Avatar",
+            community: "Community",
+            serie: "Serie",
+            about: "About this Web",
+            help: "help",
+            signIn: "Sign In",
+            signUp: "Sign Up",
             logOut: "Log Out",
             reset: "Delete Account",
         },
@@ -134,6 +153,19 @@ Level up, customize your avatar, and get ready to sail the seas like a true pira
             userExists: `Username already exists, please choose another`,
             selectedAvatar: `You must select an avatar to log in`,
             notFoundMessage: "Oops! We couldn't find this page",
+        },
+
+        sagaData: {
+            1: { title: "East Blue", saga_episode: "1 to 100" },
+            2: { title: "Alabasta", saga_episode: "101 to 216" },
+            3: { title: "Skypiea", saga_episode: "217 to 303" },
+            4: { title: "Water Seven", saga_episode: "304 to 441" },
+            5: { title: "Thriller Bark", saga_episode: "442 to 490" },
+            6: { title: "Marineford War", saga_episode: "491 to 597" },
+            7: { title: "Fishman Island", saga_episode: "598 to 653" },
+            8: { title: "Dressrosa", saga_episode: "654 to 801" },
+            sagaLoading: "Loading Saga",
+            episodes: "Episodes",
         },
     },
 };

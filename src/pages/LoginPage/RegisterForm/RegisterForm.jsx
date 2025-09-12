@@ -1,37 +1,37 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { LabelInput } from "../../../components/LabelInput";
-import { LabelPassword } from "../../../components/LabelPassword";
+import { Button } from "../../../components/ui/Button";
+import { LabelInput } from "../../../components/ui/LabelInput";
+import { LabelPassword } from "../../../components/ui/LabelPassword";
 import { LanguagesContext } from "../../../context/LanguagesContext";
+import { useAuth } from "../../../core/auth/useAuth";
+import { INITIAL_REGISTER_FORM } from "../../../data/INITIAL_REGISTER_FORM";
 import { languages } from "../../../data/languages";
 import { passwordFields } from "../../../data/passwordFields";
 import { registerFields } from "../../../data/registerFields";
-import { registerForm } from "../../../data/registerForm";
 import { storage } from "../../../helpers/storage";
 import { useRegisterValidation } from "../../../hooks/useRegisterValidation";
 import { useToggle } from "../../../hooks/useToggle";
 
 export const RegisterForm = () => {
-    const savedForm = storage.get("registerInputs");
-    const [form, setForm] = useState(savedForm || registerForm);
+    const { register } = useAuth();
+    const savedRegisterInputs = storage.get("registerInputs");
+    const [form, setForm] = useState(savedRegisterInputs || INITIAL_REGISTER_FORM);
     const { language } = form;
     const [isChecked, setIsChecked] = useState(false);
 
     const [isVisible, toggleVisible] = useToggle();
     const [isConfirmVisible, toggleConfirmVisible] = useToggle();
+
     const { error, validateRegisterForm, clearError } = useRegisterValidation();
 
     const { lang } = useContext(LanguagesContext);
 
-    const navigate = useNavigate();
-
     const handleRegisterInputs = ({ target: { name, value } }) => {
         clearError();
         setForm((prev) => {
-            const newForm = { ...prev, [name]: value };
-            storage.save("registerInputs", newForm);
-            return newForm;
+            const newRegisterForm = { ...prev, [name]: value };
+            storage.save("registerInputs", newRegisterForm);
+            return newRegisterForm;
         });
     };
 
@@ -41,25 +41,11 @@ export const RegisterForm = () => {
         const validationError = validateRegisterForm(form, lang);
         if (validationError) return;
 
-        const completeUser = {
-            id: crypto.randomUUID(),
-            ...form,
-        };
+        register(form);
 
-        const userWithSaga = {
-            nakamaData: completeUser,
-            sagaProgress: { saga: 0, chapter: 0 },
-        };
-
-        storage.save(`user_${form.username}`, userWithSaga);
         storage.remove("registerInputs");
-
-        setForm(registerForm);
+        setForm(INITIAL_REGISTER_FORM);
         setIsChecked(false);
-
-        navigate("/login");
-
-        console.log("Usuario completo", userWithSaga);
     };
 
     const fields = registerFields(lang, form);
@@ -67,7 +53,7 @@ export const RegisterForm = () => {
 
     return (
         <form className="flex flex-col gap-2 p-4 bg-primary rounded shadow-white" onSubmit={handleSubmit}>
-            <h3 className="self-center text-2xl">{languages[lang].login.registerTitle}</h3>
+            <h3 className="self-center text-2xl font-family-pirate">{languages[lang].login.registerTitle}</h3>
 
             {fields.map(({ label, type, name, value, placeholder, id }) => (
                 <LabelInput
