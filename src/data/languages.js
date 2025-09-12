@@ -1,9 +1,6 @@
 export const languages = {
     es: {
         login: {
-            summary: `LogPose es una app para fans de One Piece que te permite seguir tu progreso por saga y capítulo. 
-A medida que avances, irás desbloqueando capítulos, ganando experiencia y coleccionando artículos únicos. 
-¡Sube de nivel, personaliza tu avatar y prepárate para surcar los mares como un verdadero pirata!`,
             username: `Su username, nakama...`,
             password: `Contraseña`,
             passwordMessage: `Clave del tesoro...`,
@@ -28,10 +25,16 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
         },
 
         navbar: {
-            home: "Inicio",
+            onepiece: "One Piece",
+            characters: "Personajes",
+            dashboard: "Dashboard",
             cards: "Cartas",
-            profile: "Perfil",
-            avatar: "Avatar",
+            community: "Comunidad",
+            serie: "Serie",
+            about: "Sobre esta Web",
+            help: "Ayuda",
+            signIn: "Login",
+            signUp: "Registrarse",
             logOut: "Cerrar Sesion",
             reset: "Eliminar Cuenta",
         },
@@ -82,9 +85,6 @@ A medida que avances, irás desbloqueando capítulos, ganando experiencia y cole
 
     en: {
         login: {
-            summary: `LogPose is a fan app for One Piece that lets you track your progress by saga and chapter. 
-As you advance, you'll unlock chapters, gain experience, and collect unique items. 
-Level up, customize your avatar, and get ready to sail the seas like a true pirate!`,
             username: `Your username, nakama...`,
             password: `Password`,
             passwordMessage: `Treasure key...`,
@@ -109,10 +109,16 @@ Level up, customize your avatar, and get ready to sail the seas like a true pira
         },
 
         navbar: {
-            home: "Home",
+            onepiece: "One Piece",
+            characters: "Characters",
+            dashboard: "Dashboard",
             cards: "Cards",
-            profile: "Profile",
-            avatar: "Avatar",
+            community: "Community",
+            serie: "Serie",
+            about: "About this Web",
+            help: "help",
+            signIn: "Sign In",
+            signUp: "Sign Up",
             logOut: "Log Out",
             reset: "Delete Account",
         },

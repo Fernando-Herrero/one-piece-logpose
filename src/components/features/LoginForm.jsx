@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authContext";
 import { LanguagesContext } from "../../context/LanguagesContext";
 import { ModalContext } from "../../context/ModalContext";
-import { UserContext } from "../../context/UserContext";
 import { languages } from "../../data/languages";
 import { storage } from "../../helpers/storage";
 import { useLoginValidation } from "../../hooks/useLoginValidation";
@@ -20,7 +20,7 @@ export const LoginForm = () => {
     const { error, validateForm, clearError } = useLoginValidation();
 
     const { lang } = useContext(LanguagesContext);
-    const { login } = useContext(UserContext);
+    const { login } = useContext(AuthContext);
     const { showModal, hideModal } = useContext(ModalContext);
 
     const navigate = useNavigate();

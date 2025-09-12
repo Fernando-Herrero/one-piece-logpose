@@ -1,26 +1,34 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import backgroundImg from "../assets/images/backgrounds/background-not-found.jpg";
-import logo from "../assets/images/one-piece-logo.png";
+import logo from "../assets/images/one-piece-logo.webp";
 import crewImg from "../assets/images/sombrero-first-crew.png";
 import { Container } from "../components/ui/Container";
+import { AuthContext } from "../context/authContext";
 import { LanguagesContext } from "../context/LanguagesContext";
-import { UserContext } from "../context/UserContext";
 import { languages } from "../data/languages";
+
+import backgroundImg1024 from "../assets/images/backgrounds/not-found-bg/background-not-found-1024.webp";
+import backgroundImg400 from "../assets/images/backgrounds/not-found-bg/background-not-found-400.webp";
+import backgroundImg700 from "../assets/images/backgrounds/not-found-bg/background-not-found-700.webp";
 
 export const NotFoundPage = () => {
     const { lang } = useContext(LanguagesContext);
-    const { isLoggedIn } = useContext(UserContext);
+    const { isLoggedIn } = useContext(AuthContext);
 
     const redirectPath = isLoggedIn ? "/main" : "/login";
 
     return (
         <div className="h-screen w-screen relative flex items-center justify-center overflow-hidden">
-            <img
-                src={backgroundImg}
-                alt="Mar y barco"
-                className="absolute inset-0 w-full h-full object-cover animate-wave"
-            />
+            <picture className="absolute inset-0 h-full w-full">
+                <source srcSet={backgroundImg1024} media="(min-width: 1024px)" type="image/webp" />
+                <source srcSet={backgroundImg700} media="(min-width: 700px)" type="image/webp" />
+                <source srcSet={backgroundImg400} media="(min-width: 400px)" type="image/webp" />
+                <img
+                    src={backgroundImg400}
+                    alt="Sunny sailing the sea"
+                    className="w-full h-full object-cover object-center animate-wave"
+                />
+            </picture>
 
             <div className="flex flex-col items-center gap-2"></div>
             <div className="absolute inset-0 bg-black opacity-65 pointer-events-none"></div>
