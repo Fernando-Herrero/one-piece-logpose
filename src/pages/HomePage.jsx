@@ -9,16 +9,27 @@ import { useDevice } from "../hooks/useDevice";
 gsap.registerPlugin(ScrollTrigger);
 
 export const HomePage = () => {
-    const { isMobile, isTablet, isDesktop } = useDevice();
+    const { isMobile, isTablet, istabletXl, isDesktop, device } = useDevice();
 
     const heroImgRef = useRef(null);
     const logoMask = useRef(null);
+
+    const maskMap = {
+        mobile: "30vh",
+        tablet: "35vh",
+        tabletXl: "40vh",
+    };
+
+    const maskSettings = maskMap[device] || maskMap["tabletXl"];
 
     useEffect(() => {
         const tl = gsap.timeline({
             ease: "power2.out",
             scrollTrigger: {
                 scrub: 1,
+                trigger: document.body,
+                start: "top top",
+                end: "bottom bottom",
             },
         });
 
@@ -39,7 +50,7 @@ export const HomePage = () => {
             .to(
                 logoMask.current,
                 {
-                    maskSize: "30vh",
+                    maskSize: maskSettings,
                     maskPosition: "50% 10vh",
                     duration: 0.5,
                     ease: "power1.inOut",
@@ -54,7 +65,12 @@ export const HomePage = () => {
                 },
                 0.3
             );
-    }, []);
+
+        return () => {
+            tl.kill();
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        };
+    }, [maskSettings]);
 
     return (
         <>

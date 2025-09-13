@@ -3,10 +3,10 @@ import { createContext, useEffect, useState } from "react";
 export const DeviceContext = createContext(null);
 
 export const DeviceProvider = ({ children }) => {
-    const [width, setWidth] = useState("mobile");
+    const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        const updateWidth = () => window.innerWidth;
+        const updateWidth = () => setWidth(window.innerWidth);
 
         window.addEventListener("resize", updateWidth);
 
