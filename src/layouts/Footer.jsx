@@ -11,7 +11,9 @@ export const Footer = () => {
     return (
         <footer className="border-t border-linePrimary py-2">
             <Container className="flex flex-col items-center text-center gap-1">
-                <LanguageSelect />
+                <div className="hidden md:flex">
+                    <LanguageSelect />
+                </div>
 
                 <div className="flex flex-col gap-0.5 text-xs">
                     <p>{languages[lang].footer.disclaimer}</p>

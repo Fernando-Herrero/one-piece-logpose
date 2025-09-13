@@ -6,6 +6,7 @@ import { languages } from "../../data/languages";
 import { useGoTo } from "../../hooks/useGoTo";
 import { Navbar } from "../../layouts/Navbar";
 import { Button } from "../ui/Button";
+import { LanguageSelect } from "../ui/LanguageSelect";
 
 export const MobileMenu = ({ isOpen, toggleMenu }) => {
     const { user } = useContext(AuthContext);
@@ -30,12 +31,15 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
                 }
             )}
         >
-            <div className="min-w-0 pt-10 px-2 space-y-5">
+            <div className="flex flex-col min-w-0 pt-10 px-2 space-y-5">
+                <LanguageSelect className="ml-auto" />
+
                 <Navbar />
 
                 {!user && (
                     <div className="w-full flex items-center gap-3 border-t border-white/50 pt-8 pb-2">
                         <Button
+                            variant="primary"
                             className="w-1/2"
                             onClick={() => {
                                 toggleMenu();
@@ -45,6 +49,7 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
                             {languages[lang].navbar.signIn}
                         </Button>
                         <Button
+                            variant="primary"
                             className="w-1/2"
                             onClick={() => {
                                 toggleMenu();

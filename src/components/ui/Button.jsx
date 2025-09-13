@@ -1,7 +1,8 @@
-export const Button = ({ children, className = "", onClick, variant = "primary" }) => {
+export const Button = ({ children, className = "", onClick, variant = "submit" }) => {
     const styles = {
-        primary: "text-black bg-accent hover:bg-accentSecondary",
+        submit: "text-black bg-accent hover:bg-accentSecondary",
         danger: "text-white bg-linePrimary hover:bg-lineDark",
+        primary: "text-black bg-orange/50 hover:bg-orange",
     };
 
     return (

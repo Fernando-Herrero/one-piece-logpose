@@ -64,7 +64,7 @@ export const BackUpPage = () => {
     }, []);
 
     return (
-        <section className="space-y-8">
+        <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {items.map(({ title, text }, index) => (
                 <Cards key={`${title}-${index}`} title={title} text={text} ref={addToRefs} />
             ))}

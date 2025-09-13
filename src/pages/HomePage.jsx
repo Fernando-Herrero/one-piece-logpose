@@ -11,7 +11,7 @@ import { BackUpPage } from "../layouts/BackUpPage";
 gsap.registerPlugin(ScrollTrigger);
 
 export const HomePage = () => {
-    const { isMobile, isTablet, istabletXl, isDesktop, device } = useDevice();
+    const { isMobile, isTablet, isTabletXl, isDesktop, device } = useDevice();
 
     const heroImgRef = useRef(null);
     const logoMask = useRef(null);
@@ -24,7 +24,30 @@ export const HomePage = () => {
         tabletXl: "40vh",
     };
 
+    const subTitle = {
+        mobile: "70vh",
+        tablet: "75vh",
+        tabletXl: "75vh",
+        desktop: "75vh",
+        desktopXl: "75vh",
+    };
+
     const maskSettings = maskMap[device] || maskMap["tabletXl"];
+    const subtitleSettings = subTitle[device];
+
+    const heightdevice = {
+        mobile: "h-[285vh]",
+        tablet: "h-[260vh]",
+        tabletXl: "h-[265vh]",
+        desktop: "h-[200vh]",
+        desktopXl: "h-[200vh]",
+    };
+
+    const heightContainer = heightdevice[device];
+
+    console.log("Device actual:", device);
+    console.log("Height aplicada:", heightContainer);
+    console.log("Todas las variables:", { isMobile, isTablet, isTabletXl, isDesktop });
 
     useEffect(() => {
         const tl = gsap.timeline({
@@ -67,7 +90,7 @@ export const HomePage = () => {
                 titleRef.current,
                 {
                     opacity: 1,
-                    y: "70vh",
+                    y: subtitleSettings,
                     x: "55%",
                     duration: 1,
                     ease: "power2.out",
@@ -122,7 +145,7 @@ export const HomePage = () => {
     }, [maskSettings]);
 
     return (
-        <div className="h-[250vh]">
+        <div className={heightContainer}>
             <header ref={logoMask} className="fixed top-0 w-full h-screen logo-mask">
                 <picture ref={heroImgRef} className="w-full h-screen overflow-hidden fixed scale-120">
                     <img
@@ -142,7 +165,7 @@ export const HomePage = () => {
             </h2>
 
             <Container>
-                <section ref={contentRef} className="">
+                <section ref={contentRef} className="flex felx-col items-center justify-center">
                     <BackUpPage />
                 </section>
             </Container>

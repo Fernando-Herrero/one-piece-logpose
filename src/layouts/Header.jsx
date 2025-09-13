@@ -19,7 +19,7 @@ export const Header = () => {
     const { goTo } = useGoTo();
 
     return (
-        <header className="fixed top-0 right-0 left-0 z-index-5 h-fit bg-transparent pt-6 z-100">
+        <header className="fixed top-0 right-0 left-0 z-index-5 h-fit bg-transparent pt-6 z-100 md:backdrop-blur-sm">
             <Container className="relative z-5 flex items-center justify-between h-fit w-full py-1 text-black md:text-primary">
                 <Link className="w-20" to={"/home"}>
                     <img className="w-full" src={logo} alt="Logo One Piece" />
@@ -32,10 +32,10 @@ export const Header = () => {
 
                     {!user && (
                         <div className="hidden md:flex gap-2">
-                            <Button onClick={() => goTo("/home/login")}>
+                            <Button variant="primary" onClick={() => goTo("/home/login")}>
                                 {languages[lang].navbar.signIn}
                             </Button>
-                            <Button onClick={() => goTo("/home/register")}>
+                            <Button variant="primary" onClick={() => goTo("/home/register")}>
                                 {languages[lang].navbar.signUp}
                             </Button>
                         </div>

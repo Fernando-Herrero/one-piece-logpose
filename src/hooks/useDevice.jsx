@@ -10,7 +10,7 @@ export const useDevice = () => {
         if (width >= 1280) return "desktopXl";
         if (width >= 1024) return "desktop";
         if (width >= 768) return "tabletXl";
-        if (width >= 640) return "tablet";
+        if (width >= 550) return "tablet";
         return "mobile";
     };
 
