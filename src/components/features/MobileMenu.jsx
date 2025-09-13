@@ -7,7 +7,7 @@ import { useGoTo } from "../../hooks/useGoTo";
 import { Navbar } from "../../layouts/Navbar";
 import { Button } from "../ui/Button";
 
-export const MobileMenu = ({ isOpen }) => {
+export const MobileMenu = ({ isOpen, toggleMenu }) => {
     const { user } = useContext(AuthContext);
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
@@ -21,7 +21,7 @@ export const MobileMenu = ({ isOpen }) => {
         <div
             id="mobile-menu"
             className={classNames(
-                "fixed top-0 right-0 left-0 px-5 pt-20 pb-10 z-10",
+                "fixed top-0 right-0 left-0 px-5 h-full pt-20 pb-10 z-10",
                 "bg-gradient-to-br from-primary to-orange-200 shadow-default",
                 "transition-all duration-300 ease-out",
                 {
@@ -35,10 +35,22 @@ export const MobileMenu = ({ isOpen }) => {
 
                 {!user && (
                     <div className="w-full flex items-center gap-3 border-t border-white/50 pt-8 pb-2">
-                        <Button className="w-1/2" onClick={() => goTo("/login")}>
+                        <Button
+                            className="w-1/2"
+                            onClick={() => {
+                                toggleMenu();
+                                goTo("/home/login");
+                            }}
+                        >
                             {languages[lang].navbar.signIn}
                         </Button>
-                        <Button className="w-1/2" onClick={() => goTo("/register")}>
+                        <Button
+                            className="w-1/2"
+                            onClick={() => {
+                                toggleMenu();
+                                goTo("/home/register");
+                            }}
+                        >
                             {languages[lang].navbar.signUp}
                         </Button>
                     </div>

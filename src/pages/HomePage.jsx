@@ -1,52 +1,151 @@
-import { useContext } from "react";
-import { AnimationTitle } from "../components/ui/AnimationTitle";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+import homeMobileBg from "../assets//images/backgrounds/home-mobile-bgMask.webp";
+import downArrow from "../assets/icons/down-arrow.svg";
+import homeBg from "../assets/images/backgrounds/home-bgMask.avif";
 import { Container } from "../components/ui/Container";
-import { LanguagesContext } from "../context/LanguagesContext";
+import { useDevice } from "../hooks/useDevice";
+import { BackUpPage } from "../layouts/BackUpPage";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const HomePage = () => {
-    const { lang } = useContext(LanguagesContext);
+    const { isMobile, isTablet, istabletXl, isDesktop, device } = useDevice();
+
+    const heroImgRef = useRef(null);
+    const logoMask = useRef(null);
+    const titleRef = useRef(null);
+    const contentRef = useRef(null);
+
+    const maskMap = {
+        mobile: "30vh",
+        tablet: "35vh",
+        tabletXl: "40vh",
+    };
+
+    const maskSettings = maskMap[device] || maskMap["tabletXl"];
+
+    useEffect(() => {
+        const tl = gsap.timeline({
+            ease: "power2.out",
+            scrollTrigger: {
+                scrub: 1,
+                trigger: document.body,
+                start: "top top",
+                end: "+=500",
+            },
+        });
+
+        gsap.set(logoMask.current, {
+            maskSize: "5500vh",
+            maskPosition: "44%  -1600vh",
+        });
+
+        gsap.set(titleRef.current, {
+            opacity: 0,
+            y: "60vh",
+            x: "55%",
+        });
+
+        gsap.set(contentRef.current, {
+            opacity: 0,
+            y: "100vh",
+        });
+
+        tl.to(
+            logoMask.current,
+            {
+                maskSize: maskSettings,
+                maskPosition: "50% 10vh",
+                duration: 1,
+                ease: "power1.inOut",
+            },
+            0.01
+        )
+            .to(
+                titleRef.current,
+                {
+                    opacity: 1,
+                    y: "70vh",
+                    x: "55%",
+                    duration: 1,
+                    ease: "power2.out",
+                },
+                1.5
+            )
+            .to(
+                heroImgRef.current,
+                {
+                    scale: 1,
+                    transformOrigin: "center center",
+                },
+                "<"
+            )
+            .to(
+                contentRef.current,
+                {
+                    opacity: 1,
+                    y: "80vh",
+                    ease: "power2.out",
+                },
+                "<"
+            )
+            .to(
+                heroImgRef.current,
+                {
+                    opacity: 0,
+                },
+                1.2
+            )
+            .to(
+                logoMask.current,
+                {
+                    maskPosition: "50% -40vh",
+                    ease: "power1.inOut",
+                },
+                2
+            )
+            .to(
+                titleRef.current,
+                {
+                    opacity: 0,
+                    ease: "power2.out",
+                },
+                2
+            );
+
+        return () => {
+            tl.kill();
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        };
+    }, [maskSettings]);
 
     return (
-        <div className="relative z-5 h-full">
-            <Container className="pt-20">
-                <header className="flex flex-col items-center text-center gap-1 max-w-lg">
-                    <AnimationTitle
-                        text="One Piece"
-                        time={600000}
-                        time2={5000}
-                        className="font-family-title text-title text-accent shadow-title"
+        <div className="h-[250vh]">
+            <header ref={logoMask} className="fixed top-0 w-full h-screen logo-mask">
+                <picture ref={heroImgRef} className="w-full h-screen overflow-hidden fixed scale-120">
+                    <img
+                        className="w-full h-full object-cover"
+                        src={isMobile || isTablet ? homeMobileBg : homeBg}
+                        alt="Crew Straw Hat"
                     />
-                    <AnimationTitle
-                        text="LogPose"
-                        time={600001}
-                        time2={5001}
-                        className="font-family-title text-subtitle font-bold text-[#c9a066] text-shadow-[4px_4px_2px_#3b2f2f] tracking-wider -mt-8"
-                    />
-                </header>
+                </picture>
 
-                <p>
-                    La Experiencia Definitiva de One Piece ¡Sumérgete en el mundo de One Piece como nunca
-                    antes! Nuestra web está diseñada para que los fans disfruten, interactúen y sigan la
-                    historia de manera personalizada, todo desde un Dashboard único y lleno de
-                    funcionalidades. Tu Dashboard Personal En tu Dashboard podrás: Ver tu perfil y
-                    personalizar tu avatar con tus personajes favoritos. A medida que avances en la historia,
-                    nuevos personajes se irán desbloqueando. Controlar tu tiempo en la web, con estadísticas
-                    de minutos vistos y tu progreso general. Acceder al ranking de usuarios, donde podrás
-                    comparar tus logros, nivel y tiempo invertido con otros fans de la serie. Red Social al
-                    Estilo “Titter” Exprésate libremente en nuestra red social interna: Habla sobre la serie,
-                    comparte teorías o simplemente comenta lo que quieras. Interactúa con otros fans, haz
-                    amigos y descubre nuevas perspectivas sobre One Piece. Sección de Episodios y Recompensas
-                    Sigue la serie a tu ritmo y desbloquea episodios según tu progreso. Recibe cartas
-                    coleccionables de tus personajes favoritos, barcos, armas y objetos icónicos del mundo de
-                    One Piece. Comparte tus colecciones y presume tus logros dentro de la comunidad. Una
-                    Experiencia Integral Nuestra web no solo es un lugar para ver One Piece, es tu mundo
-                    personal dentro de la historia: desde seguir tu progreso hasta interactuar con la
-                    comunidad, desbloquear contenido exclusivo y coleccionar recuerdos de tus aventuras
-                    favoritas. ¡Únete ahora y conviértete en parte de la tripulación más grande del mundo de
-                    One Piece!
-                </p>
+                <div className="absolute z-10 bottom-10 left-[50%] -translate-x-1/2 bg-secondary/80 p-4 rounded text center animate-bounce flex flex-col items-center">
+                    <p className="text-4xl font-family-pirate">SCROLL</p>
+                    <img className="w-6" src={downArrow} alt="icon down arrow" />
+                </div>
+            </header>
+            <h2 ref={titleRef} className="title-glow text-subtitle">
+                LogPose
+            </h2>
+
+            <Container>
+                <section ref={contentRef} className="">
+                    <BackUpPage />
+                </section>
             </Container>
-            ;
         </div>
     );
 };

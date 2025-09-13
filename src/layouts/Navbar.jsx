@@ -10,7 +10,6 @@ const navItems = [
     { path: "/main/comunidad", label: "community", isPrivate: true },
     { path: "/main/serie", label: "serie", isPrivate: true },
     { path: "/main/cards", label: "cards", isPrivate: true },
-    { path: "/main/about", label: "about" },
     { path: "/main/onepiece", label: "onepiece" },
     { path: "/main/characters", label: "characters" },
     { path: "/main/help", label: "help" },
@@ -31,7 +30,7 @@ export const Navbar = () => {
                 .map((item) => (
                     <NavLink
                         key={item.path}
-                        className="text-lg text-muted flex items-center justify-between rounded p-1 transition hover:bg-orangeAce/10 hover:-translate-y-0.5"
+                        className="text-lg text-black flex items-center justify-between rounded p-1 transition hover:bg-orangeAce/10 hover:-translate-y-0.5"
                         to={item.path}
                     >
                         <p>{languages[lang].navbar[item.label]}</p>

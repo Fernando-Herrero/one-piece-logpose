@@ -2,22 +2,13 @@
 
 html {
     position: relative;
-    background: linear-gradient(
-        135deg,
-        var(--color-primary) 0%,
-        rgba(255, 127, 50, 0.2) 50%,
-        var(--color-secondary) 100%
-    );
-    overflow: hidden;
-}
-
-html::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background: radial-gradient(circle at top left, rgba(255, 69, 0, 0.2), transparent 70%);
+    background: radial-gradient(circle at top left, rgba(255, 69, 0, 0.2), transparent 70%),
+        linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            rgba(255, 127, 50, 0.2) 50%,
+            var(--color-secondary) 100%
+        );
 }
 
 @font-face {
@@ -84,8 +75,7 @@ html::after {
     --text-lg: 18px;
     --text-xl: 20px;
     --text-2xl: 28px;
-    --text-subtitle: 52px;
-    --text-title: 100px;
+    --text-subtitle: 40px;
 
     /* ESPACIADO */
     --spacing-1: 4px;
@@ -129,9 +119,8 @@ html::after {
     @apply -translate-y-0.5 border-lineDark;
 }
 
-.shadow-title {
-    @apply text-shadow-[2px_4px_5px_#8b0000,_-3px_-3px_6px_#8b0000,_10px_9px_5px_#000];
-    -webkit-text-stroke: 2px #0a0a0a;
+.card {
+    @apply flex flex-col gap-4 p-6 bg-gradient-to-tl from-secondary/30 to-orangeAce/30 rounded-xl shadow border border-white/60 backdrop-blur-sm transition-all duration-300  hover:shadow-xl hover:scale-[1.02];
 }
 
 .no-focus:focus {
@@ -139,41 +128,8 @@ html::after {
     box-shadow: 0 0 0 2px rgba(18, 100, 163, 0.3);
 }
 
-@keyframes fallAndRotate {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(400deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fadeInLetter {
-    0% {
-        opacity: 0;
-        transform: translateY(0) rotate(0deg);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) rotate(0deg);
-    }
-}
-
-.falling-letter {
-    display: inline-block;
-    animation: fallAndRotate 2s ease-in forwards;
-}
-
-.fading-in-letter {
-    display: inline-block;
-    opacity: 0;
-    animation: fadeInLetter 1s ease-out forwards;
-}
-
-.idle-letter {
-    display: inline-block;
-    opacity: 1;
-    transform: translateY(0) rotate(0deg);
+.logo-mask {
+    background: white;
+    mask-image: url("/src/assets/images/onepiece-mask.svg");
+    mask-repeat: no-repeat;
 }
