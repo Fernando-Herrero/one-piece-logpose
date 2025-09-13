@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch.jsx";
-import { Header } from "../../layouts/Header.jsx";
-import { SagasLayout } from "../../layouts/SagasLayout.jsx";
+import { useFetch } from "../hooks/useFetch.jsx";
+import { Header } from "../layouts/Header.jsx";
+import { SagasLayout } from "../layouts/SagasLayout.jsx";
 
 const urls = {
     sagas: "https://api.api-onepiece.com/v2/sagas/en",

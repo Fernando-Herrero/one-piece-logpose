@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/images/one-piece-logo.webp";
 import { MobileMenu } from "../components/features/MobileMenu.jsx";
 import { Button } from "../components/ui/Button.jsx";
@@ -20,9 +21,9 @@ export const Header = () => {
     return (
         <header className="fixed top-0 right-0 left-0 z-index-5 h-fit bg-transparent pt-6 z-100">
             <Container className="relative z-5 flex items-center justify-between h-fit w-full py-1 text-black md:text-primary">
-                <div className="w-20">
+                <Link className="w-20" to={"/home"}>
                     <img className="w-full" src={logo} alt="Logo One Piece" />
-                </div>
+                </Link>
 
                 <div className="flex gap-6">
                     <div className="hidden md:flex">
@@ -31,8 +32,12 @@ export const Header = () => {
 
                     {!user && (
                         <div className="hidden md:flex gap-2">
-                            <Button onClick={() => goTo("/login")}>{languages[lang].navbar.signIn}</Button>
-                            <Button onClick={() => goTo("/register")}>{languages[lang].navbar.signUp}</Button>
+                            <Button onClick={() => goTo("/home/login")}>
+                                {languages[lang].navbar.signIn}
+                            </Button>
+                            <Button onClick={() => goTo("/home/register")}>
+                                {languages[lang].navbar.signUp}
+                            </Button>
                         </div>
                     )}
 
@@ -43,7 +48,7 @@ export const Header = () => {
                     )}
                 </div>
 
-                <MobileMenu isOpen={isOpen} />
+                <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
 
                 <ButtonMobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
             </Container>

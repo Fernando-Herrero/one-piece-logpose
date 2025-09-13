@@ -1,10 +1,12 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-import { Outlet } from "react-router-dom";
 import homeMobileBg from "../assets//images/backgrounds/home-mobile-bgMask.webp";
+import downArrow from "../assets/icons/down-arrow.svg";
 import homeBg from "../assets/images/backgrounds/home-bgMask.avif";
+import { Container } from "../components/ui/Container";
 import { useDevice } from "../hooks/useDevice";
+import { BackUpPage } from "../layouts/BackUpPage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +15,8 @@ export const HomePage = () => {
 
     const heroImgRef = useRef(null);
     const logoMask = useRef(null);
+    const titleRef = useRef(null);
+    const contentRef = useRef(null);
 
     const maskMap = {
         mobile: "30vh",
@@ -29,7 +33,7 @@ export const HomePage = () => {
                 scrub: 1,
                 trigger: document.body,
                 start: "top top",
-                end: "bottom bottom",
+                end: "+=500",
             },
         });
 
@@ -38,32 +42,77 @@ export const HomePage = () => {
             maskPosition: "44%  -1600vh",
         });
 
+        gsap.set(titleRef.current, {
+            opacity: 0,
+            y: "60vh",
+            x: "55%",
+        });
+
+        gsap.set(contentRef.current, {
+            opacity: 0,
+            y: "100vh",
+        });
+
         tl.to(
-            heroImgRef.current,
+            logoMask.current,
             {
-                scale: 1,
-                transformOrigin: "center center",
-                duration: 0.4,
+                maskSize: maskSettings,
+                maskPosition: "50% 10vh",
+                duration: 1,
+                ease: "power1.inOut",
             },
-            0.1
+            0.01
         )
             .to(
-                logoMask.current,
+                titleRef.current,
                 {
-                    maskSize: maskSettings,
-                    maskPosition: "50% 10vh",
-                    duration: 0.5,
-                    ease: "power1.inOut",
+                    opacity: 1,
+                    y: "70vh",
+                    x: "55%",
+                    duration: 1,
+                    ease: "power2.out",
                 },
-                0.01
+                1.5
+            )
+            .to(
+                heroImgRef.current,
+                {
+                    scale: 1,
+                    transformOrigin: "center center",
+                },
+                "<"
+            )
+            .to(
+                contentRef.current,
+                {
+                    opacity: 1,
+                    y: "80vh",
+                    ease: "power2.out",
+                },
+                "<"
             )
             .to(
                 heroImgRef.current,
                 {
                     opacity: 0,
-                    duration: 0.2,
                 },
-                0.3
+                1.2
+            )
+            .to(
+                logoMask.current,
+                {
+                    maskPosition: "50% -40vh",
+                    ease: "power1.inOut",
+                },
+                2
+            )
+            .to(
+                titleRef.current,
+                {
+                    opacity: 0,
+                    ease: "power2.out",
+                },
+                2
             );
 
         return () => {
@@ -73,8 +122,8 @@ export const HomePage = () => {
     }, [maskSettings]);
 
     return (
-        <>
-            <div ref={logoMask} className="fixed top-0 w-full h-screen logo-mask">
+        <div className="h-[250vh]">
+            <header ref={logoMask} className="fixed top-0 w-full h-screen logo-mask">
                 <picture ref={heroImgRef} className="w-full h-screen overflow-hidden fixed scale-120">
                     <img
                         className="w-full h-full object-cover"
@@ -82,8 +131,21 @@ export const HomePage = () => {
                         alt="Crew Straw Hat"
                     />
                 </picture>
-            </div>
-            <Outlet />
-        </>
+
+                <div className="absolute z-10 bottom-10 left-[50%] -translate-x-1/2 bg-secondary/80 p-4 rounded text center animate-bounce flex flex-col items-center">
+                    <p className="text-4xl font-family-pirate">SCROLL</p>
+                    <img className="w-6" src={downArrow} alt="icon down arrow" />
+                </div>
+            </header>
+            <h2 ref={titleRef} className="title-glow text-subtitle">
+                LogPose
+            </h2>
+
+            <Container>
+                <section ref={contentRef} className="">
+                    <BackUpPage />
+                </section>
+            </Container>
+        </div>
     );
 };

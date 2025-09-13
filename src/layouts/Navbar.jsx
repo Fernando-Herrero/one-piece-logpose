@@ -10,7 +10,6 @@ const navItems = [
     { path: "/main/comunidad", label: "community", isPrivate: true },
     { path: "/main/serie", label: "serie", isPrivate: true },
     { path: "/main/cards", label: "cards", isPrivate: true },
-    { path: "/main/about", label: "about" },
     { path: "/main/onepiece", label: "onepiece" },
     { path: "/main/characters", label: "characters" },
     { path: "/main/help", label: "help" },

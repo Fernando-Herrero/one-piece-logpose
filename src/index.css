@@ -75,8 +75,7 @@ html {
     --text-lg: 18px;
     --text-xl: 20px;
     --text-2xl: 28px;
-    --text-subtitle: 52px;
-    --text-title: 100px;
+    --text-subtitle: 40px;
 
     /* ESPACIADO */
     --spacing-1: 4px;
@@ -120,9 +119,8 @@ html {
     @apply -translate-y-0.5 border-lineDark;
 }
 
-.shadow-title {
-    @apply text-shadow-[2px_4px_5px_#8b0000,_-3px_-3px_6px_#8b0000,_10px_9px_5px_#000];
-    -webkit-text-stroke: 2px #0a0a0a;
+.card {
+    @apply flex flex-col gap-4 p-6 bg-gradient-to-tl from-secondary/30 to-orangeAce/30 rounded-xl shadow border border-white/60 backdrop-blur-sm transition-all duration-300  hover:shadow-xl hover:scale-[1.02];
 }
 
 .no-focus:focus {
