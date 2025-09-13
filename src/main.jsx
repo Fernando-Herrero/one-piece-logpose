@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { App } from "./App.jsx";
 import { AuthProvider } from "./context/authContext.jsx";
 import { AvatarProvider } from "./context/AvatarContext.jsx";
+import { DeviceProvider } from "./context/DeviceContext.jsx";
 import { LanguagesProvider } from "./context/LanguagesContext.jsx";
 import { ModdalProvider } from "./context/ModalContext.jsx";
 import { SagaProvider } from "./context/SagaContext.jsx";
@@ -17,7 +18,9 @@ createRoot(document.getElementById("root")).render(
                     <AvatarProvider>
                         <AuthProvider>
                             <ModdalProvider>
-                                <App />
+                                <DeviceProvider>
+                                    <App />
+                                </DeviceProvider>
                             </ModdalProvider>
                         </AuthProvider>
                     </AvatarProvider>

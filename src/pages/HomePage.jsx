@@ -2,11 +2,15 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
-import homeBg from "../assets/images/backgrounds/home-bg.avif";
+import homeMobileBg from "../assets//images/backgrounds/home-mobile-bgMask.webp";
+import homeBg from "../assets/images/backgrounds/home-bgMask.avif";
+import { useDevice } from "../hooks/useDevice";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const HomePage = () => {
+    const { isMobile, isTablet, isDesktop } = useDevice();
+
     const heroImgRef = useRef(null);
     const logoMask = useRef(null);
 
@@ -19,8 +23,8 @@ export const HomePage = () => {
         });
 
         gsap.set(logoMask.current, {
-            maskSize: "4500vh",
-            maskPosition: "4% -1400vh",
+            maskSize: "5500vh",
+            maskPosition: "44%  -1600vh",
         });
 
         tl.to(
@@ -28,9 +32,9 @@ export const HomePage = () => {
             {
                 scale: 1,
                 transformOrigin: "center center",
-                duration: 0.3,
+                duration: 0.4,
             },
-            0.2
+            0.1
         )
             .to(
                 logoMask.current,
@@ -55,8 +59,12 @@ export const HomePage = () => {
     return (
         <>
             <div ref={logoMask} className="fixed top-0 w-full h-screen logo-mask">
-                <picture ref={heroImgRef} className="w-full h-screen overflow-hidden fixed scale-110">
-                    <img className="w-full h-full object-cover" src={homeBg} alt="" />
+                <picture ref={heroImgRef} className="w-full h-screen overflow-hidden fixed scale-120">
+                    <img
+                        className="w-full h-full object-cover"
+                        src={isMobile || isTablet ? homeMobileBg : homeBg}
+                        alt="Crew Straw Hat"
+                    />
                 </picture>
             </div>
             <Outlet />
