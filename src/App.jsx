@@ -4,7 +4,6 @@ import { PrivateRoute } from "./components/features/PrivateRoute.jsx";
 import { Modal } from "./components/ui/Modal.jsx";
 import { Overlay } from "./components/ui/Overlay.jsx";
 import { ModalContext } from "./context/ModalContext.jsx";
-import { Footer } from "./layouts/Footer";
 import { Header } from "./layouts/Header.jsx";
 import { HomePage } from "./pages/HomePage.jsx";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
@@ -17,7 +16,7 @@ export const App = () => {
     const { isOpen } = modalData;
 
     return (
-        <div className="h-dvh min-h-screen grid grid-rows-[1fr_auto] font-family-body text-sm">
+        <div className="h-[300dvh] grid grid-rows-[1fr_auto] font-family-body text-sm overflow-x-hidden overflow-y-hidden">
             <Header />
 
             <main>
@@ -40,7 +39,7 @@ export const App = () => {
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </main>
-            <Footer />
+            {/* <Footer /> */}
 
             {isOpen && (
                 <Overlay>

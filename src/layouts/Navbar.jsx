@@ -31,7 +31,7 @@ export const Navbar = () => {
                 .map((item) => (
                     <NavLink
                         key={item.path}
-                        className="text-lg text-muted flex items-center justify-between rounded p-1 transition hover:bg-orangeAce/10 hover:-translate-y-0.5"
+                        className="text-lg text-black flex items-center justify-between rounded p-1 transition hover:bg-orangeAce/10 hover:-translate-y-0.5"
                         to={item.path}
                     >
                         <p>{languages[lang].navbar[item.label]}</p>

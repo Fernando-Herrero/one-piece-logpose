@@ -21,7 +21,7 @@ export const MobileMenu = ({ isOpen }) => {
         <div
             id="mobile-menu"
             className={classNames(
-                "fixed top-0 right-0 left-0 px-5 pt-20 pb-10 z-10",
+                "fixed top-0 right-0 left-0 px-5 h-full pt-20 pb-10 z-10",
                 "bg-gradient-to-br from-primary to-orange-200 shadow-default",
                 "transition-all duration-300 ease-out",
                 {
