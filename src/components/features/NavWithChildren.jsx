@@ -1,5 +1,5 @@
-import arrowDown from "@/assets/icons/arrow-down-1.svg";
 import rightArrow from "@/assets/icons/right-arrow.svg";
+import { ToggleButton } from "@/components/ui/ToggleButton";
 import classNames from "classnames";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -8,29 +8,25 @@ export const NavWithChildren = ({ item, chooseLang, index }) => {
     const [open, isOpen] = useState(false);
 
     return (
-        <div
-            key={`${item.label}-${index}`}
-            className={classNames("cursor-pointer text-muted p-2 rounded-xl md:text-primary", {
-                "bg-orangeAce/10 md:bg-secondary/50": open,
+        <section
+            className={classNames("text-muted p-2 rounded-xl md:text-primary md:relative", {
+                "bg-orangeAce/10 md:bg-secondary/80 md:rounded-t-xl md:rounded-b-none": open,
             })}
             onClick={() => isOpen((prev) => !prev)}
         >
-            <header className="flex items-center justify-between md:relative md:gap-2">
+            <header className="flex items-center justify-between cursor-pointer md:gap-1">
                 <p className="font-bold">{chooseLang[item.label]}</p>
-                <img
-                    className={classNames("w-2 transition-transform duration-300", {
-                        "-rotate-180": open,
-                    })}
-                    src={arrowDown}
-                    alt="Toggle menu icon"
-                />
+                <ToggleButton isOpen={open} />
             </header>
 
             <div
-                className={classNames("grid transition-[grid-template-rows] duration-300", {
-                    "[grid-template-rows:1fr]": open,
-                    "[grid-template-rows:0fr]": !open,
-                })}
+                className={classNames(
+                    "grid transition-[grid-template-rows] duration-300 md:absolute md:top-full md:left-0 md:w-full md:bg-secondary/80 md:rounded-b-xl",
+                    {
+                        "[grid-template-rows:1fr]": open,
+                        "[grid-template-rows:0fr]": !open,
+                    }
+                )}
             >
                 <div className="min-h-0 overflow-hidden">
                     {item.children.map((child, childIndex) => (
@@ -47,6 +43,6 @@ export const NavWithChildren = ({ item, chooseLang, index }) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 };

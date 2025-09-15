@@ -29,7 +29,7 @@ export const HomePage = () => {
         tablet: "73vh",
         tabletXl: "75vh",
         desktop: "75vh",
-        desktopXl: "75vh",
+        desktopXl: "73vh",
     };
 
     const maskSettings = maskMap[device] || maskMap["tabletXl"];
