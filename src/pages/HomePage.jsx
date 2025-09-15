@@ -1,11 +1,11 @@
+import homeMobileBg from "@/assets//images/backgrounds/home-mobile-bgMask.webp";
+import downArrow from "@/assets/icons/down-arrow.svg";
+import homeBg from "@/assets/images/backgrounds/home-bgMask.avif";
+import { BackUpPage } from "@/components/features/BackUpPage";
+import { useDevice } from "@/hooks/useDevice";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-import homeMobileBg from "../assets//images/backgrounds/home-mobile-bgMask.webp";
-import downArrow from "../assets/icons/down-arrow.svg";
-import homeBg from "../assets/images/backgrounds/home-bgMask.avif";
-import { BackUpPage } from "../components/features/BackUpPage";
-import { useDevice } from "../hooks/useDevice";
 
 gsap.registerPlugin(ScrollTrigger);
 

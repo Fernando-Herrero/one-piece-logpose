@@ -1,8 +1,8 @@
+import { Cards } from "@/components/ui/Cards";
+import { Container } from "@/components/ui/Container";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-import { Cards } from "../ui/Cards";
-import { Container } from "../ui/Container";
 
 gsap.registerPlugin(ScrollTrigger);
 
