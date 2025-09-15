@@ -4,9 +4,8 @@ import { useEffect, useRef } from "react";
 import homeMobileBg from "../assets//images/backgrounds/home-mobile-bgMask.webp";
 import downArrow from "../assets/icons/down-arrow.svg";
 import homeBg from "../assets/images/backgrounds/home-bgMask.avif";
-import { Container } from "../components/ui/Container";
+import { BackUpPage } from "../components/features/BackUpPage";
 import { useDevice } from "../hooks/useDevice";
-import { BackUpPage } from "../layouts/BackUpPage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +25,7 @@ export const HomePage = () => {
 
     const subTitle = {
         mobile: "70vh",
-        tablet: "75vh",
+        tablet: "73vh",
         tabletXl: "75vh",
         desktop: "75vh",
         desktopXl: "75vh",
@@ -146,7 +145,7 @@ export const HomePage = () => {
 
     return (
         <div className={heightContainer}>
-            <header ref={logoMask} className="fixed top-0 w-full h-screen logo-mask">
+            <section ref={logoMask} className="fixed top-0 w-full h-screen logo-mask">
                 <picture ref={heroImgRef} className="w-full h-screen overflow-hidden fixed scale-120">
                     <img
                         className="w-full h-full object-cover"
@@ -155,20 +154,18 @@ export const HomePage = () => {
                     />
                 </picture>
 
-                <div className="absolute z-10 bottom-10 left-[50%] -translate-x-1/2 bg-secondary/80 p-4 rounded text center animate-bounce flex flex-col items-center">
+                <div className="absolute z-10 bottom-10 left-[50%] -translate-x-1/2 bg-gradient-primary p-4 rounded-xl text center animate-bounce perfect-center">
                     <p className="text-4xl font-family-pirate">SCROLL</p>
-                    <img className="w-6" src={downArrow} alt="icon down arrow" />
+                    <img className="w-4" src={downArrow} alt="icon down arrow" />
                 </div>
-            </header>
+            </section>
             <h2 ref={titleRef} className="title-glow text-subtitle">
                 LogPose
             </h2>
 
-            <Container>
-                <section ref={contentRef} className="flex felx-col items-center justify-center">
-                    <BackUpPage />
-                </section>
-            </Container>
+            <section ref={contentRef}>
+                <BackUpPage />
+            </section>
         </div>
     );
 };

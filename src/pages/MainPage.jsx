@@ -14,7 +14,7 @@ const urls = {
 };
 
 export const MainPage = () => {
-    const { data, loading, error } = useFetch(urls.boats);
+    const { data, loading, error } = useFetch(urls.fruits);
 
     useEffect(() => {
         if (data) console.log(data);

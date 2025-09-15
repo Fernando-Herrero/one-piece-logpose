@@ -1,16 +1,16 @@
+import logo from "@/assets/images/one-piece-logo.webp";
+import { MobileMenu } from "@/components/features/MobileMenu.jsx";
+import { Button } from "@/components/ui/Button.jsx";
+import { ButtonMobileMenu } from "@/components/ui/ButtonMobileMenu.jsx";
+import { Container } from "@/components/ui/Container.jsx";
+import { AuthContext } from "@/context/authContext";
+import { LanguagesContext } from "@/context/LanguagesContext";
+import { languages } from "@/data/languages.js";
+import { useGoTo } from "@/hooks/useGoTo";
+import { useToggle } from "@/hooks/useToggle";
+import { Navbar } from "@/layouts/Navbar.jsx";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/one-piece-logo.webp";
-import { MobileMenu } from "../components/features/MobileMenu.jsx";
-import { Button } from "../components/ui/Button.jsx";
-import { ButtonMobileMenu } from "../components/ui/ButtonMobileMenu.jsx";
-import { Container } from "../components/ui/Container.jsx";
-import { AuthContext } from "../context/authContext";
-import { LanguagesContext } from "../context/LanguagesContext";
-import { languages } from "../data/languages.js";
-import { useGoTo } from "../hooks/useGoTo";
-import { useToggle } from "../hooks/useToggle";
-import { Navbar } from "../layouts/Navbar.jsx";
 
 export const Header = () => {
     const { user } = useContext(AuthContext);
@@ -32,10 +32,10 @@ export const Header = () => {
 
                     {!user && (
                         <div className="hidden md:flex gap-2">
-                            <Button variant="primary" onClick={() => goTo("/home/login")}>
+                            <Button variant="primary" onClick={() => goTo("/login")}>
                                 {languages[lang].navbar.signIn}
                             </Button>
-                            <Button variant="primary" onClick={() => goTo("/home/register")}>
+                            <Button variant="primary" onClick={() => goTo("/register")}>
                                 {languages[lang].navbar.signUp}
                             </Button>
                         </div>

@@ -119,8 +119,28 @@ html {
     @apply -translate-y-0.5 border-lineDark;
 }
 
+.submit {
+    @apply text-black bg-accent hover:bg-accentHover;
+}
+
+.danger {
+    @apply text-white bg-linePrimary hover:bg-lineDark;
+}
+
+.primary {
+    @apply text-black bg-orange/50 hover:bg-orange;
+}
+
 .card {
-    @apply flex flex-col gap-4 p-6 bg-gradient-to-tl from-secondary/30 to-orangeAce/30 rounded-xl shadow border border-white/60 backdrop-blur-sm transition-all duration-300  hover:shadow-xl hover:scale-[1.02];
+    @apply flex flex-col gap-4 p-6 rounded-xl shadow border border-white/60 backdrop-blur-sm transition-all duration-300  hover:shadow-xl hover:scale-[1.02];
+}
+
+.bg-gradient-primary {
+    @apply bg-gradient-to-tl from-secondary/30 to-orangeAce/20;
+}
+
+.perfect-center {
+    @apply flex flex-col items-center;
 }
 
 .no-focus:focus {

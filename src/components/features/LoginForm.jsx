@@ -1,20 +1,21 @@
+import { Button } from "@/components/ui/Button";
+import { LabelPassword } from "@/components/ui/LabelPassword";
+import { AuthContext } from "@/context/authContext";
+import { LanguagesContext } from "@/context/LanguagesContext";
+import { ModalContext } from "@/context/ModalContext";
+import { languages } from "@/data/languages";
+import { storage } from "@/helpers/storage";
+import { useLoginValidation } from "@/hooks/useLoginValidation";
+import { useToggle } from "@/hooks/useToggle";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/authContext";
-import { LanguagesContext } from "../../context/LanguagesContext";
-import { ModalContext } from "../../context/ModalContext";
-import { languages } from "../../data/languages";
-import { storage } from "../../helpers/storage";
-import { useLoginValidation } from "../../hooks/useLoginValidation";
-import { useToggle } from "../../hooks/useToggle";
-import { Button } from "../ui/Button";
-import { LabelPassword } from "../ui/LabelPassword";
+import { LabelInput } from "../ui/LabelInput";
 
-const emptyUser = { id: "", username: "", password: "", experience: "" };
+const EMPTY_USER = { id: "", username: "", password: "", experience: "" };
 
 export const LoginForm = () => {
     const savedForm = storage.get("loginInputs");
-    const [form, setForm] = useState(savedForm || emptyUser);
+    const [form, setForm] = useState(savedForm || EMPTY_USER);
 
     const [isVisible, toggleVisible] = useToggle();
     const { error, validateForm, clearError } = useLoginValidation();
@@ -53,11 +54,12 @@ export const LoginForm = () => {
 
     return (
         <form className="flex flex-col items-center gap-2" onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-2 w-52 border border-linePrimary p-2 rounded shadow-default bg-secondary">
-                <label className="flex flex-col text-base ">
-                    Username:
-                    <input
-                        className="no-focus rounded p-1 bg-white"
+            <h2 className="font-bold font-family-pirate text-subtitle">LOGIN</h2>
+            <div className="flex flex-col gap-2 w-65 border border-linePrimary p-8 rounded shadow-default bg-gradient-primary">
+                <label className="flex flex-col text-base font-bold">
+                    <LabelInput
+                        className="font-bold"
+                        label="Username:"
                         type="text"
                         name="username"
                         autoComplete="off"
@@ -68,7 +70,7 @@ export const LoginForm = () => {
                 </label>
 
                 <LabelPassword
-                    className="text-base"
+                    className="text-base font-bold"
                     label={languages[lang].login.password}
                     isVisible={isVisible}
                     name="password"
@@ -80,9 +82,12 @@ export const LoginForm = () => {
                 />
             </div>
 
-            <p className="self-center">
+            <p className="self-center flex gap-1">
                 {languages[lang].login.notRegistered}
-                <Link className="underline text-secondary" to="/login/register">
+                <Link
+                    className="underline text-secondary inline-block transition hover:-translate-y-0.5"
+                    to="/register"
+                >
                     {languages[lang].login.registered}
                 </Link>
             </p>

@@ -1,7 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-import { Cards } from "../components/ui/Cards";
+import { Cards } from "../ui/Cards";
+import { Container } from "../ui/Container";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,10 +65,10 @@ export const BackUpPage = () => {
     }, []);
 
     return (
-        <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <Container className="grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-2">
             {items.map(({ title, text }, index) => (
                 <Cards key={`${title}-${index}`} title={title} text={text} ref={addToRefs} />
             ))}
-        </section>
+        </Container>
     );
 };

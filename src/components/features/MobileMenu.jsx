@@ -43,7 +43,7 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
                             className="w-1/2"
                             onClick={() => {
                                 toggleMenu();
-                                goTo("/home/login");
+                                goTo("/login");
                             }}
                         >
                             {languages[lang].navbar.signIn}
@@ -53,7 +53,7 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
                             className="w-1/2"
                             onClick={() => {
                                 toggleMenu();
-                                goTo("/home/register");
+                                goTo("/register");
                             }}
                         >
                             {languages[lang].navbar.signUp}
