@@ -10,7 +10,7 @@ import { useDevice } from "../hooks/useDevice";
 gsap.registerPlugin(ScrollTrigger);
 
 export const HomePage = () => {
-    const { isMobile, isTablet, isTabletXl, isDesktop, device } = useDevice();
+    const { isMobileXs, isMobile, isTablet, isTabletXl, isDesktop, device } = useDevice();
 
     const heroImgRef = useRef(null);
     const logoMask = useRef(null);
@@ -24,6 +24,7 @@ export const HomePage = () => {
     };
 
     const subTitle = {
+        mobileXs: "87vh",
         mobile: "70vh",
         tablet: "73vh",
         tabletXl: "75vh",
@@ -35,9 +36,10 @@ export const HomePage = () => {
     const subtitleSettings = subTitle[device];
 
     const heightdevice = {
-        mobile: "h-[285vh]",
-        tablet: "h-[260vh]",
-        tabletXl: "h-[265vh]",
+        mobileXs: "h-[370vh]",
+        mobile: "h-[280vh]",
+        tablet: "h-[270vh]",
+        tabletXl: "h-[260vh]",
         desktop: "h-[200vh]",
         desktopXl: "h-[200vh]",
     };
@@ -46,7 +48,7 @@ export const HomePage = () => {
 
     console.log("Device actual:", device);
     console.log("Height aplicada:", heightContainer);
-    console.log("Todas las variables:", { isMobile, isTablet, isTabletXl, isDesktop });
+    console.log("Todas las variables:", { isMobileXs, isMobile, isTablet, isTabletXl, isDesktop });
 
     useEffect(() => {
         const tl = gsap.timeline({
@@ -66,7 +68,7 @@ export const HomePage = () => {
 
         gsap.set(titleRef.current, {
             opacity: 0,
-            y: "60vh",
+            y: subtitleSettings,
             x: "55%",
         });
 
@@ -149,7 +151,7 @@ export const HomePage = () => {
                 <picture ref={heroImgRef} className="w-full h-screen overflow-hidden fixed scale-120">
                     <img
                         className="w-full h-full object-cover"
-                        src={isMobile || isTablet ? homeMobileBg : homeBg}
+                        src={isMobile || isMobileXs || isTablet ? homeMobileBg : homeBg}
                         alt="Crew Straw Hat"
                     />
                 </picture>
@@ -163,7 +165,7 @@ export const HomePage = () => {
                 LogPose
             </h2>
 
-            <section ref={contentRef}>
+            <section ref={contentRef} className="pt-30">
                 <BackUpPage />
             </section>
         </div>

@@ -11,15 +11,17 @@ export const useDevice = () => {
         if (width >= 1024) return "desktop";
         if (width >= 768) return "tabletXl";
         if (width >= 550) return "tablet";
-        return "mobile";
+        if (width >= 376) return "mobile";
+        return "mobileXs";
     };
 
     const device = getDeviceType();
 
+    const isMobileXs = device === "mobileXs";
     const isMobile = device === "mobile";
     const isTablet = device === "tablet";
     const isTabletXl = device === "tabletXl";
     const isDesktop = device === "desktop" || device === "desktopXl";
 
-    return { width, device, isMobile, isTablet, isTabletXl, isDesktop };
+    return { width, device, isMobileXs, isMobile, isTablet, isTabletXl, isDesktop };
 };
