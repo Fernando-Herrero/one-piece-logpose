@@ -3,7 +3,7 @@ import { NavWithChildren } from "@/components/features/NavWithChildren";
 
 export const NavbarItems = ({ navItems, chooseLang, isPrivate = false }) => {
     return navItems
-        .filter((item) => (isPrivate ? item.isPrivate : !item.isPrivate))
+        .filter((item) => !item.isPrivate)
         .map((item, index) => {
             if (item.children) {
                 return (

@@ -28,8 +28,8 @@ export const HomePage = () => {
         mobile: "70vh",
         tablet: "73vh",
         tabletXl: "75vh",
-        desktop: "75vh",
-        desktopXl: "73vh",
+        desktop: "70vh",
+        desktopXl: "70vh",
     };
 
     const maskSettings = maskMap[device] || maskMap["tabletXl"];
@@ -39,7 +39,7 @@ export const HomePage = () => {
         mobileXs: "h-[370vh]",
         mobile: "h-[280vh]",
         tablet: "h-[270vh]",
-        tabletXl: "h-[260vh]",
+        tabletXl: "h-[270vh]",
         desktop: "h-[200vh]",
         desktopXl: "h-[200vh]",
     };
