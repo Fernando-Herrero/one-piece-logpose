@@ -35,7 +35,7 @@ export const Navbar = () => {
     const chooseLang = languages[lang].navbar;
 
     return (
-        <nav className="flex flex-col md:flex-row md:gap-4">
+        <nav className="flex flex-col gap-2 md:flex-row md:gap-4">
             {!user && <NavbarItems chooseLang={chooseLang} navItems={navItems} />}
 
             {user &&

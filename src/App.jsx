@@ -1,12 +1,12 @@
-import { PrivateRoute } from "@/components/features/PrivateRoute.jsx";
 import { Modal } from "@/components/ui/Modal.jsx";
 import { Overlay } from "@/components/ui/Overlay.jsx";
 import { ModalContext } from "@/context/ModalContext.jsx";
 import { Footer } from "@/layouts/Footer.jsx";
 import { Header } from "@/layouts/Header.jsx";
+import { ContectPage } from "@/pages/ContactPage";
+import { FaqHelpPage } from "@/pages/FaqHelpPage";
 import { HomePage } from "@/pages/HomePage.jsx";
 import { LoginPage } from "@/pages/LoginPage.jsx";
-import { MainPage } from "@/pages/MainPage.jsx";
 import { NotFoundPage } from "@/pages/NotFoundPage.jsx";
 import { RegisterForm } from "@/pages/RegisterForm.jsx";
 import { useContext } from "react";
@@ -27,10 +27,12 @@ export const App = () => {
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterForm />} />
+                    <Route path="/faq" element={<FaqHelpPage />} />
+                    <Route path="/contact" element={<ContectPage />} />
 
-                    <Route element={<PrivateRoute />}>
+                    {/* <Route element={<PrivateRoute />}>
                         <Route path="/main" element={<MainPage />} />
-                    </Route>
+                    </Route> */}
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>

@@ -1,15 +1,19 @@
-import { createContext, useState } from "react";
+import { LanguagesContext } from "@/context/LanguagesContext";
+import { languages } from "@/data/languages";
+import { createContext, useContext, useState } from "react";
 
 export const ModalContext = createContext(null);
 
 export const ModdalProvider = ({ children }) => {
+    const { lang } = useContext(LanguagesContext);
+
     const [modalData, setModalData] = useState({
         isOpen: false,
         message: "",
         onConfirm: null,
         onCancel: null,
-        confirmText: "Ok",
-        cancelText: "Cancel",
+        confirmText: languages[lang].modal.confirmText,
+        cancelText: languages[lang].modal.cancelText,
     });
 
     const showModal = (config) => {
@@ -18,8 +22,8 @@ export const ModdalProvider = ({ children }) => {
             message: config.message || "",
             onConfirm: config.onConfirm || null,
             onCancel: config.onCancel || null,
-            confirmText: config.confirmText || "Ok",
-            cancelText: config.cancelText || "Cancel",
+            confirmText: config.confirmText,
+            cancelText: config.cancelText,
         });
     };
 

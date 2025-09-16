@@ -22,6 +22,15 @@ export const languages = {
             registerSubmit: `Enviar`,
         },
 
+        contact: {
+            messageTitle:
+                "¿Necesitas ponerte en contacto con nuestro equipo? Cuéntanos tu duda o sugerencia y te responderemos lo antes posible.",
+            title: "Contacto",
+            subject: `Asunto`,
+            areaMessage: "Escribe tu mensaje para la tripulación...",
+            button: "Enviar",
+        },
+
         navbar: {
             dashboard: "Dashboard",
             community: "Comunidad",
@@ -33,11 +42,20 @@ export const languages = {
             map: "Mapa",
             help: "Ayuda",
             faq: "FAQ",
-            contact: "contacto",
+            contact: "Contacto",
             signIn: "Login",
             signUp: "Registrarse",
             logOut: "Cerrar Sesion",
             reset: "Eliminar Cuenta",
+        },
+
+        modal: {
+            confirmText: "¡Entendido!",
+            cancelText: "Cancelar",
+            loginMessage:
+                "✨ Déjame guiarte, nakama. Con esta aplicación podrás seguir el progreso de tu serie favorita de manera sencilla. Ten en cuenta que, al desbloquear un capítulo, se revelará información importante que puede contener spoilers. Así que avanza con cuidado y disfruta de la experiencia. ¡Espero que la disfrutes, nakama! ✨",
+            contactMessage:
+                "¡Mensaje recibido, nakama! 🏴‍☠️ Gracias por escribirnos. La tripulación revisará tu mensaje y nos pondremos en contacto contigo lo antes posible.",
         },
 
         footer: {
@@ -108,6 +126,15 @@ export const languages = {
             registerSubmit: `Submit`,
         },
 
+        contact: {
+            messageTitle:
+                "Need to get in touch with our team? Share your question or suggestion and we’ll get back to you as soon as possible.",
+            title: "Contact",
+            subject: `Subject`,
+            areaMessage: "Write the message for the crew...",
+            button: "Send",
+        },
+
         navbar: {
             dashboard: "Dashboard",
             community: "Community",
@@ -119,11 +146,20 @@ export const languages = {
             map: "Mapa",
             help: "Help",
             faq: "FAQ",
-            contact: "contact",
+            contact: "Contact",
             signIn: "Sign In",
             signUp: "Sign Up",
             logOut: "Log Out",
             reset: "Delete Account",
+        },
+
+        modal: {
+            confirmText: "Got it!",
+            cancelText: "Cancel",
+            loginMessage:
+                "✨ Let me guide you, nakama. With this app, you can easily follow the progress of your favorite series. Keep in mind that unlocking a chapter may reveal important information that could contain spoilers. So proceed carefully and enjoy the experience. I hope you have fun, nakama! ✨",
+            contactMessage:
+                "Message received, nakama! 🏴‍☠️ Thanks for reaching out. The crew will review your message and get back to you as soon as possible.",
         },
 
         footer: {

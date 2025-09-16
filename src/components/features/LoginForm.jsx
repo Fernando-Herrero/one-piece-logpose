@@ -45,10 +45,8 @@ export const LoginForm = () => {
         navigate("/main");
 
         showModal({
-            message:
-                "✨ Déjame guiarte, nakama. Con esta aplicación podrás seguir el progreso de tu serie favorita de manera sencilla. Ten en cuenta que, al desbloquear un capítulo, se revelará información importante que puede contener spoilers. Así que avanza con cuidado y disfruta de la experiencia. ¡Espero que la disfrutes, nakama! ✨",
+            message: languages[lang].modal.loginMessage,
             onConfirm: hideModal,
-            confirmText: "Entendido!",
         });
     };
 
