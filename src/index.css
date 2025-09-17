@@ -103,6 +103,12 @@ html {
     --transition-default: 0.4s ease-in-out;
 }
 
+@layer components {
+    .card {
+        @apply flex flex-col gap-4 rounded-xl shadow border border-white/60 backdrop-blur-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5;
+    }
+}
+
 .title-glow {
     @apply text-[#c9a066] tracking-wider -mt-8;
     text-shadow: 2px 2px 0px #3b2f2f, -1px -1px 0px #3b2f2f, 1px -1px 0px #3b2f2f, -1px 1px 0px #3b2f2f,
@@ -119,12 +125,8 @@ html {
     @apply -translate-y-0.5 border-lineDark;
 }
 
-.card {
-    @apply flex flex-col gap-4 p-6 rounded-xl shadow border border-white/60 backdrop-blur-sm transition-all duration-300  hover:shadow-xl hover:scale-[1.02];
-}
-
 .bg-gradient-primary {
-    @apply bg-gradient-to-tl from-secondary/30 to-orangeAce/50;
+    @apply bg-gradient-to-br from-secondary/30 to-orangeAce/60;
 }
 
 .perfect-center {
@@ -136,8 +138,23 @@ html {
     box-shadow: 0 0 0 2px rgba(0, 145, 255, 0.374);
 }
 
+.text-gradient {
+    @apply bg-gradient-to-br from-gray-900 to-gray-500 bg-clip-text text-transparent filter brightness-150;
+}
+
+.text-gradient-secondary {
+    @apply bg-gradient-to-br from-orangeAce to-sunny bg-clip-text text-transparent filter brightness-100;
+}
+
 .logo-mask {
     background: white;
     mask-image: url("/src/assets/images/onepiece-mask.svg");
     mask-repeat: no-repeat;
+}
+
+.img-map {
+    border: 4px dashed #b58900;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 90% 100%, 0% 100%);
 }

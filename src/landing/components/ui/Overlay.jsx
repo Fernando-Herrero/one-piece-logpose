@@ -33,7 +33,7 @@ export const Overlay = ({ children }) => {
 
             <div
                 className={classNames(
-                    "relative max-w-[350px] w-[80vw] rounded bg-white shadow-white transform transition-all duration-300 sm:min-w-md",
+                    "relative mx-4 bg-white rounded shadow-white transform transition-all duration-300",
                     {
                         "translate-y-0 opacity-100": show,
                         "translate-y-full opacity-0": !show,

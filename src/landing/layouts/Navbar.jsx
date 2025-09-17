@@ -14,8 +14,8 @@ const navItems = [
         path: "",
         label: "onepiece",
         children: [
-            { path: "/characters", label: "characters" },
             { path: "/history", label: "history" },
+            { path: "/characters", label: "characters" },
             { path: "/map", label: "map" },
         ],
     },

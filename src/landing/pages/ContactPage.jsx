@@ -32,13 +32,8 @@ export const ContactPage = () => {
 
     const fields = contactFormFields(form, lang);
     return (
-        <Container className="flex flex-col items-center gap-5 ">
-            <p
-                className="text-center text-lg max-w-sm bg-gradient-to-r from-gray-900 to-gray-400 
-                bg-clip-text text-transparent"
-            >
-                {languages[lang].contact.messageTitle}
-            </p>
+        <Container className="flex flex-col items-center gap-5 text-gradient">
+            <p className="text-center text-lg max-w-sm ">{languages[lang].contact.messageTitle}</p>
             <form
                 className="flex flex-col gap-2 p-4 bg-gradient-primary rounded shadow-default max-w-md sm:min-w-sm"
                 onSubmit={handleSubmit}
