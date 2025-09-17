@@ -1,5 +1,5 @@
+import { storage } from "@/helpers/storage";
 import { createContext, useState } from "react";
-import { storage } from "../helpers/storage";
 
 export const AvatarContext = createContext(null);
 

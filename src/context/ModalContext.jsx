@@ -1,5 +1,5 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/data/languages";
+import { languages } from "@/helpers/languages";
 import { createContext, useContext, useState } from "react";
 
 export const ModalContext = createContext(null);

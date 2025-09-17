@@ -1,5 +1,5 @@
+import { DeviceContext } from "@/context/DeviceContext";
 import { useContext } from "react";
-import { DeviceContext } from "../context/DeviceContext";
 
 export const useDevice = () => {
     const { width } = useContext(DeviceContext);
