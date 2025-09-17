@@ -53,7 +53,7 @@ export const RegisterForm = () => {
 
     return (
         <form
-            className="flex flex-col gap-2 p-4 bg-gradient-primary rounded-2xl shadow-default max-w-md"
+            className="flex flex-col gap-2 p-4 bg-gradient-primary rounded shadow-default max-w-md"
             onSubmit={handleSubmit}
         >
             <h3 className="self-center text-2xl font-family-pirate">{languages[lang].login.registerTitle}</h3>

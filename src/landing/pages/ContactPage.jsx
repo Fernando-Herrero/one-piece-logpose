@@ -63,7 +63,7 @@ export const ContactPage = () => {
                 <label>
                     <span className="font-bold text-lg">Mensaje:</span>
                     <textarea
-                        className="bg-white w-full p-2"
+                        className="bg-white w-full rounded p-2 no-focus"
                         name="message"
                         id="message"
                         value={form.message}

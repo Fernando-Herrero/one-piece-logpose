@@ -2,19 +2,35 @@ import rightArrow from "@/assets/icons/right-arrow.svg";
 import { useToggle } from "@/hooks/useToggle";
 import { ToggleButton } from "@/landing/components/ui/ToggleButton";
 import classNames from "classnames";
+import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 
 export const NavWithChildren = ({ item, chooseLang, toggleMenu }) => {
     const [open, toggleBox] = useToggle(false);
+    const containRef = useRef(null);
+
+    useEffect(() => {
+        const handelClickOutside = (event) => {
+            if (open && containRef.current && !containRef.current.contains(event.target)) {
+                toggleBox();
+            }
+        };
+
+        if (open) {
+            window.addEventListener("click", handelClickOutside);
+        }
+
+        return () => window.removeEventListener("click", handelClickOutside);
+    }, [open, toggleBox]);
 
     return (
         <section
+            ref={containRef}
             className={classNames("text-muted p-2 rounded-xl md:text-primary md:relative", {
                 "bg-orangeAce/10 md:bg-secondary/80 md:rounded-t-xl md:rounded-b-none": open,
             })}
-            onClick={toggleBox}
         >
-            <header className="flex items-center justify-between cursor-pointer md:gap-1">
+            <header className="flex items-center justify-between cursor-pointer md:gap-1" onClick={toggleBox}>
                 <p className="font-bold">{chooseLang[item.label]}</p>
                 <ToggleButton isOpen={open} />
             </header>
