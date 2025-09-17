@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -27,17 +28,17 @@ export const Overlay = ({ children }) => {
     }, []);
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center" onClick={handleClose}>
-            <div
-                className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-                    show ? "opacity-95" : "opacity-0"
-                }`}
-            ></div>
+        <div className="fixed inset-0 flex items-center justify-center z-100" onClick={handleClose}>
+            <div className={`absolute inset-0 bg-black/90 duration-300`}></div>
 
             <div
-                className={`relative max-w-[350px] w-[80vw] transform transition-all duration-300 ${
-                    show ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-                }`}
+                className={classNames(
+                    "relative max-w-[350px] w-[80vw] rounded-2xl bg-white transform transition-all duration-300 sm:min-w-md",
+                    {
+                        "translate-y-0 opacity-100": show,
+                        "translate-y-full opacity-0": !show,
+                    }
+                )}
                 onClick={(event) => event.stopPropagation()}
             >
                 {children}

@@ -36,13 +36,20 @@ export const App = () => {
         <div className="min-h-screen grid grid-rows-[1fr_auto] font-family-body text-sm overflow-x-hidden overflow-y-hidden">
             <Header />
 
-            <main className="flex flex-col justify-center">
+            <main className="flex flex-col justify-center pt-25">
                 <Routes>
                     <Route path="/" element={<Navigate to="/home" />} />
 
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterForm />} />
+                    <Route
+                        path="/register"
+                        element={
+                            <Overlay>
+                                <RegisterForm />{" "}
+                            </Overlay>
+                        }
+                    />
                     <Route path="/faq" element={<FaqHelpPage />} />
                     <Route path="/contact" element={<ContactPage />} />
 

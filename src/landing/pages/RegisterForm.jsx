@@ -5,7 +5,6 @@ import { storage } from "@/helpers/storage";
 import { useRegisterValidation } from "@/hooks/useRegisterValidation";
 import { useToggle } from "@/hooks/useToggle";
 import { Button } from "@/landing/components/ui/Button";
-import { Container } from "@/landing/components/ui/Container";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
 import { LabelPassword } from "@/landing/components/ui/LabelPassword";
 import { INITIAL_REGISTER_FORM } from "@/landing/data/INITIAL_REGISTER_FORM";
@@ -53,89 +52,82 @@ export const RegisterForm = () => {
     const passwordFieldsData = passwordFields(lang, form, isVisible, isConfirmVisible);
 
     return (
-        <Container>
-            <form
-                className="flex flex-col gap-2 p-4 bg-gradient-primary rounded shadow-default max-w-md"
-                onSubmit={handleSubmit}
-            >
-                <h3 className="self-center text-2xl font-family-pirate">
-                    {languages[lang].login.registerTitle}
-                </h3>
+        <form
+            className="flex flex-col gap-2 p-4 bg-gradient-primary rounded-2xl shadow-default max-w-md"
+            onSubmit={handleSubmit}
+        >
+            <h3 className="self-center text-2xl font-family-pirate">{languages[lang].login.registerTitle}</h3>
 
-                {fields.map(({ label, type, name, value, placeholder, id }) => (
-                    <LabelInput
-                        key={id}
-                        label={label}
-                        type={type}
-                        name={name}
-                        value={value}
-                        placeholder={placeholder}
-                        id={id}
-                        onChange={handleRegisterInputs}
+            {fields.map(({ label, type, name, value, placeholder, id }) => (
+                <LabelInput
+                    key={id}
+                    label={label}
+                    type={type}
+                    name={name}
+                    value={value}
+                    placeholder={placeholder}
+                    id={id}
+                    onChange={handleRegisterInputs}
+                />
+            ))}
+
+            {passwordFieldsData.map(({ id, name, label, placeholder, value, isVisible, toggleType }) => (
+                <LabelPassword
+                    key={id}
+                    label={label}
+                    isVisible={isVisible}
+                    name={name}
+                    id={id}
+                    autoComplete="off"
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={handleRegisterInputs}
+                    toggleVisible={toggleType === "password" ? toggleVisible : toggleConfirmVisible}
+                    passwordValue={name === "confirmPassword" ? form.password : null}
+                />
+            ))}
+
+            <label className="flex flex-col">
+                🌍 <span className="font-bold text-lg">{languages[lang].login.registerLang}:</span>
+                <select
+                    className="no-focus p-2 rounded bg-white"
+                    name="language"
+                    value={language}
+                    onChange={handleRegisterInputs}
+                >
+                    <option value="">--{languages[lang].login.registerSelectLang}--</option>
+                    <option value="es">Español 🇪🇸</option>
+                    <option value="en">English 🇬🇧</option>
+                </select>
+            </label>
+
+            <label className="flex flex-col gap-1">
+                <div className="flex items-center gap-1">
+                    <input
+                        required
+                        className="no-focus"
+                        type="checkbox"
+                        name="checked"
+                        id="checked"
+                        checked={isChecked}
+                        onChange={(event) => setIsChecked(event.target.checked)}
                     />
-                ))}
 
-                {passwordFieldsData.map(({ id, name, label, placeholder, value, isVisible, toggleType }) => (
-                    <LabelPassword
-                        key={id}
-                        label={label}
-                        isVisible={isVisible}
-                        name={name}
-                        id={id}
-                        autoComplete="off"
-                        placeholder={placeholder}
-                        value={value}
-                        onChange={handleRegisterInputs}
-                        toggleVisible={toggleType === "password" ? toggleVisible : toggleConfirmVisible}
-                        passwordValue={name === "confirmPassword" ? form.password : null}
-                    />
-                ))}
+                    <p className="text-xs">Acepto los términos y condiciones y la política de privacidad.</p>
+                </div>
+                <span className="text-xs">
+                    * Al registrarte aceptas nuestros Términos y Condiciones y reconoces haber leído nuestra
+                    Política de Privacidad. Nos comprometemos a proteger tus datos personales y a utilizarlos
+                    únicamente para proporcionarte el servicio. No compartiremos tu información con terceros
+                    sin tu consentimiento. Puedes solicitar la eliminación de tu cuenta en cualquier momento.
+                </span>
+            </label>
 
-                <label className="flex flex-col">
-                    🌍 <span className="font-bold text-lg">{languages[lang].login.registerLang}:</span>
-                    <select
-                        className="no-focus p-2 rounded bg-white"
-                        name="language"
-                        value={language}
-                        onChange={handleRegisterInputs}
-                    >
-                        <option value="">--{languages[lang].login.registerSelectLang}--</option>
-                        <option value="es">Español 🇪🇸</option>
-                        <option value="en">English 🇬🇧</option>
-                    </select>
-                </label>
+            {error && <p className="text-linePrimary self-center">{error}</p>}
 
-                <label className="flex flex-col gap-1">
-                    <div className="flex items-center gap-1">
-                        <input
-                            required
-                            className="no-focus"
-                            type="checkbox"
-                            name="checked"
-                            id="checked"
-                            checked={isChecked}
-                            onChange={(event) => setIsChecked(event.target.checked)}
-                        />
-
-                        <p className="text-xs">
-                            Acepto los términos y condiciones y la política de privacidad.
-                        </p>
-                    </div>
-                    <span className="text-xs">
-                        * Al registrarte aceptas nuestros Términos y Condiciones y reconoces haber leído
-                        nuestra Política de Privacidad. Nos comprometemos a proteger tus datos personales y a
-                        utilizarlos únicamente para proporcionarte el servicio. No compartiremos tu
-                        información con terceros sin tu consentimiento. Puedes solicitar la eliminación de tu
-                        cuenta en cualquier momento.
-                    </span>
-                </label>
-
-                {error && <p className="text-linePrimary self-center">{error}</p>}
-
-                <Button type="submit" className="bg-accent hover:bg-accentSecondary">
-                    {languages[lang].login.registerSubmit}
-                </Button>
-            </form>
-        </Container>
+            <Button type="submit" className="bg-accent hover:bg-accentSecondary">
+                {languages[lang].login.registerSubmit}
+            </Button>
+        </form>
     );
 };
