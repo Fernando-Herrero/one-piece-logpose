@@ -38,7 +38,7 @@ export const HistoryPage = () => {
     const history = historyOnePiece(lang);
 
     return (
-        <Container className="flex flex-col gap-4 pb-20 relativerelative p-6 relative rounded-xl border-4 border-yellow-700 border-dashed shadow-lg bg-yellow-50">
+        <Container className="flex flex-col gap-4 pb-20 relativerelative p-6 relative rounded-xl border-4 border-yellow-800 border-dashed shadow-lg bg-amber-50 filter contrast-150">
             <div className="absolute top-2 left-2">⚔️</div>
             <div className="absolute bottom-2 right-2">⚓</div>
             {history.map(({ section, content, subContent }, index) => {
@@ -46,7 +46,7 @@ export const HistoryPage = () => {
 
                 return (
                     <section key={`${section}-${index}`} className="flex flex-col gap-2 pt-5">
-                        <h2 className="text-primary text-xl underline">{section}</h2>
+                        <h2 className="text-primary font-family-pirate text-xl underline">{section}</h2>
                         {charactersSec ? (
                             <Link
                                 className="text-secondary flex items-center gap-2 transition-transform group hover:-translate-y-0.5"
