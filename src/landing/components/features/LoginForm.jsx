@@ -2,7 +2,7 @@ import { AuthContext } from "@/context/authContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { languages } from "@/helpers/languages";
-import { storage } from "@/helpers/storage";
+import { sessionStorage } from "@/helpers/storage";
 import { useLoginValidation } from "@/hooks/useLoginValidation";
 import { useToggle } from "@/hooks/useToggle";
 import { Button } from "@/landing/components/ui/Button";
@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 const EMPTY_USER = { id: "", username: "", password: "", experience: "" };
 
 export const LoginForm = () => {
-    const savedForm = storage.get("loginInputs");
+    const savedForm = sessionStorage.get("loginInputs");
     const [form, setForm] = useState(savedForm || EMPTY_USER);
 
     const [isVisible, toggleVisible] = useToggle();
@@ -30,7 +30,7 @@ export const LoginForm = () => {
         clearError();
         setForm((prev) => {
             const newForm = { ...prev, [name]: value };
-            storage.save("loginInputs", newForm);
+            sessionStorage.save("loginInputs", newForm);
             return newForm;
         });
     };
@@ -42,6 +42,9 @@ export const LoginForm = () => {
         if (validationError) return;
 
         login(form);
+        sessionStorage.remove("loginInputs");
+        setForm(EMPTY_USER);
+
         navigate("/main");
 
         showModal({
