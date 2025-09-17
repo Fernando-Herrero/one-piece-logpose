@@ -1,7 +1,7 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
-import { storage } from "@/helpers/storage";
+import { sessionStorage } from "@/helpers/storage";
 import { useRegisterValidation } from "@/hooks/useRegisterValidation";
 import { useToggle } from "@/hooks/useToggle";
 import { Button } from "@/landing/components/ui/Button";
@@ -14,7 +14,7 @@ import { useContext, useState } from "react";
 
 export const RegisterForm = () => {
     const { register } = useAuth();
-    const savedRegisterInputs = storage.get("registerInputs");
+    const savedRegisterInputs = sessionStorage.get("registerInputs");
     const [form, setForm] = useState(savedRegisterInputs || INITIAL_REGISTER_FORM);
     const { language } = form;
     const [isChecked, setIsChecked] = useState(false);
@@ -30,7 +30,7 @@ export const RegisterForm = () => {
         clearError();
         setForm((prev) => {
             const newRegisterForm = { ...prev, [name]: value };
-            storage.save("registerInputs", newRegisterForm);
+            sessionStorage.save("registerInputs", newRegisterForm);
             return newRegisterForm;
         });
     };
@@ -43,7 +43,7 @@ export const RegisterForm = () => {
 
         register(form);
 
-        storage.remove("registerInputs");
+        sessionStorage.remove("registerInputs");
         setForm(INITIAL_REGISTER_FORM);
         setIsChecked(false);
     };
