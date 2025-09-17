@@ -5,9 +5,12 @@ import { Modal } from "@/landing/components/ui/Modal.jsx";
 import { Overlay } from "@/landing/components/ui/Overlay.jsx";
 import { Footer } from "@/landing/layouts/Footer";
 import { Header } from "@/landing/layouts/Header";
+import { CharactersPage } from "@/landing/pages/Characters";
 import { ContactPage } from "@/landing/pages/ContactPage";
 import { FaqHelpPage } from "@/landing/pages/FaqHelpPage";
+import { HistoryPage } from "@/landing/pages/HistoryPage";
 import { HomePage } from "@/landing/pages/HomePage.jsx";
+import { MapPage } from "@/landing/pages/map";
 import { NotFoundPage } from "@/landing/pages/NotFoundPage.jsx";
 import { RegisterForm } from "@/landing/pages/RegisterForm.jsx";
 import { useContext } from "react";
@@ -52,6 +55,16 @@ export const App = () => {
                     />
                     <Route path="/faq" element={<FaqHelpPage />} />
                     <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/characters" element={<CharactersPage />} />
+                    <Route path="/history" element={<HistoryPage />} />
+                    <Route
+                        path="/map"
+                        element={
+                            <Overlay>
+                                <MapPage />
+                            </Overlay>
+                        }
+                    />
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>

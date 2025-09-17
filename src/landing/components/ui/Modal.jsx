@@ -1,8 +1,8 @@
-import luffy from "@/assets/images/ModalImgs/luffy-modal.png";
-import nami from "@/assets/images/ModalImgs/nami-modal.png";
-import sanji from "@/assets/images/ModalImgs/sanji-modal.png";
-import usopp from "@/assets/images/ModalImgs/usopp-modal.png";
-import zoro from "@/assets/images/ModalImgs/zoro-modal.png";
+import luffy from "@/assets/images/ModalImgs/luffy-modal.webp";
+import nami from "@/assets/images/ModalImgs/nami-modal.webp";
+import sanji from "@/assets/images/ModalImgs/sanji-modal.webp";
+import usopp from "@/assets/images/ModalImgs/usopp-modal.webp";
+import zoro from "@/assets/images/ModalImgs/zoro-modal.webp";
 import { Button } from "@/landing/components/ui/Button";
 import { useEffect, useState } from "react";
 
