@@ -1,6 +1,6 @@
+import { LanguagesContext } from "@/context/LanguagesContext";
+import { languages } from "@/helpers/languages";
 import { useContext, useEffect, useState } from "react";
-import { LanguagesContext } from "../context/LanguagesContext";
-import { languages } from "../data/languages";
 
 export const useFetch = (url) => {
     const [data, setData] = useState(null);

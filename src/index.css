@@ -51,7 +51,7 @@ html {
     --color-sunny: #ffa500;
 
     /* COLORES DE TEXTO */
-    --text-color-primary: #1d1d1d;
+    --text-color-primary: #374151;
     --text-color-secondary: #3a93cf;
     --text-color-muted: #696969;
     --text-color-contrast: #fff;
@@ -124,7 +124,7 @@ html {
 }
 
 .bg-gradient-primary {
-    @apply bg-gradient-to-tl from-secondary/30 to-orangeAce/20;
+    @apply bg-gradient-to-tl from-secondary/30 to-orangeAce/50;
 }
 
 .perfect-center {
