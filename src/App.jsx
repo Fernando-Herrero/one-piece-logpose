@@ -1,18 +1,21 @@
 import { LoginPage } from "@//landing/pages/LoginPage.jsx";
 import { AuthContext } from "@/context/AuthContext";
 import { ModalContext } from "@/context/ModalContext.jsx";
+import { Dashboard } from "@/dashboard/pages/Dashboard";
+import { Footer } from "@/landing/components/features/Footer";
+import { PrivateRoute } from "@/landing/components/features/PrivateRoute";
 import { Modal } from "@/landing/components/ui/Modal.jsx";
 import { Overlay } from "@/landing/components/ui/Overlay.jsx";
-import { Footer } from "@/landing/layouts/Footer";
-import { Header } from "@/landing/layouts/Header";
 import { CharactersPage } from "@/landing/pages/CharactersPage";
 import { ContactPage } from "@/landing/pages/ContactPage";
 import { FaqHelpPage } from "@/landing/pages/FaqHelpPage";
 import { HistoryPage } from "@/landing/pages/HistoryPage";
 import { HomePage } from "@/landing/pages/HomePage.jsx";
-import { MapPage } from "@/landing/pages/Mapage";
+import { MainPage } from "@/landing/pages/MainPage";
+import { MapPage } from "@/landing/pages/MapPage";
 import { NotFoundPage } from "@/landing/pages/NotFoundPage.jsx";
 import { RegisterForm } from "@/landing/pages/RegisterForm.jsx";
+import { Header } from "@/layouts/Header";
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -23,12 +26,19 @@ export const App = () => {
 
     if (user) {
         return (
-            <div>
+            <div className="min-h-screen">
                 <main>
                     <Routes>
+                        <Route
+                            path="/"
+                            element={user ? <Navigate to="/dashboard" replace /> : <HomePage />}
+                        />
                         <Route element={<PrivateRoute />}>
+                            <Route path="/dashboard" element={<Dashboard />} />
                             <Route path="/main" element={<MainPage />} />
                         </Route>
+
+                        <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </main>
             </div>
@@ -41,7 +51,7 @@ export const App = () => {
 
             <main className="flex flex-col justify-center pt-25">
                 <Routes>
-                    <Route path="/" element={<Navigate to="/home" />} />
+                    <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <HomePage />} />
 
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />

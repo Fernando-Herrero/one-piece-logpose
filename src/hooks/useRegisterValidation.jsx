@@ -51,7 +51,6 @@ export const useRegisterValidation = () => {
         if (validateEmptyField(form.username, "registerUsername", lang)) return true;
         if (validateEmptyField(form.password, "registerPassword", lang)) return true;
         if (validateEmptyField(form.confirmPassword, "confirmPassword", lang)) return true;
-        if (validateEmptyField(form.language, "language", lang)) return true;
 
         if (validateFieldLength(form.name, "nameLength", 2, lang)) return true;
         if (validateFieldLength(form.surname, "surnameLength", 2, lang)) return true;

@@ -15,8 +15,7 @@ import { useContext, useState } from "react";
 export const RegisterForm = () => {
     const { register } = useAuth();
     const savedRegisterInputs = sessionStorage.get("registerInputs");
-    const [form, setForm] = useState(savedRegisterInputs || INITIAL_REGISTER_FORM);
-    const { language } = form;
+    const [form, setForm] = useState({ ...INITIAL_REGISTER_FORM, ...(savedRegisterInputs || {}) });
     const [isChecked, setIsChecked] = useState(false);
 
     const [isVisible, toggleVisible] = useToggle();
@@ -29,7 +28,7 @@ export const RegisterForm = () => {
     const handleRegisterInputs = ({ target: { name, value } }) => {
         clearError();
         setForm((prev) => {
-            const newRegisterForm = { ...prev, [name]: value };
+            const newRegisterForm = { ...prev, [name]: value || "" };
             sessionStorage.save("registerInputs", newRegisterForm);
             return newRegisterForm;
         });
@@ -41,7 +40,10 @@ export const RegisterForm = () => {
         const validationError = validateRegisterForm(form, lang);
         if (validationError) return;
 
-        register(form);
+        const { confirmPassword, ...dataToSend } = form;
+
+        register(dataToSend);
+        console.log("Registro finalizado:", dataToSend);
 
         sessionStorage.remove("registerInputs");
         setForm(INITIAL_REGISTER_FORM);
@@ -64,7 +66,7 @@ export const RegisterForm = () => {
                     label={label}
                     type={type}
                     name={name}
-                    value={value}
+                    value={value || ""}
                     placeholder={placeholder}
                     id={id}
                     onChange={handleRegisterInputs}
@@ -80,24 +82,24 @@ export const RegisterForm = () => {
                     id={id}
                     autoComplete="off"
                     placeholder={placeholder}
-                    value={value}
+                    value={value || ""}
                     onChange={handleRegisterInputs}
                     toggleVisible={toggleType === "password" ? toggleVisible : toggleConfirmVisible}
-                    passwordValue={name === "confirmPassword" ? form.password : null}
+                    passwordValue={name === "confirmPassword" ? form.password : ""}
                 />
             ))}
 
             <label className="flex flex-col">
-                🌍 <span className="font-bold text-lg">{languages[lang].login.registerLang}:</span>
+                <span className="font-bold text-lg">✨ Role:</span>
                 <select
-                    className="no-focus p-2 rounded bg-white"
-                    name="language"
-                    value={language}
+                    className="bg-white no-focus p-2 rounded"
+                    name="role"
+                    id="role"
+                    value={form.role || "user"}
                     onChange={handleRegisterInputs}
                 >
-                    <option value="">--{languages[lang].login.registerSelectLang}--</option>
-                    <option value="es">Español 🇪🇸</option>
-                    <option value="en">English 🇬🇧</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
                 </select>
             </label>
 
