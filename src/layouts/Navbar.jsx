@@ -43,42 +43,35 @@ export const Navbar = ({ toggleMenu, isOpen }) => {
 
     return (
         <nav
-            className={classNames("flex flex-col gap-2", {
+            className={classNames("relative flex flex-col gap-2", {
+                "items-center": user,
                 "md:flex-row md:gap-4": !user,
             })}
         >
             {!user && <NavbarItems chooseLang={chooseLang} navItems={navItems} toggleMenu={toggleMenu} />}
 
-            {user && isOpen
-                ? privateItems.map(({ path, label }, index) => (
-                      <NavLink
-                          key={`${label}-${index}`}
-                          to={path}
-                          onClick={toggleMenu}
-                          className={({ isActive }) =>
-                              classNames("p-2 rounded-xl transition-all duration-300", {
-                                  "bg-orangeAce/20": isActive,
-                                  "hover:bg-orangeAce/10": !isActive,
-                              })
-                          }
-                      >
-                          <span className="text-gradient">{chooseLang[label]}</span>
-                      </NavLink>
-                  ))
-                : privateItems.map(({ label, icon }, index) => (
-                      <button
-                          key={`${label}-${index}`}
-                          onClick={toggleMenu}
-                          title={chooseLang[label] || label}
-                          className="p-2 group rounded-xl hover:bg-orangeAce/10 transition-colors"
-                      >
-                          <img
-                              src={icon}
-                              alt={`${chooseLang[label] || label} icon`}
-                              className="w-6 h-6 transition-transform group-hover:scale-105 "
-                          />
-                      </button>
-                  ))}
+            {user &&
+                privateItems.map(({ path, label, icon }, index) => (
+                    <NavLink
+                        key={`${label}-${index}`}
+                        to={path}
+                        onClick={toggleMenu}
+                        title={chooseLang[label] || label}
+                        className={({ isActive }) =>
+                            classNames("flex items-center gap-1 p-2 rounded-xl transition-all duration-300", {
+                                "bg-orangeAce/20": isActive,
+                                "hover:bg-orangeAce/10": !isActive,
+                            })
+                        }
+                    >
+                        <img
+                            src={icon}
+                            alt={`${chooseLang[label] || label} icon`}
+                            className="w-6 h-6 transition-transform group-hover:scale-105 md:w-4 md:h-4"
+                        />
+                        <span className="hidden text-gradient md:block">{chooseLang[label]}</span>
+                    </NavLink>
+                ))}
         </nav>
     );
 };

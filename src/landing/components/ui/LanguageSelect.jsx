@@ -6,7 +6,7 @@ export const LanguageSelect = ({ className }) => {
 
     return (
         <select
-            className={`bg-transparent p-1 border border-orangeAce/10 rounded-xl transition hover:bg-orangeAce/10 focus:outline-none ${className}`}
+            className={`bg-transparent p-1 border border-orangeAce/10 rounded-xl transition hover:bg-orangeAce/10 focus:outline-none cursor-pointer appearance-none ${className}`}
             name="language"
             value={lang}
             onChange={(e) => handleLang(e.target.value)}

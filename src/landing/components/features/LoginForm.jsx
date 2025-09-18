@@ -52,14 +52,14 @@ export const LoginForm = () => {
 
     return (
         <form className="flex flex-col items-center gap-2" onSubmit={handleSubmit}>
-            <h2 className="font-bold font-family-pirate text-subtitle">LOGIN</h2>
+            <h2 className="font-bold font-family-pirate text-subtitle text-primary">LOGIN</h2>
             <div className="flex flex-col gap-2 w-65 border border-linePrimary p-8 rounded shadow-default bg-gradient-primary">
                 <LabelInput
                     label="Email:"
                     type="email"
                     name="email"
                     autoComplete="off"
-                    placeholder={languages[lang].login.email}
+                    placeholder={languages[lang].login.registerEmailMessage}
                     value={form.email}
                     onChange={handleInputForm}
                 />

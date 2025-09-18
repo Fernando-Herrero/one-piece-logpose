@@ -1,8 +1,13 @@
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
-import { loginApi, registerApi } from "./auth.api";
-import { saveTokenInLocalStorage, saveUserInLocalStorage } from "./auth.service";
+import { loginApi, logOutApi, registerApi } from "./auth.api";
+import {
+    removeTokenFromLocalStorage,
+    removeUserFromLocalStorage,
+    saveTokenInLocalStorage,
+    saveUserInLocalStorage,
+} from "./auth.service";
 
 export const useAuth = () => {
     const { setUser } = useContext(AuthContext);
@@ -33,5 +38,18 @@ export const useAuth = () => {
         }
     };
 
-    return { register, login };
+    const logout = async () => {
+        console.log("Cerrando sesión");
+        const logoutResponse = await logOutApi();
+
+        if (logoutResponse?.logout) {
+            console.log("logout del hook", logoutResponse);
+            removeTokenFromLocalStorage();
+            removeUserFromLocalStorage();
+            setUser(null);
+            goTo("/");
+        }
+    };
+
+    return { register, login, logout };
 };

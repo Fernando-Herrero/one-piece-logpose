@@ -103,7 +103,7 @@ const getCharacters = (lang) => [
 
 const RenderArticle = ({ name, text, images, isLastImg }) => {
     return (
-        <article className="card items-center bg-gradient-primary max-w-[300px] overflow-hidden group lg:flex-row lg:gap-4 lg:max-w-[400px] lg:min-h-80 lg:overflow-visible">
+        <article className="card items-center bg-gradient-primary max-w-[300px] overflow-hidden group lg:flex-row lg:gap-4 lg:max-w-full lg:min-h-80 lg:overflow-visible">
             <div className="w-full lg:h-full lg:relative lg:bg-primary/80 lg:rounded-tl-xl lg:rounded-bl-xl">
                 <picture className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 lg:h-full lg:absolute lg:top-0 lg:left-3 lg:group-hover:scale-110 z-20">
                     <source srcSet={images[2]} media="(min-width: 1024px)" type="image/webp" />
@@ -143,7 +143,7 @@ export const CharactersPage = () => {
                     backgroundImage: `url(${lettersBg})`,
                 }}
             >
-                <div className="grid grid-cols-1 gap-4 w-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 lg:overflow-visibl">
+                <div className="grid grid-cols-1 justify-items-center gap-4 w-full sm:grid-cols-2 md:grid-cols-3 lg:justify-items-normal lg:grid-cols-2 lg:overflow-visibl">
                     {chooseChars.map(({ name, text, images }, index) => {
                         const isLastImg = index === chooseChars.length - 1;
 

@@ -49,7 +49,7 @@ const faqData = [
 
 export const FaqHelpPage = () => {
     return (
-        <Container className="py-25 space-y-2 max-w-lg">
+        <Container className="pb-20 space-y-2 max-w-lg">
             {faqData.map(({ title, text }, index) => (
                 <AccordionItem key={`${title}-${index}`} title={title} content={text} />
             ))}

@@ -140,7 +140,7 @@ export const AvatarSelected = () => {
                             />
                         </picture>
                     </div>
-                    <p className="mt-2 font-extrabold text-center">{character.name}</p>
+                    <p className="mt-2 font-extrabold text-center text-gradient">{character.name}</p>
                 </article>
             ))}
         </section>

@@ -30,7 +30,7 @@ export const LabelPassword = ({
     });
     return (
         <label className={`flex flex-col ${className}`}>
-            <span className="font-bold text-lg">{label}:</span>
+            <span className="font-bold text-lg text-primary">{label}:</span>
             <div className="flex items-center relative">
                 <input
                     className={inputClasses}

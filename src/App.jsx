@@ -41,6 +41,11 @@ export const App = () => {
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </main>
+                {isOpen && (
+                    <Overlay>
+                        <Modal {...modalData} />
+                    </Overlay>
+                )}
             </div>
         );
     }

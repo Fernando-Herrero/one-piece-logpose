@@ -1,10 +1,15 @@
+import helpIcon from "@/assets/icons/help-icon.svg";
+import { LanguagesContext } from "@/context/LanguagesContext";
+import { languages } from "@/helpers/languages";
 import { useToggle } from "@/hooks/useToggle";
+import { LanguageSelect } from "@/landing/components/ui/LanguageSelect";
 import { Navbar } from "@/layouts/Navbar";
-import classNames from "classnames";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export const SideBar = () => {
     const [isOpen, toggleMenu] = useToggle();
+    const { lang } = useContext(LanguagesContext);
     const containRef = useRef(null);
 
     useEffect(() => {
@@ -24,16 +29,17 @@ export const SideBar = () => {
     return (
         <aside
             ref={containRef}
-            className={classNames(
-                "fixed min-h-screen bg-gradient-primary border-r-2 border-primary p-2 text-sm",
-                "transition-all duration-300 ease-out",
-                {
-                    "w-30": isOpen,
-                    "w-16": !isOpen,
-                }
-            )}
+            className="fixed flex flex-col w-fit h-screen bg-gradient-primary border-r-2 border-primary p-2 text-sm mt-10 pb-20 z-5"
         >
             <Navbar ref={containRef} isOpen={isOpen} toggleMenu={toggleMenu} />
+
+            <div className="flex flex-col gap-2 mt-auto">
+                <Link className="flex items-center gap-1" to="/help">
+                    <img className="w-4" src={helpIcon} alt="Help icon" />
+                    <span className="text-gradient">{languages[lang].navbar.help}</span>
+                </Link>
+                <LanguageSelect className="mr-auto" />
+            </div>
         </aside>
     );
 };

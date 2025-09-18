@@ -23,7 +23,7 @@ export const languages = {
         },
 
         navbar: {
-            profile: "Profile",
+            profile: "Perfil",
             community: "Comunidad",
             serie: "Serie",
             cards: "Cartas",
@@ -48,6 +48,8 @@ export const languages = {
 
             contactMessage:
                 "¡Mensaje recibido, nakama! 🏴‍☠️ Gracias por escribirnos. La tripulación revisará tu mensaje y nos pondremos en contacto contigo lo antes posible.",
+            logOutMessage: "⚓ ¿Estás seguro de que quieres cerrar sesión, nakama?",
+            confirmLogOut: "Si",
         },
 
         characters: {
@@ -216,6 +218,8 @@ export const languages = {
                 "✨ Welcome to your Dashboard, nakama! From here you can manage everything you need: update your profile, explore your new favorite social network, and keep track of your favorite series. Manage your lists, unlock chapters, receive notifications, and stay up to date with all your favorite content. Enjoy the experience and let the adventure begin! ✨",
             contactMessage:
                 "Message received, nakama! 🏴‍☠️ Thanks for reaching out. The crew will review your message and get back to you as soon as possible.",
+            logOutMessage: "⚓ Are you sure you want to log out, nakama?",
+            confirmLogOut: "Yes",
         },
 
         characters: {

@@ -54,82 +54,89 @@ export const RegisterForm = () => {
     const passwordFieldsData = passwordFields(lang, form, isVisible, isConfirmVisible);
 
     return (
-        <form
-            className="flex flex-col gap-2 p-4 bg-gradient-primary rounded shadow-default max-w-md"
-            onSubmit={handleSubmit}
-        >
-            <h3 className="self-center text-2xl font-family-pirate">{languages[lang].login.registerTitle}</h3>
+        <section className="bg-white rounded-xl">
+            <form
+                className="flex flex-col gap-2 p-4 bg-gradient-primary rounded-xl shadow-default max-w-md"
+                onSubmit={handleSubmit}
+            >
+                <h3 className="self-center text-2xl font-family-pirate text-primary">
+                    {languages[lang].login.registerTitle}
+                </h3>
 
-            {fields.map(({ label, type, name, value, placeholder, id }) => (
-                <LabelInput
-                    key={id}
-                    label={label}
-                    type={type}
-                    name={name}
-                    value={value || ""}
-                    placeholder={placeholder}
-                    id={id}
-                    onChange={handleRegisterInputs}
-                />
-            ))}
-
-            {passwordFieldsData.map(({ id, name, label, placeholder, value, isVisible, toggleType }) => (
-                <LabelPassword
-                    key={id}
-                    label={label}
-                    isVisible={isVisible}
-                    name={name}
-                    id={id}
-                    autoComplete="off"
-                    placeholder={placeholder}
-                    value={value || ""}
-                    onChange={handleRegisterInputs}
-                    toggleVisible={toggleType === "password" ? toggleVisible : toggleConfirmVisible}
-                    passwordValue={name === "confirmPassword" ? form.password : ""}
-                />
-            ))}
-
-            <label className="flex flex-col">
-                <span className="font-bold text-lg">✨ Role:</span>
-                <select
-                    className="bg-white no-focus p-2 rounded"
-                    name="role"
-                    id="role"
-                    value={form.role || "user"}
-                    onChange={handleRegisterInputs}
-                >
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                </select>
-            </label>
-
-            <label className="flex flex-col gap-1">
-                <div className="flex items-center gap-1">
-                    <input
-                        required
-                        className="no-focus"
-                        type="checkbox"
-                        name="checked"
-                        id="checked"
-                        checked={isChecked}
-                        onChange={(event) => setIsChecked(event.target.checked)}
+                {fields.map(({ label, type, name, value, placeholder, id }) => (
+                    <LabelInput
+                        key={id}
+                        label={label}
+                        type={type}
+                        name={name}
+                        value={value || ""}
+                        placeholder={placeholder}
+                        id={id}
+                        onChange={handleRegisterInputs}
                     />
+                ))}
 
-                    <p className="text-xs">Acepto los términos y condiciones y la política de privacidad.</p>
-                </div>
-                <span className="text-xs">
-                    * Al registrarte aceptas nuestros Términos y Condiciones y reconoces haber leído nuestra
-                    Política de Privacidad. Nos comprometemos a proteger tus datos personales y a utilizarlos
-                    únicamente para proporcionarte el servicio. No compartiremos tu información con terceros
-                    sin tu consentimiento. Puedes solicitar la eliminación de tu cuenta en cualquier momento.
-                </span>
-            </label>
+                {passwordFieldsData.map(({ id, name, label, placeholder, value, isVisible, toggleType }) => (
+                    <LabelPassword
+                        key={id}
+                        label={label}
+                        isVisible={isVisible}
+                        name={name}
+                        id={id}
+                        autoComplete="off"
+                        placeholder={placeholder}
+                        value={value || ""}
+                        onChange={handleRegisterInputs}
+                        toggleVisible={toggleType === "password" ? toggleVisible : toggleConfirmVisible}
+                        passwordValue={name === "confirmPassword" ? form.password : ""}
+                    />
+                ))}
 
-            {error && <p className="text-linePrimary self-center">{error}</p>}
+                <label className="flex flex-col">
+                    <span className="font-bold text-lg text-primary">✨ Role:</span>
+                    <select
+                        className="bg-white no-focus p-2 rounded"
+                        name="role"
+                        id="role"
+                        value={form.role || "user"}
+                        onChange={handleRegisterInputs}
+                    >
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </label>
 
-            <Button type="submit" className="bg-accent hover:bg-accentSecondary">
-                {languages[lang].login.registerSubmit}
-            </Button>
-        </form>
+                <label className="flex flex-col gap-1">
+                    <div className="flex items-center gap-1">
+                        <input
+                            required
+                            className="no-focus"
+                            type="checkbox"
+                            name="checked"
+                            id="checked"
+                            checked={isChecked}
+                            onChange={(event) => setIsChecked(event.target.checked)}
+                        />
+
+                        <p className="text-xs">
+                            Acepto los términos y condiciones y la política de privacidad.
+                        </p>
+                    </div>
+                    <span className="text-xs">
+                        * Al registrarte aceptas nuestros Términos y Condiciones y reconoces haber leído
+                        nuestra Política de Privacidad. Nos comprometemos a proteger tus datos personales y a
+                        utilizarlos únicamente para proporcionarte el servicio. No compartiremos tu
+                        información con terceros sin tu consentimiento. Puedes solicitar la eliminación de tu
+                        cuenta en cualquier momento.
+                    </span>
+                </label>
+
+                {error && <p className="text-linePrimary self-center">{error}</p>}
+
+                <Button type="submit" className="bg-accent hover:bg-accentSecondary">
+                    {languages[lang].login.registerSubmit}
+                </Button>
+            </form>
+        </section>
     );
 };

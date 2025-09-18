@@ -25,3 +25,16 @@ export const registerApi = async (user) => {
         throw error;
     }
 };
+
+export const logOutApi = async (user) => {
+    try {
+        console.log("logoutApi:", user);
+        const response = await api.post("/auth/logout");
+        console.log("Respuesta de la api la logout:", response);
+
+        return response.data;
+    } catch {
+        console.error("Error al cerrar sesión", error);
+        throw error;
+    }
+};
