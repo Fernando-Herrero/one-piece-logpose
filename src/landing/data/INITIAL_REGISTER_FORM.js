@@ -1,5 +1,5 @@
 export const INITIAL_REGISTER_FORM = {
-    firstName: "",
+    name: "",
     lastName: "",
     email: "",
     username: "",

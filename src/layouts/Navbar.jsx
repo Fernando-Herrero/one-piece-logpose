@@ -44,7 +44,7 @@ export const Navbar = ({ toggleMenu, isOpen }) => {
     return (
         <nav
             className={classNames("relative flex flex-col gap-2", {
-                "items-center": user,
+                "items-center md:items-start": user,
                 "md:flex-row md:gap-4": !user,
             })}
         >

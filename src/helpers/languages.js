@@ -36,7 +36,7 @@ export const languages = {
             contact: "Contacto",
             signIn: "Login",
             signUp: "Registrarse",
-            logOut: "Cerrar Sesion",
+            logout: "Cerrar Sesion",
             reset: "Eliminar Cuenta",
         },
 
@@ -207,7 +207,7 @@ export const languages = {
             contact: "Contact",
             signIn: "Sign In",
             signUp: "Sign Up",
-            logOut: "Log Out",
+            logout: "Logout",
             reset: "Delete Account",
         },
 

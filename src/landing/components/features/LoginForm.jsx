@@ -37,8 +37,8 @@ export const LoginForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // const validationError = validateForm(form, lang);
-        // if (validationError) return;
+        const validationError = validateForm(form, lang);
+        if (validationError) return;
 
         await login(form);
         sessionStorage.remove("loginInputs");

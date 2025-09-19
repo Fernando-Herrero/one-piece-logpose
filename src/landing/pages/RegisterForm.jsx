@@ -43,7 +43,6 @@ export const RegisterForm = () => {
         const { confirmPassword, ...dataToSend } = form;
 
         register(dataToSend);
-        console.log("Registro finalizado:", dataToSend);
 
         sessionStorage.remove("registerInputs");
         setForm(INITIAL_REGISTER_FORM);

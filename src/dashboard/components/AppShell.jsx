@@ -1,5 +1,5 @@
-import { DashboardNavbar } from "@/dashboard/components/DashboardNavbar";
-import { SideBar } from "@/dashboard/components/Sidebar";
+import { DashboardNavbar } from "@/dashboard/components/header/DashboardNavbar";
+import { SideBar } from "@/dashboard/components/sidebar/Sidebar";
 
 export const AppShell = ({ children }) => {
     return (

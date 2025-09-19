@@ -7,5 +7,13 @@ export const useToggle = (initialValue = false) => {
         setState((prev) => !prev);
     };
 
+    const setTrue = () => {
+        setState(true);
+    };
+
+    const setFalse = () => {
+        setState(false);
+    };
+
     return [state, toggleState];
 };
