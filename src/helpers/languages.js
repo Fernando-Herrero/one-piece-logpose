@@ -38,6 +38,7 @@ export const languages = {
             signUp: "Registrarse",
             logout: "Cerrar Sesion",
             reset: "Eliminar Cuenta",
+            search: "buscar...",
         },
 
         modal: {
@@ -209,6 +210,7 @@ export const languages = {
             signUp: "Sign Up",
             logout: "Logout",
             reset: "Delete Account",
+            search: "search...",
         },
 
         modal: {
