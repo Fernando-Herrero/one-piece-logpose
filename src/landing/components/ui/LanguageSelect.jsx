@@ -1,18 +1,47 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { DropDown } from "@/dashboard/components/header/Dropdown";
+import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 
-export const LanguageSelect = ({ className }) => {
-    const { lang, handleLang } = useContext(LanguagesContext);
+export const LanguageSelect = () => {
+    const [isOpen, toggleMenu, closeMenu] = useToggle();
+    const { lang, setLang } = useContext(LanguagesContext);
+
+    const languages = {
+        es: { flag: "🇪🇸", label: "Español" },
+        en: { flag: "🇬🇧", label: "English" },
+    };
+
+    const handleLangChange = (code) => {
+        setLang(code);
+        closeMenu();
+    };
 
     return (
-        <select
-            className={`bg-transparent p-1 border border-orangeAce/10 rounded-xl transition hover:bg-orangeAce/10 focus:outline-none cursor-pointer appearance-none ${className}`}
-            name="language"
-            value={lang}
-            onChange={(e) => handleLang(e.target.value)}
-        >
-            <option value="es">🇪🇸 Es</option>
-            <option value="en">🇬🇧 En</option>
-        </select>
+        <div className="relative">
+            <button
+                type="button"
+                onClick={toggleMenu}
+                className="flex items-center gap-2 border border-orangeAce/20 bg-transparent px-2 py-1 rounded-xl cursor-pointer transition hover:bg-orangeAce/10"
+            >
+                <span>{languages[lang].flag}</span>
+                <span className="hidden md:block">{languages[lang].label}</span>
+            </button>
+
+            <DropDown open={isOpen} onClose={closeMenu} size="sm" placement="bottom" align="left">
+                <div className="flex flex-col">
+                    {Object.entries(languages).map(([code, { flag, label }]) => (
+                        <button
+                            key={code}
+                            onClick={() => handleLangChange(code)}
+                            className="flex items-center gap-2 px-3 py-2 text-sm hover:bg-orangeAce/10 rounded-md cursor-pointer"
+                        >
+                            <span>{flag}</span>
+                            <span>{label}</span>
+                        </button>
+                    ))}
+                </div>
+            </DropDown>
+        </div>
     );
 };

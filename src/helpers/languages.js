@@ -39,6 +39,7 @@ export const languages = {
             logout: "Cerrar Sesion",
             reset: "Eliminar Cuenta",
             search: "buscar...",
+            settings: "Ajustes",
         },
 
         modal: {
@@ -211,6 +212,7 @@ export const languages = {
             logout: "Logout",
             reset: "Delete Account",
             search: "search...",
+            settings: "Settings",
         },
 
         modal: {

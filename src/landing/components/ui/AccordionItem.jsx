@@ -2,7 +2,7 @@ import { useToggle } from "@/hooks/useToggle";
 import { ToggleButton } from "@/landing/components/ui/ToggleButton";
 import classNames from "classnames";
 
-export const AccordionItem = ({ title, content, className = "" }) => {
+export const AccordionItem = ({ title, children, className = "" }) => {
     const [open, toggleAccordion] = useToggle();
 
     return (
@@ -22,9 +22,7 @@ export const AccordionItem = ({ title, content, className = "" }) => {
                     "[grid-template-rows:0fr]": !open,
                 })}
             >
-                <div className="min-h-0 overflow-hidden">
-                    <p className="text-gradient">{content}</p>
-                </div>
+                <div className="min-h-0 overflow-hidden">{children}</div>
             </div>
         </section>
     );

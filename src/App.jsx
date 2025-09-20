@@ -4,6 +4,7 @@ import { ModalContext } from "@/context/ModalContext.jsx";
 import { Dashboard } from "@/dashboard/pages/Dashboard";
 import { Footer } from "@/landing/components/features/Footer";
 import { PrivateRoute } from "@/landing/components/features/PrivateRoute";
+import { RegisterForm } from "@/landing/components/features/RegisterForm.jsx";
 import { Modal } from "@/landing/components/ui/Modal.jsx";
 import { Overlay } from "@/landing/components/ui/Overlay.jsx";
 import { CharactersPage } from "@/landing/pages/CharactersPage";
@@ -11,10 +12,7 @@ import { ContactPage } from "@/landing/pages/ContactPage";
 import { FaqHelpPage } from "@/landing/pages/FaqHelpPage";
 import { HistoryPage } from "@/landing/pages/HistoryPage";
 import { HomePage } from "@/landing/pages/HomePage.jsx";
-import { MainPage } from "@/landing/pages/MainPage";
-import { MapPage } from "@/landing/pages/MapPage";
 import { NotFoundPage } from "@/landing/pages/NotFoundPage.jsx";
-import { RegisterForm } from "@/landing/pages/RegisterForm.jsx";
 import { Header } from "@/layouts/Header";
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -34,8 +32,8 @@ export const App = () => {
                             element={user ? <Navigate to="/dashboard" replace /> : <HomePage />}
                         />
                         <Route element={<PrivateRoute />}>
-                            <Route path="/dashboard" element={<Dashboard />} />
-                            <Route path="/main" element={<MainPage />} />
+                            <Route path="/dashboard/*" element={<Dashboard />} />
+                            {/* <Route path="/main" element={<MainPage />} /> */}
                         </Route>
 
                         <Route path="*" element={<NotFoundPage />} />
@@ -54,7 +52,7 @@ export const App = () => {
         <div className="min-h-screen grid grid-rows-[1fr_auto] font-family-body text-sm overflow-x-hidden overflow-y-hidden">
             <Header />
 
-            <main className="flex flex-col justify-center pt-25">
+            <main className="flex flex-col justify-center pt-24">
                 <Routes>
                     <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <HomePage />} />
 
@@ -76,7 +74,7 @@ export const App = () => {
                         path="/map"
                         element={
                             <Overlay>
-                                <MapPage />
+                                <Map />
                             </Overlay>
                         }
                     />

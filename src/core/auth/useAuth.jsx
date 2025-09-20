@@ -1,7 +1,7 @@
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
-import { loginApi, logOutApi, registerApi } from "./auth.api";
+import { getProfileApi, loginApi, logOutApi, registerApi, updateProfileApi } from "./auth.api";
 import {
     removeTokenFromLocalStorage,
     removeUserFromLocalStorage,
@@ -13,6 +13,18 @@ export const useAuth = () => {
     const { setUser } = useContext(AuthContext);
     const { goTo } = useGoTo();
 
+    const register = async (user) => {
+        console.log("Registrando usuario", user);
+
+        const authData = await registerApi(user);
+
+        if (authData) {
+            saveTokenInLocalStorage(authData.token);
+            saveUserInLocalStorage(authData.user);
+            goTo("/");
+        }
+    };
+
     const login = async (user) => {
         console.log("Iniciando sesión:", user);
 
@@ -22,18 +34,6 @@ export const useAuth = () => {
             saveTokenInLocalStorage(authData.token);
             saveUserInLocalStorage(authData.user);
             setUser(authData.user);
-            goTo("/");
-        }
-    };
-
-    const register = async (user) => {
-        console.log("Registrando usuario", user);
-
-        const authData = await registerApi(user);
-
-        if (authData) {
-            saveTokenInLocalStorage(authData.token);
-            saveUserInLocalStorage(authData.user);
             goTo("/");
         }
     };
@@ -51,5 +51,32 @@ export const useAuth = () => {
         }
     };
 
-    return { register, login, logout };
+    const getProfile = async () => {
+        console.log("Obteniendo perfil del usuario actual");
+
+        const { user } = await getProfileApi();
+
+        if (user) {
+            console.log("La api dice que hay usuario", user);
+        } else {
+            console.log("No hay usuario");
+        }
+    };
+
+    const updatedProfile = async (user, updatedFields) => {
+        console.log("updateProfileApi - user:", user);
+        console.log("updateProfileApi - updateFields:", updatedFields);
+
+        try {
+            console.log("Actualizando el perfil del usuario...");
+            const updatedUser = await updateProfileApi(user, updatedFields);
+            setUser(updatedUser);
+            saveUserInLocalStorage(updatedUser);
+            console.log("Perfil actualizado", updatedUser);
+        } catch (error) {
+            console.error("Error al actualizar perfil", error);
+        }
+    };
+
+    return { register, login, logout, getProfile, updatedProfile };
 };

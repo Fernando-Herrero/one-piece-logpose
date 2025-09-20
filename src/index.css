@@ -160,11 +160,11 @@ html {
 }
 
 .dropdown-panel {
-    @apply z-50 overflow-hidden bg-orange-100 rounded-xl shadow-lg divide-y divide-gray-400 p-3;
+    @apply z-50 overflow-hidden bg-orange-100 rounded-xl shadow-lg divide-y divide-gray-400 p-3 hover:shadow-2xl;
 }
 
 .dropdown-sm {
-    @apply w-48;
+    @apply w-38;
 }
 
 .dropdown-md {

@@ -7,7 +7,7 @@ export const AppShell = ({ children }) => {
             <DashboardNavbar />
             <SideBar />
 
-            <main>{children}</main>
+            <main className="pt-11 pl-15 min-h-screen md:pl-32">{children}</main>
         </div>
     );
 };

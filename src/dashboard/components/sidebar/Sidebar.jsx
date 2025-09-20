@@ -1,4 +1,5 @@
 import helpIcon from "@/assets/icons/help-icon.svg";
+import settings from "@/assets/icons/settings-icon.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useToggle } from "@/hooks/useToggle";
@@ -33,12 +34,18 @@ export const SideBar = () => {
         >
             <Navbar ref={containRef} isOpen={isOpen} toggleMenu={toggleMenu} />
 
-            <div className="flex flex-col gap-2 mt-auto">
-                <Link className="flex items-center gap-1" to="/help">
-                    <img className="w-4" src={helpIcon} alt="Help icon" />
-                    <span className="text-gradient">{languages[lang].navbar.help}</span>
-                </Link>
+            <div className="flex flex-col items-center gap-2 pl-1 mt-auto md:items-start">
                 <LanguageSelect className="mr-auto" />
+
+                <Link className="flex items-center gap-1 py-2" to="/help">
+                    <img className="w-5" src={helpIcon} alt="Help icon" />
+                    <span className="hidden text-gradient md:block">{languages[lang].navbar.help}</span>
+                </Link>
+
+                <button className="flex items-center gap-1 py-2 cursor-pointer">
+                    <img className="w-4" src={settings} alt="Settings icon" />
+                    <span className="hidden text-gradient md:block">{languages[lang].navbar.settings}</span>
+                </button>
             </div>
         </aside>
     );

@@ -11,10 +11,10 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 const navItems = [
-    { path: "/profile", label: "profile", icon: profileIcon, isPrivate: true },
-    { path: "/community", label: "community", icon: socialIcon, isPrivate: true },
-    { path: "/serie", label: "serie", icon: serieIcon, isPrivate: true },
-    { path: "/cards", label: "cards", icon: cardsIcon, isPrivate: true },
+    { path: "/dashboard/profile", label: "profile", icon: profileIcon, isPrivate: true },
+    { path: "/dashboard/community", label: "community", icon: socialIcon, isPrivate: true },
+    { path: "/dashboard/serie", label: "serie", icon: serieIcon, isPrivate: true },
+    { path: "/dashboard/cards", label: "cards", icon: cardsIcon, isPrivate: true },
     {
         path: "",
         label: "onepiece",
@@ -34,7 +34,7 @@ const navItems = [
     },
 ];
 
-export const Navbar = ({ toggleMenu, isOpen }) => {
+export const Navbar = ({ toggleMenu }) => {
     const { lang } = useContext(LanguagesContext);
     const { user } = useContext(AuthContext);
     const chooseLang = languages[lang].navbar;
