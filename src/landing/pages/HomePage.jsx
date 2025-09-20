@@ -24,12 +24,12 @@ export const HomePage = () => {
     };
 
     const subTitle = {
-        mobileXs: "87vh",
-        mobile: "70vh",
-        tablet: "73vh",
-        tabletXl: "75vh",
-        desktop: "70vh",
-        desktopXl: "70vh",
+        mobileXs: "76vh",
+        mobile: "59vh",
+        tablet: "60vh",
+        tabletXl: "62vh",
+        desktop: "63vh",
+        desktopXl: "64vh",
     };
 
     const maskSettings = maskMap[device] || maskMap["tabletXl"];

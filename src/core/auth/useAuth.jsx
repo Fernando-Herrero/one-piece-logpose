@@ -1,16 +1,17 @@
+import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
-import { registerApi } from "./auth.api";
-import { saveTokenInLocalStorage, saveUserInLocalStorage } from "./auth.service";
+import { getProfileApi, loginApi, logOutApi, registerApi, updateProfileApi } from "./auth.api";
+import {
+    removeTokenFromLocalStorage,
+    removeUserFromLocalStorage,
+    saveTokenInLocalStorage,
+    saveUserInLocalStorage,
+} from "./auth.service";
 
 export const useAuth = () => {
     const { setUser } = useContext(AuthContext);
-    const navigate = useNavigate();
-
-    const goTo = (link) => {
-        navigate(link);
-    };
+    const { goTo } = useGoTo();
 
     const register = async (user) => {
         console.log("Registrando usuario", user);
@@ -20,10 +21,62 @@ export const useAuth = () => {
         if (authData) {
             saveTokenInLocalStorage(authData.token);
             saveUserInLocalStorage(authData.user);
+            goTo("/");
+        }
+    };
+
+    const login = async (user) => {
+        console.log("Iniciando sesión:", user);
+
+        const authData = await loginApi(user);
+
+        if (authData) {
+            saveTokenInLocalStorage(authData.token);
+            saveUserInLocalStorage(authData.user);
             setUser(authData.user);
             goTo("/");
         }
     };
 
-    return { register };
+    const logout = async () => {
+        console.log("Cerrando sesión");
+        const logoutResponse = await logOutApi();
+
+        if (logoutResponse?.logout) {
+            console.log("logout del hook", logoutResponse);
+            removeTokenFromLocalStorage();
+            removeUserFromLocalStorage();
+            setUser(null);
+            goTo("/");
+        }
+    };
+
+    const getProfile = async () => {
+        console.log("Obteniendo perfil del usuario actual");
+
+        const { user } = await getProfileApi();
+
+        if (user) {
+            console.log("La api dice que hay usuario", user);
+        } else {
+            console.log("No hay usuario");
+        }
+    };
+
+    const updatedProfile = async (user, updatedFields) => {
+        console.log("updateProfileApi - user:", user);
+        console.log("updateProfileApi - updateFields:", updatedFields);
+
+        try {
+            console.log("Actualizando el perfil del usuario...");
+            const updatedUser = await updateProfileApi(user, updatedFields);
+            setUser(updatedUser);
+            saveUserInLocalStorage(updatedUser);
+            console.log("Perfil actualizado", updatedUser);
+        } catch (error) {
+            console.error("Error al actualizar perfil", error);
+        }
+    };
+
+    return { register, login, logout, getProfile, updatedProfile };
 };

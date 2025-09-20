@@ -1,22 +1,15 @@
-import { AuthContext } from "@/context/authContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { Button } from "@/landing/components/ui/Button";
 import { LanguageSelect } from "@/landing/components/ui/LanguageSelect";
-import { Navbar } from "@/landing/layouts/Navbar";
+import { Navbar } from "@/layouts/Navbar";
 import classNames from "classnames";
 import { useContext } from "react";
 
 export const MobileMenu = ({ isOpen, toggleMenu }) => {
-    const { user } = useContext(AuthContext);
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
-
-    const handleLogOut = () => {};
-    const handleReset = () => {
-        goTo("/");
-    };
 
     return (
         <div
@@ -36,38 +29,28 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
 
                 <Navbar toggleMenu={toggleMenu} />
 
-                {!user && (
-                    <div className="w-full flex items-center gap-3 border-t border-white/50 pt-8 pb-2">
-                        <Button
-                            variant="primary"
-                            className="w-1/2"
-                            onClick={() => {
-                                toggleMenu();
-                                goTo("/login");
-                            }}
-                        >
-                            {languages[lang].navbar.signIn}
-                        </Button>
-                        <Button
-                            variant="primary"
-                            className="w-1/2"
-                            onClick={() => {
-                                toggleMenu();
-                                goTo("/register");
-                            }}
-                        >
-                            {languages[lang].navbar.signUp}
-                        </Button>
-                    </div>
-                )}
-
-                {user && (
-                    <div className="w-full flex items-center gap-3 border-t border-white/50 pt-8 pb-2">
-                        <Button variant="danger" onClick={handleLogOut}>
-                            {languages[lang].navbar.logOut}
-                        </Button>
-                    </div>
-                )}
+                <div className="w-full flex items-center gap-3 border-t border-white/50 pt-8 pb-2">
+                    <Button
+                        variant="primary"
+                        className="w-1/2"
+                        onClick={() => {
+                            toggleMenu();
+                            goTo("/login");
+                        }}
+                    >
+                        {languages[lang].navbar.signIn}
+                    </Button>
+                    <Button
+                        variant="primary"
+                        className="w-1/2"
+                        onClick={() => {
+                            toggleMenu();
+                            goTo("/register");
+                        }}
+                    >
+                        {languages[lang].navbar.signUp}
+                    </Button>
+                </div>
             </div>
         </div>
     );

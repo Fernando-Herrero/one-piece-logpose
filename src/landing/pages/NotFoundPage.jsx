@@ -3,8 +3,8 @@ import backgroundImg400 from "@/assets/images/backgrounds/not-found-bg/backgroun
 import backgroundImg700 from "@/assets/images/backgrounds/not-found-bg/background-not-found-700.webp";
 import logo from "@/assets/images/one-piece-logo.webp";
 import crewImg from "@/assets/images/sombrero-first-crew.png";
+import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { AuthContext } from "@/context/authContext";
 import { languages } from "@/helpers/languages";
 import { Container } from "@/landing/components/ui/Container";
 import { useContext } from "react";
@@ -12,13 +12,13 @@ import { Link } from "react-router-dom";
 
 export const NotFoundPage = () => {
     const { lang } = useContext(LanguagesContext);
-    const { isLoggedIn } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
-    const redirectPath = isLoggedIn ? "/main" : "/login";
+    const redirectPath = user ? "/dashboard" : "/home";
 
     return (
         <div className="h-screen w-screen relative flex items-center justify-center overflow-hidden">
-            <picture className="absolute inset-0 h-full w-full">
+            <picture className="fixed inset-0 h-full w-full">
                 <source srcSet={backgroundImg1024} media="(min-width: 1024px)" type="image/webp" />
                 <source srcSet={backgroundImg700} media="(min-width: 700px)" type="image/webp" />
                 <source srcSet={backgroundImg400} media="(min-width: 400px)" type="image/webp" />

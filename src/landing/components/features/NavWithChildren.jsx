@@ -17,10 +17,10 @@ export const NavWithChildren = ({ item, chooseLang, toggleMenu }) => {
         };
 
         if (open) {
-            window.addEventListener("click", handelClickOutside);
+            window.addEventListener("mousedown", handelClickOutside);
         }
 
-        return () => window.removeEventListener("click", handelClickOutside);
+        return () => window.removeEventListener("mousedown", handelClickOutside);
     }, [open, toggleBox]);
 
     return (

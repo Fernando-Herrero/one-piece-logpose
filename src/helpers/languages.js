@@ -23,7 +23,7 @@ export const languages = {
         },
 
         navbar: {
-            dashboard: "Dashboard",
+            profile: "Perfil",
             community: "Comunidad",
             serie: "Serie",
             cards: "Cartas",
@@ -36,17 +36,22 @@ export const languages = {
             contact: "Contacto",
             signIn: "Login",
             signUp: "Registrarse",
-            logOut: "Cerrar Sesion",
+            logout: "Cerrar Sesion",
             reset: "Eliminar Cuenta",
+            search: "buscar...",
+            settings: "Ajustes",
         },
 
         modal: {
             confirmText: "¡Entendido!",
             cancelText: "Cancelar",
             loginMessage:
-                "✨ Déjame guiarte, nakama. Con esta aplicación podrás seguir el progreso de tu serie favorita de manera sencilla. Ten en cuenta que, al desbloquear un capítulo, se revelará información importante que puede contener spoilers. Así que avanza con cuidado y disfruta de la experiencia. ¡Espero que la disfrutes, nakama! ✨",
+                "✨ ¡Bienvenido a tu Dashboard, nakama! Desde aquí podrás controlar todo lo necesario: actualizar tu perfil, explorar tu nueva red social favorita y seguir de cerca el progreso de tus series preferidas. Gestiona tus listas, desbloquea capítulos, recibe notificaciones y mantente al día con todo tu contenido favorito. ¡Disfruta de la experiencia y que comience la aventura! ✨",
+
             contactMessage:
                 "¡Mensaje recibido, nakama! 🏴‍☠️ Gracias por escribirnos. La tripulación revisará tu mensaje y nos pondremos en contacto contigo lo antes posible.",
+            logOutMessage: "⚓ ¿Estás seguro de que quieres cerrar sesión, nakama?",
+            confirmLogOut: "Si",
         },
 
         characters: {
@@ -176,7 +181,7 @@ export const languages = {
             registerTitle: `Registration Form`,
             registerName: `First Name`,
             registerNameMessage: `Jhon`,
-            registerSurname: `Last Names`,
+            registerSurname: `Last Name`,
             registerSurnameMessage: `Doe Smith`,
             registerEmail: `Email`,
             registerEmailMessage: `email@gmail.com`,
@@ -191,7 +196,7 @@ export const languages = {
         },
 
         navbar: {
-            dashboard: "Dashboard",
+            profile: "Profile",
             community: "Community",
             serie: "Serie",
             cards: "Cards",
@@ -204,17 +209,21 @@ export const languages = {
             contact: "Contact",
             signIn: "Sign In",
             signUp: "Sign Up",
-            logOut: "Log Out",
+            logout: "Logout",
             reset: "Delete Account",
+            search: "search...",
+            settings: "Settings",
         },
 
         modal: {
             confirmText: "Got it!",
             cancelText: "Cancel",
             loginMessage:
-                "✨ Let me guide you, nakama. With this app, you can easily follow the progress of your favorite series. Keep in mind that unlocking a chapter may reveal important information that could contain spoilers. So proceed carefully and enjoy the experience. I hope you have fun, nakama! ✨",
+                "✨ Welcome to your Dashboard, nakama! From here you can manage everything you need: update your profile, explore your new favorite social network, and keep track of your favorite series. Manage your lists, unlock chapters, receive notifications, and stay up to date with all your favorite content. Enjoy the experience and let the adventure begin! ✨",
             contactMessage:
                 "Message received, nakama! 🏴‍☠️ Thanks for reaching out. The crew will review your message and get back to you as soon as possible.",
+            logOutMessage: "⚓ Are you sure you want to log out, nakama?",
+            confirmLogOut: "Yes",
         },
 
         characters: {

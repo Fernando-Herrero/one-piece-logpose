@@ -1,10 +1,9 @@
 export const INITIAL_REGISTER_FORM = {
     name: "",
-    surname: "",
+    lastName: "",
     email: "",
-    language: "",
     username: "",
     password: "",
     confirmPassword: "",
-    role: "",
+    role: "user",
 };

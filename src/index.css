@@ -69,7 +69,7 @@ html {
     --font-family-body: "Pricedown", serif;
 
     /* TAMAÑOS DE FUENTE */
-    --text-xs: 10px;
+    --text-xs: 12px;
     --text-sm: 14px;
     --text-base: 16px;
     --text-lg: 18px;
@@ -157,4 +157,16 @@ html {
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 90% 100%, 0% 100%);
+}
+
+.dropdown-panel {
+    @apply z-50 overflow-hidden bg-orange-100 rounded-xl shadow-lg divide-y divide-gray-400 p-3 hover:shadow-2xl;
+}
+
+.dropdown-sm {
+    @apply w-38;
+}
+
+.dropdown-md {
+    @apply w-64;
 }

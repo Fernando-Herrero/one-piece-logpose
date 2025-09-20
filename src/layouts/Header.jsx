@@ -1,19 +1,17 @@
 import logo from "@/assets/images/one-piece-logo.webp";
-import { AuthContext } from "@/context/authContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages.js";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
-import { MobileMenu } from "@/landing/components/features/MobileMenu.jsx";
+import { MobileMenu } from "@/landing/components/features/MobileMenu";
 import { Button } from "@/landing/components/ui/Button.jsx";
-import { ButtonMobileMenu } from "@/landing/components/ui/ButtonMobileMenu.jsx";
+import { ButtonMobileMenu } from "@/landing/components/ui/ButtonMobileMenu";
 import { Container } from "@/landing/components/ui/Container.jsx";
-import { Navbar } from "@/landing/layouts/Navbar";
+import { Navbar } from "@/layouts/Navbar";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-    const { user } = useContext(AuthContext);
     const { lang } = useContext(LanguagesContext);
     const [isOpen, toggleMenu] = useToggle();
     const { goTo } = useGoTo();
@@ -30,22 +28,14 @@ export const Header = () => {
                         <Navbar />
                     </div>
 
-                    {!user && (
-                        <div className="hidden md:flex gap-2">
-                            <Button variant="primary" onClick={() => goTo("/login")}>
-                                {languages[lang].navbar.signIn}
-                            </Button>
-                            <Button variant="primary" onClick={() => goTo("/register")}>
-                                {languages[lang].navbar.signUp}
-                            </Button>
-                        </div>
-                    )}
-
-                    {user && (
-                        <div className="hidden md:flex gap-2">
-                            <Button variant="danger">Log Out</Button>
-                        </div>
-                    )}
+                    <div className="hidden md:flex gap-2">
+                        <Button variant="primary" onClick={() => goTo("/login")}>
+                            {languages[lang].navbar.signIn}
+                        </Button>
+                        <Button variant="primary" onClick={() => goTo("/register")}>
+                            {languages[lang].navbar.signUp}
+                        </Button>
+                    </div>
                 </div>
 
                 <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />

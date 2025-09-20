@@ -32,13 +32,15 @@ export const ContactPage = () => {
 
     const fields = contactFormFields(form, lang);
     return (
-        <Container className="flex flex-col items-center gap-5 text-gradient">
-            <p className="text-center text-lg max-w-sm ">{languages[lang].contact.messageTitle}</p>
+        <Container className="flex flex-col items-center gap-5">
+            <p className="text-center text-lg max-w-sm text-gradient">
+                {languages[lang].contact.messageTitle}
+            </p>
             <form
                 className="flex flex-col gap-2 p-4 bg-gradient-primary rounded shadow-default max-w-md sm:min-w-sm"
                 onSubmit={handleSubmit}
             >
-                <h2 className="text-bold text-2xl self-center font-family-pirate">
+                <h2 className="text-bold text-2xl self-center font-family-pirate text-primary">
                     {languages[lang].contact.title}
                 </h2>
                 {fields.map(({ label, type, name, value, id, placeholder }, index) => (
@@ -56,7 +58,7 @@ export const ContactPage = () => {
                 ))}
 
                 <label>
-                    <span className="font-bold text-lg">Mensaje:</span>
+                    <span className="font-bold text-lg text-primary">Mensaje:</span>
                     <textarea
                         className="bg-white w-full rounded p-2 no-focus"
                         name="message"

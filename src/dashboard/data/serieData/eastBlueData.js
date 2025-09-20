@@ -1,8 +1,8 @@
 // eastBlueSaga.js
-import eastBlueBg from "../assets/images/backgrounds/east-blue-saga.webp";
-import orangeTownBg from "../assets/images/backgrounds/orange-town-bg.jpeg";
-import romanceDawnBg from "../assets/images/backgrounds/romance-down-bg.jpg";
-import syrupVillageBg from "../assets/images/backgrounds/syrup-village.avif";
+import eastBlueBg from "@/assets/images/backgrounds/east-blue-saga.webp";
+import orangeTownBg from "@/assets/images/backgrounds/orange-town-bg.jpeg";
+import romanceDawnBg from "@/assets/images/backgrounds/romance-down-bg.jpg";
+import syrupVillageBg from "@/assets/images/backgrounds/syrup-village.avif";
 
 export const EAST_BLUE_SAGA = {
     id: 1,

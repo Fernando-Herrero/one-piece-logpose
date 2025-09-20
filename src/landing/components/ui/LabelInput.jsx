@@ -14,12 +14,12 @@ export const LabelInput = ({ label, type, name, value, placeholder, id, onChange
 
     return (
         <label className={`relative flex flex-col ${className}`}>
-            <span className="font-bold text-lg">{label}</span>
+            <span className="font-bold text-lg text-primary">{label}</span>
             <input
                 className={inputClasses}
                 type={type}
                 name={name}
-                value={value}
+                value={value || ""}
                 id={id}
                 onChange={onChange}
                 autoComplete="off"

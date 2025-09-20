@@ -2,11 +2,15 @@ import { useToggle } from "@/hooks/useToggle";
 import { ToggleButton } from "@/landing/components/ui/ToggleButton";
 import classNames from "classnames";
 
-export const AccordionItem = ({ title, content, className = "" }) => {
+export const AccordionItem = ({ title, children, className = "" }) => {
     const [open, toggleAccordion] = useToggle();
 
     return (
-        <section className="flex flex-col p-4 rounded-xl bg-gradient-primary shadow-default">
+        <section
+            className={classNames("card gap-0 bg-gradient-primary p-4 rounded-xl", {
+                "shadow-2xl": open,
+            })}
+        >
             <header className="flex itmes-center justify-between cursor-pointer" onClick={toggleAccordion}>
                 <p className="text-xl font-bold font-family-pirate">{title}</p>
                 <ToggleButton isOpen={open} />
@@ -18,7 +22,7 @@ export const AccordionItem = ({ title, content, className = "" }) => {
                     "[grid-template-rows:0fr]": !open,
                 })}
             >
-                <div className="min-h-0 overflow-hidden">{content}</div>
+                <div className="min-h-0 overflow-hidden">{children}</div>
             </div>
         </section>
     );

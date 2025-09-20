@@ -12,10 +12,10 @@ export const registerFields = (lang, form) => [
     {
         label: "📝 " + languages[lang].login.registerSurname + ":",
         type: "text",
-        name: "surname",
-        id: "surname",
+        name: "lastName",
+        id: "lastName",
         placeholder: languages[lang].login.registerSurnameMessage,
-        value: form.surname,
+        value: form.lastName,
     },
     {
         label: "✉️ " + languages[lang].login.registerEmail + ":",

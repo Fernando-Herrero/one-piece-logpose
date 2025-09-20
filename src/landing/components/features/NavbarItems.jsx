@@ -18,7 +18,7 @@ export const NavbarItems = ({ navItems, chooseLang, toggleMenu }) => {
             }
 
             return (
-                <NavLink key={`${item.label}-${index}`} className="" to={item.path}>
+                <NavLink key={`${item.label}-${index}`} to={item.path}>
                     <p>{chooseLang[item.label]}</p>
                     <img src={rightArrow} alt="Right arrow icon" />
                 </NavLink>

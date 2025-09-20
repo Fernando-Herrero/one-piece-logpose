@@ -1,14 +1,21 @@
+import { ModalContext } from "@/context/ModalContext";
+import { useGoTo } from "@/hooks/useGoTo";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 
 export const Overlay = ({ children }) => {
-    const navigate = useNavigate();
+    const { goTo } = useGoTo();
     const [show, setShow] = useState(false);
-
+    const { hideModal } = useContext(ModalContext);
     const handleClose = () => {
         setShow(false);
-        setTimeout(() => navigate(".."), 300);
+    };
+
+    const handleTransitionEnd = () => {
+        if (!show) {
+            hideModal();
+            goTo("..");
+        }
     };
 
     useEffect(() => {
@@ -28,18 +35,25 @@ export const Overlay = ({ children }) => {
     }, []);
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-100" onClick={handleClose}>
-            <div className={`absolute inset-0 bg-black/90 duration-300`}></div>
-
+        <div
+            className="fixed inset-0 flex items-center justify-center z-100"
+            onClick={handleClose}
+            onTransitionEnd={handleTransitionEnd}
+        >
             <div
                 className={classNames(
-                    "relative mx-4 bg-white rounded shadow-white transform transition-all duration-300",
-                    {
-                        "translate-y-0 opacity-100": show,
-                        "translate-y-full opacity-0": !show,
-                    }
+                    "absolute inset-0 bg-black transition-opacity duration-300 z-10",
+                    show ? "opacity-90" : "opacity-0"
                 )}
+            ></div>
+
+            <div
+                className={classNames("relative mx-4 rounded transform transition-all duration-300 z-200", {
+                    "translate-y-0 opacity-100": show,
+                    "translate-y-full opacity-0": !show,
+                })}
                 onClick={(event) => event.stopPropagation()}
+                onTransitionEnd={handleTransitionEnd}
             >
                 {children}
             </div>

@@ -1,6 +1,6 @@
-import { AuthContext } from "@/context/authContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
+import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
 import { sessionStorage } from "@/helpers/storage";
 import { useLoginValidation } from "@/hooks/useLoginValidation";
@@ -9,9 +9,9 @@ import { Button } from "@/landing/components/ui/Button";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
 import { LabelPassword } from "@/landing/components/ui/LabelPassword";
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const EMPTY_USER = { id: "", username: "", password: "", experience: "" };
+const EMPTY_USER = { email: "", password: "" };
 
 export const LoginForm = () => {
     const savedForm = sessionStorage.get("loginInputs");
@@ -21,10 +21,9 @@ export const LoginForm = () => {
     const { error, validateForm, clearError } = useLoginValidation();
 
     const { lang } = useContext(LanguagesContext);
-    const { login } = useContext(AuthContext);
     const { showModal, hideModal } = useContext(ModalContext);
 
-    const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleInputForm = ({ target: { name, value } }) => {
         clearError();
@@ -35,17 +34,15 @@ export const LoginForm = () => {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const validationError = validateForm(form, lang);
         if (validationError) return;
 
-        login(form);
+        await login(form);
         sessionStorage.remove("loginInputs");
         setForm(EMPTY_USER);
-
-        navigate("/main");
 
         showModal({
             message: languages[lang].modal.loginMessage,
@@ -55,15 +52,15 @@ export const LoginForm = () => {
 
     return (
         <form className="flex flex-col items-center gap-2" onSubmit={handleSubmit}>
-            <h2 className="font-bold font-family-pirate text-subtitle">LOGIN</h2>
+            <h2 className="font-bold font-family-pirate text-subtitle text-primary">LOGIN</h2>
             <div className="flex flex-col gap-2 w-65 border border-linePrimary p-8 rounded shadow-default bg-gradient-primary">
                 <LabelInput
-                    label="Username:"
-                    type="text"
-                    name="username"
+                    label="Email:"
+                    type="email"
+                    name="email"
                     autoComplete="off"
-                    placeholder={languages[lang].login.username}
-                    value={form.username}
+                    placeholder={languages[lang].login.registerEmailMessage}
+                    value={form.email}
                     onChange={handleInputForm}
                 />
 

@@ -1,14 +1,14 @@
 import axios from "axios";
 import { getTokenFromLocalStorage } from "../auth/auth.service";
 
-const baseURL = "https://react-students-api-eleven-code.vercel.app/api";
+const baseURL = "https://eleven-code-api-fernando-herrero.vercel.app/api";
 // const baseURL = "http://localhost:4000";
 
 export const api = axios.create({
     baseURL,
     timeout: 10 * 1000,
     headers: {
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
         Accept: "application/json",
     },
 });
