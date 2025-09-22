@@ -1,9 +1,9 @@
 import luffyAvatar from "@/assets/images/avatars/luffy/luffy-happy-400.webp";
+import { DropDown } from "@/components/Dropdown";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
-import { DropDown } from "@/dashboard/components/Header/Dropdown";
 import { languages } from "@/helpers/languages";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";

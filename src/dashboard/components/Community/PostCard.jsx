@@ -1,3 +1,4 @@
+import { OptionsMenu } from "@/dashboard/components/Community/OptionsMenu";
 import { PostContent } from "@/dashboard/components/Community/PostContent";
 import { PostStats } from "@/dashboard/components/Community/PostStats";
 import { UserAvatar } from "@/dashboard/components/Community/UserAvatar";
@@ -13,7 +14,11 @@ export const PostCard = ({ post, index }) => {
         >
             <UserAvatar user={userId} />
             <div className="flex-8 flex flex-col gap-1">
-                <UserInfo user={userId} />
+                <div className="flex items-center justify-between">
+                    <UserInfo user={userId} />
+                    <OptionsMenu id={id} />
+                </div>
+
                 <PostContent text={text} hashtags={hashtags} images={images} />
                 <PostStats stats={{ likesCount, commentsCount, bookmarksCount }} />
             </div>

@@ -1,4 +1,4 @@
-import { createPostApi, getPostsApi } from "@/core/posts/posts.api";
+import { createPostApi, deletePostApi, getPostsApi } from "@/core/posts/posts.api";
 import { useEffect, useState } from "react";
 
 export const usePosts = () => {
@@ -31,9 +31,18 @@ export const usePosts = () => {
             const created = await createPostApi(newPost);
             setPosts([...posts, created]);
         } catch (error) {
-            console.error("Error al crar el post", error);
+            console.error("Error al crear el post", error);
         }
     };
 
-    return { posts, loading, error, setError, createPost };
+    const deletePost = async (id) => {
+        try {
+            await deletePostApi(id);
+            setPosts((prev) => prev.filter((p) => p.id !== id));
+        } catch (error) {
+            console.error("Error al elimianr el post", error);
+        }
+    };
+
+    return { posts, loading, error, setError, createPost, deletePost };
 };

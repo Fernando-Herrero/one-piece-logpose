@@ -182,6 +182,8 @@ export const languages = {
             noPosts: "No hay ningun post todavia",
             areaTextPost: "¿Qué esta pasando?",
             createPostError: "Escribe algo para postear",
+            loadingPosts: "Cargando posts",
+            eletePost: "Eliminar post",
         },
 
         sagaData: {
@@ -385,6 +387,8 @@ export const languages = {
             noPosts: "There isn't any post yet",
             areaTextPost: "What's happening?",
             createPostError: "Write something to post",
+            loadingPosts: "Loading posts",
+            deletePost: "Delete post",
         },
 
         sagaData: {

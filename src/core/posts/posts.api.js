@@ -19,9 +19,22 @@ export const createPostApi = async (post) => {
         const response = await api.post("/posts", post);
         console.log("respuesta de la api", response);
 
-        return response;
+        return response.data;
     } catch (error) {
         console.error("Error al postear el post", error);
+        throw error;
+    }
+};
+
+export const deletePostApi = async (id) => {
+    try {
+        console.log("Eliminando post", id);
+        const response = await api.delete(`/posts/${id}`);
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al eliminar posst", error);
         throw error;
     }
 };
