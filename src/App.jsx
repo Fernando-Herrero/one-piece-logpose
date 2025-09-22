@@ -19,7 +19,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 export const App = () => {
     const { modalData } = useContext(ModalContext);
-    const { isOpen } = modalData;
     const { user } = useContext(AuthContext);
 
     if (user) {
@@ -32,18 +31,22 @@ export const App = () => {
                             element={user ? <Navigate to="/dashboard" replace /> : <HomePage />}
                         />
                         <Route element={<PrivateRoute />}>
-                            <Route path="/dashboard/*" element={<Dashboard />} />
+                            <Route path="/dashboard/*" element={<Dashboard />}>
+                                <Route
+                                    path="modal"
+                                    element={
+                                        <Overlay>
+                                            {(handleClose) => <Modal {...modalData} onCancel={handleClose} />}
+                                        </Overlay>
+                                    }
+                                />
+                            </Route>
                             {/* <Route path="/main" element={<MainPage />} /> */}
                         </Route>
 
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </main>
-                {/* {isOpen && (
-                    <Overlay>
-                        <Modal {...modalData} />
-                    </Overlay>
-                )} */}
             </div>
         );
     }
@@ -84,7 +87,7 @@ export const App = () => {
             </main>
             <Footer />
 
-            {isOpen && (
+            {modalData && (
                 <Overlay>
                     <Modal {...modalData} />
                 </Overlay>

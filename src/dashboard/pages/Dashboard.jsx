@@ -1,4 +1,5 @@
 import { Overlay } from "@/components/Overlay";
+import { usePosts } from "@/core/posts/usePosts";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
@@ -6,6 +7,7 @@ import { Profile } from "@/dashboard/pages/Profile";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 export const Dashboard = () => {
+    const { createPost, setError, error } = usePosts();
     return (
         <AppShell>
             <Routes>

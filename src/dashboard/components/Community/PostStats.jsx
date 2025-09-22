@@ -10,7 +10,7 @@ export const PostStats = ({ stats }) => {
     ];
 
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between px-4">
             {statsConfig.map(({ icon, count, alt }) => (
                 <div key={alt} className="flex items-center gap-1">
                     <img className="w-4" src={icon} alt={alt} />

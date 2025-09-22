@@ -35,5 +35,5 @@ export const usePosts = () => {
         }
     };
 
-    return { posts, loading, error };
+    return { posts, loading, error, setError, createPost };
 };

@@ -181,6 +181,7 @@ export const languages = {
         posts: {
             noPosts: "No hay ningun post todavia",
             areaTextPost: "¿Qué esta pasando?",
+            createPostError: "Escribe algo para postear",
         },
 
         sagaData: {
@@ -383,6 +384,7 @@ export const languages = {
         posts: {
             noPosts: "There isn't any post yet",
             areaTextPost: "What's happening?",
+            createPostError: "Write something to post",
         },
 
         sagaData: {
