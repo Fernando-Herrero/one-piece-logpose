@@ -1,22 +1,14 @@
-import { ModalContext } from "@/context/ModalContext";
 import { useGoTo } from "@/hooks/useGoTo";
 import classNames from "classnames";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Overlay = ({ children }) => {
-    const { goTo } = useGoTo();
     const [show, setShow] = useState(false);
-    const { hideModal } = useContext(ModalContext);
+    const { goTo } = useGoTo();
 
     const handleClose = () => {
         setShow(false);
-    };
-
-    const handleTransitionEnd = () => {
-        if (!show) {
-            hideModal();
-            goTo("..");
-        }
+        goTo("..");
     };
 
     useEffect(() => {
@@ -36,11 +28,7 @@ export const Overlay = ({ children }) => {
     }, []);
 
     return (
-        <div
-            className="fixed inset-0 flex items-center justify-center z-100"
-            onClick={handleClose}
-            onTransitionEnd={handleTransitionEnd}
-        >
+        <div className="fixed inset-0 flex items-center justify-center z-25" onClick={handleClose}>
             <div
                 className={classNames(
                     "absolute inset-0 bg-black transition-opacity duration-300 z-10",
@@ -49,12 +37,11 @@ export const Overlay = ({ children }) => {
             ></div>
 
             <div
-                className={classNames("relative mx-4 rounded transform transition-all duration-300 z-200", {
+                className={classNames("absolute transition-all duration-300 z-50", {
                     "translate-y-0 opacity-100": show,
                     "translate-y-full opacity-0": !show,
                 })}
                 onClick={(event) => event.stopPropagation()}
-                onTransitionEnd={handleTransitionEnd}
             >
                 {typeof children === "function" ? children(handleClose) : children}
             </div>

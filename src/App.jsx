@@ -39,11 +39,11 @@ export const App = () => {
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </main>
-                {isOpen && (
+                {/* {isOpen && (
                     <Overlay>
                         <Modal {...modalData} />
                     </Overlay>
-                )}
+                )} */}
             </div>
         );
     }
