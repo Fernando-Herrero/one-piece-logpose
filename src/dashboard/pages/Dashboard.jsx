@@ -7,6 +7,8 @@ export const Dashboard = () => {
     return (
         <AppShell>
             <Routes>
+                <Route index element={<Navigate to="profile" replace />} />
+
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/community" element={<Social />} />
             </Routes>

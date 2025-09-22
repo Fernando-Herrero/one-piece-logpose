@@ -1,8 +1,8 @@
+import { LanguageSelect } from "@/components/LanguageSelect";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { Button } from "@/landing/components/ui/Button";
-import { LanguageSelect } from "@/landing/components/ui/LanguageSelect";
 import { Navbar } from "@/layouts/Navbar";
 import classNames from "classnames";
 import { useContext } from "react";

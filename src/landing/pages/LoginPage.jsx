@@ -1,4 +1,4 @@
-import { AvatarSelected } from "@/landing/components/features/AvatarSelected";
+import { AvatarSelected } from "@/components/AvatarSelected";
 import { LoginForm } from "@/landing/components/features/LoginForm";
 import { Container } from "@/landing/components/ui/Container";
 

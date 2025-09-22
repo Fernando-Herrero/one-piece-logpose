@@ -1,5 +1,5 @@
+import { ToggleButton } from "@/components/ToggleButton";
 import { useToggle } from "@/hooks/useToggle";
-import { ToggleButton } from "@/landing/components/ui/ToggleButton";
 import classNames from "classnames";
 
 export const AccordionItem = ({ title, children, className = "" }) => {

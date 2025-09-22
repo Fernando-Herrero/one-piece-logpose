@@ -1,11 +1,12 @@
-import { storage } from "@/helpers/storage";
+import { localStorage } from "@/helpers/storage";
 import { createContext, useState } from "react";
 
 export const AvatarContext = createContext(null);
 
 export const AvatarProvider = ({ children }) => {
-    const savedAvatar = storage.get("avatar");
+    const savedAvatar = localStorage.get("avatarSelected");
     const [selectedAvatar, setSelectedAvatar] = useState(savedAvatar || null);
+
     console.log(selectedAvatar);
 
     return (

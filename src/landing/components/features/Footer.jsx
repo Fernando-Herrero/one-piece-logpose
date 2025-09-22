@@ -1,7 +1,7 @@
+import { LanguageSelect } from "@/components/LanguageSelect";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { Container } from "@/landing/components/ui/Container";
-import { LanguageSelect } from "@/landing/components/ui/LanguageSelect";
 import { useContext } from "react";
 
 export const Footer = () => {

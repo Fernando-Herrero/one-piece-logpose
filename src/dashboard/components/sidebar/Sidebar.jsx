@@ -1,9 +1,9 @@
 import helpIcon from "@/assets/icons/help-icon.svg";
 import settings from "@/assets/icons/settings-icon.svg";
+import { LanguageSelect } from "@/components/LanguageSelect";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useToggle } from "@/hooks/useToggle";
-import { LanguageSelect } from "@/landing/components/ui/LanguageSelect";
 import { Navbar } from "@/layouts/Navbar";
 import { useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
