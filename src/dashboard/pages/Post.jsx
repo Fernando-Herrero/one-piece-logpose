@@ -1,12 +1,14 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
+import { useGoTo } from "@/hooks/useGoTo";
 import { Button } from "@/landing/components/ui/Button";
 import { useContext } from "react";
 
 export const Post = ({ onCancel }) => {
     const { lang } = useContext(LanguagesContext);
     const { isMobile } = useDevice();
+    const { goTo } = useGoTo();
 
     return (
         <div className="bg-white rounded-xl overflow-hidden">
@@ -25,7 +27,13 @@ export const Post = ({ onCancel }) => {
                     ></textarea>
                 </label>
                 <div className="flex items-center gap-1">
-                    <Button variant="danger" onClick={onCancel}>
+                    <Button
+                        variant="danger"
+                        onClick={() => {
+                            goTo("/dashboard/community");
+                            onCancel;
+                        }}
+                    >
                         {languages[lang].modal.cancelText}
                     </Button>
                     <Button variant="submit">{languages[lang].contact.button}</Button>
