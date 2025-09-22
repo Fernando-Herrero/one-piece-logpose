@@ -1,19 +1,19 @@
 import { LoginPage } from "@//landing/pages/LoginPage.jsx";
+import { Modal } from "@/components/Modal";
+import { Overlay } from "@/components/Overlay";
 import { AuthContext } from "@/context/AuthContext";
 import { ModalContext } from "@/context/ModalContext.jsx";
 import { Dashboard } from "@/dashboard/pages/Dashboard";
 import { Footer } from "@/landing/components/features/Footer";
 import { PrivateRoute } from "@/landing/components/features/PrivateRoute";
 import { RegisterForm } from "@/landing/components/features/RegisterForm.jsx";
-import { Modal } from "@/landing/components/ui/Modal.jsx";
-import { Overlay } from "@/landing/components/ui/Overlay.jsx";
+import { Header } from "@/landing/layouts/Header";
 import { CharactersPage } from "@/landing/pages/CharactersPage";
 import { ContactPage } from "@/landing/pages/ContactPage";
 import { FaqHelpPage } from "@/landing/pages/FaqHelpPage";
 import { HistoryPage } from "@/landing/pages/HistoryPage";
 import { HomePage } from "@/landing/pages/HomePage.jsx";
 import { NotFoundPage } from "@/landing/pages/NotFoundPage.jsx";
-import { Header } from "@/layouts/Header";
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 

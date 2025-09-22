@@ -1,6 +1,6 @@
 import rightArrow from "@/assets/icons/right-arrow.svg";
+import { ToggleButton } from "@/components/ToggleButton";
 import { useToggle } from "@/hooks/useToggle";
-import { ToggleButton } from "@/landing/components/ui/ToggleButton";
 import classNames from "classnames";
 import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";

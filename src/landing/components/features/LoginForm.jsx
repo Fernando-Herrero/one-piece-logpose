@@ -1,8 +1,10 @@
+import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
 import { sessionStorage } from "@/helpers/storage";
+import { useAvatar } from "@/hooks/useAvatar";
 import { useLoginValidation } from "@/hooks/useLoginValidation";
 import { useToggle } from "@/hooks/useToggle";
 import { Button } from "@/landing/components/ui/Button";
@@ -23,7 +25,9 @@ export const LoginForm = () => {
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
 
-    const { login } = useAuth();
+    const { login, updatedProfile } = useAuth();
+    const { selectedAvatar } = useAvatar();
+    const { setUser } = useContext(AuthContext);
 
     const handleInputForm = ({ target: { name, value } }) => {
         clearError();
@@ -40,7 +44,13 @@ export const LoginForm = () => {
         const validationError = validateForm(form, lang);
         if (validationError) return;
 
-        await login(form);
+        const loggedUser = await login(form);
+
+        if (selectedAvatar) {
+            const updateUser = await updatedProfile(loggedUser, { avatar: selectedAvatar });
+            setUser(updateUser);
+        }
+
         sessionStorage.remove("loginInputs");
         setForm(EMPTY_USER);
 
