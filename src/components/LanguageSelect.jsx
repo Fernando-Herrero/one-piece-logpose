@@ -1,5 +1,5 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { DropDown } from "@/dashboard/components/header/Dropdown";
+import { DropDown } from "@/dashboard/components/Header/Dropdown";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 

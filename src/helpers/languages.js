@@ -178,6 +178,11 @@ export const languages = {
             createdAt: "Creado en",
         },
 
+        posts: {
+            noPosts: "No hay ningun post todavia",
+            areaTextPost: "¿Qué esta pasando?",
+        },
+
         sagaData: {
             1: { title: "East Blue", saga_episode: "1 a 100" },
             2: { title: "Alabasta", saga_episode: "101 a 216" },
@@ -373,6 +378,11 @@ export const languages = {
             phone: "Phone",
             emptyPhone: "Enter your phone",
             createdAt: "Created at",
+        },
+
+        posts: {
+            noPosts: "There isn't any post yet",
+            areaTextPost: "What's happening?",
         },
 
         sagaData: {

@@ -7,8 +7,6 @@ export const AvatarProvider = ({ children }) => {
     const savedAvatar = localStorage.get("avatarSelected");
     const [selectedAvatar, setSelectedAvatar] = useState(savedAvatar || null);
 
-    console.log(selectedAvatar);
-
     return (
         <AvatarContext.Provider value={{ selectedAvatar, setSelectedAvatar }}>
             {children}

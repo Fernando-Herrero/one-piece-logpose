@@ -7,6 +7,7 @@ export const Overlay = ({ children }) => {
     const { goTo } = useGoTo();
     const [show, setShow] = useState(false);
     const { hideModal } = useContext(ModalContext);
+
     const handleClose = () => {
         setShow(false);
     };
@@ -55,7 +56,7 @@ export const Overlay = ({ children }) => {
                 onClick={(event) => event.stopPropagation()}
                 onTransitionEnd={handleTransitionEnd}
             >
-                {children}
+                {typeof children === "function" ? children(handleClose) : children}
             </div>
         </div>
     );
