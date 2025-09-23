@@ -33,7 +33,7 @@ export const logOutApi = async (user) => {
         console.log("Respuesta de la api la logout:", response);
 
         return response.data;
-    } catch {
+    } catch (error) {
         console.error("Error al cerrar sesión", error);
         throw error;
     }
