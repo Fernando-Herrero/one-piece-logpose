@@ -26,7 +26,7 @@ export const PostsSection = () => {
     return (
         <section className="flex flex-col items-center space-y-1">
             {posts.map((post, index) => (
-                <PostCard key={`${post.id}-${index}`} post={post} index={index} />
+                <PostCard key={post.id} post={post} index={index} />
             ))}
         </section>
     );

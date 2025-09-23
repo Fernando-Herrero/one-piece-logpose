@@ -156,7 +156,7 @@ export const HomePage = () => {
                     />
                 </picture>
 
-                <div className="absolute z-10 bottom-10 left-[50%] -translate-x-1/2 bg-gradient-primary p-4 rounded-xl text center animate-bounce perfect-center">
+                <div className="absolute z-10 bottom-10 left-[50%] -translate-x-1/2 bg-gradient-card p-4 rounded-xl text center animate-bounce perfect-center">
                     <p className="text-4xl font-family-pirate">SCROLL</p>
                     <img className="w-4" src={downArrow} alt="icon down arrow" />
                 </div>

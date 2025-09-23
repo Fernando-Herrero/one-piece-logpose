@@ -1,17 +1,15 @@
 import { Button } from "@/components/Button";
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { usePosts } from "@/core/posts/usePosts";
 import { languages } from "@/helpers/languages";
-import { useDevice } from "@/hooks/useDevice";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext, useState } from "react";
-import { useOutletContext } from "react-router-dom";
 
 export const Post = ({ onCancel }) => {
     const [contentPost, setContentPost] = useState({ text: "", image: "" });
 
-    const { createPost, setError, error } = useOutletContext();
+    const { createPost, setError, error } = usePosts();
     const { lang } = useContext(LanguagesContext);
-    const { isMobile } = useDevice();
     const { goTo } = useGoTo();
 
     const handleInputs = ({ target: { value, name } }) => {
@@ -44,9 +42,7 @@ export const Post = ({ onCancel }) => {
     return (
         <div className="bg-white rounded-xl overflow-hidden">
             <form
-                className={`bg-gradient-card flex flex-col items-center justify-between gap-2 p-2 min-h-96 ${
-                    isMobile ? "min-w-80" : ""
-                }`}
+                className="bg-gradient-card flex flex-col items-center justify-between gap-2 p-2 min-w-[80vw] sm:min-w-md"
                 onSubmit={handleSubmit}
             >
                 <label className="w-full">

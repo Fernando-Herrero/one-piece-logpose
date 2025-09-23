@@ -1,12 +1,10 @@
 import plusIcon from "@/assets/icons/plus-icon.svg";
-import { usePosts } from "@/core/posts/usePosts";
 import { PostsSection } from "@/dashboard/components/Community/PostsSection";
 import { useGoTo } from "@/hooks/useGoTo";
 import { Outlet } from "react-router-dom";
 
 export const Community = () => {
     const { goTo } = useGoTo();
-    const { createPost, setError, error } = usePosts();
 
     const handleCreatePost = () => {
         goTo("post");
@@ -23,7 +21,7 @@ export const Community = () => {
                     <img className="w-8 h-8" src={plusIcon} alt="Plus icon" />
                 </button>
             </div>
-            <Outlet context={{ createPost, setError, error }} />
+            <Outlet />
         </section>
     );
 };

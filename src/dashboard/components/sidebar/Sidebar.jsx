@@ -35,7 +35,7 @@ export const SideBar = () => {
             <Navbar ref={containRef} isOpen={isOpen} toggleMenu={toggleMenu} />
 
             <div className="flex flex-col items-center gap-2 pl-1 mt-auto md:items-start">
-                <LanguageSelect className="mr-auto" />
+                <LanguageSelect placement="bottom" align="left" />
 
                 <Link className="flex items-center gap-1 py-2" to="/help">
                     <img className="w-5" src={helpIcon} alt="Help icon" />

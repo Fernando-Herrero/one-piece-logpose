@@ -35,7 +35,12 @@ export const usePosts = () => {
     const createPost = async (newPost) => {
         try {
             const created = await createPostApi(newPost);
-            setPosts([...posts, created]);
+            console.log("este es el post creado", created);
+            setPosts((prev) => {
+                const newPost = [...prev, created];
+                console.log("Este es mi nuevo post", newPost);
+                return newPost;
+            });
         } catch (error) {
             console.error("Error al crear el post", error);
         }
