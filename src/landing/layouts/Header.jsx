@@ -1,10 +1,10 @@
 import logo from "@/assets/images/one-piece-logo.webp";
+import { Button } from "@/components/Button.jsx";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages.js";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
 import { MobileMenu } from "@/landing/components/features/MobileMenu";
-import { Button } from "@/landing/components/ui/Button.jsx";
 import { ButtonMobileMenu } from "@/landing/components/ui/ButtonMobileMenu";
 import { Container } from "@/landing/components/ui/Container.jsx";
 import { Navbar } from "@/layouts/Navbar";
@@ -29,12 +29,8 @@ export const Header = () => {
                     </div>
 
                     <div className="hidden md:flex gap-2">
-                        <Button variant="primary" onClick={() => goTo("/login")}>
-                            {languages[lang].navbar.signIn}
-                        </Button>
-                        <Button variant="primary" onClick={() => goTo("/register")}>
-                            {languages[lang].navbar.signUp}
-                        </Button>
+                        <Button onClick={() => goTo("/login")}>{languages[lang].navbar.signIn}</Button>
+                        <Button onClick={() => goTo("/register")}>{languages[lang].navbar.signUp}</Button>
                     </div>
                 </div>
 

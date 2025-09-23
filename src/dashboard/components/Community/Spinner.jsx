@@ -26,7 +26,7 @@ import classNames from "classnames";
  *   <span>Cargando datos...</span>
  * </div>
  */
-export const Spinner = ({ size = "xl", color = "secondary", className = "", ...props }) => {
+export const Spinner = ({ size = "xl", color = "primary", className = "", ...props }) => {
     const sizeClasses = {
         sm: "w-4 h-4",
         md: "w-6 h-6",
@@ -35,13 +35,12 @@ export const Spinner = ({ size = "xl", color = "secondary", className = "", ...p
     };
 
     const colorClasses = {
-        primary: "text-brand-400",
-        secondary: "text-secondary",
+        primary: "text-link",
         white: "text-white",
         gray: "text-gray-500",
-        success: "text-success-500",
-        warning: "text-warning-500",
-        error: "text-error-500",
+        success: "text-green-500",
+        warning: "text-red-700",
+        error: "text-red-500",
     };
 
     const spinnerClasses = classNames("animate-spin", sizeClasses[size], colorClasses[color], className);

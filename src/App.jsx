@@ -5,6 +5,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { ModalContext } from "@/context/ModalContext.jsx";
 import { Dashboard } from "@/dashboard/pages/Dashboard";
 import { Footer } from "@/landing/components/features/Footer";
+import { MapSection } from "@/landing/components/features/MapSection";
 import { PrivateRoute } from "@/landing/components/features/PrivateRoute";
 import { RegisterForm } from "@/landing/components/features/RegisterForm.jsx";
 import { Header } from "@/landing/layouts/Header";
@@ -73,7 +74,7 @@ export const App = () => {
                         path="/map"
                         element={
                             <Overlay>
-                                <Map />
+                                <MapSection />
                             </Overlay>
                         }
                     />

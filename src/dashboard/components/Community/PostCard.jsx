@@ -10,7 +10,7 @@ export const PostCard = ({ post, index }) => {
     return (
         <article
             key={`${id}-${index}`}
-            className="flex gap-1 w-full p-2 text-xs border border-white/30 rounded bg-gradient-primary shadow-default"
+            className="flex gap-1 w-full p-2 text-xs border border-white/30 rounded bg-gradient-card shadow-default"
         >
             <UserAvatar user={userId} />
             <div className="flex-8 flex flex-col gap-1">

@@ -3,7 +3,7 @@ import nami from "@/assets/images/ModalImgs/nami-modal.webp";
 import sanji from "@/assets/images/ModalImgs/sanji-modal.webp";
 import usopp from "@/assets/images/ModalImgs/usopp-modal.webp";
 import zoro from "@/assets/images/ModalImgs/zoro-modal.webp";
-import { Button } from "@/landing/components/ui/Button";
+import { Button } from "@/components/Button";
 import { useEffect, useState } from "react";
 
 const images = [luffy, zoro, sanji, nami, usopp];
@@ -29,10 +29,7 @@ export const Modal = ({ message, onConfirm, onCancel, confirmText = "Ok", cancel
                             {confirmText}
                         </Button>
                         {onCancel && (
-                            <Button
-                                onClick={onCancel}
-                                className="bg-linePrimary hover:bg-lineDark text-white"
-                            >
+                            <Button onClick={onCancel} variant="danger">
                                 {cancelText}
                             </Button>
                         )}

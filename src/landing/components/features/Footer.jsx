@@ -12,7 +12,7 @@ export const Footer = () => {
         <footer className="border-t border-linePrimary py-2 relative">
             <Container className="flex flex-col items-center text-center gap-1">
                 <div className="hidden md:flex">
-                    <LanguageSelect />
+                    <LanguageSelect placement="top" align="center" />
                 </div>
 
                 <div className="flex flex-col gap-0.5 text-xs">

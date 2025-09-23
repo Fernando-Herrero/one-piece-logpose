@@ -31,7 +31,7 @@ export const OptionsMenu = ({ id }) => {
                     onClick={() => deletePost(id)}
                     className="flex items-center justify-between w-full cursor-pointer drop-item-style"
                 >
-                    <p className="underline-hover">{languages[lang].posts.deletePost}</p>
+                    <p className="underline-hover text-gradient">{languages[lang].posts.deletePost}</p>
                     <img className="w-4" src={trash} alt="Trash icon" />
                 </button>
             </DropDown>

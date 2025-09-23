@@ -1,8 +1,8 @@
+import { Button } from "@/components/Button";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useGoTo } from "@/hooks/useGoTo";
-import { Button } from "@/landing/components/ui/Button";
 import { useContext, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
@@ -44,7 +44,7 @@ export const Post = ({ onCancel }) => {
     return (
         <div className="bg-white rounded-xl overflow-hidden">
             <form
-                className={`bg-gradient-primary flex flex-col items-center justify-between gap-2 p-2 min-h-96 ${
+                className={`bg-gradient-card flex flex-col items-center justify-between gap-2 p-2 min-h-96 ${
                     isMobile ? "min-w-80" : ""
                 }`}
                 onSubmit={handleSubmit}

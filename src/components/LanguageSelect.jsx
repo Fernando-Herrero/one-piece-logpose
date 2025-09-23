@@ -1,11 +1,14 @@
 import { DropDown } from "@/components/Dropdown";
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 
-export const LanguageSelect = () => {
+export const LanguageSelect = ({ placement, align }) => {
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang, setLang } = useContext(LanguagesContext);
+
+    const menuRef = useClickOutside(toggleMenu, isOpen);
 
     const languages = {
         es: { flag: "🇪🇸", label: "Español" },
@@ -18,7 +21,7 @@ export const LanguageSelect = () => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative" ref={menuRef}>
             <button
                 type="button"
                 onClick={toggleMenu}
@@ -28,7 +31,7 @@ export const LanguageSelect = () => {
                 <span className="hidden text-gradient md:block">{languages[lang].label}</span>
             </button>
 
-            <DropDown open={isOpen} onClose={closeMenu} size="sm" placement="bottom" align="left">
+            <DropDown open={isOpen} onClose={closeMenu} size="sm" placement={placement} align={align}>
                 <div className="flex flex-col">
                     {Object.entries(languages).map(([code, { flag, label }]) => (
                         <button

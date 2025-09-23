@@ -1,8 +1,8 @@
+import { Button } from "@/components/Button";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { languages } from "@/helpers/languages";
 import { storage } from "@/helpers/storage";
-import { Button } from "@/landing/components/ui/Button";
 import { Container } from "@/landing/components/ui/Container";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
 import { contactFormFields } from "@/landing/data/contactFields";
@@ -37,7 +37,7 @@ export const ContactPage = () => {
                 {languages[lang].contact.messageTitle}
             </p>
             <form
-                className="flex flex-col gap-2 p-4 bg-gradient-primary rounded shadow-default max-w-md sm:min-w-sm"
+                className="flex flex-col gap-2 p-4 bg-gradient-card rounded shadow-default max-w-md sm:min-w-sm"
                 onSubmit={handleSubmit}
             >
                 <h2 className="text-bold text-2xl self-center font-family-pirate text-primary">

@@ -2,13 +2,7 @@
 
 html {
     position: relative;
-    background: radial-gradient(circle at top left, rgba(255, 69, 0, 0.2), transparent 70%),
-        linear-gradient(
-            135deg,
-            var(--color-primary) 0%,
-            rgba(255, 127, 50, 0.2) 50%,
-            var(--color-secondary) 100%
-        );
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
 }
 
 @font-face {
@@ -41,26 +35,27 @@ html {
 
 @theme {
     /* COLORES DE FONDO */
-    --color-primary: #f4ede4;
-    --color-secondary: #e0d7c9;
+    --color-primary: #faf7f0;
+    --color-secondary: #ede8df;
     --color-card: #fff;
     --color-default: #414141b0;
     --color-hover: #d4d6d8;
-    --color-orangeAce: #ff4500;
-    --color-orange: #ff7f32;
-    --color-sunny: #ffa500;
+    --color-orangeAce: #f0713f;
+    --color-orange: #f5a261;
+    --color-sunny: #f7c777;
 
     /* COLORES DE TEXTO */
     --text-color-primary: #374151;
-    --text-color-secondary: #3a93cf;
-    --text-color-muted: #696969;
-    --text-color-contrast: #fff;
+    --text-color-secondary: #6b4f3b;
+    --text-color-muted: #7a7a7a;
+    --text-color-contrast: #ffffff;
+    --text-color-link: #3a93cf;
 
     /* COLORES DE ACENTO Y BOTONES */
-    --color-accent: #ffd700;
-    --color-accentHover: #e6b800;
-    --color-linePrimary: #8b0000;
-    --color-lineDark: #400;
+    --color-accent: #f5a261;
+    --color-accentHover: #f78f3f;
+    --color-linePrimary: #a64242;
+    --color-lineDark: #732f2f;
 
     /* FAMILIAS DE FUENTES */
     --font-family-title: "OnePiece", serif;
@@ -116,7 +111,7 @@ html {
 }
 
 .btn {
-    @apply self-center py-1 px-1.5 border-2 min-w-20 border-linePrimary rounded cursor-pointer 
+    @apply self-center py-1 px-1.5 min-w-20 rounded cursor-pointer 
         transition-all duration-200 ease-in-out appearance-none relative 
         shadow-button;
 }
@@ -126,7 +121,11 @@ html {
 }
 
 .bg-gradient-primary {
-    @apply bg-gradient-to-br from-secondary/30 to-orangeAce/60;
+    @apply bg-gradient-to-br from-secondary/70 to-orange/30;
+}
+
+.bg-gradient-card {
+    @apply bg-gradient-to-br from-secondary/80 via-orange/40 to-orangeAce/50;
 }
 
 .perfect-center {
@@ -143,11 +142,11 @@ html {
 }
 
 .text-gradient-secondary {
-    @apply bg-gradient-to-br from-orangeAce to-sunny bg-clip-text text-transparent filter brightness-100;
+    @apply bg-gradient-to-br from-orange-600 to-orange-800 bg-clip-text text-transparent;
 }
 
 .logo-mask {
-    background: white;
+    background: black;
     mask-image: url("/src/assets/images/onepiece-mask.svg");
     mask-repeat: no-repeat;
 }

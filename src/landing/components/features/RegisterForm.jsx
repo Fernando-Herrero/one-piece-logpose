@@ -1,10 +1,10 @@
+import { Button } from "@/components/Button";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
 import { sessionStorage } from "@/helpers/storage";
 import { useRegisterValidation } from "@/hooks/useRegisterValidation";
 import { useToggle } from "@/hooks/useToggle";
-import { Button } from "@/landing/components/ui/Button";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
 import { LabelPassword } from "@/landing/components/ui/LabelPassword";
 import { INITIAL_REGISTER_FORM } from "@/landing/data/INITIAL_REGISTER_FORM";

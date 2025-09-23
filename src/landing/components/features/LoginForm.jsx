@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
@@ -7,7 +8,6 @@ import { sessionStorage } from "@/helpers/storage";
 import { useAvatar } from "@/hooks/useAvatar";
 import { useLoginValidation } from "@/hooks/useLoginValidation";
 import { useToggle } from "@/hooks/useToggle";
-import { Button } from "@/landing/components/ui/Button";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
 import { LabelPassword } from "@/landing/components/ui/LabelPassword";
 import { useContext, useState } from "react";

@@ -19,7 +19,7 @@ export const ProfileArticle = () => {
     const basicFields = getProfileFields(user, lang);
 
     return (
-        <article className="text-sm p-2 card gap-1">
+        <article className="text-sm p-2 card gap-1 bg-gradient-card">
             <div className="flex flex-col gap-2 text-xs">
                 {basicFields.map((fieldProps, index) => (
                     <EditableField

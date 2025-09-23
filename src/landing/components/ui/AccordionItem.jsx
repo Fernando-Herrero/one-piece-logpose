@@ -2,17 +2,17 @@ import { ToggleButton } from "@/components/ToggleButton";
 import { useToggle } from "@/hooks/useToggle";
 import classNames from "classnames";
 
-export const AccordionItem = ({ title, children, className = "" }) => {
+export const AccordionItem = ({ title, children, className = "", classHeader = "" }) => {
     const [open, toggleAccordion] = useToggle();
 
     return (
         <section
-            className={classNames("card gap-0 bg-gradient-primary p-4 rounded-xl", {
+            className={classNames(`gap-0 bg-gradient-card p-4 rounded-xl ${className}`, {
                 "shadow-2xl": open,
             })}
         >
             <header className="flex itmes-center justify-between cursor-pointer" onClick={toggleAccordion}>
-                <p className="text-xl font-bold font-family-pirate">{title}</p>
+                <p className={`text-xl font-bold ${classHeader}`}>{title}</p>
                 <ToggleButton isOpen={open} />
             </header>
 

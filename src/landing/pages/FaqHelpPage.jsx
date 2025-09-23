@@ -1,5 +1,6 @@
 import { AccordionItem } from "@/landing/components/ui/AccordionItem";
 import { Container } from "@/landing/components/ui/Container";
+
 const faqData = [
     {
         title: "¿Qué es esta app de One Piece?",
@@ -51,7 +52,14 @@ export const FaqHelpPage = () => {
     return (
         <Container className="pb-20 space-y-2 max-w-lg">
             {faqData.map(({ title, text }, index) => (
-                <AccordionItem key={`${title}-${index}`} title={title} content={text} />
+                <AccordionItem
+                    key={`${title}-${index}`}
+                    title={title}
+                    className="card"
+                    classHeader="font-family-pirate"
+                >
+                    <p className="text-gradient">{text}</p>
+                </AccordionItem>
             ))}
         </Container>
     );
