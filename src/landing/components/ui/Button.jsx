@@ -1,4 +1,4 @@
-export const Button = ({ children, className = "", onClick, variant = "submit" }) => {
+export const Button = ({ children, className = "", onClick, variant = "submit", type = "button" }) => {
     const styles = {
         submit: "text-black bg-accent hover:bg-accentHover",
         danger: "text-white bg-linePrimary hover:bg-lineDark",
@@ -6,7 +6,7 @@ export const Button = ({ children, className = "", onClick, variant = "submit" }
     };
 
     return (
-        <button className={`btn ${className} ${styles[variant]}`} onClick={onClick}>
+        <button type={type} className={`btn ${className} ${styles[variant]}`} onClick={onClick}>
             {children}
         </button>
     );

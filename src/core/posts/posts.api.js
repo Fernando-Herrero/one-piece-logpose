@@ -38,3 +38,29 @@ export const deletePostApi = async (id) => {
         throw error;
     }
 };
+
+export const likePostApi = async (id) => {
+    try {
+        console.log("Cambiando like al post", id);
+        const response = await api.post(`/posts/${id}/like`);
+        console.log("respues de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al dar like al post", error);
+        throw error;
+    }
+};
+
+export const bookmarkPostApi = async (id) => {
+    try {
+        console.log("Cambiando bookmark al post", id);
+        const response = await api.post(`/posts/${id}/bookmark`);
+        console.log("respues de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al guardar el post", error);
+        throw error;
+    }
+};

@@ -19,6 +19,13 @@ export const Post = ({ onCancel }) => {
         setContentPost((prev) => ({ ...prev, [name]: value }));
     };
 
+    const handleCancel = () => {
+        setContentPost({ text: "", image: "" });
+        setError(null);
+        goTo("/dashboard/community");
+        onCancel();
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!contentPost.text.trim()) return setError(languages[lang].posts.createPostError);
@@ -31,6 +38,7 @@ export const Post = ({ onCancel }) => {
         await createPost(newPost);
         setContentPost({ text: "", image: "" });
         onCancel();
+        setError(null);
     };
 
     return (
@@ -74,16 +82,12 @@ export const Post = ({ onCancel }) => {
                 {error && <p className="text-red-700">{error}</p>}
 
                 <div className="flex items-center gap-1">
-                    <Button
-                        variant="danger"
-                        onClick={() => {
-                            goTo("/dashboard/community");
-                            onCancel();
-                        }}
-                    >
+                    <Button type="button" variant="danger" onClick={handleCancel}>
                         {languages[lang].modal.cancelText}
                     </Button>
-                    <Button variant="submit">{languages[lang].contact.button}</Button>
+                    <Button type="submit" variant="submit">
+                        {languages[lang].contact.button}
+                    </Button>
                 </div>
             </form>
         </div>

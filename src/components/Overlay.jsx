@@ -1,18 +1,35 @@
+import { ModalContext } from "@/context/ModalContext";
 import { useGoTo } from "@/hooks/useGoTo";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
-export const Overlay = ({ children }) => {
+export const Overlay = ({ children, isModal = false }) => {
     const [show, setShow] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
+    const { modalData, hideModal } = useContext(ModalContext);
+    const isModalOpen = modalData?.isOpen;
+
     const { goTo } = useGoTo();
 
     const handleClose = () => {
+        if (isClosing) return;
+
+        setIsClosing(true);
         setShow(false);
-        goTo("..");
+
+        setTimeout(() => {
+            if (isModalOpen && hideModal) {
+                hideModal();
+            } else {
+                goTo("..");
+            }
+        }, 300);
     };
 
     useEffect(() => {
-        setShow(true);
+        const timer = setTimeout(() => {
+            setShow(true);
+        }, 10);
 
         const handleEscape = (event) => {
             if (event.key === "Escape") handleClose();
@@ -22,6 +39,7 @@ export const Overlay = ({ children }) => {
         document.body.style.overflow = "hidden";
 
         return () => {
+            clearTimeout(timer);
             window.removeEventListener("keydown", handleEscape);
             document.body.style.overflow = "unset";
         };

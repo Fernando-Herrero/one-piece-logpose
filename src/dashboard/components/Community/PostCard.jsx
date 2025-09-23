@@ -10,7 +10,7 @@ export const PostCard = ({ post, index }) => {
     return (
         <article
             key={`${id}-${index}`}
-            className="flex gap-1 overflow-hidden w-full p-2 text-xs border border-white/30 rounded bg-gradient-primary shadow-default"
+            className="flex gap-1 w-full p-2 text-xs border border-white/30 rounded bg-gradient-primary shadow-default"
         >
             <UserAvatar user={userId} />
             <div className="flex-8 flex flex-col gap-1">
@@ -20,7 +20,7 @@ export const PostCard = ({ post, index }) => {
                 </div>
 
                 <PostContent text={text} hashtags={hashtags} images={images} />
-                <PostStats stats={{ likesCount, commentsCount, bookmarksCount }} />
+                <PostStats post={post} />
             </div>
         </article>
     );

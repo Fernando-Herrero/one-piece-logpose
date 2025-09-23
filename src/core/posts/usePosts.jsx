@@ -1,4 +1,10 @@
-import { createPostApi, deletePostApi, getPostsApi } from "@/core/posts/posts.api";
+import {
+    bookmarkPostApi,
+    createPostApi,
+    deletePostApi,
+    getPostsApi,
+    likePostApi,
+} from "@/core/posts/posts.api";
 import { useEffect, useState } from "react";
 
 export const usePosts = () => {
@@ -44,5 +50,35 @@ export const usePosts = () => {
         }
     };
 
-    return { posts, loading, error, setError, createPost, deletePost };
+    const likePost = async (id) => {
+        try {
+            const result = await likePostApi(id);
+            setPosts((prev) =>
+                prev.map((post) =>
+                    post.id === id ? { ...post, likesCount: result.likesCount, liked: result.liked } : post
+                )
+            );
+        } catch (error) {
+            console.error("Error al dar like al post", error);
+            setError(error);
+        }
+    };
+
+    const bookmarkPost = async (id) => {
+        try {
+            const result = await bookmarkPostApi(id);
+            setPosts((prev) =>
+                prev.map((post) =>
+                    post.id === id
+                        ? { ...post, bookmarksCount: result.bookmarksCount, bookmarked: result.bookmarked }
+                        : post
+                )
+            );
+        } catch (error) {
+            console.error("Error al guardar el post", error);
+            setError(error);
+        }
+    };
+
+    return { posts, loading, error, setError, createPost, deletePost, likePost, bookmarkPost };
 };

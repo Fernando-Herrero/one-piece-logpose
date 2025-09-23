@@ -1,3 +1,4 @@
+import arrow from "@/assets/icons/right-arrow.svg";
 import luffyAvatar from "@/assets/images/avatars/luffy/luffy-happy-400.webp";
 import { DropDown } from "@/components/Dropdown";
 import { AuthContext } from "@/context/AuthContext";
@@ -5,6 +6,7 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -16,7 +18,10 @@ export const UserMenu = () => {
     const { showModal, hideModal } = useContext(ModalContext);
     const { user } = useContext(AuthContext);
 
+    const menuRef = useClickOutside(toggleMenu, isOpen);
+
     const handleLogOut = () => {
+        closeMenu();
         showModal({
             message: languages[lang].modal.logOutMessage,
             onConfirm: () => {
@@ -29,7 +34,7 @@ export const UserMenu = () => {
     };
 
     return (
-        <div className=" relative">
+        <div className=" relative" ref={menuRef}>
             <button
                 type="button"
                 className="flex w-6 rounded-full focus-ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 cursor-pointer"
@@ -41,15 +46,34 @@ export const UserMenu = () => {
 
             <DropDown open={isOpen} onClose={closeMenu} size="sm">
                 <div className="pb-2">
-                    <span className="block text-xs text-gradient dark:text-white">@{user?.username}</span>
-                    <span className="block text-xs text-gradient truncate dark:text-white">
+                    <span className="py-0.5 px-2 block text-xs text-gradient dark:text-white">
+                        @{user?.username}
+                    </span>
+                    <span className="py-0.5 px-2 block text-xs text-gradient truncate dark:text-white">
                         {user?.email}
                     </span>
                 </div>
-                <div className="flex flex-col pt-2">
-                    <Link className="text-gradient text-xs">{languages[lang].navbar.profile}</Link>
-                    <button className="text-gradient text-xs w-fit cursor-pointer" onClick={handleLogOut}>
-                        {languages[lang].navbar.logout}
+                <div className="flex flex-col pt-2 ">
+                    <Link className="flex justify-between text-xs drop-item-style group">
+                        <span className="underline-hover text-gradient">
+                            {languages[lang].navbar.profile}
+                        </span>
+                        <img
+                            className="w-4 transition-transform group-hover:translate-x-1"
+                            src={arrow}
+                            alt="Right arrow"
+                        />
+                    </Link>
+                    <button
+                        className="flex justify-between w-full text-start text-xs cursor-pointer drop-item-style group"
+                        onClick={handleLogOut}
+                    >
+                        <p className="w-fit underline-hover text-gradient">{languages[lang].navbar.logout}</p>
+                        <img
+                            className="w-4 transition-transform group-hover:translate-x-1"
+                            src={arrow}
+                            alt="Right arrow"
+                        />
                     </button>
                 </div>
             </DropDown>

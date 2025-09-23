@@ -47,7 +47,7 @@ export const EditableField = ({
                         value={field}
                         onChange={(event) => setField(event.target.value)}
                         onKeyDown={handleKeyDown}
-                        className="px-1 py-0.5 border border-gray-400 rounded-xl text-xs text-gradient no-focus"
+                        className="px-1 py-0.5 rounded-xl text-xs no-focus"
                         placeholder={placeholder}
                         autoFocus
                     />
@@ -56,7 +56,7 @@ export const EditableField = ({
                         onClick={handleSave}
                         type="button"
                     >
-                        <span className="text-gradient">Save</span>
+                        <span className="text-primary">Save</span>
                     </button>
                     <button onClick={cancelEditing} className="cursor-pointer transition hover:scale-110">
                         <img className="w-3" src={cross} alt="Cross icon" />

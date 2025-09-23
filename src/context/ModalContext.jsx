@@ -8,6 +8,7 @@ export const ModdalProvider = ({ children, onCancel }) => {
     const { lang } = useContext(LanguagesContext);
 
     const [modalData, setModalData] = useState({
+        isOpen: false,
         message: "",
         onConfirm: null,
         onCancel: null,
@@ -17,6 +18,7 @@ export const ModdalProvider = ({ children, onCancel }) => {
 
     const showModal = (config) => {
         setModalData({
+            isOpen: true,
             message: config.message || "",
             onConfirm: config.onConfirm || null,
             onCancel: onCancel,
@@ -25,5 +27,14 @@ export const ModdalProvider = ({ children, onCancel }) => {
         });
     };
 
-    return <ModalContext.Provider value={{ modalData, showModal }}>{children}</ModalContext.Provider>;
+    const hideModal = () => {
+        setModalData((prev) => ({
+            ...prev,
+            isOpen: false,
+        }));
+    };
+
+    return (
+        <ModalContext.Provider value={{ modalData, showModal, hideModal }}>{children}</ModalContext.Provider>
+    );
 };
