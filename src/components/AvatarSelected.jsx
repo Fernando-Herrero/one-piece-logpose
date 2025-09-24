@@ -7,8 +7,12 @@ export const AvatarSelected = () => {
 
     return (
         <section className="w-full flex items-center justify-center gap-2.5 pt-2">
-            {characters.map((character) => (
-                <AvatarArticle character={character} handleAvatar={handleAvatar} />
+            {characters.map((character, index) => (
+                <AvatarArticle
+                    key={`${character}-${index}`}
+                    character={character}
+                    handleAvatar={handleAvatar}
+                />
             ))}
         </section>
     );

@@ -41,7 +41,7 @@ export const LoginForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const validationError = validateForm(form, lang);
+        const validationError = validateForm(lang);
         if (validationError) return;
 
         const loggedUser = await login(form);

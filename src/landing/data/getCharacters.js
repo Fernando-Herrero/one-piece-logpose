@@ -1,46 +1,46 @@
-import luffyMobile400 from "@/assets/images/avatars/luffy/luffy-happy-400.webp";
 import luffyMobile700 from "@/assets/images/avatars/luffy/luffy-happy-700.webp";
 import luffyDesktop from "@/assets/images/ModalImgs/luffy-modal.webp";
+import luffyMobile400 from "../../../public/luffy-happy-400.webp";
 
 // Zoro
-import zoroMobile400 from "@/assets/images/avatars/zoro/zoro-happy-400.webp";
 import zoroMobile700 from "@/assets/images/avatars/zoro/zoro-happy-700.webp";
 import zoroDesktop from "@/assets/images/ModalImgs/zoro-modal.webp";
+import zoroMobile400 from "../../../public/zoro-happy-400.webp";
 
 // Sanji
-import sanjiMobile400 from "@/assets/images/avatars/sanji/sanji-happy-400.webp";
 import sanjiMobile700 from "@/assets/images/avatars/sanji/sanji-happy-700.webp";
 import sanjiDesktop from "@/assets/images/ModalImgs/sanji-modal.webp";
+import sanjiMobile400 from "../../../public/sanji-happy-400.webp";
 
 // Nami
-import namiMobile400 from "@/assets/images/avatars/nami/nami-happy-400.webp";
 import namiMobile700 from "@/assets/images/avatars/nami/nami-happy-700.webp";
 import namiDesktop from "@/assets/images/ModalImgs/nami-modal.webp";
+import namiMobile400 from "../../../public/nami-happy-400.webp";
 
 // Usopp
-import usoppMobile400 from "@/assets/images/avatars/usopp/usopp-happy-400.webp";
 import usoppMobile700 from "@/assets/images/avatars/usopp/usopp-happy-700.webp";
 import usoppDesktop from "@/assets/images/ModalImgs/usopp-modal.webp";
+import usoppMobile400 from "../../../public/usopp-happy-400.webp";
 
 // Chopper
-import chopperMobile400 from "@/assets/images/avatars/chopper/chopper-preskip-400.webp";
 import chopperMobile700 from "@/assets/images/avatars/chopper/chopper-preskip-700.webp";
 import chopperDesktop from "@/assets/images/ModalImgs/chopper-modal.webp";
+import chopperMobile400 from "../../../public/chopper-preskip-400.webp";
 
 // Robin
-import robinMobile400 from "@/assets/images/avatars/robin/robin-happy-400.webp";
 import robinMobile700 from "@/assets/images/avatars/robin/robin-happy-700.webp";
 import robinDesktop from "@/assets/images/ModalImgs/robin-modal.webp";
+import robinMobile400 from "../../../public/robin-happy-400.webp";
 
 // Brook
-import brookMobile400 from "@/assets/images/avatars/brook/brook-preskip-400.webp";
 import brookMobile700 from "@/assets/images/avatars/brook/brook-preskip-700.webp";
 import brookDesktop from "@/assets/images/ModalImgs/brook-modal.webp";
+import brookMobile400 from "../../../public/brook-preskip-400.webp";
 
 // Jimbe
-import jimbeMobile400 from "@/assets/images/avatars/jimbe/jimbe-preskip-400.webp";
 import jimbeMobile700 from "@/assets/images/avatars/jimbe/jimbe-preskip-700.webp";
 import jimbeDesktop from "@/assets/images/ModalImgs/jimbe-modal.webp";
+import jimbeMobile400 from "../../../public/jimbe-preskip-400.webp";
 
 import { languages } from "@/helpers/languages";
 

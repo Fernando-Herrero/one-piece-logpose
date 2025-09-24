@@ -1,5 +1,4 @@
 import arrow from "@/assets/icons/right-arrow.svg";
-import luffyAvatar from "@/assets/images/avatars/luffy/luffy-happy-400.webp";
 import { DropDown } from "@/components/Dropdown";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
@@ -10,6 +9,7 @@ import { useClickOutside } from "@/hooks/useClickOutside";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import luffyAvatar from "../../../../public/luffy-happy-400.webp";
 
 export const UserMenu = () => {
     const [isOpen, toggleMenu, closeMenu] = useToggle();
