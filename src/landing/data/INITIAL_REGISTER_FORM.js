@@ -6,4 +6,5 @@ export const INITIAL_REGISTER_FORM = {
     password: "",
     confirmPassword: "",
     role: "user",
+    avatar: "",
 };

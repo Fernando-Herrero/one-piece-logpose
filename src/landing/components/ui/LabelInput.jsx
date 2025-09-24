@@ -13,8 +13,8 @@ export const LabelInput = ({ label, type, name, value, placeholder, id, onChange
     });
 
     return (
-        <label className={`relative flex flex-col ${className}`}>
-            <span className="font-bold text-lg text-primary">{label}</span>
+        <label className={`relative flex flex-col w-full ${className}`}>
+            <span className="font-bold text-md text-primary sm:text-lg">{label}</span>
             <input
                 className={inputClasses}
                 type={type}

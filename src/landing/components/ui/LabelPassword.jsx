@@ -29,8 +29,8 @@ export const LabelPassword = ({
         "border-error-500 focus:ring-error-500": showError,
     });
     return (
-        <label className={`flex flex-col ${className}`}>
-            <span className="font-bold text-lg text-primary">{label}:</span>
+        <label className={`flex flex-col w-full ${className}`}>
+            <span className="font-bold text-md text-primary sm:text-lg">{label}:</span>
             <div className="flex items-center relative">
                 <input
                     className={inputClasses}

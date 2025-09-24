@@ -1,25 +1,28 @@
 export const languages = {
     es: {
         login: {
-            username: `Ingrese username, nakama`,
-            password: `Contraseña`,
-            passwordMessage: `Clave del tesoro`,
-            notRegistered: `¿Aún no estás registrado, nakama?`,
-            registered: `Regístrate`,
-            registerTitle: `Formulario de registro`,
-            registerName: `Nombre`,
-            registerNameMessage: `Juan`,
-            registerSurname: `Apellidos`,
-            registerSurnameMessage: `Pérez Kurrikaga`,
-            registerEmail: `Correo`,
-            registerEmailMessage: `correo@gmail.com`,
-            registerLang: `Idioma`,
-            registerSelectLang: `Selecciona tu idioma`,
-            registerUsername: `Juan123`,
-            registerPassword: `Elija una contraseña`,
-            registerConfirm: `Confirmar contraseña`,
-            confirmPassword: `Confirme contraseña`,
-            registerSubmit: `Enviar`,
+            username: "Ingrese username, nakama",
+            password: "Contraseña",
+            passwordMessage: "Clave del tesoro",
+            notRegistered: "¿Aún no estás registrado, nakama?",
+            registered: "Regístrate",
+            registerTitle: "Formulario de registro",
+            registerName: "Nombre",
+            registerNameMessage: "Juan",
+            registerSurname: "Apellidos",
+            registerSurnameMessage: "Pérez Kurrikaga",
+            registerEmail: "Correo",
+            registerEmailMessage: "correo@gmail.com",
+            registerLang: "Idioma",
+            registerSelectLang: "Selecciona tu idioma",
+            registerUsername: "Juan123",
+            registerPassword: "Elija una contraseña",
+            registerConfirm: "Confirmar contraseña",
+            confirmPassword: "Confirme contraseña",
+            registerSubmit: "Enviar",
+            registerAcceptTerms: "Acepto los términos y condiciones y la política de privacidad.",
+            registerTerms:
+                "* Al registrarte aceptas nuestros Términos y Condiciones y reconoces haber leído nuestra Política de Privacidad...",
         },
 
         navbar: {
@@ -45,8 +48,10 @@ export const languages = {
         modal: {
             confirmText: "¡Entendido!",
             cancelText: "Cancelar",
-            loginMessage:
+            registerMessage:
                 "✨ ¡Bienvenido a tu Dashboard, nakama! Desde aquí podrás controlar todo lo necesario: actualizar tu perfil, explorar tu nueva red social favorita y seguir de cerca el progreso de tus series preferidas. Gestiona tus listas, desbloquea capítulos, recibe notificaciones y mantente al día con todo tu contenido favorito. ¡Disfruta de la experiencia y que comience la aventura! ✨",
+            loginMessage:
+                "✨ ¡Bienvenido de nuevo, nakama! Nos alegra verte otra vez en tu Dashboard. Continúa tu aventura: actualiza tu perfil, revisa tus listas, desbloquea capítulos pendientes y mantente al día con tus series favoritas. ¡La tripulación te esperaba, que siga la travesía! ✨",
 
             contactMessage:
                 "¡Mensaje recibido, nakama! 🏴‍☠️ Gracias por escribirnos. La tripulación revisará tu mensaje y nos pondremos en contacto contigo lo antes posible.",
@@ -128,33 +133,36 @@ export const languages = {
         },
 
         footer: {
-            disclaimer: `LogPose es una app de fans para el seguimiento de progreso de One Piece. Contenido para uso personal, sin fines comerciales.`,
-            copyright: `LogPose. Todos los derechos reservados.`,
+            disclaimer:
+                "LogPose es una app de fans para el seguimiento de progreso de One Piece. Contenido para uso personal, sin fines comerciales.",
+            copyright: "LogPose. Todos los derechos reservados.",
         },
 
         notFoundPage: { inicio: "Volver al inicio" },
 
         errorMessage: {
-            username: `Usuario no registrado. Por favor, regístrate primero.`,
-            usernameLength: `El username debe tener al menos 3 caracteres`,
-            password: `Contraseña incorrecta.`,
-            passwordLength: `La contraseña debe tener al menos 6 caracteres`,
-            name: `Nombre requerido`,
-            nameLength: `El nombre debe tener al menos 2 caracteres`,
-            surname: `Apellidos requeridos`,
-            surnameLength: `Los apellidos deben tener al menos 2 caracteres`,
-            email: `Correo requerido`,
-            emailExists: `Este correo ya está registrado`,
-            registerUsername: `Introduce un username personalizado`,
-            registerPassword: `Cree una contraseña`,
-            confirmPassword: `La contraseña no coincide`,
-            date: `Introduce tu fecha de nacimiento`,
-            language: `Elige tu idioma preferido`,
-            emailFormat: `Introduce un correo válido`,
-            passwordMatch: `La contraseña no coincide`,
-            userExists: `El username ya existe, por favor elige otro`,
-            selectedAvatar: `Debes seleccionar un avatar para iniciar sesión`,
-            notFoundMessage: "Oops! No pudimos encontrar esta página",
+            username: "Usuario no registrado. Por favor, regístrate primero.",
+            usernameLength: "El username debe tener al menos 3 caracteres",
+            password: "Contraseña incorrecta.",
+            passwordLength: "La contraseña debe tener al menos 6 caracteres",
+            name: "Nombre requerido",
+            nameLength: "El nombre debe tener al menos 2 caracteres",
+            lastName: "Apellidos requeridos",
+            surnameLength: "Los apellidos deben tener al menos 2 caracteres",
+            email: "Correo requerido",
+            emailExists: "Este correo ya está registrado",
+            registerUsername: "Introduce un username personalizado",
+            registerPassword: "Cree una contraseña",
+            confirmPassword: "La contraseña no coincide",
+            date: "Introduce tu fecha de nacimiento",
+            language: "Elige tu idioma preferido",
+            emailFormat: "Introduce un correo válido",
+            passwordMatch: "La contraseña no coincide",
+            userExists: "El username ya existe, por favor elige otro",
+            selectedAvatar: "Debes seleccionar un avatar para iniciar sesión",
+            notFoundMessage: "¡Oops! No pudimos encontrar esta página",
+            incorrectPassword: "Contraseña incorrecta",
+            incorrectLogin: "Campos incorrectos",
         },
 
         profile: {
@@ -183,7 +191,7 @@ export const languages = {
             areaTextPost: "¿Qué esta pasando?",
             createPostError: "Escribe algo para postear",
             loadingPosts: "Cargando posts",
-            eletePost: "Eliminar post",
+            deletePost: "Eliminar post",
         },
 
         sagaData: {
@@ -202,26 +210,29 @@ export const languages = {
 
     en: {
         login: {
-            username: `Username, nakama...`,
-            password: `Password`,
-            passwordMessage: `Treasure key...`,
-            notRegistered: `Not registered yet, nakama?`,
-            registered: `Register`,
-            registerTitle: `Registration Form`,
-            registerName: `First Name`,
-            registerNameMessage: `Jhon`,
-            registerSurname: `Last Name`,
-            registerSurnameMessage: `Doe Smith`,
-            registerEmail: `Email`,
-            registerEmailMessage: `email@gmail.com`,
-            registerDate: `Birthdate`,
-            registerLang: `Language`,
-            registerSelectLang: `Select your language`,
-            registerUsername: `jhon123`,
-            registerPassword: `Password`,
-            registerConfirm: `Confirm password`,
-            confirmPassword: `Confirm password`,
-            registerSubmit: `Submit`,
+            username: "Username, nakama...",
+            password: "Password",
+            passwordMessage: "Treasure key...",
+            notRegistered: "Not registered yet, nakama?",
+            registered: "Register",
+            registerTitle: "Registration Form",
+            registerName: "First Name",
+            registerNameMessage: "John",
+            registerSurname: "Last Name",
+            registerSurnameMessage: "Doe Smith",
+            registerEmail: "Email",
+            registerEmailMessage: "email@gmail.com",
+            registerDate: "Birthdate",
+            registerLang: "Language",
+            registerSelectLang: "Select your language",
+            registerUsername: "john123",
+            registerPassword: "Password",
+            registerConfirm: "Confirm password",
+            confirmPassword: "Confirm password",
+            registerSubmit: "Submit",
+            registerAcceptTerms: "I accept the Terms and Conditions and the Privacy Policy.",
+            registerTerms:
+                "* By registering, you agree to our Terms and Conditions and acknowledge that you have read our Privacy Policy...",
         },
 
         navbar: {
@@ -247,8 +258,11 @@ export const languages = {
         modal: {
             confirmText: "Got it!",
             cancelText: "Cancel",
-            loginMessage:
+            registerMessage:
                 "✨ Welcome to your Dashboard, nakama! From here you can manage everything you need: update your profile, explore your new favorite social network, and keep track of your favorite series. Manage your lists, unlock chapters, receive notifications, and stay up to date with all your favorite content. Enjoy the experience and let the adventure begin! ✨",
+            loginMessage:
+                "✨ Welcome back, nakama! We're glad to see you again on your Dashboard. Continue your adventure: update your profile, check your lists, unlock pending chapters, and stay up to date with your favorite series. The crew has been waiting for you — let the journey continue! ✨",
+
             contactMessage:
                 "Message received, nakama! 🏴‍☠️ Thanks for reaching out. The crew will review your message and get back to you as soon as possible.",
             logOutMessage: "⚓ Are you sure you want to log out, nakama?",
@@ -332,8 +346,9 @@ export const languages = {
         },
 
         footer: {
-            disclaimer: `LogPose is a fan app for tracking One Piece progress. Content is for personal use only, no commercial purposes.`,
-            copyright: `LogPose. All rights reserved.`,
+            disclaimer:
+                "LogPose is a fan app for tracking One Piece progress. Content is for personal use only, no commercial purposes.",
+            copyright: "LogPose. All rights reserved.",
         },
 
         notFoundPage: {
@@ -341,26 +356,28 @@ export const languages = {
         },
 
         errorMessage: {
-            username: `Username not registered. Please sign up first.`,
-            usernameLength: `Username must be at least 3 characters`,
-            password: `Incorrect password.`,
-            passwordLength: `Password must be at least 6 characters`,
-            name: `First name required`,
-            nameLength: `First name must be at least 2 characters`,
-            surname: `Last name required`,
-            surnameLength: `Last name must be at least 2 characters`,
-            email: `Email required`,
-            emailExists: `This email is already registered`,
-            registerUsername: `Enter a custom username`,
-            registerPassword: `Create a password`,
-            confirmPassword: `Passwords do not match`,
-            date: `Enter your birthdate`,
-            language: `Select your preferred language`,
-            emailFormat: `Enter a valid email`,
-            passwordMatch: `Passwords do not match`,
-            userExists: `Username already exists, please choose another`,
-            selectedAvatar: `You must select an avatar to log in`,
+            username: "Username not registered. Please sign up first.",
+            usernameLength: "Username must be at least 3 characters",
+            password: "Incorrect password.",
+            passwordLength: "Password must be at least 6 characters",
+            name: "First name required",
+            nameLength: "First name must be at least 2 characters",
+            surname: "Last name required",
+            surnameLength: "Last name must be at least 2 characters",
+            email: "Email required",
+            emailExists: "This email is already registered",
+            registerUsername: "Enter a custom username",
+            registerPassword: "Create a password",
+            confirmPassword: "Passwords do not match",
+            date: "Enter your birthdate",
+            language: "Select your preferred language",
+            emailFormat: "Enter a valid email",
+            passwordMatch: "Passwords do not match",
+            userExists: "Username already exists, please choose another",
+            selectedAvatar: "You must select an avatar to log in",
             notFoundMessage: "Oops! We couldn't find this page",
+            incorrectPassword: "Incorrect password",
+            incorrectLogin: "Invalid credentials",
         },
 
         profile: {

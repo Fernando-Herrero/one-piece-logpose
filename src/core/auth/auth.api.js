@@ -21,8 +21,9 @@ export const loginApi = async (user) => {
 
         return response.data;
     } catch (error) {
-        console.error("Error al iniciar sesión");
-        throw error;
+        const backendMessage = error?.response?.data?.error || "Something went wrong";
+        console.error("Error al iniciar sesión:", backendMessage);
+        throw new Error(backendMessage);
     }
 };
 

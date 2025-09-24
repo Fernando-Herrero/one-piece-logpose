@@ -1,9 +1,11 @@
+import { AvatarContext } from "@/context/AvatarContext";
 import { languages } from "@/helpers/languages";
 import { storage } from "@/helpers/storage";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export const useRegisterValidation = () => {
     const [error, setError] = useState(null);
+    const { selectedAvatar } = useContext(AvatarContext);
 
     const isEmailRegistered = (email) => {
         try {
@@ -79,6 +81,11 @@ export const useRegisterValidation = () => {
                 languages[lang].errorMessage.userExists ||
                     "Username already exists. Please choose another one."
             );
+            return true;
+        }
+
+        if (!selectedAvatar) {
+            setError(languages[lang].errorMessage.selectedAvatar);
             return true;
         }
 

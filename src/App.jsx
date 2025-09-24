@@ -7,7 +7,6 @@ import { Dashboard } from "@/dashboard/pages/Dashboard";
 import { Footer } from "@/landing/components/features/Footer";
 import { MapSection } from "@/landing/components/features/MapSection";
 import { PrivateRoute } from "@/landing/components/features/PrivateRoute";
-import { RegisterForm } from "@/landing/components/features/RegisterForm.jsx";
 import { Header } from "@/landing/layouts/Header";
 import { CharactersPage } from "@/landing/pages/CharactersPage";
 import { ContactPage } from "@/landing/pages/ContactPage";
@@ -15,6 +14,7 @@ import { FaqHelpPage } from "@/landing/pages/FaqHelpPage";
 import { HistoryPage } from "@/landing/pages/HistoryPage";
 import { HomePage } from "@/landing/pages/HomePage.jsx";
 import { NotFoundPage } from "@/landing/pages/NotFoundPage.jsx";
+import { RegisterPage } from "@/landing/pages/RegisterPage";
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -57,15 +57,15 @@ export const App = () => {
                     <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <HomePage />} />
 
                     <Route path="/home" element={<HomePage />} />
-                    <Route path="/login" element={<LoginPage />} />
                     <Route
-                        path="/register"
+                        path="/login"
                         element={
                             <Overlay>
-                                <RegisterForm />{" "}
+                                <LoginPage />
                             </Overlay>
                         }
                     />
+                    <Route path="/register" element={<RegisterPage />} />
                     <Route path="/faq" element={<FaqHelpPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/characters" element={<CharactersPage />} />

@@ -6,7 +6,7 @@ export const AvatarSelected = () => {
     const { handleAvatar } = useAvatar();
 
     return (
-        <section className="w-full flex items-center justify-center gap-2.5 pt-2">
+        <section className="w-full flex flex-wrap items-center justify-center gap-2.5 pt-2">
             {characters.map((character, index) => (
                 <AvatarArticle
                     key={`${character}-${index}`}

@@ -21,6 +21,7 @@ export const useAuth = () => {
         if (authData) {
             saveTokenInLocalStorage(authData.token);
             saveUserInLocalStorage(authData.user);
+            setUser(authData.user);
             goTo("/");
         }
     };
@@ -28,13 +29,16 @@ export const useAuth = () => {
     const login = async (user) => {
         console.log("Iniciando sesión:", user);
 
-        const authData = await loginApi(user);
+        try {
+            const authData = await loginApi(user);
 
-        if (authData) {
             saveTokenInLocalStorage(authData.token);
             saveUserInLocalStorage(authData.user);
             setUser(authData.user);
             goTo("/");
+        } catch (error) {
+            console.error("Login error", error.message);
+            throw error;
         }
     };
 
