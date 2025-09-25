@@ -4,12 +4,12 @@ import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
+import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import luffyAvatar from "../../../../public/luffy-happy-400.webp";
 
 export const UserMenu = () => {
     const [isOpen, toggleMenu, closeMenu] = useToggle();
@@ -37,11 +37,11 @@ export const UserMenu = () => {
         <div className=" relative" ref={menuRef}>
             <button
                 type="button"
-                className="flex w-6 rounded-full focus-ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 cursor-pointer"
+                className="flex h-6 rounded-full focus-ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 cursor-pointer"
                 onClick={toggleMenu}
                 aria-label="Open user Menu"
             >
-                <img className="w-full rounded-full" src={luffyAvatar} alt="Avatar image" />
+                <UserAvatar src={user.avatar} size="xs" status={user.isActive ? "online" : "offline"} />
             </button>
 
             <DropDown open={isOpen} onClose={closeMenu} size="sm">

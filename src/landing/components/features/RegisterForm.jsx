@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
 import { sessionStorage } from "@/helpers/storage";
@@ -19,6 +20,7 @@ export const RegisterForm = () => {
     const { selectedAvatar } = useAvatar();
     const { goTo } = useGoTo();
     const { lang } = useContext(LanguagesContext);
+    const { showModal, hideModal } = useContext(ModalContext);
 
     const savedRegisterInputs = sessionStorage.get("registerInputs");
     const [form, setForm] = useState({ ...INITIAL_REGISTER_FORM, ...(savedRegisterInputs || {}) });
@@ -50,16 +52,20 @@ export const RegisterForm = () => {
 
         console.log("Datos que se envían al registro:", dataToSend);
 
-        register(dataToSend);
+        try {
+            register(dataToSend);
 
-        showModal({
-            message: languages[lang].modal.registerMessage,
-            onConfirm: hideModal,
-        });
+            showModal({
+                message: languages[lang].modal.registerMessage,
+                onConfirm: hideModal,
+            });
 
-        sessionStorage.remove("registerInputs");
-        setForm(INITIAL_REGISTER_FORM);
-        setIsChecked(false);
+            sessionStorage.remove("registerInputs");
+            setForm(INITIAL_REGISTER_FORM);
+            setIsChecked(false);
+        } catch (error) {
+            setError(error.message);
+        }
     };
 
     return (

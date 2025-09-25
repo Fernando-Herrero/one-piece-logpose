@@ -170,7 +170,7 @@ export const languages = {
             profileUser: "Perfil de usuario",
             name: "Nombre",
             inputDisplayname: "Elige tu nombre",
-            emptyDisplayName: "Elige tu nombre",
+            emptyDisplayName: "Elige el nombre que quieres mostrar",
             email: "Correo",
             emptyEmail: "No hay correo",
             viewMore: "Ver más",

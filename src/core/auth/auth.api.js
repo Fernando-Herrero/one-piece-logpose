@@ -8,8 +8,9 @@ export const registerApi = async (user) => {
 
         return response.data;
     } catch (error) {
-        console.error("Error al registrar ususario", error);
-        throw error;
+        const backendMessage = error?.response?.data?.error || "Something went wrong";
+        console.error("Error en el registro:", backendMessage);
+        throw new Error(backendMessage);
     }
 };
 

@@ -16,13 +16,16 @@ export const useAuth = () => {
     const register = async (user) => {
         console.log("Registrando usuario", user);
 
-        const authData = await registerApi(user);
+        try {
+            const authData = await registerApi(user);
 
-        if (authData) {
             saveTokenInLocalStorage(authData.token);
             saveUserInLocalStorage(authData.user);
             setUser(authData.user);
             goTo("/");
+        } catch (error) {
+            console.error("Register error", error.message);
+            throw error;
         }
     };
 

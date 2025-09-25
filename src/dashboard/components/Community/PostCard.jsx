@@ -1,18 +1,18 @@
 import { OptionsMenu } from "@/dashboard/components/Community/OptionsMenu";
 import { PostContent } from "@/dashboard/components/Community/PostContent";
 import { PostStats } from "@/dashboard/components/Community/PostStats";
-import { UserAvatar } from "@/dashboard/components/Community/UserAvatar";
 import { UserInfo } from "@/dashboard/components/Community/UserInfo";
+import { UserAvatar } from "@/dashboard/components/UserAvatar";
 
 export const PostCard = ({ post, index }) => {
-    const { id, userId, text, images, hashtags, likesCount, commentsCount, bookmarksCount } = post;
+    const { id, userId, text, images, hashtags } = post;
 
     return (
         <article
             key={`${id}-${index}`}
             className="flex gap-1 w-full p-2 text-xs border border-white/30 rounded bg-gradient-card shadow-default"
         >
-            <UserAvatar user={userId} />
+            <UserAvatar user={userId.avatar} status={false} fallback={userId.username} />
             <div className="flex-8 flex flex-col gap-1">
                 <div className="flex items-center justify-between">
                     <UserInfo user={userId} />

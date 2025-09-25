@@ -1,4 +1,4 @@
-import luffyLies from "@/assets/images/luffy-lies.webp";
+import luffyLies from "@/assets/images/luffy-lies-main.webp";
 import lettersBg from "@/assets/images/onepiece-japanese.webp";
 import { Button } from "@/components/Button";
 import { LanguagesContext } from "@/context/LanguagesContext";

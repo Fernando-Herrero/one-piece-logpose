@@ -5,7 +5,7 @@ import { UserMenu } from "@/dashboard/components/Header/UserMenu";
 
 export const DashboardNavbar = () => {
     return (
-        <header className="fixed flex items-center w-full py-2 px-4 border-b-2 border-primary bg-gradient-primary backdrop-blur-md z-10">
+        <header className="fixed flex items-center w-full py-2 px-4 border-b-2 border-primary bg-gradient-primary backdrop-blur-md z-30">
             <div className="w-16 mr-auto">
                 <img className="w-full" src={logo} alt="One Piece logo" />
             </div>

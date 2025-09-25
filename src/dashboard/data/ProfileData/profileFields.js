@@ -6,7 +6,7 @@ export const getProfileFields = (user, lang) => [
         value: user?.displayName,
         fieldName: "displayName",
         placeholder: languages[lang].profile.inputDIsplayname,
-        emptyText: languages[lang].profile.emptyDsplayname,
+        emptyText: languages[lang].profile.emptyDisplayName,
     },
     {
         label: "Username",
