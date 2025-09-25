@@ -22,6 +22,8 @@ export const Search = () => {
         }
     };
 
+    const handleSearch = (event) => {};
+
     return (
         <div className="flex items-center bg-sunny rounded-2xl px-2 py-1">
             <label className="flex items-center flex-1" htmlFor="search">
@@ -39,6 +41,7 @@ export const Search = () => {
                     )}
                     placeholder={isOpen ? languages[lang].navbar.search : ""}
                     onClick={handleInputClick}
+                    onChange={handleSearch}
                     onKeyDown={handleKeyDown}
                     aria-expanded={isOpen}
                     aria-label={languages[lang].navbar.search}

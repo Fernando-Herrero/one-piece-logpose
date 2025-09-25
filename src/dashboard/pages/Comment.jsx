@@ -1,16 +1,26 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { usePosts } from "@/core/posts/usePosts";
+import { PostForm } from "@/dashboard/components/Community/PostForm";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
+import { useSearchParams } from "react-router-dom";
 
-export const Post = ({ onCancel }) => {
-    const { createPost, setError, error } = usePosts();
+export const Comment = ({ onCancel }) => {
+    const [searchParams] = useSearchParams();
+    const postId = searchParams.get("postId");
+
+    const { replyPost, setError, error } = usePosts();
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
 
     const handleSubmit = async (formData) => {
-        await createPost(formData);
+        const newComment = {
+            postId: postId,
+            ...formData,
+        };
+
+        await replyPost(newComment);
         setError(null);
         onCancel();
     };

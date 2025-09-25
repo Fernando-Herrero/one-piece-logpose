@@ -44,7 +44,7 @@ export const UserMenu = () => {
                 <UserAvatar src={user.avatar} size="xs" status={user.isActive ? "online" : "offline"} />
             </button>
 
-            <DropDown open={isOpen} onClose={closeMenu} size="sm">
+            <DropDown open={isOpen} onClose={closeMenu} size="sm" className="divide-y divide-gray-400">
                 <div className="pb-2">
                     <span className="py-0.5 px-2 block text-xs text-gradient dark:text-white">
                         @{user?.username}

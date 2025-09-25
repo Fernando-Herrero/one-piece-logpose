@@ -8,7 +8,7 @@ export const getPostsApi = async () => {
 
         return response.data;
     } catch (error) {
-        console.error("Error al recibir posts");
+        console.error("Error al recibir posts", error);
         throw error;
     }
 };
@@ -61,6 +61,32 @@ export const bookmarkPostApi = async (id) => {
         return response.data;
     } catch (error) {
         console.error("Error al guardar el post", error);
+        throw error;
+    }
+};
+
+export const replyPostApi = async (newComment) => {
+    try {
+        console.log("Respondiendo al post");
+        const response = await api.post("/comments", newComment);
+        console.log("respues de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al responder el post", error);
+        throw error;
+    }
+};
+
+export const getUserApi = async (id) => {
+    try {
+        console.log("Recibiendo user de la api", id);
+        const response = await api.get(`/users/${id}`);
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al recibir user", error);
         throw error;
     }
 };

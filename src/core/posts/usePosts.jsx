@@ -3,7 +3,9 @@ import {
     createPostApi,
     deletePostApi,
     getPostsApi,
+    getUserApi,
     likePostApi,
+    replyPostApi,
 } from "@/core/posts/posts.api";
 import { useEffect, useState } from "react";
 
@@ -14,7 +16,7 @@ export const usePosts = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            // if (loading) return;
+            if (loading || posts.length) return;
             try {
                 setLoading(true);
                 setError(null);
@@ -85,5 +87,20 @@ export const usePosts = () => {
         }
     };
 
-    return { posts, loading, error, setError, createPost, deletePost, likePost, bookmarkPost };
+    const replyPost = async (newComment) => {
+        try {
+            const created = await replyPostApi(newComment);
+            console.log("este es el comentario creado", created);
+        } catch (error) {
+            console.error("Error al comentar el post", error);
+        }
+    };
+
+    const getUser = async (id) => {
+        try {
+            const user = await getUserApi(id);
+        } catch (error) {}
+    };
+
+    return { posts, loading, error, setError, createPost, deletePost, likePost, bookmarkPost, replyPost };
 };

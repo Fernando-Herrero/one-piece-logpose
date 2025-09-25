@@ -1,6 +1,7 @@
 import { Overlay } from "@/components/Overlay";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/Profile/AvatarSection";
+import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
 import { Profile } from "@/dashboard/pages/Profile";
@@ -24,6 +25,10 @@ export const Dashboard = () => {
                     <Route
                         path="post"
                         element={<Overlay>{(handleClose) => <Post onCancel={handleClose} />}</Overlay>}
+                    />
+                    <Route
+                        path="comment"
+                        element={<Overlay>{(handleClose) => <Comment onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
             </Routes>
