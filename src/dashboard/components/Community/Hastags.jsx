@@ -4,7 +4,7 @@ export const Hashtags = ({ hashtags }) => {
     return (
         <div className="flex items-center gap-1">
             {hashtags.map((hashtag, index) => (
-                <span key={`${hashtag}-${index}`} className="text-gradient">
+                <span key={`${hashtag}-${index}`} className="text-link">
                     #{hashtag}
                 </span>
             ))}

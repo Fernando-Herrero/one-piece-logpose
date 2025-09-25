@@ -6,6 +6,7 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { usePosts } from "@/core/posts/usePosts";
 import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 
@@ -13,6 +14,7 @@ export const OptionsMenu = ({ id, userId }) => {
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
     const { deletePost } = usePosts();
+    const { goTo } = useGoTo();
 
     const menuRef = useClickOutside(toggleMenu, isOpen);
 
@@ -29,7 +31,7 @@ export const OptionsMenu = ({ id, userId }) => {
 
             <DropDown open={isOpen} onClose={closeMenu} size="sm" className="mt-0">
                 <button
-                    onClick={() => getProfile(id)}
+                    onClick={() => goTo(`/dashboard/userProfile?userId=${userId.id}`)}
                     className="flex items-center justify-between w-full cursor-pointer drop-item-style group"
                 >
                     <p className="underline-hover text-gradient">{languages[lang].posts.viewProfile}</p>

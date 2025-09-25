@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useState } from "react";
 
 /**
  * Avatar Component - Componente de avatar versátil del sistema de diseño Eleven Code
@@ -95,6 +96,8 @@ export const UserAvatar = ({
         statusColor[status]
     );
 
+    const [imgError, setImgError] = useState(false);
+
     const getFallbackText = () => {
         if (fallback) return fallback.slice(0, 2).toUpperCase();
         if (alt) return alt.charAt(0).toUpperCase();
@@ -105,7 +108,19 @@ export const UserAvatar = ({
         <div className="relative inline-block">
             <div className={avatarClasses} {...props}>
                 {/* Imagen del avatar */}
-                {src && <img src={src} alt={alt} className="w-full h-full object-cover" />}
+                {/* {src && <img src={src} alt={alt} className="w-full h-full object-cover" />} */}
+
+                {src && !imgError && (
+                    <img
+                        src={src}
+                        alt={alt}
+                        className="w-full h-full object-cover"
+                        onError={() => setImgError(true)}
+                    />
+                )}
+
+                {/* Fallback text cuando la imagen está rota */}
+                {src && imgError && <span className="select-none">{getFallbackText()}</span>}
 
                 {/* Fallback text cuando no hay imagen */}
                 {!src && <span className="select-none">{getFallbackText()}</span>}

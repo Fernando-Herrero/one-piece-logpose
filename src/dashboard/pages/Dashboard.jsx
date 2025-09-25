@@ -5,6 +5,7 @@ import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
 import { Profile } from "@/dashboard/pages/Profile";
+import { UserProfile } from "@/dashboard/pages/UserProfile";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 export const Dashboard = () => {
@@ -31,6 +32,7 @@ export const Dashboard = () => {
                         element={<Overlay>{(handleClose) => <Comment onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
+                <Route path="/userProfile" element={<UserProfile />} />
             </Routes>
         </AppShell>
     );
