@@ -46,7 +46,7 @@ export const Overlay = ({ children, isModal = false }) => {
     }, []);
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-25" onClick={handleClose}>
+        <div className="fixed inset-0 flex items-center justify-center z-40" onClick={handleClose}>
             <div
                 className={classNames(
                     "absolute inset-0 bg-black transition-opacity duration-300 z-10",

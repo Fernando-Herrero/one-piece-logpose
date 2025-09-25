@@ -2,11 +2,11 @@ import { AvatarArticle } from "@/components/AvatarArticle";
 import { characters } from "@/helpers/avatarImages";
 import { useAvatar } from "@/hooks/useAvatar";
 
-export const AvatarSelected = () => {
+export const AvatarSelected = ({ className = "" }) => {
     const { handleAvatar } = useAvatar();
 
     return (
-        <section className="w-full flex flex-wrap items-center justify-center gap-2.5 pt-2">
+        <section className={`flex flex-wrap items-center gap-2 justify-center ${className}`}>
             {characters.map((character, index) => (
                 <AvatarArticle
                     key={`${character}-${index}`}

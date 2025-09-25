@@ -1,4 +1,5 @@
 import { ProfileArticle } from "@/dashboard/components/Profile/ProfileArticle";
+import { Outlet } from "react-router-dom";
 
 export const Profile = () => {
     return (
@@ -6,6 +7,7 @@ export const Profile = () => {
             <div>
                 <div>
                     <ProfileArticle />
+                    <Outlet />
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { Overlay } from "@/components/Overlay";
 import { AppShell } from "@/dashboard/components/AppShell";
+import { AvatarSection } from "@/dashboard/components/Profile/AvatarSection";
 import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
 import { Profile } from "@/dashboard/pages/Profile";
@@ -11,7 +12,14 @@ export const Dashboard = () => {
             <Routes>
                 <Route index element={<Navigate to="profile" replace />} />
 
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile" element={<Profile />}>
+                    <Route
+                        path="avatar"
+                        element={
+                            <Overlay>{(handleClose) => <AvatarSection onCancel={handleClose} />}</Overlay>
+                        }
+                    />
+                </Route>
                 <Route path="/community" element={<Community />}>
                     <Route
                         path="post"

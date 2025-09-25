@@ -23,7 +23,7 @@ export const Search = () => {
     };
 
     return (
-        <div className="flex items-center bg-orange-100 rounded-2xl px-2 py-1">
+        <div className="flex items-center bg-sunny rounded-2xl px-2 py-1">
             <label className="flex items-center flex-1" htmlFor="search">
                 <span className="sr-only">{languages[lang].navbar.search}</span>
                 <input

@@ -184,6 +184,7 @@ export const languages = {
             phone: "Telefono",
             emptyPhone: "Ingrese su telefono",
             createdAt: "Creado en",
+            changeAvatar: "Cambiar Avatar",
         },
 
         posts: {
@@ -398,6 +399,7 @@ export const languages = {
             phone: "Phone",
             emptyPhone: "Enter your phone",
             createdAt: "Created at",
+            changeAvatar: "Select Avatar",
         },
 
         posts: {

@@ -5,7 +5,6 @@ import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
 import { sessionStorage } from "@/helpers/storage";
 import { useAvatar } from "@/hooks/useAvatar";
-import { useGoTo } from "@/hooks/useGoTo";
 import { useRegisterValidation } from "@/hooks/useRegisterValidation";
 import { useToggle } from "@/hooks/useToggle";
 import { PasswordFields } from "@/landing/components/ui/PasswordFields";
@@ -18,7 +17,6 @@ import { useContext, useState } from "react";
 export const RegisterForm = () => {
     const { register } = useAuth();
     const { selectedAvatar } = useAvatar();
-    const { goTo } = useGoTo();
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
 

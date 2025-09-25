@@ -52,7 +52,7 @@ export const Post = ({ onCancel }) => {
                         onChange={handleInputs}
                         maxLength={280}
                         placeholder={languages[lang].posts.areaTextPost}
-                        className="bg-orange-100 p-2 min-h-80  w-full rounded-xl no-focus"
+                        className="bg-sunny p-2 min-h-80  w-full rounded-xl no-focus"
                     ></textarea>
                 </label>
 
@@ -63,7 +63,7 @@ export const Post = ({ onCancel }) => {
                         placeholder="Image URL"
                         value={contentPost.image}
                         onChange={handleInputs}
-                        className="bg-orange-100 p-2 rounded-xl no-focus"
+                        className="bg-sunny p-2 rounded-xl no-focus"
                     />
                     {contentPost.image && (
                         <img

@@ -42,7 +42,7 @@ html {
     --color-hover: #d4d6d8;
     --color-orangeAce: #f0713f;
     --color-orange: #f5a261;
-    --color-sunny: #f7c777;
+    --color-sunny: #fff3d6;
 
     /* COLORES DE TEXTO */
     --text-color-primary: #374151;
@@ -159,7 +159,7 @@ html {
 }
 
 .dropdown-panel {
-    @apply z-50 overflow-hidden bg-orange-100 rounded-xl shadow-lg divide-y divide-gray-400 p-3 hover:shadow-2xl;
+    @apply z-50 overflow-hidden bg-sunny rounded-xl shadow-lg divide-y divide-gray-400 p-3 hover:shadow-2xl;
 }
 
 .dropdown-sm {
