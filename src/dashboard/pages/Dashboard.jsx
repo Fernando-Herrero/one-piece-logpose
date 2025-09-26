@@ -5,6 +5,7 @@ import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
 import { Profile } from "@/dashboard/pages/Profile";
+import { Settings } from "@/dashboard/pages/Settings";
 import { UserProfile } from "@/dashboard/pages/UserProfile";
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -33,6 +34,7 @@ export const Dashboard = () => {
                     />
                 </Route>
                 <Route path="/userProfile" element={<UserProfile />} />
+                <Route path="/settings" element={<Settings />} />
             </Routes>
         </AppShell>
     );

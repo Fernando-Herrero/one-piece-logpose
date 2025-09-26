@@ -3,8 +3,7 @@ import verified from "@/assets/icons/verified-icon.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useUser } from "@/core/user/useUser";
 import { Spinner } from "@/dashboard/components/Community/Spinner";
-import { FollowSection } from "@/dashboard/components/Profile/FollowSection";
-import { UserAvatar } from "@/dashboard/components/UserAvatar";
+import { UserProfileCard } from "@/dashboard/components/userProfile/UserProfileCard";
 import { languages } from "@/helpers/languages";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { useContext } from "react";
@@ -38,7 +37,7 @@ export const UserProfile = () => {
             <div className="flex flex-col items-center gap-1">
                 <Spinner className="mx-auto mt-5" />{" "}
                 <p className="text-gradient">
-                    {languages[lang].posts.loadingPosts}
+                    {languages[lang].profile.loadingProfile}
                     <LoadingDots />
                 </p>
             </div>
@@ -46,62 +45,12 @@ export const UserProfile = () => {
     if (!user) return <p>{languages[lang].profile.userNotFound}</p>;
 
     return (
-        <section className="p-2">
-            <div className="bg-gradient-card p-4 shadow-lg rounded-xl text-sm w-full max-w-xs mx-auto">
-                <div className="flex flex-col items-center gap-2">
-                    <UserAvatar
-                        src={user.avatar}
-                        size="2xl"
-                        status={user.isActive ? "online" : "offline"}
-                        className="border-2 border-white"
-                    />
-                    <div className="text-center">
-                        <p className="flex items-center justify-center gap-1 text-lg font-semibold text-primary">
-                            {user.displayName ?? user.name}
-                            {user.verified ? (
-                                <img className="w-4" src={verified} alt="Verified icon" />
-                            ) : (
-                                <img className="w-4" src={notVerified} alt="Not verified icon" />
-                            )}
-                        </p>
-
-                        <p className="text-xs text-muted mt-1">@{user.username}</p>
-                        <p className="text-xs text-muted">
-                            {languages[lang].profile.createdAt}:{" "}
-                            {new Date(user.createdAt).toLocaleDateString()}
-                        </p>
-                    </div>
-                </div>
-                {/* Datos adicionales */}
-                <div className="mt-4 flex flex-col gap-2 text-left w-full">
-                    {user.phoneNumber && (
-                        <p className="flex items-center gap-2">
-                            <span>📞</span> <p className="text-gradient">{user.phoneNumber}</p>
-                        </p>
-                    )}
-                    {user.address && (
-                        <div className="flex items-center gap-2">
-                            <span>🏠</span> <p className="text-gradient">{user.address}</p>
-                        </div>
-                    )}
-                    <div className="flex items-center gap-2">
-                        <span>📧</span>
-                        <p lassName="text-primary font-semibold">{languages[lang].profile.email}:</p>
-                        <span className="text-gradient">{user.email}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span>👤</span> <p className="text-primary font-semibold">Role:</p>{" "}
-                        <span className="text-gradient">{user.role}</span>
-                    </div>
-                    <div className="flex items-center gap-2 ">
-                        <span>🌐</span>{" "}
-                        <p className="text-primary font-semibold">{languages[lang].profile.active}:</p>{" "}
-                        <span className="text-gradient">{user.isActive ? "Online" : "Offline"}</span>
-                    </div>
-                </div>
-
-                <FollowSection user={user} />
-            </div>
-        </section>
+        <UserProfileCard
+            user={user}
+            lang={lang}
+            verified={verified}
+            notVerified={notVerified}
+            languages={languages}
+        />
     );
 };
