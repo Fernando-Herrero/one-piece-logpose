@@ -6,7 +6,7 @@ export const FollowSection = ({ user }) => {
     const { lang } = useContext(LanguagesContext);
 
     return (
-        <div className="flex flex-col gap-1 mt-4">
+        <div className="flex flex-col gap-1 mx-2 pb-2">
             <p>
                 <strong className="text-primary font-semibold">{languages[lang].profile.followers}:</strong>{" "}
                 {user.followers.length > 0 ? (

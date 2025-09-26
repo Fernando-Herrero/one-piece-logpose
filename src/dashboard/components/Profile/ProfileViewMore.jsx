@@ -13,7 +13,7 @@ export const ProfileViewMore = ({ user, editorProps }) => {
     const profileFields = getExtendedProfileFields(user, lang);
 
     return (
-        <section className="min-w-fit rounded-xl border border-white py-1 px-2 transition">
+        <section className="min-w-fit rounded-xl border border-white py-1 px-2 transition mx-2">
             <header className="flex items-center justify-between cursor-pointer" onClick={toggleBox}>
                 <p className="text-primary font-semibold">{languages[lang].profile.viewMore}</p>
                 <ToggleButton />

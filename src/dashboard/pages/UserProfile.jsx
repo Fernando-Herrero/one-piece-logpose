@@ -56,7 +56,7 @@ export const UserProfile = () => {
                         className="border-2 border-white"
                     />
                     <div className="text-center">
-                        <p className="flex items-center justify-center gap-2 text-lg font-semibold text-primary">
+                        <p className="flex items-center justify-center gap-1 text-lg font-semibold text-primary">
                             {user.displayName ?? user.name}
                             {user.verified ? (
                                 <img className="w-4" src={verified} alt="Verified icon" />
@@ -64,12 +64,12 @@ export const UserProfile = () => {
                                 <img className="w-4" src={notVerified} alt="Not verified icon" />
                             )}
                         </p>
-                        <p className="text-xs text-muted">@{user.username}</p>
+
+                        <p className="text-xs text-muted mt-1">@{user.username}</p>
                         <p className="text-xs text-muted">
                             {languages[lang].profile.createdAt}:{" "}
                             {new Date(user.createdAt).toLocaleDateString()}
                         </p>
-                        <p className="text-gradient mt-1">{user.email}</p>
                     </div>
                 </div>
                 {/* Datos adicionales */}
@@ -80,10 +80,15 @@ export const UserProfile = () => {
                         </p>
                     )}
                     {user.address && (
-                        <div className="flex items-center gap-2 ">
+                        <div className="flex items-center gap-2">
                             <span>🏠</span> <p className="text-gradient">{user.address}</p>
                         </div>
                     )}
+                    <div className="flex items-center gap-2">
+                        <span>📧</span>
+                        <p lassName="text-primary font-semibold">{languages[lang].profile.email}:</p>
+                        <span className="text-gradient">{user.email}</span>
+                    </div>
                     <div className="flex items-center gap-2">
                         <span>👤</span> <p className="text-primary font-semibold">Role:</p>{" "}
                         <span className="text-gradient">{user.role}</span>

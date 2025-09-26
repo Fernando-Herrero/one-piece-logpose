@@ -189,6 +189,11 @@ export const languages = {
             userTryAagin: "Reintentar",
             userNotValid: "Id de usuario no válido",
             active: "Activo",
+            inputBio: "Escribe tu biografía",
+            emptyBio: "Escribe tu biografía",
+            inputCoverImage: "Inserta una URL para tu imagen de fondo",
+            emptyCoverImage: "Inserta una URL para tu imagen de fondo",
+            changeCoverImg: "Cambiar cover Img",
         },
 
         posts: {
@@ -409,6 +414,11 @@ export const languages = {
             userTryAagin: "Try again",
             userNotValid: "User Id not valid",
             active: "Active",
+            inputBio: "Insert your biography",
+            emptyBio: "Insert your biography",
+            inputCoverImage: "Insert a URL for your cover image",
+            emptyCoverImage: "Insert a URL for your cover image",
+            hangeCoverImg: "Change cover Img",
         },
 
         posts: {

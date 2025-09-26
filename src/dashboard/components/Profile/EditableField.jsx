@@ -1,6 +1,8 @@
 import cross from "@/assets/icons/cross-button-icon.svg";
+import { LanguagesContext } from "@/context/LanguagesContext";
+import { languages } from "@/helpers/languages";
 import classNames from "classnames";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 
 export const EditableField = ({
     label,
@@ -18,7 +20,10 @@ export const EditableField = ({
     handleSave,
     handleKeyDown,
     cancelEditing,
+    changeCoverImg,
 }) => {
+    const { lang } = useContext(LanguagesContext);
+
     const isCurrentlyEditing = isEditing && editingField === fieldName;
 
     const ref = useRef(null);
@@ -40,7 +45,6 @@ export const EditableField = ({
     if (isCurrentlyEditing && !readOnly) {
         return (
             <p>
-                <strong className="text-primary font-semibold">{label}:</strong>{" "}
                 <span className="inline-flex gap-1 items-center" ref={ref}>
                     <input
                         type={type}
@@ -67,17 +71,27 @@ export const EditableField = ({
     }
 
     return (
-        <p>
-            <strong className="text-primary font-semibold">{label}:</strong>{" "}
+        <div className="flex items-center gap-1">
+            {label && (
+                <p>
+                    <strong className="text-primary font-semibold">{label}</strong>{" "}
+                </p>
+            )}
             {value ? (
-                <span
-                    className={classNames("text-gradient", {
-                        "cursor-pointer hover:underline": !readOnly,
-                    })}
+                <p
+                    className={classNames(
+                        !readOnly && "cursor-pointer hover:underline",
+                        fieldName === "displayName" ? "text-primary font-semibold" : "text-xs text-gradient",
+                        (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
+                    )}
                     onClick={!readOnly ? () => startEditing(fieldName, value) : undefined}
                 >
-                    {value}
-                </span>
+                    {fieldName === "coverImage"
+                        ? changeCoverImg && (
+                              <span className="italic">{languages[lang].profile.changeCoverImg}</span>
+                          )
+                        : value}
+                </p>
             ) : (
                 <span
                     className={classNames("text-xs text-gray-600 italic", {
@@ -88,6 +102,6 @@ export const EditableField = ({
                     {emptyText}
                 </span>
             )}
-        </p>
+        </div>
     );
 };
