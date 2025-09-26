@@ -23,7 +23,7 @@ export const ProfileArticle = () => {
     const basicFields = getProfileFields(user, lang, coverImg);
 
     return (
-        <article className="text-sm card gap-1 bg-gradient-card transition">
+        <article className="text-sm card gap-1 bg-gradient-card transition max-w-sm">
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col items-center gap-2">
                     <ProfileHeader user={user} setCoverImg={setCoverImg} />

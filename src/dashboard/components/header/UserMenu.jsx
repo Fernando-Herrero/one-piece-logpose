@@ -1,24 +1,24 @@
-import arrow from "@/assets/icons/right-arrow.svg";
 import { DropDown } from "@/components/Dropdown";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
+import { MenuItem } from "@/dashboard/components/Header/MenuItem";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 
 export const UserMenu = () => {
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { logout } = useAuth();
+    const { user } = useContext(AuthContext);
+    const menuRef = useClickOutside(toggleMenu, isOpen);
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
-    const { user } = useContext(AuthContext);
-
-    const menuRef = useClickOutside(toggleMenu, isOpen);
+    const { goTo } = useGoTo();
 
     const handleLogOut = () => {
         closeMenu();
@@ -45,36 +45,30 @@ export const UserMenu = () => {
             </button>
 
             <DropDown open={isOpen} onClose={closeMenu} size="sm" className="divide-y divide-gray-400">
-                <div className="pb-2">
-                    <span className="py-0.5 px-2 block text-xs text-gradient dark:text-white">
-                        @{user?.username}
+                <div className="pb-2 flex flex-col items-center">
+                    <span className="py-0.5 px-2 block text-sm text-primary">
+                        {user?.displayName ?? user?.email}
                     </span>
-                    <span className="py-0.5 px-2 block text-xs text-gradient truncate dark:text-white">
-                        {user?.email}
-                    </span>
+                    <span className="py-0.5 px-2 block text-xs text-gradient">@{user?.username}</span>
                 </div>
-                <div className="flex flex-col pt-2 ">
-                    <Link className="flex justify-between text-xs drop-item-style group">
-                        <span className="underline-hover text-gradient">
-                            {languages[lang].navbar.profile}
-                        </span>
-                        <img
-                            className="w-4 transition-transform group-hover:translate-x-1"
-                            src={arrow}
-                            alt="Right arrow"
-                        />
-                    </Link>
-                    <button
-                        className="flex justify-between w-full text-start text-xs cursor-pointer drop-item-style group"
+                <div className="flex flex-col pt-2 text-xs">
+                    <MenuItem
+                        as="link"
+                        to={"/dashboard/profile"}
+                        children={languages[lang].navbar.profile}
+                        onClose={toggleMenu}
+                    />
+                    <MenuItem
                         onClick={handleLogOut}
-                    >
-                        <p className="w-fit underline-hover text-gradient">{languages[lang].navbar.logout}</p>
-                        <img
-                            className="w-4 transition-transform group-hover:translate-x-1"
-                            src={arrow}
-                            alt="Right arrow"
-                        />
-                    </button>
+                        children={languages[lang].navbar.logout}
+                        onClose={toggleMenu}
+                    />
+                    <MenuItem as="a" children={languages[lang].navbar.help} onClose={toggleMenu} />
+                    <MenuItem
+                        onClick={() => goTo("/dashboard/settings")}
+                        children={languages[lang].navbar.settings}
+                        onClose={toggleMenu}
+                    />
                 </div>
             </DropDown>
         </div>

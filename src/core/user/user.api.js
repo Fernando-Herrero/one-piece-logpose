@@ -12,3 +12,5 @@ export const getUserApi = async (userId) => {
         throw error;
     }
 };
+
+export const followUser = async (userId) => {};
