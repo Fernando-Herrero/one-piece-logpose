@@ -30,20 +30,13 @@ export const getProfileFields = (user, lang, coverImg) => [
 export const getExtendedProfileFields = (user, lang) => [
     {
         label: "👤",
-        value: user?.name,
+        value: `${user?.name ?? ""} ${user?.lastName ?? ""}`,
         fieldName: "name",
         placeholder: "",
         emptyText: "",
         readOnly: true,
     },
-    {
-        label: "📝",
-        value: user?.lastName,
-        fieldName: "lastName",
-        placeholder: "",
-        emptyText: "",
-        readOnly: true,
-    },
+
     {
         label: "📧",
         value: user?.email,

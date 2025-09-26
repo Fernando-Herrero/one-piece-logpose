@@ -2,11 +2,11 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useContext } from "react";
 
-export const FollowSection = ({ user }) => {
+export const FollowSection = ({ user, className = "" }) => {
     const { lang } = useContext(LanguagesContext);
 
     return (
-        <div className="flex flex-col gap-1 mx-2 pb-2">
+        <div className={`flex flex-col gap-1 ${className}`}>
             <p>
                 <strong className="text-primary font-semibold">{languages[lang].profile.followers}:</strong>{" "}
                 {user.followers.length > 0 ? (

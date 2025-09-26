@@ -194,6 +194,7 @@ export const languages = {
             inputCoverImage: "Inserta una URL para tu imagen de fondo",
             emptyCoverImage: "Inserta una URL para tu imagen de fondo",
             changeCoverImg: "Cambiar cover Img",
+            loadingProfile: "Cargando Perfil",
         },
 
         posts: {
@@ -216,6 +217,39 @@ export const languages = {
             8: { title: "Dressrosa", saga_episode: "654 a 801" },
             sagaLoading: "Cargando Saga",
             episodes: "Capitulos",
+        },
+
+        settings: {
+            titleSecurity: "Security and account access",
+            textSecurity:
+                "Manage your account’s security settings and keep track of login sessions and connected apps.",
+
+            titleMonetisation: "Monetisation",
+            textMonetisation:
+                "Discover tools to earn money with your content and manage your monetisation preferences.",
+
+            titlePremium: "Premium",
+            textPremium:
+                "Unlock exclusive features and enhance your Twitter experience with Premium options.",
+
+            titleTimeline: "Timeline",
+            textTimeline:
+                "Control how Tweets appear in your timeline and customise the order you see content.",
+
+            titlePrivacy: "Privacy and safety",
+            textPrivacy:
+                "Adjust who can interact with you and manage your content visibility and safety settings.",
+
+            titleNotifications: "Notifications",
+            textNotifications:
+                "Choose what type of notifications you want to receive and how you’re notified.",
+
+            titleAccessibility: "Accessibility",
+            textAccessibility:
+                "Personalise accessibility features, display preferences, and language options.",
+
+            titleResources: "Additional resources",
+            textResources: "Find more help, guidelines, and resources to get the most out of Twitter.",
         },
     },
 
@@ -419,6 +453,7 @@ export const languages = {
             inputCoverImage: "Insert a URL for your cover image",
             emptyCoverImage: "Insert a URL for your cover image",
             hangeCoverImg: "Change cover Img",
+            loadingProfile: "Loading Profile",
         },
 
         posts: {
@@ -441,6 +476,36 @@ export const languages = {
             8: { title: "Dressrosa", saga_episode: "654 to 801" },
             sagaLoading: "Loading Saga",
             episodes: "Episodes",
+        },
+
+        settings: {
+            titleSecurity: "Security and account access",
+            textSecurity:
+                "Manage your account’s security, track login sessions, and review connected applications.",
+
+            titleMonetisation: "Monetisation",
+            textMonetisation:
+                "Access tools to earn money with your content and manage monetisation preferences.",
+
+            titlePremium: "Premium",
+            textPremium:
+                "Upgrade to Premium to unlock exclusive features and enhance your Twitter experience.",
+
+            titleTimeline: "Timeline",
+            textTimeline: "Control how Tweets appear in your timeline and customise the order of your feed.",
+
+            titlePrivacy: "Privacy and safety",
+            textPrivacy:
+                "Adjust who can interact with you, manage your content visibility, and update safety controls.",
+
+            titleNotifications: "Notifications",
+            textNotifications: "Choose what types of notifications you receive and how you are alerted.",
+
+            titleAccessibility: "Accessibility",
+            textAccessibility: "Customise accessibility features, display preferences, and language options.",
+
+            titleResources: "Additional resources",
+            textResources: "Find more help, guidelines, and resources to make the most out of Twitter.",
         },
     },
 };

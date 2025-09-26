@@ -1,10 +1,13 @@
 import cross from "@/assets/icons/cross-button-icon.svg";
+import notVerified from "@/assets/icons/not-verified-icon.svg";
+import verified from "@/assets/icons/verified-icon.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import classNames from "classnames";
 import { useContext, useEffect, useRef } from "react";
 
 export const EditableField = ({
+    user,
     label,
     value,
     fieldName,
@@ -77,21 +80,34 @@ export const EditableField = ({
                     <strong className="text-primary font-semibold">{label}</strong>{" "}
                 </p>
             )}
-            {value ? (
-                <p
-                    className={classNames(
-                        !readOnly && "cursor-pointer hover:underline",
-                        fieldName === "displayName" ? "text-primary font-semibold" : "text-xs text-gradient",
-                        (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
+            {fieldName === "coverImage" && !changeCoverImg ? null : value ? (
+                <>
+                    <p
+                        className={classNames(
+                            !readOnly && "cursor-pointer hover:underline",
+                            fieldName === "displayName"
+                                ? "text-primary font-semibold"
+                                : "text-xs text-gradient",
+                            (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
+                        )}
+                        onClick={!readOnly ? () => startEditing(fieldName, value) : undefined}
+                    >
+                        {fieldName === "coverImage"
+                            ? changeCoverImg && (
+                                  <span className="italic">{languages[lang].profile.changeCoverImg}</span>
+                              )
+                            : value}
+                    </p>
+                    {fieldName === "displayName" ? (
+                        <img
+                            className="w-4"
+                            src={user.verified ? verified : notVerified}
+                            alt={user.verified ? "Verified icon" : "not verified icon"}
+                        />
+                    ) : (
+                        ""
                     )}
-                    onClick={!readOnly ? () => startEditing(fieldName, value) : undefined}
-                >
-                    {fieldName === "coverImage"
-                        ? changeCoverImg && (
-                              <span className="italic">{languages[lang].profile.changeCoverImg}</span>
-                          )
-                        : value}
-                </p>
+                </>
             ) : (
                 <span
                     className={classNames("text-xs text-gray-600 italic", {

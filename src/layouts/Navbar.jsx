@@ -59,7 +59,7 @@ export const Navbar = ({ toggleMenu }) => {
                         title={chooseLang[label] || label}
                         className={({ isActive }) =>
                             classNames("flex items-center gap-1 p-2 rounded-xl transition-all duration-300", {
-                                "bg-orangeAce/20": isActive,
+                                "bg-orangeAce/20 scale-110": isActive,
                                 "hover:bg-orangeAce/10": !isActive,
                             })
                         }

@@ -3,7 +3,6 @@ import {
     createPostApi,
     deletePostApi,
     getPostsApi,
-    getUserApi,
     likePostApi,
     replyPostApi,
 } from "@/core/posts/posts.api";
@@ -94,12 +93,6 @@ export const usePosts = () => {
         } catch (error) {
             console.error("Error al comentar el post", error);
         }
-    };
-
-    const getUser = async (id) => {
-        try {
-            const user = await getUserApi(id);
-        } catch (error) {}
     };
 
     return { posts, loading, error, setError, createPost, deletePost, likePost, bookmarkPost, replyPost };
