@@ -15,7 +15,7 @@ export const PostsSection = () => {
         return (
             <div className="flex flex-col items-center gap-1">
                 <Spinner className="mx-auto mt-5" />{" "}
-                <p className="text-gradient">
+                <p className="text-gradient dark:text-black">
                     {languages[lang].posts.loadingPosts}
                     <LoadingDots />
                 </p>

@@ -5,6 +5,10 @@ html {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
 }
 
+body.dark {
+    background: linear-gradient(135deg, var(--color-default) 80%, var(--color-card) 100%);
+}
+
 @font-face {
     font-family: "OnePiece";
     src: url("./assets/fonts/OnePiece.woff2") format("woff2");
@@ -181,19 +185,19 @@ html {
 /* DARK THEME */
 .dark {
     /* Colores de fondo */
-    --color-primary: #1a1d29;
-    --color-secondary: #252938;
+    --color-primary: #1d2026;
+    --color-secondary: #30363f;
     --color-card: #2d3142;
     --color-default: #3d4357;
     --color-hover: #3d4357;
-    --color-orangeAce: #ff8555;
+    --color-orangeAce: #d0c0b9;
     --color-orange: #ffab6b;
-    --color-sunny: #3a3525;
+    --color-sunny: #32322f;
 
     /* Colores de texto */
-    --text-color-primary: #e5e7eb;
+    --text-color-primary: #ffffff;
     --text-color-secondary: #c9a066;
-    --text-color-muted: #9ca3af;
+    --text-color-muted: #b5bbc4;
     --text-color-contrast: #1a1d29;
     --text-color-link: #60a5fa;
 
@@ -212,16 +216,11 @@ html {
 }
 
 .dark .bg-gradient-primary {
-    background: linear-gradient(to bottom right, rgba(37, 41, 56, 0.7), rgba(255, 171, 107, 0.15));
+    @apply bg-gradient-to-br from-primary to-secondary;
 }
 
 .dark .bg-gradient-card {
-    background: linear-gradient(
-        to bottom right,
-        rgba(45, 49, 66, 0.8),
-        rgba(255, 171, 107, 0.25),
-        rgba(255, 133, 85, 0.35)
-    );
+    @apply bg-gradient-to-br from-primary/80 via-secondary/90 to-card;
 }
 
 .dark .text-gradient {
