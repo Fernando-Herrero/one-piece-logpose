@@ -116,11 +116,11 @@ const storageHandler = (storageType) => {
 };
 
 // Crear instancias para cada tipo de storage
-export const localStorage = storageHandler(window.localStorage);
-export const sessionStorage = storageHandler(window.sessionStorage);
+export const local = storageHandler(window.localStorage);
+export const session = storageHandler(window.sessionStorage);
 
 // Mantener compatibilidad con el código existente
-export const storage = localStorage;
+export const storage = local;
 
 // /**
 //  * Recupera un valor del localStorage.

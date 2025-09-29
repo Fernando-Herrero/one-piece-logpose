@@ -1,4 +1,5 @@
 import { getUserApi } from "@/core/posts/posts.api";
+import { followUserApi } from "@/core/user/user.api";
 import { useEffect, useState } from "react";
 
 export const useUser = (userId) => {
@@ -31,6 +32,12 @@ export const useUser = (userId) => {
         };
         fetchUser();
     }, [userId]);
+
+    const followUser = async (userId) => {
+        try {
+            const updatedUser = await followUserApi(userId);
+        } catch (error) {}
+    };
 
     return { user, loading, error };
 };

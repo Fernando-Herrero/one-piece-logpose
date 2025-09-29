@@ -3,7 +3,7 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
-import { sessionStorage } from "@/helpers/storage";
+import { session } from "@/helpers/storage";
 import { useLoginValidation } from "@/hooks/useLoginValidation";
 import { useToggle } from "@/hooks/useToggle";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 const EMPTY_USER = { email: "", password: "" };
 
 export const LoginForm = () => {
-    const savedForm = sessionStorage.get("loginInputs");
+    const savedForm = session.get("loginInputs");
     const [form, setForm] = useState(savedForm || EMPTY_USER);
 
     const [isVisible, toggleVisible] = useToggle();
@@ -43,7 +43,7 @@ export const LoginForm = () => {
 
             await login(form);
 
-            sessionStorage.remove("loginInputs");
+            session.remove("loginInputs");
             setForm(EMPTY_USER);
 
             showModal({

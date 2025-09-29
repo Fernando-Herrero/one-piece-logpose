@@ -14,8 +14,8 @@ export const AvatarSection = ({ onCancel }) => {
     const { updatedProfile } = useAuth();
     const { lang } = useContext(LanguagesContext);
 
-    const handleAvatar = async () => {
-        if (selectedAvatar) {
+    const saveAvatarProfile = async () => {
+        if (selectedAvatar && user) {
             await updatedProfile(user, { avatar: selectedAvatar });
             onCancel();
         }
@@ -30,7 +30,7 @@ export const AvatarSection = ({ onCancel }) => {
                 <img src={cross} alt="Cross icon" />
             </button>
             <AvatarSelected className="bg-sunny p-2 rounded-xl w-[90vw] max-w-fit" />
-            <Button type="submit" onClick={handleAvatar}>
+            <Button type="submit" onClick={saveAvatarProfile}>
                 {languages[lang].profile.changeAvatar}
             </Button>
         </section>

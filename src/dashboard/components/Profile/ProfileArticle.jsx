@@ -6,7 +6,6 @@ import { FollowSection } from "@/dashboard/components/Profile/FollowSection";
 import { ProfileHeader } from "@/dashboard/components/Profile/ProfileHeader";
 import { ProfileViewMore } from "@/dashboard/components/Profile/ProfileViewMore";
 import { getProfileFields } from "@/dashboard/data/ProfileData/profileFields";
-import { useGoTo } from "@/hooks/useGoTo";
 import { useProfileEditor } from "@/hooks/useProfileEditor";
 import { useContext, useState } from "react";
 
@@ -15,7 +14,6 @@ export const ProfileArticle = () => {
     const { updatedProfile } = useAuth();
     const editorProps = useProfileEditor(user, updatedProfile);
     const { lang } = useContext(LanguagesContext);
-    const { goTo } = useGoTo();
 
     if (!user) return <p>{LanguagesContext[lang].profile.noUser}</p>;
 

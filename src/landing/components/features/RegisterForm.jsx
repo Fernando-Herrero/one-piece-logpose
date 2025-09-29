@@ -3,7 +3,7 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
-import { sessionStorage } from "@/helpers/storage";
+import { session } from "@/helpers/storage";
 import { useAvatar } from "@/hooks/useAvatar";
 import { useRegisterValidation } from "@/hooks/useRegisterValidation";
 import { useToggle } from "@/hooks/useToggle";
@@ -16,11 +16,11 @@ import { useContext, useState } from "react";
 
 export const RegisterForm = () => {
     const { register } = useAuth();
-    const { selectedAvatar } = useAvatar();
+    const { selectedAvatar, setSelectedAvatar } = useAvatar();
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
 
-    const savedRegisterInputs = sessionStorage.get("registerInputs");
+    const savedRegisterInputs = session.get("registerInputs");
     const [form, setForm] = useState({ ...INITIAL_REGISTER_FORM, ...(savedRegisterInputs || {}) });
     const [isChecked, setIsChecked] = useState(false);
 
@@ -33,7 +33,7 @@ export const RegisterForm = () => {
         clearError();
         setForm((prev) => {
             const newRegisterForm = { ...prev, [name]: value || "" };
-            sessionStorage.save("registerInputs", newRegisterForm);
+            session.save("registerInputs", newRegisterForm);
             return newRegisterForm;
         });
     };
@@ -53,14 +53,17 @@ export const RegisterForm = () => {
         try {
             register(dataToSend);
 
-            showModal({
-                message: languages[lang].modal.registerMessage,
-                onConfirm: hideModal,
-            });
+            setTimeout(() => {
+                showModal({
+                    message: languages[lang].modal.registerMessage,
+                    onConfirm: hideModal,
+                });
+            }, 1000);
 
-            sessionStorage.remove("registerInputs");
+            session.remove("registerInputs");
             setForm(INITIAL_REGISTER_FORM);
             setIsChecked(false);
+            setSelectedAvatar(null);
         } catch (error) {
             setError(error.message);
         }

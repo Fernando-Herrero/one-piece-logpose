@@ -1,6 +1,6 @@
 const fruits = [
     {
-        id: 1,
+        fruit_id: 1,
         name: "Gum-Gum Fruit",
         roman_name: "Gomu Gomu no Mi",
         type: "Paramecia",
@@ -9,7 +9,7 @@ const fruits = [
         current_user: "Monkey D. Luffy",
     },
     {
-        id: 2,
+        fruit_id: 2,
         name: "Chop-Chop Fruit",
         roman_name: "Bara Bara no Mi",
         type: "Paramecia",
@@ -18,7 +18,7 @@ const fruits = [
         current_user: "Buggy",
     },
     {
-        id: 3,
+        fruit_id: 3,
         name: "Slip-Slip Fruit",
         roman_name: "Sube Sube no Mi",
         type: "Paramecia",
@@ -27,7 +27,7 @@ const fruits = [
         current_user: "Alvida",
     },
     {
-        id: 4,
+        fruit_id: 4,
         name: "Smoke-Smoke Fruit",
         roman_name: "Moku Moku no Mi",
         type: "Logia",
@@ -36,7 +36,7 @@ const fruits = [
         current_user: "Smoker",
     },
     {
-        id: 5,
+        fruit_id: 5,
         name: "Whisper-Whisper Fruit",
         roman_name: "Hiso Hiso no Mi",
         type: "Paramecia",
@@ -45,7 +45,7 @@ const fruits = [
         current_user: "Apis",
     },
     {
-        id: 6,
+        fruit_id: 6,
         name: "Sickle-Sickle Fruit",
         roman_name: "Kama Kama no Mi",
         type: "Paramecia",

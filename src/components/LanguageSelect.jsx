@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 export const LanguageSelect = ({ placement, align }) => {
     const [isOpen, toggleMenu, closeMenu] = useToggle();
-    const { lang, setLang } = useContext(LanguagesContext);
+    const { lang, handleLang } = useContext(LanguagesContext);
 
     const menuRef = useClickOutside(toggleMenu, isOpen);
 
@@ -16,7 +16,7 @@ export const LanguageSelect = ({ placement, align }) => {
     };
 
     const handleLangChange = (code) => {
-        setLang(code);
+        handleLang(code);
         toggleMenu();
     };
 

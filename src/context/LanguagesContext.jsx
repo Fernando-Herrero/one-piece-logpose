@@ -1,15 +1,15 @@
-import { storage } from "@/helpers/storage";
+import { local } from "@/helpers/storage";
 import { createContext, useState } from "react";
 
 export const LanguagesContext = createContext(null);
 
 export const LanguagesProvider = ({ children }) => {
-    const savedLang = storage.get("lang");
+    const savedLang = local.get("lang");
     const [lang, setLang] = useState(savedLang || "es");
 
     const handleLang = (value) => {
         setLang(value);
-        storage.save("lang", value);
+        local.save("lang", value);
     };
 
     return (

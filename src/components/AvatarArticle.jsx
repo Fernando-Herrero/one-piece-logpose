@@ -1,14 +1,14 @@
 import { AvatarContext } from "@/context/AvatarContext";
 import { useContext } from "react";
 
-export const AvatarArticle = ({ character, handleAvatar }) => {
+export const AvatarArticle = ({ character, selectAvatar }) => {
     const { selectedAvatar } = useContext(AvatarContext);
 
     return (
         <article
             key={character.name}
             className="flex flex-col items-center justify-center"
-            onClick={() => handleAvatar(character.name)}
+            onClick={() => selectAvatar(character.name)}
         >
             <div
                 className={`group w-[60px] rounded-full overflow-hidden relative shadow-default transition-transform duration-500 ease-in-out hover:scale-110 hover:-translate-y-1.5 ${

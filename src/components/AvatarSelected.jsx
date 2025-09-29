@@ -3,7 +3,7 @@ import { characters } from "@/helpers/avatarImages";
 import { useAvatar } from "@/hooks/useAvatar";
 
 export const AvatarSelected = ({ className = "" }) => {
-    const { handleAvatar } = useAvatar();
+    const { selectAvatar } = useAvatar();
 
     return (
         <section className={`flex flex-wrap items-center gap-2 justify-center ${className}`}>
@@ -11,7 +11,7 @@ export const AvatarSelected = ({ className = "" }) => {
                 <AvatarArticle
                     key={`${character}-${index}`}
                     character={character}
-                    handleAvatar={handleAvatar}
+                    selectAvatar={selectAvatar}
                 />
             ))}
         </section>

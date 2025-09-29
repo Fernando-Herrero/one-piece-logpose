@@ -10,7 +10,7 @@ export const ProfileHeader = ({ user, setCoverImg }) => {
 
     return (
         <div className="relative w-full flex flex-col items-center">
-            <div className="relative group">
+            <div className="relative group max-h-52 overflow-hidden">
                 {user?.coverImage ? (
                     <img
                         src={user.coverImage}
@@ -23,14 +23,14 @@ export const ProfileHeader = ({ user, setCoverImg }) => {
                     </div>
                 )}
                 <button
-                    className="hidden absolute right-0 p-2 rounded-xl cursor-pointer bg-sunny whitespace-nowrap group-hover:block z-10"
+                    className="hidden absolute right-0 bottom-0 p-2 rounded-xl cursor-pointer bg-sunny whitespace-nowrap group-hover:block z-10"
                     onClick={() => setCoverImg(true)}
                 >
                     <span className="text-gradient">{languages[lang].profile.changeCoverImg}</span>
                 </button>
             </div>
 
-            <div className="absolute top-10">
+            <div className={`${user?.coverImage ? "absolute top-10" : "relative"}`}>
                 <div className="relative group">
                     <UserAvatar
                         src={user.avatar}

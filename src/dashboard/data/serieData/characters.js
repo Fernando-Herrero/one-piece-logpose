@@ -1,7 +1,6 @@
 const characters = [
-    // CORRECCIONES A TU LISTA ACTUAL:
     {
-        id: 1,
+        character_id: 1,
         name: "Monkey D. Luffy",
         type: ["common", "uncommon", "rare", "legendary"],
         abilities: [
@@ -22,7 +21,7 @@ const characters = [
         position: "Captain",
     },
     {
-        id: 2,
+        character_id: 2,
         name: "Alvida",
         type: ["common", "uncommon"],
         abilities: ["Club fighting", "Sube Sube no Mi"],
@@ -32,7 +31,7 @@ const characters = [
         position: "Captain",
     },
     {
-        id: 3,
+        character_id: 3,
         name: "Koby",
         type: ["common", "uncommon", "rare"],
         abilities: ["Basic combat skills", "Rokushiki (Soru, Tekkai, Geppou, Shigan, Rankyaku)"],
@@ -42,7 +41,7 @@ const characters = [
         position: "Marine",
     },
     {
-        id: 4,
+        character_id: 4,
         name: "Roronoa Zoro",
         type: ["common", "uncommon", "rare", "legendary"],
         abilities: ["Santoryu Ogi: Sanzen Sekai", "Santoryu Ogi: Rokudo no Tsuji", "Asura", "Haki"],
@@ -52,7 +51,7 @@ const characters = [
         position: "Swordsman/First Mate",
     },
     {
-        id: 5,
+        character_id: 5,
         name: "Captain Morgan",
         type: ["common"],
         abilities: ["Axe Hand", "Marine combat"],
@@ -62,7 +61,7 @@ const characters = [
         position: "Captain",
     },
     {
-        id: 6,
+        character_id: 6,
         name: "Helmeppo",
         type: ["common"],
         abilities: ["Swordsmanship (later)", "Cowardly tactics"],
@@ -72,7 +71,7 @@ const characters = [
         position: "Marine",
     },
     {
-        id: 7,
+        character_id: 7,
         name: "Nami",
         type: ["common", "uncommon", "rare", "legendary"],
         abilities: ["Climatact", "Weather manipulation", "Navigation skills", "Thievery"],
@@ -82,7 +81,7 @@ const characters = [
         position: "Navigator",
     },
     {
-        id: 8,
+        character_id: 8,
         name: "Shanks",
         type: ["legendary"],
         abilities: ["Haki", "Swordsmanship"],
@@ -92,7 +91,7 @@ const characters = [
         position: "Captain/Yonko",
     },
     {
-        id: 9,
+        character_id: 9,
         name: "Buggy",
         type: ["common", "uncommon", "rare", "legendary"],
         abilities: ["Bara Bara no Mi", "Swordsmanship", "Explosives", "Buggy Ball"],
@@ -102,7 +101,7 @@ const characters = [
         position: "Captain",
     },
     {
-        id: 10,
+        character_id: 10,
         name: "Mohji",
         type: ["common"],
         abilities: ["Beast Taming", "Whip fighting"],
@@ -112,7 +111,7 @@ const characters = [
         position: "Chief of Staff",
     },
     {
-        id: 11,
+        character_id: 11,
         name: "Richie",
         type: ["common"],
         abilities: ["Lion strength", "Claws and fangs"],
@@ -122,7 +121,7 @@ const characters = [
         position: "Beast",
     },
     {
-        id: 12,
+        character_id: 12,
         name: "Cabaji",
         type: ["common"],
         abilities: ["Acrobatics", "Sword combat", "Unicycle fighting"],
@@ -132,7 +131,7 @@ const characters = [
         position: "Chief of Staff",
     },
     {
-        id: 13,
+        character_id: 13,
         name: "Chouchou",
         type: ["common"],
         abilities: ["Loyalty", "Guard dog instincts"],
@@ -142,7 +141,7 @@ const characters = [
         position: "Pet store guardian",
     },
     {
-        id: 14,
+        character_id: 14,
         name: "Boodle",
         type: ["common"],
         abilities: ["Leadership", "Town management"],
@@ -152,7 +151,7 @@ const characters = [
         position: "Mayor",
     },
     {
-        id: 15,
+        character_id: 15,
         name: "Usopp",
         type: ["common", "uncommon", "rare", "legendary"],
         abilities: ["Sniping", "Trick weapons", "Haki", "Engineering", "Pop Green"],
@@ -162,7 +161,7 @@ const characters = [
         position: "Sniper",
     },
     {
-        id: 16,
+        character_id: 16,
         name: "Kaya",
         type: ["common"],
         abilities: ["Medical knowledge", "Wealth management"],
@@ -172,7 +171,7 @@ const characters = [
         position: "Wealthy heiress",
     },
     {
-        id: 17,
+        character_id: 17,
         name: "Merry",
         type: ["common"],
         abilities: ["Ship design", "Craftsmanship"],
@@ -182,7 +181,7 @@ const characters = [
         position: "Shipwright",
     },
     {
-        id: 18,
+        character_id: 18,
         name: "Onion",
         type: ["common"],
         abilities: ["Basic slingshot", "Childish tactics"],
@@ -192,7 +191,7 @@ const characters = [
         position: "Member",
     },
     {
-        id: 19,
+        character_id: 19,
         name: "Pepper",
         type: ["common"],
         abilities: ["Basic slingshot", "Childish tactics"],
@@ -202,7 +201,7 @@ const characters = [
         position: "Member",
     },
     {
-        id: 20,
+        character_id: 20,
         name: "Carrot",
         type: ["common"],
         abilities: ["Basic slingshot", "Childish tactics"],
@@ -212,7 +211,7 @@ const characters = [
         position: "Member",
     },
     {
-        id: 21,
+        character_id: 21,
         name: "Jango",
         type: ["common"],
         abilities: ["Hypnosis", "Chakram throwing", "Dancing"],
@@ -222,7 +221,7 @@ const characters = [
         position: "First Mate",
     },
     {
-        id: 22,
+        character_id: 22,
         name: "Kuro",
         type: ["common", "uncommon"],
         abilities: ["Stealth", "Strategy", "Cat Claws", "Shakushi (Silent Step)", "Out of the Bag Attack"],
@@ -232,7 +231,7 @@ const characters = [
         position: "Captain",
     },
     {
-        id: 23,
+        character_id: 23,
         name: "Sham",
         type: ["common"],
         abilities: ["Agility", "Cat-like reflexes", "Team fighting with Buchi"],
@@ -242,7 +241,7 @@ const characters = [
         position: "Nyaban Brothers",
     },
     {
-        id: 24,
+        character_id: 24,
         name: "Buchi",
         type: ["common"],
         abilities: ["Strength", "Cat-like reflexes", "Team fighting with Sham"],
@@ -252,7 +251,7 @@ const characters = [
         position: "Nyaban Brothers",
     },
     {
-        id: 25,
+        character_id: 25,
         name: "Kuina",
         type: ["uncommon", "rare"],
         abilities: ["Expert swordsmanship", "Wado Ichimonji"],
@@ -262,7 +261,7 @@ const characters = [
         position: "Dojo student (deceased)",
     },
     {
-        id: 26,
+        character_id: 26,
         name: "Koshiro",
         type: ["rare"],
         abilities: ["Master swordsmanship", "Teaching", "Calm demeanor"],
@@ -272,7 +271,7 @@ const characters = [
         position: "Dojo master",
     },
     {
-        id: 27,
+        character_id: 27,
         name: "Johnny",
         type: ["common"],
         abilities: ["Basic swordsmanship", "Bounty hunting"],
@@ -282,7 +281,7 @@ const characters = [
         position: "Bounty hunter",
     },
     {
-        id: 28,
+        character_id: 28,
         name: "Yosaku",
         type: ["common"],
         abilities: ["Basic swordsmanship", "Bounty hunting"],
@@ -292,7 +291,7 @@ const characters = [
         position: "Bounty hunter",
     },
     {
-        id: 29,
+        character_id: 29,
         name: "Sanji",
         type: ["common", "uncommon", "rare", "legendary"],
         abilities: ["Black Leg Style", "Diable Jambe", "Sky Walk", "Haki", "Cooking mastery"],
@@ -302,7 +301,7 @@ const characters = [
         position: "Cook",
     },
     {
-        id: 30,
+        character_id: 30,
         name: "Zeff",
         type: ["rare"],
         abilities: ["Red Leg fighting style", "Cooking mastery", "Leadership", "Survival skills"],
@@ -312,7 +311,7 @@ const characters = [
         position: "Head chef/Owner",
     },
     {
-        id: 31,
+        character_id: 31,
         name: "Patty",
         type: ["common"],
         abilities: ["Cooking", "Basic combat"],
@@ -322,7 +321,7 @@ const characters = [
         position: "Cook/Fighter",
     },
     {
-        id: 32,
+        character_id: 32,
         name: "Carne",
         type: ["common"],
         abilities: ["Cooking", "Basic combat"],
@@ -332,7 +331,7 @@ const characters = [
         position: "Cook/Fighter",
     },
     {
-        id: 33,
+        character_id: 33,
         name: "Fullbody",
         type: ["common"],
         abilities: ["Marine combat", "Iron knuckles"],
@@ -342,7 +341,7 @@ const characters = [
         position: "Lieutenant",
     },
     {
-        id: 34,
+        character_id: 34,
         name: "Gin",
         type: ["uncommon"],
         abilities: ["Tonfa combat", "Battle experience", "Loyalty"],
@@ -352,7 +351,7 @@ const characters = [
         position: "Combat Commander",
     },
     {
-        id: 35,
+        character_id: 35,
         name: "Don Krieg",
         type: ["rare"],
         abilities: ["Heavy armor", "Various weapons", "Battle Spear", "MH5 gas", "Leadership"],
@@ -362,7 +361,7 @@ const characters = [
         position: "Admiral/Captain",
     },
     {
-        id: 36,
+        character_id: 36,
         name: "Pearl",
         type: ["common"],
         abilities: ["Shield defense", "Fire resistance", "Iron wall combat"],
@@ -372,7 +371,7 @@ const characters = [
         position: "Second Combat Commander",
     },
     {
-        id: 37,
+        character_id: 37,
         name: "Dracule Mihawk",
         type: ["legendary"],
         abilities: ["World's Strongest Swordsman", "Yoru", "Haki", "Cross slash"],
@@ -381,9 +380,8 @@ const characters = [
         crew: "Independent",
         position: "Shichibukai/World's Greatest Swordsman",
     },
-    // PERSONAJES QUE FALTABAN:
     {
-        id: 38,
+        character_id: 38,
         name: "Higuma",
         type: ["common"],
         abilities: ["Mountain bandit tactics", "Basic combat"],
@@ -393,7 +391,7 @@ const characters = [
         position: "Bandit leader",
     },
     {
-        id: 39,
+        character_id: 39,
         name: "Arlong",
         type: ["rare"],
         abilities: ["Fishman strength", "Shark teeth", "Water combat", "Kiribachi"],
@@ -403,7 +401,7 @@ const characters = [
         position: "Captain",
     },
     {
-        id: 40,
+        character_id: 40,
         name: "Bell-mère",
         type: ["uncommon"],
         abilities: ["Marine combat", "Navigation", "Tangerine farming"],
@@ -413,7 +411,7 @@ const characters = [
         position: "Marine (former)/Foster mother",
     },
     {
-        id: 41,
+        character_id: 41,
         name: "Nojiko",
         type: ["common"],
         abilities: ["Tangerine farming", "Village knowledge"],
@@ -423,7 +421,7 @@ const characters = [
         position: "Villager/Nami's sister",
     },
     {
-        id: 42,
+        character_id: 42,
         name: "Genzo",
         type: ["common"],
         abilities: ["Village leadership", "Basic combat"],
@@ -433,7 +431,7 @@ const characters = [
         position: "Sheriff/Village leader",
     },
     {
-        id: 43,
+        character_id: 43,
         name: "Kuroobi",
         type: ["uncommon"],
         abilities: ["Fishman Karate", "Water combat", "Ray-fin strikes"],
@@ -443,7 +441,7 @@ const characters = [
         position: "Officer",
     },
     {
-        id: 44,
+        character_id: 44,
         name: "Chu",
         type: ["uncommon"],
         abilities: ["Water bullets", "Fishman physiology", "Marksmanship"],
@@ -453,7 +451,7 @@ const characters = [
         position: "Officer",
     },
     {
-        id: 45,
+        character_id: 45,
         name: "Hatchan",
         type: ["uncommon"],
         abilities: ["Six-sword style", "Octopus ink", "Takoyaki cooking"],
@@ -463,7 +461,7 @@ const characters = [
         position: "Officer",
     },
     {
-        id: 46,
+        character_id: 46,
         name: "Nezumi",
         type: ["common"],
         abilities: ["Marine authority", "Corruption", "Cowardice"],
@@ -473,7 +471,7 @@ const characters = [
         position: "Captain (corrupt)",
     },
     {
-        id: 47,
+        character_id: 47,
         name: "Smoker",
         type: ["rare", "legendary"],
         abilities: ["Moku Moku no Mi", "Jitte", "Haki", "Marine combat"],
@@ -483,7 +481,7 @@ const characters = [
         position: "Captain (later Admiral)",
     },
     {
-        id: 48,
+        character_id: 48,
         name: "Tashigi",
         type: ["uncommon", "rare"],
         abilities: ["Swordsmanship", "Shigure", "Marine training"],
@@ -493,7 +491,7 @@ const characters = [
         position: "Sergeant Major",
     },
     {
-        id: 49,
+        character_id: 49,
         name: "Ipponmatsu",
         type: ["common"],
         abilities: ["Sword knowledge", "Weapon appraisal", "Shop management"],
@@ -503,7 +501,7 @@ const characters = [
         position: "Weapon shop owner",
     },
     {
-        id: 50,
+        character_id: 50,
         name: "Daddy Masterson",
         type: ["uncommon"],
         abilities: ["Expert marksmanship", "Quick draw", "Rifle mastery"],
@@ -513,7 +511,7 @@ const characters = [
         position: "Sheriff/Former bounty hunter",
     },
     {
-        id: 51,
+        character_id: 51,
         name: "Carol",
         type: ["common"],
         abilities: ["None specified"],
@@ -523,7 +521,7 @@ const characters = [
         position: "Daddy's daughter",
     },
     {
-        id: 52,
+        character_id: 52,
         name: "Carmen",
         type: ["common"],
         abilities: ["Expert cooking", "Competition skills"],
@@ -533,18 +531,17 @@ const characters = [
         position: "Chef",
     },
     {
-        id: 53,
+        character_id: 53,
         name: "Dragon",
         type: ["legendary"],
         abilities: ["Revolutionary leadership", "Weather control", "Haki"],
-        bounty: [0], // Unknown at this point
-        fruit: null, // Unknown at this point
+        bounty: [0],
+        fruit: null,
         crew: "Revolutionary Army",
         position: "Leader",
     },
-    // WARSHIP ISLAND ARC (Filler):
     {
-        id: 54,
+        character_id: 54,
         name: "Apis",
         type: ["common"],
         abilities: ["Hiso Hiso no Mi (animal communication)"],
@@ -554,7 +551,7 @@ const characters = [
         position: "Girl from Warship Island",
     },
     {
-        id: 55,
+        character_id: 55,
         name: "Eric",
         type: ["uncommon"],
         abilities: ["Kama Kama no Mi (sickle-sickle fruit)", "Wind scythes"],
@@ -564,7 +561,7 @@ const characters = [
         position: "Mercenary",
     },
     {
-        id: 56,
+        character_id: 56,
         name: "Ryuji",
         type: ["rare"],
         abilities: ["Ancient dragon wisdom", "Flight", "Longevity"],
@@ -574,7 +571,7 @@ const characters = [
         position: "Sennenryu (Thousand-Year Dragon)",
     },
     {
-        id: 57,
+        character_id: 57,
         name: "Bokuden",
         type: ["common"],
         abilities: ["Village leadership", "Dragon knowledge"],
@@ -584,7 +581,7 @@ const characters = [
         position: "Village elder",
     },
     {
-        id: 58,
+        character_id: 58,
         name: "Nelson Royale",
         type: ["common"],
         abilities: ["Marine command", "Naval tactics"],

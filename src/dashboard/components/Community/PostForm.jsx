@@ -26,7 +26,7 @@ export const PostForm = ({
 
         const processData = {
             text: formData.text,
-            images: comment.image?.trim() ? [comment.image.trim()] : [],
+            images: formData.image?.trim() ? [formData.image.trim()] : [],
         };
 
         await onSubmit(processData);
@@ -74,7 +74,11 @@ export const PostForm = ({
                     )}
                 </label>
 
-                {error && <p className="text-red-700">{error}</p>}
+                {error && (
+                    <p className="text-red-700">
+                        {typeof error === "string" ? error : error.message || "Unexpected error"}
+                    </p>
+                )}
 
                 <div className="flex items-center gap-1">
                     <Button type="button" variant="danger" onClick={handleCancel}>

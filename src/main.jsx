@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App.jsx";
@@ -11,21 +10,19 @@ import { SagaProvider } from "./context/SagaContext.jsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
-    <StrictMode>
-        <BrowserRouter>
-            <LanguagesProvider>
+    <BrowserRouter>
+        <LanguagesProvider>
+            <AuthProvider>
                 <SagaProvider>
                     <AvatarProvider>
-                        <AuthProvider>
-                            <ModdalProvider>
-                                <DeviceProvider>
-                                    <App />
-                                </DeviceProvider>
-                            </ModdalProvider>
-                        </AuthProvider>
+                        <ModdalProvider>
+                            <DeviceProvider>
+                                <App />
+                            </DeviceProvider>
+                        </ModdalProvider>
                     </AvatarProvider>
                 </SagaProvider>
-            </LanguagesProvider>
-        </BrowserRouter>
-    </StrictMode>
+            </AuthProvider>
+        </LanguagesProvider>
+    </BrowserRouter>
 );

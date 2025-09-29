@@ -204,6 +204,8 @@ export const languages = {
             loadingPosts: "Cargando posts",
             deletePost: "Eliminar post",
             viewProfile: "Ver perfil",
+            follow: "Seguir",
+            unfollow: "Dejar de seguir",
         },
 
         sagaData: {
@@ -452,7 +454,7 @@ export const languages = {
             emptyBio: "Insert your biography",
             inputCoverImage: "Insert a URL for your cover image",
             emptyCoverImage: "Insert a URL for your cover image",
-            hangeCoverImg: "Change cover Img",
+            changeCoverImg: "Change cover Img",
             loadingProfile: "Loading Profile",
         },
 
@@ -463,6 +465,8 @@ export const languages = {
             loadingPosts: "Loading posts",
             deletePost: "Delete post",
             viewProfile: "View profile",
+            follow: "Follow",
+            unfollow: "Unfollow",
         },
 
         sagaData: {

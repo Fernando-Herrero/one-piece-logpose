@@ -1,5 +1,5 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { usePosts } from "@/core/posts/usePosts";
+import { PostContext } from "@/context/PostContext";
 import { PostCard } from "@/dashboard/components/Community/PostCard";
 import { Spinner } from "@/dashboard/components/Community/Spinner";
 import { languages } from "@/helpers/languages";
@@ -7,7 +7,7 @@ import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { useContext } from "react";
 
 export const PostsSection = () => {
-    const { posts, loading, error } = usePosts();
+    const { posts, loading, error } = useContext(PostContext);
     const { lang } = useContext(LanguagesContext);
 
     if (!posts) return <p>{languages[lang].posts.noPosts}</p>;

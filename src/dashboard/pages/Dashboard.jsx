@@ -1,4 +1,5 @@
 import { Overlay } from "@/components/Overlay";
+import { PostProvider } from "@/context/PostContext";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/Profile/AvatarSection";
 import { Comment } from "@/dashboard/pages/Comment";
@@ -23,7 +24,14 @@ export const Dashboard = () => {
                         }
                     />
                 </Route>
-                <Route path="/community" element={<Community />}>
+                <Route
+                    path="/community"
+                    element={
+                        <PostProvider>
+                            <Community />
+                        </PostProvider>
+                    }
+                >
                     <Route
                         path="post"
                         element={<Overlay>{(handleClose) => <Post onCancel={handleClose} />}</Overlay>}

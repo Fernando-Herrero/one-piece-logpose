@@ -26,9 +26,7 @@ export const EditableField = ({
     changeCoverImg,
 }) => {
     const { lang } = useContext(LanguagesContext);
-
     const isCurrentlyEditing = isEditing && editingField === fieldName;
-
     const ref = useRef(null);
 
     useEffect(() => {
@@ -44,6 +42,34 @@ export const EditableField = ({
 
         return () => window.removeEventListener("mousedown", handleClickOutside);
     }, [isCurrentlyEditing, cancelEditing]);
+
+    const isCoverImageHidden = () => fieldName === "coverImage" && !changeCoverImg;
+
+    const shouldShowValue = () => value && !isCoverImageHidden();
+
+    const getDisplayValue = () => {
+        if (fieldName === "coverImage" && changeCoverImg) {
+            return <span className="italic">{languages[lang].profile.changeCoverImg}</span>;
+        }
+        return value;
+    };
+
+    const getEmptyText = () => {
+        if (fieldName === "coverImage") {
+            return !value && changeCoverImg ? languages[lang].profile.changeCoverImg : "";
+        }
+        return emptyText;
+    };
+
+    const getValueStyles = () =>
+        classNames(
+            !readOnly && "cursor-pointer hover:underline",
+            fieldName === "displayName" ? "text-primary font-semibold" : "text-xs text-gradient",
+            (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
+        );
+
+    const getEmptyStyles = () =>
+        classNames("text-xs text-gray-600 italic", !readOnly && "cursor-pointer hover:underline");
 
     if (isCurrentlyEditing && !readOnly) {
         return (
@@ -73,49 +99,34 @@ export const EditableField = ({
         );
     }
 
+    const hasValue = shouldShowValue();
+    const handleClick = (clickValue) => (!readOnly ? () => startEditing(fieldName, clickValue) : undefined);
+
     return (
         <div className="flex items-center gap-1">
             {label && (
                 <p>
-                    <strong className="text-primary font-semibold">{label}</strong>{" "}
+                    <strong className="text-primary font-semibold">{label}</strong>
                 </p>
             )}
-            {fieldName === "coverImage" && !changeCoverImg ? null : value ? (
+
+            {hasValue ? (
                 <>
-                    <p
-                        className={classNames(
-                            !readOnly && "cursor-pointer hover:underline",
-                            fieldName === "displayName"
-                                ? "text-primary font-semibold"
-                                : "text-xs text-gradient",
-                            (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
-                        )}
-                        onClick={!readOnly ? () => startEditing(fieldName, value) : undefined}
-                    >
-                        {fieldName === "coverImage"
-                            ? changeCoverImg && (
-                                  <span className="italic">{languages[lang].profile.changeCoverImg}</span>
-                              )
-                            : value}
+                    <p className={getValueStyles()} onClick={handleClick(value)}>
+                        {getDisplayValue()}
                     </p>
-                    {fieldName === "displayName" ? (
+
+                    {fieldName === "displayName" && (
                         <img
                             className="w-4"
                             src={user.verified ? verified : notVerified}
                             alt={user.verified ? "Verified icon" : "not verified icon"}
                         />
-                    ) : (
-                        ""
                     )}
                 </>
             ) : (
-                <span
-                    className={classNames("text-xs text-gray-600 italic", {
-                        "cursor-pointer hover:underline": !readOnly,
-                    })}
-                    onClick={!readOnly ? () => startEditing(fieldName, "") : undefined}
-                >
-                    {emptyText}
+                <span className={getEmptyStyles()} onClick={handleClick("")}>
+                    {getEmptyText()}
                 </span>
             )}
         </div>

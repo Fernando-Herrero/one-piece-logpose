@@ -1,44 +1,22 @@
+import { PostContext } from "@/context/PostContext";
 import {
     bookmarkPostApi,
     createPostApi,
     deletePostApi,
-    getPostsApi,
     likePostApi,
     replyPostApi,
 } from "@/core/posts/posts.api";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 
 export const usePosts = () => {
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const fetchPosts = async () => {
-            if (loading || posts.length) return;
-            try {
-                setLoading(true);
-                setError(null);
-
-                const data = await getPostsApi();
-                setPosts(data);
-            } catch (error) {
-                console.error("Error al obtener posts", error);
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchPosts();
-    }, []);
+    const { setPosts } = useContext(PostContext);
 
     const createPost = async (newPost) => {
         try {
             const created = await createPostApi(newPost);
             console.log("este es el post creado", created);
             setPosts((prev) => {
-                const newPost = [...prev, created];
+                const newPost = [created, ...prev];
                 console.log("Este es mi nuevo post", newPost);
                 return newPost;
             });
@@ -61,7 +39,7 @@ export const usePosts = () => {
             const result = await likePostApi(id);
             setPosts((prev) =>
                 prev.map((post) =>
-                    post.id === id ? { ...post, likesCount: result.likesCount, liked: result.liked } : post
+                    post.id === id ? { ...post, likesCount: result.likesCount, like: result.liked } : post
                 )
             );
         } catch (error) {
@@ -95,5 +73,5 @@ export const usePosts = () => {
         }
     };
 
-    return { posts, loading, error, setError, createPost, deletePost, likePost, bookmarkPost, replyPost };
+    return { createPost, deletePost, likePost, bookmarkPost, replyPost };
 };

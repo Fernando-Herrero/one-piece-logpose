@@ -1,7 +1,6 @@
 const swords = [
-    // ESPADAS LEGENDARIAS - SAIJO O WAZAMONO (12 Supreme Grade Blades)
     {
-        id: 1,
+        sword_id: 1,
         name: "Yoru",
         grade: "Saijo O Wazamono",
         type: "legendary",
@@ -12,10 +11,8 @@ const swords = [
         length: "Large/Nodachi style",
         first_appearance: "Episode 24",
     },
-
-    // ESPADAS O WAZAMONO (21 Great Grade Blades)
     {
-        id: 2,
+        sword_id: 2,
         name: "Wado Ichimonji",
         grade: "O Wazamono",
         type: "legendary",
@@ -28,7 +25,7 @@ const swords = [
         first_appearance: "Episode 2",
     },
     {
-        id: 3,
+        sword_id: 3,
         name: "Shigure",
         grade: "O Wazamono",
         type: "rare",
@@ -39,10 +36,8 @@ const swords = [
         length: "Katana",
         first_appearance: "Episode 48",
     },
-
-    // ESPADAS RYO WAZAMONO (50 Skillful Grade Blades)
     {
-        id: 4,
+        sword_id: 4,
         name: "Sandai Kitetsu",
         grade: "Ryo Wazamono",
         type: "rare",
@@ -56,7 +51,7 @@ const swords = [
         first_appearance: "Episode 49",
     },
     {
-        id: 5,
+        sword_id: 5,
         name: "Yubashiri",
         grade: "Ryo Wazamono",
         type: "rare",
@@ -68,10 +63,8 @@ const swords = [
         length: "Katana",
         first_appearance: "Episode 49",
     },
-
-    // ESPADAS NORMALES/ESPECIALES
     {
-        id: 6,
+        sword_id: 6,
         name: "Kiribachi",
         grade: "Unknown/Special",
         type: "rare",
@@ -84,7 +77,7 @@ const swords = [
         first_appearance: "Episode 39",
     },
     {
-        id: 7,
+        sword_id: 7,
         name: "Six Sword Style Swords",
         grade: "Unknown",
         type: "uncommon",
@@ -97,7 +90,7 @@ const swords = [
         first_appearance: "Episode 39",
     },
     {
-        id: 8,
+        sword_id: 8,
         name: "Buggy's Sword",
         grade: "Unknown",
         type: "common",
@@ -109,7 +102,7 @@ const swords = [
         first_appearance: "Episode 5",
     },
     {
-        id: 9,
+        sword_id: 9,
         name: "Cabaji's Sword",
         grade: "Unknown",
         type: "common",
@@ -122,7 +115,7 @@ const swords = [
         first_appearance: "Episode 7",
     },
     {
-        id: 10,
+        sword_id: 10,
         name: "Morgan's Axe-Hand",
         grade: "Unknown",
         type: "common",
@@ -134,10 +127,8 @@ const swords = [
         special_ability: "Integrated with arm",
         first_appearance: "Episode 2",
     },
-
-    // ESPADAS MENCIONADAS/HISTÓRICAS
     {
-        id: 11,
+        sword_id: 11,
         name: "Kuina's Practice Swords",
         grade: "Practice Grade",
         type: "common",
@@ -150,7 +141,7 @@ const swords = [
         first_appearance: "Episode 19",
     },
     {
-        id: 12,
+        sword_id: 12,
         name: "Dojo Training Swords",
         grade: "Practice Grade",
         type: "common",
@@ -161,7 +152,7 @@ const swords = [
         first_appearance: "Episode 19",
     },
     {
-        id: 13,
+        sword_id: 13,
         name: "Johnny's Sword",
         grade: "Unknown",
         type: "common",
@@ -172,7 +163,7 @@ const swords = [
         first_appearance: "Episode 19",
     },
     {
-        id: 14,
+        sword_id: 14,
         name: "Yosaku's Sword",
         grade: "Unknown",
         type: "common",
@@ -183,7 +174,7 @@ const swords = [
         first_appearance: "Episode 19",
     },
     {
-        id: 15,
+        sword_id: 15,
         name: "Helmeppo's Sword",
         grade: "Unknown",
         type: "common",
@@ -195,7 +186,7 @@ const swords = [
         first_appearance: "Episode 2",
     },
     {
-        id: 16,
+        sword_id: 16,
         name: "Daddy's Rifle-Sword",
         grade: "Unknown",
         type: "uncommon",

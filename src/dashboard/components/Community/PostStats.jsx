@@ -6,7 +6,7 @@ import likeHeart from "@/assets/icons/heart-red-icon.svg";
 import { AuthContext } from "@/context/AuthContext";
 import { usePosts } from "@/core/posts/usePosts";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 export const PostStats = ({ post }) => {
     const { user } = useContext(AuthContext);
@@ -14,32 +14,15 @@ export const PostStats = ({ post }) => {
     const { goTo } = useGoTo();
 
     const userId = user.id;
-    const hasLiked = post.likes.includes(userId);
-    const hasBookmark = post.bookmarks.includes(userId);
-
-    const [statsState, setStatsState] = useState({
-        heart: hasLiked,
-        bookmark: hasBookmark,
-    });
+    const hasLiked = post.liked;
+    const hasBookmark = post.bookmarks?.includes(userId);
 
     const toggleLike = () => {
-        if (hasLiked) {
-            likePost(post.id);
-            setStatsState((prev) => ({ ...prev, heart: false }));
-        } else {
-            likePost(post.id);
-            setStatsState((prev) => ({ ...prev, heart: true }));
-        }
+        likePost(post.id);
     };
 
     const toggleBookmark = () => {
-        if (hasBookmark) {
-            bookmarkPost(post.id);
-            setStatsState((prev) => ({ ...prev, bookmark: false }));
-        } else {
-            bookmarkPost(post.id);
-            setStatsState((prev) => ({ ...prev, bookmark: true }));
-        }
+        bookmarkPost(post.id);
     };
 
     const handleComment = () => {
@@ -50,13 +33,13 @@ export const PostStats = ({ post }) => {
     const statsConfig = [
         { icon: commentIcon, count: post.commentsCount, alt: "Comment icon", onClick: handleComment },
         {
-            icon: statsState.heart ? likeHeart : heartIcon,
+            icon: hasLiked ? likeHeart : heartIcon,
             count: post.likesCount,
             alt: "Heart icon",
             onClick: toggleLike,
         },
         {
-            icon: statsState.bookmark ? bookBlue : bookmarkIcon,
+            icon: hasBookmark ? bookBlue : bookmarkIcon,
             count: post.bookmarksCount,
             alt: "Bookmark icon",
             onClick: toggleBookmark,

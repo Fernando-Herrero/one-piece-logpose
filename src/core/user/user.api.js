@@ -13,4 +13,28 @@ export const getUserApi = async (userId) => {
     }
 };
 
-export const followUser = async (userId) => {};
+export const followUserApi = async (userId) => {
+    try {
+        console.log("Siguiendo usuario", userId);
+        const response = await api.post(`/users/${userId}/follow`);
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al seguir user", error);
+        throw error;
+    }
+};
+
+export const unfollowUserApi = async (userId) => {
+    try {
+        console.log("Dejando de seguir al usuario", userId);
+        const response = await api.post(`/users/${userId}/unfollow`);
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al dejar de seguir user", error);
+        throw error;
+    }
+};
