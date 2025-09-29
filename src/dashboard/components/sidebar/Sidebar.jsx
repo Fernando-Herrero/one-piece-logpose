@@ -1,5 +1,6 @@
 import helpIcon from "@/assets/icons/help-icon.svg";
 import settings from "@/assets/icons/settings-icon.svg";
+import { DarkTheme } from "@/components/DarkTheme";
 import { LanguageSelect } from "@/components/LanguageSelect";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
@@ -36,6 +37,7 @@ export const SideBar = () => {
             <Navbar ref={containRef} isOpen={isOpen} toggleMenu={toggleMenu} />
 
             <div className="flex flex-col items-center gap-2 pl-1 mt-auto md:items-start">
+                <DarkTheme />
                 <LanguageSelect placement="bottom" align="left" />
 
                 <a
