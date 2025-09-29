@@ -47,7 +47,7 @@ export const PostStats = ({ post }) => {
     ];
 
     return (
-        <div className="flex items-center justify-between px-4 mt-2 pt-1 border-t border-white">
+        <div className="flex items-center justify-between px-4 mt-2 pt-1 border-t border-white/50">
             {statsConfig.map(({ icon, count, alt, onClick }) => (
                 <div key={alt}>
                     <button

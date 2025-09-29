@@ -177,3 +177,57 @@ html {
 .drop-item-style {
     @apply py-0.5 px-2 rounded-lg transition hover:bg-orangeAce/10;
 }
+
+/* DARK THEME */
+.dark {
+    /* Colores de fondo */
+    --color-primary: #1a1d29;
+    --color-secondary: #252938;
+    --color-card: #2d3142;
+    --color-default: #3d4357;
+    --color-hover: #3d4357;
+    --color-orangeAce: #ff8555;
+    --color-orange: #ffab6b;
+    --color-sunny: #3a3525;
+
+    /* Colores de texto */
+    --text-color-primary: #e5e7eb;
+    --text-color-secondary: #c9a066;
+    --text-color-muted: #9ca3af;
+    --text-color-contrast: #1a1d29;
+    --text-color-link: #60a5fa;
+
+    /* Colores de acento */
+    --color-accent: #ffab6b;
+    --color-accentHover: #ff9855;
+    --color-linePrimary: #d55555;
+    --color-lineDark: #a64242;
+
+    /* Sombras */
+    --color-overlay: rgba(0, 0, 0, 0.9);
+    --shadow-white: 0px 0px 20px 2px rgba(255, 171, 107, 0.3);
+    --shadow-default: 0px 2px 6px 1px rgba(0, 0, 0, 0.6);
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-button: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.dark .bg-gradient-primary {
+    background: linear-gradient(to bottom right, rgba(37, 41, 56, 0.7), rgba(255, 171, 107, 0.15));
+}
+
+.dark .bg-gradient-card {
+    background: linear-gradient(
+        to bottom right,
+        rgba(45, 49, 66, 0.8),
+        rgba(255, 171, 107, 0.25),
+        rgba(255, 133, 85, 0.35)
+    );
+}
+
+.dark .text-gradient {
+    @apply bg-gradient-to-br from-gray-100 to-gray-400 bg-clip-text text-transparent;
+}
+
+.dark .logo-mask {
+    background: #fff;
+}
