@@ -12,7 +12,7 @@ export const PostCard = ({ post, index }) => {
             key={`${id}-${index}`}
             className="flex gap-1 w-full p-2 text-xs border border-white/30 rounded bg-gradient-card shadow-default"
         >
-            <UserAvatar user={userId.avatar} status={false} fallback={userId.username} />
+            <UserAvatar src={userId.avatar} status={false} fallback={userId.username} />
             <div className="flex-8 flex flex-col gap-1">
                 <div className="flex items-center justify-between">
                     <UserInfo user={userId} />

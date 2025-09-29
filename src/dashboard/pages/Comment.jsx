@@ -1,4 +1,5 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { PostContext } from "@/context/PostContext";
 import { usePosts } from "@/core/posts/usePosts";
 import { PostForm } from "@/dashboard/components/Community/PostForm";
 import { languages } from "@/helpers/languages";
@@ -10,7 +11,8 @@ export const Comment = ({ onCancel }) => {
     const [searchParams] = useSearchParams();
     const postId = searchParams.get("postId");
 
-    const { replyPost, setError, error } = usePosts();
+    const { replyPost } = usePosts();
+    const { setError, error } = useContext(PostContext);
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
 

@@ -15,7 +15,7 @@ export const PostStats = ({ post }) => {
 
     const userId = user.id;
     const hasLiked = post.liked;
-    const hasBookmark = post.bookmarks?.includes(userId);
+    const hasBookmark = post.bookmarked;
 
     const toggleLike = () => {
         likePost(post.id);
@@ -47,10 +47,13 @@ export const PostStats = ({ post }) => {
     ];
 
     return (
-        <div className="flex items-center justify-between px-4">
+        <div className="flex items-center justify-between px-4 mt-2 pt-1 border-t border-white">
             {statsConfig.map(({ icon, count, alt, onClick }) => (
                 <div key={alt}>
-                    <button className="flex items-center gap-1 cursor-pointer" onClick={onClick}>
+                    <button
+                        className="flex items-center gap-1 cursor-pointer transition-transform duration-300 active:scale-150"
+                        onClick={onClick}
+                    >
                         <img className="w-4" src={icon} alt={alt} />
                         <span className="text-gradient">{count}</span>
                     </button>

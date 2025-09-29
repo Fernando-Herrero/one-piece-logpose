@@ -6,6 +6,7 @@ import { DropDown } from "@/components/Dropdown";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { usePosts } from "@/core/posts/usePosts";
+import { useUser } from "@/core/user/useUser";
 import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useGoTo } from "@/hooks/useGoTo";
@@ -17,6 +18,7 @@ export const OptionsMenu = ({ id, userId }) => {
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
     const { deletePost } = usePosts();
+    const { followUser } = useUser();
     const { goTo } = useGoTo();
 
     const menuRef = useClickOutside(toggleMenu, isOpen);
@@ -63,7 +65,13 @@ export const OptionsMenu = ({ id, userId }) => {
                     />
                 )}
 
-                {!amIUser && <ItemOptionsMenu content={languages[lang].posts.follow} item={plus} />}
+                {!amIUser && (
+                    <ItemOptionsMenu
+                        onClick={() => followUser(userId.id)}
+                        content={languages[lang].posts.follow}
+                        icon={plus}
+                    />
+                )}
             </DropDown>
         </div>
     );

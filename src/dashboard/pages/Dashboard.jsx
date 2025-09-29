@@ -1,9 +1,11 @@
 import { Overlay } from "@/components/Overlay";
 import { PostProvider } from "@/context/PostContext";
+import { UserProvider } from "@/context/userContext";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/Profile/AvatarSection";
 import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
+import { FollowersCard } from "@/dashboard/pages/FollowersCard";
 import { Post } from "@/dashboard/pages/Post";
 import { Profile } from "@/dashboard/pages/Profile";
 import { Settings } from "@/dashboard/pages/Settings";
@@ -41,7 +43,21 @@ export const Dashboard = () => {
                         element={<Overlay>{(handleClose) => <Comment onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
-                <Route path="/userProfile" element={<UserProfile />} />
+                <Route
+                    path="/userProfile"
+                    element={
+                        <UserProvider>
+                            <UserProfile />
+                        </UserProvider>
+                    }
+                >
+                    <Route
+                        path="followers"
+                        element={
+                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                        }
+                    />
+                </Route>
                 <Route path="/settings" element={<Settings />} />
             </Routes>
         </AppShell>

@@ -39,7 +39,7 @@ export const usePosts = () => {
             const result = await likePostApi(id);
             setPosts((prev) =>
                 prev.map((post) =>
-                    post.id === id ? { ...post, likesCount: result.likesCount, like: result.liked } : post
+                    post.id === id ? { ...post, likesCount: result.likesCount, liked: result.liked } : post
                 )
             );
         } catch (error) {

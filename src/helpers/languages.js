@@ -195,6 +195,9 @@ export const languages = {
             emptyCoverImage: "Inserta una URL para tu imagen de fondo",
             changeCoverImg: "Cambiar cover Img",
             loadingProfile: "Cargando Perfil",
+            viewFollowers: "Ver seguidores",
+            userError: "Reintentar",
+            loadingFollowers: "Cargando seguidores",
         },
 
         posts: {
@@ -456,6 +459,9 @@ export const languages = {
             emptyCoverImage: "Insert a URL for your cover image",
             changeCoverImg: "Change cover Img",
             loadingProfile: "Loading Profile",
+            viewFollowers: "See followers",
+            userError: "Try again",
+            oadingFollowers: "Loading followers",
         },
 
         posts: {

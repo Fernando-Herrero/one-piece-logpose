@@ -13,6 +13,18 @@ export const getUserApi = async (userId) => {
     }
 };
 
+export const getUserFollowersApi = async (userId) => {
+    try {
+        console.log("Recibiendo followers del user", userId);
+        const response = await api.get(`/users/${userId}/followers`);
+        console.log("Respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener followers", error);
+    }
+};
+
 export const followUserApi = async (userId) => {
     try {
         console.log("Siguiendo usuario", userId);
