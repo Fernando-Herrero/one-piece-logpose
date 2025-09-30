@@ -30,7 +30,7 @@ export const MenuItem = ({ as = "button", to, onClick, href, children, onClose }
                 rel="noopener noreferrer"
                 onClick={handleClick}
             >
-                <p className="text-gradient">{children}</p>
+                <p className="underline-hover text-gradient">{children}</p>
                 {arrowIcon}
             </a>
         );

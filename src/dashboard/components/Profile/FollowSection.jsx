@@ -10,7 +10,7 @@ export const FollowSection = ({ user, className = "" }) => {
 
     return (
         <div className={`flex flex-col gap-1 ${className}`}>
-            <div className="flex gap-1">
+            <div className="flex items-center gap-1">
                 <p>
                     <strong className="text-primary font-semibold">
                         {languages[lang].profile.followers}:
@@ -33,8 +33,12 @@ export const FollowSection = ({ user, className = "" }) => {
                 )}
             </div>
 
-            <p>
-                <strong className="text-primary font-semibold">{languages[lang].profile.following}:</strong>{" "}
+            <div className="flex items-center gap-1">
+                <p>
+                    <strong className="text-primary font-semibold">
+                        {languages[lang].profile.following}:
+                    </strong>
+                </p>{" "}
                 {user.following.length > 0 ? (
                     <span className="text-gradient">{user.following.join(", ")}</span>
                 ) : (
@@ -42,7 +46,7 @@ export const FollowSection = ({ user, className = "" }) => {
                         {languages[lang].profile.notFollowingYet}
                     </span>
                 )}
-            </p>
+            </div>
         </div>
     );
 };

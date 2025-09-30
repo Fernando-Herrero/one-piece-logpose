@@ -3,26 +3,38 @@ import bookmarkIcon from "@/assets/icons/bookmark-icon.svg";
 import commentIcon from "@/assets/icons/comment-icon.svg";
 import heartIcon from "@/assets/icons/heart-icon.svg";
 import likeHeart from "@/assets/icons/heart-red-icon.svg";
-import { AuthContext } from "@/context/AuthContext";
 import { usePosts } from "@/core/posts/usePosts";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useContext } from "react";
+import { useState } from "react";
 
 export const PostStats = ({ post }) => {
-    const { user } = useContext(AuthContext);
     const { likePost, bookmarkPost } = usePosts();
     const { goTo } = useGoTo();
 
-    const userId = user.id;
-    const hasLiked = post.liked;
-    const hasBookmark = post.bookmarked;
+    const [isLiking, setIsLiking] = useState(false);
+    const [isBookmarking, setIsBookmarking] = useState(false);
 
-    const toggleLike = () => {
-        likePost(post.id);
+    const shouldShowLiked = post.liked !== undefined ? post.liked : post.userLiked;
+    const shouldShowBookmarked = post.bookmarked !== undefined ? post.bookmarked : post.userBookmarked;
+
+    const toggleLike = async () => {
+        if (isLiking) return;
+        setIsLiking(true);
+        try {
+            await likePost(post.id);
+        } finally {
+            setIsLiking(false);
+        }
     };
 
-    const toggleBookmark = () => {
-        bookmarkPost(post.id);
+    const toggleBookmark = async () => {
+        if (isBookmarking) return;
+        setIsBookmarking(true);
+        try {
+            await bookmarkPost(post.id);
+        } finally {
+            setIsBookmarking(false);
+        }
     };
 
     const handleComment = () => {
@@ -31,28 +43,37 @@ export const PostStats = ({ post }) => {
     };
 
     const statsConfig = [
-        { icon: commentIcon, count: post.commentsCount, alt: "Comment icon", onClick: handleComment },
         {
-            icon: hasLiked ? likeHeart : heartIcon,
+            icon: commentIcon,
+            count: post.commentsCount,
+            alt: "Comment icon",
+            onClick: handleComment,
+            disabled: false,
+        },
+        {
+            icon: shouldShowLiked ? likeHeart : heartIcon,
             count: post.likesCount,
             alt: "Heart icon",
             onClick: toggleLike,
+            disabled: isLiking,
         },
         {
-            icon: hasBookmark ? bookBlue : bookmarkIcon,
+            icon: shouldShowBookmarked ? bookBlue : bookmarkIcon,
             count: post.bookmarksCount,
             alt: "Bookmark icon",
             onClick: toggleBookmark,
+            disabled: isBookmarking,
         },
     ];
 
     return (
         <div className="flex items-center justify-between px-4 mt-2 pt-1 border-t border-white/50">
-            {statsConfig.map(({ icon, count, alt, onClick }) => (
-                <div key={alt}>
+            {statsConfig.map(({ icon, count, alt, onClick, disabled }, index) => (
+                <div key={`${alt}-${index}`}>
                     <button
-                        className="flex items-center gap-1 cursor-pointer transition-transform duration-300 active:scale-150"
+                        className="flex items-center gap-1 cursor-pointer transition-transform duration-300 active:scale-150 disabled:opacity-50 disabled:cursor-not-allowed"
                         onClick={onClick}
+                        disabled={disabled}
                     >
                         <img className="w-4" src={icon} alt={alt} />
                         <span className="text-gradient">{count}</span>

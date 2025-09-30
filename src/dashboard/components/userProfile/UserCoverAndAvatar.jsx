@@ -7,19 +7,16 @@ export const UserCoverAndAvatar = ({ user }) => {
 
     return (
         <div className="relative w-full">
-            {user.coverImage ? (
-                <img
-                    src={user.coverImage}
-                    alt=""
-                    className="w-full h-full object-cover brightness-50 rounded-tl-xl rounded-tr-xl"
-                    onError={() => setCoverSrc(backImage)}
-                />
-            ) : (
-                ""
-            )}
+            <img
+                src={coverSrc}
+                alt=""
+                className="w-full h-full object-cover brightness-50 rounded-tl-xl rounded-tr-xl"
+                onError={() => setCoverSrc(backImage)}
+            />
+
             <div
                 className={`${
-                    user.coverImage
+                    coverSrc
                         ? "absolute top-10 right-1/2 translate-x-1/2"
                         : "relative flex items-center justify-center pt-5"
                 }`}
@@ -29,7 +26,7 @@ export const UserCoverAndAvatar = ({ user }) => {
                     alt={user.displayName ?? user.name}
                     size="2xl"
                     status={user.isActive ? "online" : "offline"}
-                    className="border-2 border-white "
+                    className="border-2 border-white"
                 />
             </div>
         </div>

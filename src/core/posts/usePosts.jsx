@@ -9,7 +9,7 @@ import {
 import { useContext } from "react";
 
 export const usePosts = () => {
-    const { setPosts } = useContext(PostContext);
+    const { setPosts, setError } = useContext(PostContext);
 
     const createPost = async (newPost) => {
         try {
