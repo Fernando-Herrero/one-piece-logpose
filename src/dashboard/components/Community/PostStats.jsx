@@ -7,7 +7,7 @@ import { usePosts } from "@/core/posts/usePosts";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useState } from "react";
 
-export const PostStats = ({ post }) => {
+export const PostStats = ({ post, view }) => {
     const { likePost, bookmarkPost } = usePosts();
     const { goTo } = useGoTo();
 
@@ -38,7 +38,6 @@ export const PostStats = ({ post }) => {
     };
 
     const handleComment = () => {
-        console.log("clickando comment");
         goTo(`/dashboard/community/comment?postId=${post.id}`);
     };
 
@@ -75,8 +74,17 @@ export const PostStats = ({ post }) => {
                         onClick={onClick}
                         disabled={disabled}
                     >
-                        <img className="w-4" src={icon} alt={alt} />
-                        <span className="text-gradient">{count}</span>
+                        {alt === "Comment icon" ? (
+                            <>
+                                <img className={`w-4 ${view ? "" : "brightness-50"}`} src={icon} alt={alt} />
+                                <span className={`text-gradient ${view ? "" : "opacity-10"}`}>{count}</span>
+                            </>
+                        ) : (
+                            <>
+                                <img className="w-4" src={icon} alt={alt} />
+                                <span className="text-gradient">{count}</span>
+                            </>
+                        )}
                     </button>
                 </div>
             ))}

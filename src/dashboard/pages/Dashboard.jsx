@@ -7,6 +7,7 @@ import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
 import { FollowersCard } from "@/dashboard/pages/FollowersCard";
 import { Post } from "@/dashboard/pages/Post";
+import { PostPage } from "@/dashboard/pages/PostPage";
 import { Profile } from "@/dashboard/pages/Profile";
 import { Settings } from "@/dashboard/pages/Settings";
 import { UserProfile } from "@/dashboard/pages/UserProfile";
@@ -41,6 +42,10 @@ export const Dashboard = () => {
                     <Route
                         path="comment"
                         element={<Overlay>{(handleClose) => <Comment onCancel={handleClose} />}</Overlay>}
+                    />
+                    <Route
+                        path="postPage"
+                        element={<Overlay>{(handleClose) => <PostPage onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
                 <Route

@@ -2,6 +2,7 @@ import dots from "@/assets/icons/dots-menu-icon.svg";
 import plus from "@/assets/icons/plus-icon.svg";
 import profileIcon from "@/assets/icons/profile-icon.svg";
 import trash from "@/assets/icons/trash-icon.svg";
+import viewPost from "@/assets/icons/view-post-icon.svg";
 import { DropDown } from "@/components/Dropdown";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
@@ -72,6 +73,15 @@ export const OptionsMenu = ({ id, userId }) => {
                         icon={plus}
                     />
                 )}
+
+                <ItemOptionsMenu
+                    onClick={() => {
+                        toggleMenu();
+                        goTo(`/dashboard/community/postPage?postId=${id}`);
+                    }}
+                    content={languages[lang].posts.viewPost}
+                    icon={viewPost}
+                />
             </DropDown>
         </div>
     );

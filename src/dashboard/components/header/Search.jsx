@@ -33,7 +33,7 @@ export const Search = () => {
                     name="search"
                     id="search"
                     className={classNames(
-                        "text-xs bg-sunny text-gradient focus:outline-none transition-all duration-300 ease-out",
+                        "text-xs bg-sunny focus:outline-none transition-all duration-300 ease-out dark:text-white",
                         {
                             "w-25 opacity-100 px-2 sm:w-40": isOpen,
                             "w-0 opacity-0 px-0": !isOpen,

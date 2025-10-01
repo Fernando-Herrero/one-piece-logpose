@@ -51,7 +51,7 @@ export const PostForm = ({
                         onChange={handleInputs}
                         maxLength={280}
                         placeholder={placeholderText}
-                        className="bg-sunny p-2 min-h-80 w-full rounded-xl no-focus"
+                        className="bg-sunny p-2 min-h-80 w-full rounded-xl no-focus dark:text-white"
                     />
                 </label>
 

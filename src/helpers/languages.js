@@ -209,6 +209,7 @@ export const languages = {
             viewProfile: "Ver perfil",
             follow: "Seguir",
             unfollow: "Dejar de seguir",
+            viewPost: "Ver post",
         },
 
         sagaData: {
@@ -473,6 +474,7 @@ export const languages = {
             viewProfile: "View profile",
             follow: "Follow",
             unfollow: "Unfollow",
+            viewPost: "See post",
         },
 
         sagaData: {

@@ -3,6 +3,7 @@ import {
     bookmarkPostApi,
     createPostApi,
     deletePostApi,
+    likeCommentApi,
     likePostApi,
     replyPostApi,
 } from "@/core/posts/posts.api";
@@ -48,6 +49,25 @@ export const usePosts = () => {
         }
     };
 
+    const likeComment = async (id) => {
+        try {
+            const result = await likeCommentApi(id);
+            setPosts((prev) =>
+                prev.map((post) => ({
+                    ...post,
+                    comments: post.comments.map((comment) =>
+                        comment.id === id
+                            ? { ...comment, likesCount: result.likesCount, liked: result.liked }
+                            : comment
+                    ),
+                }))
+            );
+        } catch (error) {
+            console.error("Error al dar like al post", error);
+            setError(error);
+        }
+    };
+
     const bookmarkPost = async (id) => {
         try {
             const result = await bookmarkPostApi(id);
@@ -68,10 +88,15 @@ export const usePosts = () => {
         try {
             const created = await replyPostApi(newComment);
             console.log("este es el comentario creado", created);
+            setPosts((prev) =>
+                prev.map((post) =>
+                    post.id === created.postId ? { ...post, commentsCount: post.commentsCount + 1 } : post
+                )
+            );
         } catch (error) {
             console.error("Error al comentar el post", error);
         }
     };
 
-    return { createPost, deletePost, likePost, bookmarkPost, replyPost };
+    return { createPost, deletePost, likePost, bookmarkPost, replyPost, likeComment };
 };
