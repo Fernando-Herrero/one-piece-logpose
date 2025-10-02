@@ -1,6 +1,6 @@
 import { AuthContext } from "@/context/AuthContext";
 import { saveUserInLocalStorage } from "@/core/auth/auth.service";
-import { followUserApi, unfollowUserApi } from "@/core/user/user.api";
+import { followUserApi, getUsersApi, unfollowUserApi } from "@/core/user/user.api";
 import { useContext } from "react";
 
 export const useUser = () => {
@@ -42,5 +42,14 @@ export const useUser = () => {
         }
     };
 
-    return { followUser, unfollowUser };
+    const getUsers = async () => {
+        try {
+            const dataUsers = await getUsersApi();
+            return dataUsers;
+        } catch (error) {
+            console.error("Error al obtener todos los usuarios", error);
+        }
+    };
+
+    return { followUser, unfollowUser, getUsers };
 };

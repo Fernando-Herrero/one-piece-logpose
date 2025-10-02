@@ -1,3 +1,4 @@
+import { UsersList } from "@/components/UsersList";
 import { ProfileArticle } from "@/dashboard/components/Profile/ProfileArticle";
 import { Outlet } from "react-router-dom";
 
@@ -7,6 +8,7 @@ export const Profile = () => {
             <div>
                 <div>
                     <ProfileArticle />
+                    <UsersList />
                     <Outlet />
                 </div>
             </div>

@@ -37,7 +37,7 @@ export const OptionsMenu = ({ id, userId, view }) => {
         );
     };
 
-    const amIUser = user.id === userId.id;
+    const amIUser = user._id === userId.id;
     const alreadyFollow = user.following.includes(userId.id);
 
     return (

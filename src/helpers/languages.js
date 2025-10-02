@@ -167,6 +167,7 @@ export const languages = {
 
         profile: {
             noUser: "No hay usuario logueado",
+            noUsers: "No se han encontrado usuarios",
             profileUser: "Perfil de usuario",
             name: "Nombre",
             inputDisplayname: "Elige tu nombre",
@@ -199,6 +200,7 @@ export const languages = {
             userError: "Reintentar",
             loadingFollowers: "Cargando seguidores",
             loadingFollowing: "Cargando seguidos",
+            loadingUsers: "Cargando usuarios",
             saveButton: "Guardar",
         },
 
@@ -435,6 +437,7 @@ export const languages = {
 
         profile: {
             noUser: "No user logged in",
+            noUsers: "No users found",
             name: "Name",
             inputDisplayName: "Choose your name",
             emptyDisplayName: "No display name selected",
@@ -465,6 +468,7 @@ export const languages = {
             userError: "Try again",
             loadingFollowers: "Loading followers",
             loadingFollowing: "Loading following",
+            loadingUsers: "Loading users",
             saveButton: "Save",
         },
 
