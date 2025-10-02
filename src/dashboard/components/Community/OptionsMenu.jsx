@@ -15,7 +15,7 @@ import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 
-export const OptionsMenu = ({ id, userId }) => {
+export const OptionsMenu = ({ id, userId, view }) => {
     const { user } = useContext(AuthContext);
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
@@ -25,7 +25,7 @@ export const OptionsMenu = ({ id, userId }) => {
 
     const menuRef = useClickOutside(toggleMenu, isOpen);
 
-    const ItemOptionsMenu = ({ onClick, content, icon }) => {
+    const ItemOptionsMenu = ({ onClick, content, icon, view }) => {
         const className = "flex items-center justify-between w-full cursor-pointer drop-item-style group";
         const subClass = "underline-hover text-gradient";
 
@@ -83,14 +83,17 @@ export const OptionsMenu = ({ id, userId }) => {
                         />
                     ))}
 
-                <ItemOptionsMenu
-                    onClick={() => {
-                        toggleMenu();
-                        goTo(`/dashboard/community/postPage?postId=${id}`);
-                    }}
-                    content={languages[lang].posts.viewPost}
-                    icon={viewPost}
-                />
+                {view && (
+                    <ItemOptionsMenu
+                        onClick={() => {
+                            toggleMenu();
+                            goTo(`/dashboard/community/postPage?postId=${id}`);
+                        }}
+                        content={languages[lang].posts.viewPost}
+                        icon={viewPost}
+                        view={view}
+                    />
+                )}
             </DropDown>
         </div>
     );

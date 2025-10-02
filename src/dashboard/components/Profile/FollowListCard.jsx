@@ -1,6 +1,6 @@
 import cross from "@/assets/icons/cross-close.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { getUserFollowersApi } from "@/core/user/user.api";
+import { getUserFollowersApi, getUserFollowingApi } from "@/core/user/user.api";
 import { Spinner } from "@/dashboard/components/Community/Spinner";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
@@ -8,21 +8,34 @@ import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export const FollowersCard = ({ onCancel }) => {
+export const FollowListCard = ({ onCancel, type = "followers" }) => {
     const [searchParams] = useSearchParams();
     const userId = searchParams.get("userId");
     const from = searchParams.get("from");
 
-    const [followers, setFollowers] = useState(null);
+    const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
 
+    const config = {
+        followers: {
+            fetchFn: getUserFollowersApi,
+            loadingText: languages[lang].profile.loadingFollowers,
+        },
+        following: {
+            fetchFn: getUserFollowingApi,
+            loadingText: languages[lang].profile.loadingFollowing,
+        },
+    };
+
+    const { fetchFn, loadingText } = config[type];
+
     useEffect(() => {
-        const fetchFollowers = async () => {
+        const fetchUsers = async () => {
             if (!userId) {
-                setFollowers(null);
+                setUsers(null);
                 setLoading(false);
                 setError(null);
                 return;
@@ -33,21 +46,22 @@ export const FollowersCard = ({ onCancel }) => {
                 setLoading(true);
                 setError(null);
 
-                const userData = await getUserFollowersApi(userId);
-                setFollowers(userData);
+                const userData = await fetchFn(userId);
+                setUsers(userData);
             } catch (error) {
-                console.error("Error al obtener followers del usuario", error);
+                console.error(`Error al obtener ${type} del usuario`, error);
                 setError(error);
             } finally {
                 setLoading(false);
             }
         };
-        fetchFollowers();
-    }, [userId]);
+        fetchUsers();
+    }, [userId, type]);
 
     if (!userId) {
-        return <p className="text-linePrimary text-center p-4">{languages[lang].profile.userNotValid}</p>;
+        return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.userNotFound}</p>;
     }
+
     if (error) {
         return (
             <div className="flex flex-col items-center p-4">
@@ -66,13 +80,11 @@ export const FollowersCard = ({ onCancel }) => {
             <div className="flex flex-col items-center gap-1">
                 <Spinner className="mx-auto mt-5" />{" "}
                 <p className="text-gradient">
-                    {languages[lang].profile.loadingFollowers}
+                    {loadingText}
                     <LoadingDots />
                 </p>
             </div>
         );
-    if (!userId)
-        return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.userNotFound}</p>;
 
     return (
         <section className="flex flex-col items-center gap-4 w-[80vw]">
@@ -80,17 +92,25 @@ export const FollowersCard = ({ onCancel }) => {
                 <img className="w-8" src={cross} alt="Cross icon" />
             </button>
             <div className="bg-white p-2 rounded-xl w-full flex flex-col gap-1">
-                {followers?.map(({ username, firstName, lastName, displayName }, index) => (
-                    <article
-                        key={`${username}-${index}`}
-                        className="bg-gradient-card p-2 rounded-xl w-full shadow-default text-center"
-                    >
-                        <p className="text-primary text-lg font-semibold">
-                            {displayName ? displayName : firstName + lastName}
-                        </p>
-                        <span className="text-muted">@{username}</span>
-                    </article>
-                ))}
+                {users?.length > 0 ? (
+                    users.map(({ username, firstName, lastName, displayName }, index) => (
+                        <article
+                            key={`${username}-${index}`}
+                            className="bg-gradient-card p-2 rounded-xl w-full shadow-default text-center"
+                        >
+                            <p className="text-primary text-lg font-semibold">
+                                {displayName ? displayName : `${firstName} ${lastName}`}
+                            </p>
+                            <span className="text-muted">@{username}</span>
+                        </article>
+                    ))
+                ) : (
+                    <p className="text-linePrimary text-center p-4">
+                        {type === "followers"
+                            ? languages[lang].profile.notFollowersYet
+                            : languages[lang].profile.notFollowingYet}
+                    </p>
+                )}
             </div>
         </section>
     );

@@ -20,7 +20,7 @@ export const PostCard = ({ post, index, classSelect = "primary", view = true }) 
             <div className="flex-8 flex flex-col gap-1">
                 <div className="flex items-center justify-between">
                     <UserInfo user={userId} />
-                    <OptionsMenu id={id} userId={userId} />
+                    <OptionsMenu id={id} userId={userId} view={view} />
                 </div>
 
                 <PostContent text={text} hashtags={hashtags} images={images} />

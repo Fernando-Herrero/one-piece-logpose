@@ -8,7 +8,7 @@ export const PostComments = ({ post }) => {
     console.log(post);
     const { comments } = post;
     const { user } = useContext(AuthContext);
-    const userId = user.id;
+    const userId = user._id;
 
     const { likeComment } = usePosts();
     const [isLiking, setIsLiking] = useState({});
@@ -27,7 +27,13 @@ export const PostComments = ({ post }) => {
     };
 
     return (
-        <section className="px-4 py-1 bg-primary border border-white/30 border-t-0 rounded-bl rounded-br">
+        <section
+            className={
+                comments?.length > 0
+                    ? "px-4 py-1 bg-primary border border-white/30 border-t-0 rounded-bl rounded-br"
+                    : "border border-white/30"
+            }
+        >
             {comments?.map((comment) => (
                 <article
                     key={comment.id}

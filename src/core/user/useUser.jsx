@@ -1,9 +1,24 @@
+import { AuthContext } from "@/context/AuthContext";
+import { saveUserInLocalStorage } from "@/core/auth/auth.service";
 import { followUserApi, unfollowUserApi } from "@/core/user/user.api";
+import { useContext } from "react";
 
 export const useUser = () => {
+    const { user, setUser } = useContext(AuthContext);
+
     const followUser = async (userId) => {
         try {
-            await followUserApi(userId);
+            const response = await followUserApi(userId);
+
+            setUser((prev) => {
+                const updatedUser = {
+                    ...prev,
+                    following: [...prev.following, userId],
+                };
+                saveUserInLocalStorage(updatedUser);
+                return updatedUser;
+            });
+            return response;
         } catch (error) {
             console.error("Error al seguir al usuario", error);
         }
@@ -11,7 +26,17 @@ export const useUser = () => {
 
     const unfollowUser = async (userId) => {
         try {
-            await unfollowUserApi(userId);
+            const response = await unfollowUserApi(userId);
+
+            setUser((prev) => {
+                const updatedUser = {
+                    ...prev,
+                    following: prev.following.filter((id) => id !== userId),
+                };
+                saveUserInLocalStorage(updatedUser);
+                return updatedUser;
+            });
+            return response;
         } catch (error) {
             console.error("Error al dejar de seguir al usuario", error);
         }

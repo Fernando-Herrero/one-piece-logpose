@@ -15,12 +15,12 @@ export const PostPage = ({ onCancel }) => {
     if (!post) return;
 
     return (
-        <section className="flex flex-col items-center gap-4">
+        <section className="flex flex-col items-center gap-4 w-[80vw] max-w-96 rounded overflow-hidden">
             <div className="w-8 cursor-pointer" onClick={onCancel}>
                 <img src={cross} alt="Cross icon" />
             </div>
 
-            <div>
+            <div className="rounded w-full">
                 <PostCard post={post} view={false} classSelect="secondary" />
                 <PostComments post={post} />
             </div>

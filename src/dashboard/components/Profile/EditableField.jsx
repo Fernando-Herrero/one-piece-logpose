@@ -68,7 +68,7 @@ export const EditableField = ({
             (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
         );
 
-    const getEmptyStyles = () => classNames("text-xs text-gradient italic", !readOnly && "cursor-pointer");
+    const getEmptyStyles = () => classNames("text-xs text-muted italic", !readOnly && "cursor-pointer");
 
     if (isCurrentlyEditing && !readOnly) {
         return (
@@ -79,16 +79,16 @@ export const EditableField = ({
                         value={field}
                         onChange={(event) => setField(event.target.value)}
                         onKeyDown={handleKeyDown}
-                        className="px-1 py-0.5 rounded-xl text-xs no-focus"
+                        className="px-1 py-0.5 rounded-xl text-xs no-focus dark:text-white"
                         placeholder={placeholder}
                         autoFocus
                     />
                     <button
-                        className="bg-orange-100 p-1 rounded-xl border border-gray-400 cursor-pointer transition-transform hover:scale-105"
+                        className="bg-sunny p-1 rounded-xl border border-gray-400 cursor-pointer transition-transform hover:scale-105"
                         onClick={handleSave}
                         type="button"
                     >
-                        <span className="text-primary">Save</span>
+                        <span className="text-primary">{languages[lang].profile.saveButton}</span>
                     </button>
                     <button onClick={cancelEditing} className="cursor-pointer transition hover:scale-110">
                         <img className="w-3" src={cross} alt="Cross icon" />

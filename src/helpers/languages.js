@@ -198,6 +198,8 @@ export const languages = {
             viewFollowers: "Ver seguidores",
             userError: "Reintentar",
             loadingFollowers: "Cargando seguidores",
+            loadingFollowing: "Cargando seguidos",
+            saveButton: "Guardar",
         },
 
         posts: {
@@ -462,6 +464,8 @@ export const languages = {
             loadingProfile: "Loading Profile",
             userError: "Try again",
             loadingFollowers: "Loading followers",
+            loadingFollowing: "Loading following",
+            saveButton: "Save",
         },
 
         posts: {

@@ -15,6 +15,7 @@ export const ProfileArticle = () => {
     const { updatedProfile } = useAuth();
     const editorProps = useProfileEditor(user, updatedProfile);
     const { lang } = useContext(LanguagesContext);
+    console.log(user);
 
     if (!user) return <p>{languages[lang].profile.noUser}</p>;
     if (loading)

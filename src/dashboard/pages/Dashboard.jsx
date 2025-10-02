@@ -3,9 +3,10 @@ import { PostProvider } from "@/context/PostContext";
 import { UserProvider } from "@/context/userContext";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/Profile/AvatarSection";
+import { FollowersCard } from "@/dashboard/components/Profile/FollowersCard";
+import { FollowingCard } from "@/dashboard/components/Profile/FollowingCard";
 import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
-import { FollowersCard } from "@/dashboard/pages/FollowersCard";
 import { Post } from "@/dashboard/pages/Post";
 import { PostPage } from "@/dashboard/pages/PostPage";
 import { Profile } from "@/dashboard/pages/Profile";
@@ -17,7 +18,7 @@ export const Dashboard = () => {
     return (
         <AppShell>
             <Routes>
-                <Route index element={<Navigate to="profile" replace />} />
+                <Route index element={<Navigate to="/dashboard/profile" replace />} />
 
                 <Route path="/profile" element={<Profile />}>
                     <Route
@@ -35,7 +36,7 @@ export const Dashboard = () => {
                     <Route
                         path="followings"
                         element={
-                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                            <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
                         }
                     />
                 </Route>
@@ -77,7 +78,7 @@ export const Dashboard = () => {
                     <Route
                         path="followings"
                         element={
-                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                            <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
                         }
                     />
                 </Route>
