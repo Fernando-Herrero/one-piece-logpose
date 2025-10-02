@@ -15,7 +15,7 @@ import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 
-export const OptionsMenu = ({ id, userId, view }) => {
+export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community" }) => {
     const { user } = useContext(AuthContext);
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
@@ -87,7 +87,7 @@ export const OptionsMenu = ({ id, userId, view }) => {
                     <ItemOptionsMenu
                         onClick={() => {
                             toggleMenu();
-                            goTo(`/dashboard/community/postPage?postId=${id}`);
+                            goTo(`${basepath}/postPage?postId=${id}`);
                         }}
                         content={languages[lang].posts.viewPost}
                         icon={viewPost}

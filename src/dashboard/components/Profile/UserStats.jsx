@@ -1,6 +1,6 @@
-import { SkeletonText } from "@/components/Skeleton";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useUser } from "@/core/user/useUser";
+import { SkeletonText } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
 import { useContext, useEffect, useState } from "react";
 

@@ -1,4 +1,4 @@
-import { AvatarArticle } from "@/components/AvatarArticle";
+import { AvatarArticle } from "@/dashboard/components/AvatarArticle";
 import { characters } from "@/helpers/avatarImages";
 import { useAvatar } from "@/hooks/useAvatar";
 

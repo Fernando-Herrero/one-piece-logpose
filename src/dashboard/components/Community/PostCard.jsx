@@ -4,7 +4,7 @@ import { PostStats } from "@/dashboard/components/Community/PostStats";
 import { UserInfo } from "@/dashboard/components/Community/UserInfo";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 
-export const PostCard = ({ post, index, classSelect = "primary", view = true }) => {
+export const PostCard = ({ post, classSelect = "primary", view = true, basePath, className }) => {
     const { id, userId, text, images, hashtags } = post;
 
     const classType = {
@@ -15,12 +15,12 @@ export const PostCard = ({ post, index, classSelect = "primary", view = true }) 
     };
 
     return (
-        <article key={`${id}-${index}`} className={classType[classSelect]}>
+        <article className={`${classType[classSelect]} ${className}`}>
             <UserAvatar src={userId.avatar} status={false} fallback={userId.username} />
             <div className="flex-8 flex flex-col gap-1">
                 <div className="flex items-center justify-between">
                     <UserInfo user={userId} />
-                    <OptionsMenu id={id} userId={userId} view={view} />
+                    <OptionsMenu id={id} userId={userId} view={view} basepath={basePath} />
                 </div>
 
                 <PostContent text={text} hashtags={hashtags} images={images} />

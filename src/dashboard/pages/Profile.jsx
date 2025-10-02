@@ -1,7 +1,7 @@
-import { ContentProfile } from "@/components/ContentProfile";
-import { UsersList } from "@/components/UsersList";
+import { ContentProfile } from "@/dashboard/components/ContentProfile";
 import { ProfileArticle } from "@/dashboard/components/Profile/ProfileArticle";
 import { UserStats } from "@/dashboard/components/Profile/UserStats";
+import { UsersList } from "@/dashboard/components/UsersList";
 import { Outlet } from "react-router-dom";
 
 export const Profile = () => {

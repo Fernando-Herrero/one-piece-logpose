@@ -1,5 +1,4 @@
 import { Overlay } from "@/components/Overlay";
-import { PostProvider } from "@/context/PostContext";
 import { UserProvider } from "@/context/userContext";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/Profile/AvatarSection";
@@ -39,13 +38,17 @@ export const Dashboard = () => {
                             <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
                         }
                     />
+                    <Route
+                        path="postPage"
+                        element={<Overlay>{(handleClose) => <PostPage onCancel={handleClose} />}</Overlay>}
+                    />
                 </Route>
                 <Route
                     path="/community"
                     element={
-                        <PostProvider>
-                            <Community />
-                        </PostProvider>
+                        // <PostProvider>
+                        <Community />
+                        /* </PostProvider> */
                     }
                 >
                     <Route

@@ -1,7 +1,7 @@
-import { SkeletonCard } from "@/components/Skeleton";
-import { UserArticle } from "@/components/UserArticle";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useUser } from "@/core/user/useUser";
+import { SkeletonCard } from "@/dashboard/components/Skeleton";
+import { UserArticle } from "@/dashboard/components/UserArticle";
 import { languages } from "@/helpers/languages";
 import { useContext, useEffect, useState } from "react";
 

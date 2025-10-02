@@ -1,8 +1,8 @@
 import helpIcon from "@/assets/icons/help-icon.svg";
 import settings from "@/assets/icons/settings-icon.svg";
-import { DarkTheme } from "@/components/DarkTheme";
 import { LanguageSelect } from "@/components/LanguageSelect";
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { DarkTheme } from "@/dashboard/components/DarkTheme";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
