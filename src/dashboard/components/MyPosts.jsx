@@ -43,7 +43,7 @@ export const MyPosts = () => {
     const skeletonNum = isMobileXs || isMobile ? 1 : 2;
 
     return (
-        <div className="flex gap-1 overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth p-1 w-full custom-scrollbar">
+        <div className="flex gap-1 overflow-x-auto snap-x snap-mandatory scroll-smooth p-1 w-full custom-scrollbar">
             {loading
                 ? Array.from({ length: skeletonNum }, (_, index) => <SkeletonCard className="w-full" />)
                 : myPosts?.map((post) => (
@@ -54,7 +54,7 @@ export const MyPosts = () => {
                           className={`${
                               isMobileXs
                                   ? "min-w-[calc(100vw-100px)]"
-                                  : " max-w-[350px] sm:min-w-[200px]  snap-center flex-shrink-0"
+                                  : " max-w-[350px] sm:min-w-[200px] snap-center flex-shrink-0"
                           }`}
                       />
                   ))}
