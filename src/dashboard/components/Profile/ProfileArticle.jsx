@@ -17,7 +17,7 @@ export const ProfileArticle = () => {
     const { lang } = useContext(LanguagesContext);
     console.log(user);
 
-    if (!user) return <p>{languages[lang].profile.noUser}</p>;
+    if (!user) return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.noUser}</p>;
     if (loading)
         return (
             <div className="flex flex-col items-center gap-1">
@@ -28,7 +28,7 @@ export const ProfileArticle = () => {
                 </p>
             </div>
         );
-    if (error) return <p className="text-red-700">{error}</p>;
+    if (error) return <p className="text-linePrimary text-center pt-10">{error}</p>;
 
     const [coverImg, setCoverImg] = useState(false);
     const basicFields = getProfileFields(user, lang, coverImg);
