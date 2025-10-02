@@ -29,7 +29,7 @@ export const LoginForm = () => {
         setError(null);
         setForm((prev) => {
             const newForm = { ...prev, [name]: value };
-            sessionStorage.save("loginInputs", newForm);
+            session.save("loginInputs", newForm);
             return newForm;
         });
     };

@@ -63,13 +63,12 @@ export const EditableField = ({
 
     const getValueStyles = () =>
         classNames(
-            !readOnly && "cursor-pointer hover:underline",
+            !readOnly && "cursor-pointer",
             fieldName === "displayName" ? "text-primary font-semibold" : "text-xs text-gradient",
             (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
         );
 
-    const getEmptyStyles = () =>
-        classNames("text-xs text-gray-600 italic", !readOnly && "cursor-pointer hover:underline");
+    const getEmptyStyles = () => classNames("text-xs text-gradient italic", !readOnly && "cursor-pointer");
 
     if (isCurrentlyEditing && !readOnly) {
         return (
@@ -105,9 +104,9 @@ export const EditableField = ({
     return (
         <div className="flex items-center gap-1">
             {label && (
-                <p>
+                <span>
                     <strong className="text-primary font-semibold">{label}</strong>
-                </p>
+                </span>
             )}
 
             {hasValue ? (
@@ -125,9 +124,9 @@ export const EditableField = ({
                     )}
                 </>
             ) : (
-                <span className={getEmptyStyles()} onClick={handleClick("")}>
+                <p className={getEmptyStyles()} onClick={handleClick("")}>
                     {getEmptyText()}
-                </span>
+                </p>
             )}
         </div>
     );

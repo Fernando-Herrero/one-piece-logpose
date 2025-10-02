@@ -1,17 +1,18 @@
 import cross from "@/assets/icons/cross-close.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { UserContext } from "@/context/userContext";
 import { getUserFollowersApi } from "@/core/user/user.api";
 import { Spinner } from "@/dashboard/components/Community/Spinner";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { useContext, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export const FollowersCard = ({ onCancel }) => {
-    const { user } = useContext(UserContext);
-    if (!user) return null;
-    const userId = user.id;
+    const [searchParams] = useSearchParams();
+    const userId = searchParams.get("userId");
+    const from = searchParams.get("from");
+
     const [followers, setFollowers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -33,7 +34,6 @@ export const FollowersCard = ({ onCancel }) => {
                 setError(null);
 
                 const userData = await getUserFollowersApi(userId);
-                console.log("El user tiene los followers", userData);
                 setFollowers(userData);
             } catch (error) {
                 console.error("Error al obtener followers del usuario", error);
@@ -74,16 +74,9 @@ export const FollowersCard = ({ onCancel }) => {
     if (!userId)
         return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.userNotFound}</p>;
 
-    console.log(followers);
-
     return (
         <section className="flex flex-col items-center gap-4 w-[80vw]">
-            <button
-                onClick={() => {
-                    goTo(`/dashboard/userProfile?userId=${userId}`);
-                }}
-                className="cursor-pointer"
-            >
+            <button onClick={() => goTo(from)} className="cursor-pointer">
                 <img className="w-8" src={cross} alt="Cross icon" />
             </button>
             <div className="bg-white p-2 rounded-xl w-full flex flex-col gap-1">

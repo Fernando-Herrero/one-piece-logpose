@@ -1,3 +1,4 @@
+import { local } from "@/helpers/storage";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
@@ -36,6 +37,7 @@ export const useAuth = () => {
             const authData = await loginApi(user);
 
             saveTokenInLocalStorage(authData.token);
+            authData.user.isActive = true;
             saveUserInLocalStorage(authData.user);
             setUser(authData.user);
             goTo("/");
@@ -54,6 +56,8 @@ export const useAuth = () => {
             removeTokenFromLocalStorage();
             removeUserFromLocalStorage();
             setUser(null);
+            local.save("theme", false);
+            document.body.classList.remove("dark");
             goTo("/");
         }
     };

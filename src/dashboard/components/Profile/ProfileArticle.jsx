@@ -6,16 +6,28 @@ import { FollowSection } from "@/dashboard/components/Profile/FollowSection";
 import { ProfileHeader } from "@/dashboard/components/Profile/ProfileHeader";
 import { ProfileViewMore } from "@/dashboard/components/Profile/ProfileViewMore";
 import { getProfileFields } from "@/dashboard/data/ProfileData/profileFields";
+import { languages } from "@/helpers/languages";
 import { useProfileEditor } from "@/hooks/useProfileEditor";
 import { useContext, useState } from "react";
 
 export const ProfileArticle = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading, error } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
     const editorProps = useProfileEditor(user, updatedProfile);
     const { lang } = useContext(LanguagesContext);
 
-    if (!user) return <p>{LanguagesContext[lang].profile.noUser}</p>;
+    if (!user) return <p>{languages[lang].profile.noUser}</p>;
+    if (loading)
+        return (
+            <div className="flex flex-col items-center gap-1">
+                <Spinner className="mx-auto mt-5" />{" "}
+                <p className="text-gradient dark:text-black">
+                    {languages[lang].profile.loadingProfile}
+                    <LoadingDots />
+                </p>
+            </div>
+        );
+    if (error) return <p className="text-red-700">{error}</p>;
 
     const [coverImg, setCoverImg] = useState(false);
     const basicFields = getProfileFields(user, lang, coverImg);
@@ -40,7 +52,7 @@ export const ProfileArticle = () => {
 
                 <ProfileViewMore user={user} editorProps={editorProps} />
 
-                <FollowSection user={user} className="px-2 pb-2" />
+                <FollowSection user={user} className="px-2 pb-2" basePath="/dashboard/profile" />
             </div>
         </article>
     );

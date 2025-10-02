@@ -1,10 +1,11 @@
+import cross from "@/assets/icons/cross-close.svg";
 import { PostContext } from "@/context/PostContext";
 import { PostCard } from "@/dashboard/components/Community/PostCard";
 import { PostComments } from "@/dashboard/components/Community/PostComments";
 import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export const PostPage = () => {
+export const PostPage = ({ onCancel }) => {
     const [searchParams] = useSearchParams();
     const postId = searchParams.get("postId");
 
@@ -14,9 +15,15 @@ export const PostPage = () => {
     if (!post) return;
 
     return (
-        <>
-            <PostCard post={post} view={false} classSelect="secondary" />
-            <PostComments post={post} />
-        </>
+        <section className="flex flex-col items-center gap-4">
+            <div className="w-8 cursor-pointer" onClick={onCancel}>
+                <img src={cross} alt="Cross icon" />
+            </div>
+
+            <div>
+                <PostCard post={post} view={false} classSelect="secondary" />
+                <PostComments post={post} />
+            </div>
+        </section>
     );
 };

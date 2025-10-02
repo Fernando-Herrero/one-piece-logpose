@@ -26,6 +26,18 @@ export const Dashboard = () => {
                             <Overlay>{(handleClose) => <AvatarSection onCancel={handleClose} />}</Overlay>
                         }
                     />
+                    <Route
+                        path="followers"
+                        element={
+                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                        }
+                    />
+                    <Route
+                        path="followings"
+                        element={
+                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                        }
+                    />
                 </Route>
                 <Route
                     path="/community"
@@ -58,6 +70,12 @@ export const Dashboard = () => {
                 >
                     <Route
                         path="followers"
+                        element={
+                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                        }
+                    />
+                    <Route
+                        path="followings"
                         element={
                             <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
                         }

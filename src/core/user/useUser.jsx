@@ -1,4 +1,4 @@
-import { followUserApi } from "@/core/user/user.api";
+import { followUserApi, unfollowUserApi } from "@/core/user/user.api";
 
 export const useUser = () => {
     const followUser = async (userId) => {
@@ -9,5 +9,13 @@ export const useUser = () => {
         }
     };
 
-    return { followUser };
+    const unfollowUser = async (userId) => {
+        try {
+            await unfollowUserApi(userId);
+        } catch (error) {
+            console.error("Error al dejar de seguir al usuario", error);
+        }
+    };
+
+    return { followUser, unfollowUser };
 };

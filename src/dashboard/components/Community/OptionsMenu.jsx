@@ -1,4 +1,5 @@
 import dots from "@/assets/icons/dots-menu-icon.svg";
+import minus from "@/assets/icons/minus-icon.svg";
 import plus from "@/assets/icons/plus-icon.svg";
 import profileIcon from "@/assets/icons/profile-icon.svg";
 import trash from "@/assets/icons/trash-icon.svg";
@@ -19,7 +20,7 @@ export const OptionsMenu = ({ id, userId }) => {
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
     const { deletePost } = usePosts();
-    const { followUser } = useUser();
+    const { followUser, unfollowUser } = useUser();
     const { goTo } = useGoTo();
 
     const menuRef = useClickOutside(toggleMenu, isOpen);
@@ -37,6 +38,7 @@ export const OptionsMenu = ({ id, userId }) => {
     };
 
     const amIUser = user.id === userId.id;
+    const alreadyFollow = user.following.includes(userId.id);
 
     return (
         <div className="relative" ref={menuRef}>
@@ -66,13 +68,20 @@ export const OptionsMenu = ({ id, userId }) => {
                     />
                 )}
 
-                {!amIUser && (
-                    <ItemOptionsMenu
-                        onClick={() => followUser(userId.id)}
-                        content={languages[lang].posts.follow}
-                        icon={plus}
-                    />
-                )}
+                {!amIUser &&
+                    (alreadyFollow ? (
+                        <ItemOptionsMenu
+                            onClick={() => unfollowUser(userId.id)}
+                            content={languages[lang].posts.unfollow}
+                            icon={minus}
+                        />
+                    ) : (
+                        <ItemOptionsMenu
+                            onClick={() => followUser(userId.id)}
+                            content={languages[lang].posts.follow}
+                            icon={plus}
+                        />
+                    ))}
 
                 <ItemOptionsMenu
                     onClick={() => {

@@ -45,9 +45,8 @@ export const getProfileApi = async () => {
     try {
         console.log("getProfileApi");
         const response = await api.get("auth/me");
-        console.log("Respuesta de la api:", response);
 
-        return response.data;
+        return response.data.user;
     } catch (error) {
         console.error("Error al obtener el usuario:", error);
         throw error;

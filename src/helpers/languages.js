@@ -460,9 +460,8 @@ export const languages = {
             emptyCoverImage: "Insert a URL for your cover image",
             changeCoverImg: "Change cover Img",
             loadingProfile: "Loading Profile",
-            viewFollowers: "See followers",
             userError: "Try again",
-            oadingFollowers: "Loading followers",
+            loadingFollowers: "Loading followers",
         },
 
         posts: {
