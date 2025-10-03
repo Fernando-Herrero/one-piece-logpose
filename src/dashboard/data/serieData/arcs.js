@@ -1,4 +1,4 @@
-const arcs = [
+export const arcs = [
     {
         arc_id: 1,
         name: "Romance Dawn",

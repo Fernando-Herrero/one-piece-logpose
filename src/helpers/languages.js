@@ -239,6 +239,13 @@ export const languages = {
             8: { title: "Dressrosa", saga_episode: "654 a 801" },
             sagaLoading: "Cargando Saga",
             episodes: "Capitulos",
+            achievements: "Recompensas",
+            characters: "Personajes",
+            items: "Items",
+            fruits: "Frutas",
+            swords: "Espadas",
+            boats: "Barcos",
+            experience: "Experiencia",
         },
 
         settings: {
@@ -519,6 +526,13 @@ export const languages = {
             8: { title: "Dressrosa", saga_episode: "654 to 801" },
             sagaLoading: "Loading Saga",
             episodes: "Episodes",
+            achievements: "Achievements",
+            characters: "Characters",
+            items: "Items",
+            fruits: "Fruits",
+            swords: "Swords",
+            boats: "Boats",
+            experience: "Experience",
         },
 
         settings: {

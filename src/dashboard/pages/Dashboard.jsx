@@ -9,6 +9,7 @@ import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
 import { PostPage } from "@/dashboard/pages/PostPage";
 import { Profile } from "@/dashboard/pages/Profile";
+import { Serie } from "@/dashboard/pages/Serie";
 import { Settings } from "@/dashboard/pages/Settings";
 import { UserProfile } from "@/dashboard/pages/UserProfile";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -43,6 +44,7 @@ export const Dashboard = () => {
                         element={<Overlay>{(handleClose) => <PostPage onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
+
                 <Route
                     path="/community"
                     element={
@@ -64,6 +66,7 @@ export const Dashboard = () => {
                         element={<Overlay>{(handleClose) => <PostPage onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
+
                 <Route
                     path="/userProfile"
                     element={
@@ -85,6 +88,9 @@ export const Dashboard = () => {
                         }
                     />
                 </Route>
+
+                <Route path="/serie" element={<Serie />} />
+
                 <Route path="/settings" element={<Settings />} />
             </Routes>
         </AppShell>
