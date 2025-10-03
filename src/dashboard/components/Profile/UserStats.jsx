@@ -1,7 +1,9 @@
-import { SkeletonText } from "@/components/Skeleton";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useUser } from "@/core/user/useUser";
+import { SkeletonText } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
+import { useDevice } from "@/hooks/useDevice";
+import classNames from "classnames";
 import { useContext, useEffect, useState } from "react";
 
 export const UserStats = () => {
@@ -11,6 +13,7 @@ export const UserStats = () => {
     const [error, setError] = useState(null);
     const { getUserStats } = useUser();
     const { lang } = useContext(LanguagesContext);
+    const { isMobile, isTablet } = useDevice();
 
     useEffect(() => {
         const fetchStats = async () => {
@@ -43,7 +46,15 @@ export const UserStats = () => {
             {loading ? (
                 <SkeletonText lines={5} className="bg-primary border border-white/30 rounded-xl p-2" />
             ) : (
-                <div className="p-2 w-full bg-gradient-card shadow rounded-xl border border-white/30 transition-transform hover:-translate-y-0.5 hover:shadow-xl">
+                <div
+                    className={classNames(
+                        "p-2 w-full bg-gradient-card shadow rounded-xl border border-white/30 transition-transform hover:-translate-y-0.5 hover:shadow-xl sm:p-4",
+                        {
+                            "p-6": isMobile,
+                            "p-8": isTablet,
+                        }
+                    )}
+                >
                     <h5 className="font-bold text-lg text-primary">{languages[lang].profile.myStats}</h5>
                     <article className="p-1 flex flex-col gap-1 w-full rounded-xl text-sm">
                         <p className="text-primary font-semibold">

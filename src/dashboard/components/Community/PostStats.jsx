@@ -76,8 +76,8 @@ export const PostStats = ({ post, view }) => {
                     >
                         {alt === "Comment icon" ? (
                             <>
-                                <img className={`w-4 ${view ? "" : "brightness-50"}`} src={icon} alt={alt} />
-                                <span className={`text-gradient ${view ? "" : "opacity-10"}`}>{count}</span>
+                                <img className={`w-4 ${view ? "" : "opacity-30"}`} src={icon} alt={alt} />
+                                <span className={`text-gradient ${view ? "" : "opacity-30"}`}>{count}</span>
                             </>
                         ) : (
                             <>

@@ -10,7 +10,7 @@ export const PostProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            if (loading || posts.length) return;
+            if (loading) return;
             try {
                 setLoading(true);
                 setError(null);

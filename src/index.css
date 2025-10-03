@@ -108,6 +108,12 @@ body.dark {
     }
 }
 
+.floating-btn {
+    @apply fixed z-25 bottom-12 right-2 transition duration-300 hover:-translate-y-0.5 
+        flex items-center justify-center w-10 h-10 rounded-full overflow-hidden 
+        border border-white/30 shadow-default cursor-pointer sm:right-8;
+}
+
 .title-glow {
     @apply text-[#c9a066] tracking-wider -mt-8;
     text-shadow: 2px 2px 0px #3b2f2f, -1px -1px 0px #3b2f2f, 1px -1px 0px #3b2f2f, -1px 1px 0px #3b2f2f,
@@ -229,4 +235,22 @@ body.dark {
 
 .dark .logo-mask {
     background: #fff;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }

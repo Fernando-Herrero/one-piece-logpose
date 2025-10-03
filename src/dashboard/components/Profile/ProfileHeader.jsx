@@ -10,7 +10,7 @@ export const ProfileHeader = ({ user, setCoverImg }) => {
 
     return (
         <div className="relative w-full flex flex-col items-center">
-            <div className="relative group max-h-52 overflow-hidden">
+            <div className="relative group max-h-52 w-full overflow-hidden">
                 {user?.coverImage ? (
                     <img
                         src={user.coverImage}

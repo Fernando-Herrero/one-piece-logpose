@@ -1,3 +1,4 @@
+import { PostProvider } from "@/context/PostContext.jsx";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App.jsx";
@@ -15,11 +16,13 @@ createRoot(document.getElementById("root")).render(
             <AuthProvider>
                 <SagaProvider>
                     <AvatarProvider>
-                        <ModdalProvider>
-                            <DeviceProvider>
-                                <App />
-                            </DeviceProvider>
-                        </ModdalProvider>
+                        <PostProvider>
+                            <ModdalProvider>
+                                <DeviceProvider>
+                                    <App />
+                                </DeviceProvider>
+                            </ModdalProvider>
+                        </PostProvider>
                     </AvatarProvider>
                 </SagaProvider>
             </AuthProvider>
