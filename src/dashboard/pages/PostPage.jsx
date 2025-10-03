@@ -20,7 +20,7 @@ export const PostPage = ({ onCancel }) => {
                 <img src={cross} alt="Cross icon" />
             </div>
 
-            <div className="rounded w-full">
+            <div className="rounded w-full bg-white">
                 <PostCard post={post} view={false} classSelect="secondary" />
                 <PostComments post={post} />
             </div>

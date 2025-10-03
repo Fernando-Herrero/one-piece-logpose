@@ -18,7 +18,7 @@ export const UserArticle = ({
     return (
         <article
             key={id}
-            className="flex items-center gap-2 bg-gradient-card border border-white/30 p-2 rounded-xl min-w-full shadow transition hover:-translate-y-0.5 hover:shadow-xl"
+            className="flex items-center gap-2 bg-gradient-card border min-h-16 border-white/30 p-2 rounded-xl min-w-full shadow transition hover:-translate-y-0.5 hover:shadow-xl"
         >
             <UserAvatar
                 src={avatar}
@@ -29,17 +29,20 @@ export const UserArticle = ({
                 fallback={lastName}
             />
 
-            <div className="flex flex-col text-xs">
-                <div className="flex items-center gap-1">
-                    <p className="font-semibold text-primary">
-                        {displayName ? displayName : firstName + lastName}
-                    </p>
-                    <img
-                        className="w-3"
-                        src={verified ? verifiedIcon : notVerifiedIcon}
-                        alt={verified ? "Verified icon" : "Not verified icon"}
-                    />
-                    <span className="text-[10px] text-muted text-center">@{username}</span>
+            <div className="flex flex-col ">
+                <div className="flex items-center gap-1 flex-wrap">
+                    <div className="flex gap-1">
+                        <p className="font-semibold text-primary text-sm">
+                            {displayName ? displayName : firstName + lastName}
+                        </p>
+                        <img
+                            className="w-3"
+                            src={verified ? verifiedIcon : notVerifiedIcon}
+                            alt={verified ? "Verified icon" : "Not verified icon"}
+                        />
+                    </div>
+
+                    <span className="text-[10px] text-muted text-center pt-1">@{username}</span>
                 </div>
 
                 <div className="flex items-center gap-1 text-muted text-[10px] pt-2">

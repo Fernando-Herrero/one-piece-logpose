@@ -30,7 +30,7 @@ export const PostComments = ({ post }) => {
         <section
             className={
                 comments?.length > 0
-                    ? "px-4 py-1 bg-primary border border-white/30 border-t-0 rounded-bl rounded-br"
+                    ? "px-4 py-1 bg-secondary border border-white/30 border-t-0 rounded-bl rounded-br"
                     : "border border-white/30"
             }
         >

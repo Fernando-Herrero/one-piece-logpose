@@ -213,6 +213,7 @@ export const languages = {
             noLikedPosts: "No se ecnontraron posts con like",
             noBookmarkedPosts: "No se ecnontraron posts con favoritos",
             noCommentedPosts: "No se ecnontraron posts con comentarios tuyos",
+            emptyMessagePosts: "Aún no hay posts",
         },
 
         posts: {
@@ -492,6 +493,7 @@ export const languages = {
             noLikedPosts: "No liked posts found",
             noBookmarkedPosts: "No bookmarked posts",
             noCommentedPosts: "No commented posts",
+            emptyMessagePosts: "No posts found",
         },
 
         posts: {

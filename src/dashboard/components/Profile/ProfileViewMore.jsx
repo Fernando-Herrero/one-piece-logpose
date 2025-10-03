@@ -3,6 +3,7 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { EditableField } from "@/dashboard/components/Profile/EditableField";
 import { getExtendedProfileFields } from "@/dashboard/data/ProfileData/profileFields";
 import { languages } from "@/helpers/languages";
+import { useDevice } from "@/hooks/useDevice";
 import { useToggle } from "@/hooks/useToggle";
 import classNames from "classnames";
 import { useContext } from "react";
@@ -11,9 +12,18 @@ export const ProfileViewMore = ({ user, editorProps }) => {
     const [isOpen, toggleBox] = useToggle();
     const { lang } = useContext(LanguagesContext);
     const profileFields = getExtendedProfileFields(user, lang);
+    const { isMobile, isTablet } = useDevice();
 
     return (
-        <section className="min-w-fit rounded-xl border border-white py-1 px-2 transition mx-2">
+        <section
+            className={classNames(
+                "min-w-fit rounded-xl border border-white py-1 px-2 transition mx-2 sm:mx-6",
+                {
+                    "mx-6": isMobile,
+                    "mx-8": isTablet,
+                }
+            )}
+        >
             <header className="flex items-center justify-between cursor-pointer" onClick={toggleBox}>
                 <p className="text-primary font-semibold">{languages[lang].profile.viewMore}</p>
                 <ToggleButton isOpen={isOpen} />

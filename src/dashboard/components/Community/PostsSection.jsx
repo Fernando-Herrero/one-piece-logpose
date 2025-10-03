@@ -24,7 +24,7 @@ export const PostsSection = () => {
     if (error) return <p className="text-red-700">{error}</p>;
 
     return (
-        <section className="flex flex-col items-center space-y-1">
+        <section className="flex flex-col items-center space-y-1 max-w-md">
             {posts.map((post, index) => (
                 <PostCard key={post.id} post={post} index={index} />
             ))}

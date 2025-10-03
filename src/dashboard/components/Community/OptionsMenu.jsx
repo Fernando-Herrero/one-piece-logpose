@@ -41,7 +41,7 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
     const alreadyFollow = user.following.includes(userId.id);
 
     return (
-        <div className="relative" ref={menuRef}>
+        <div className="relative text-xs" ref={menuRef}>
             <button
                 type="button"
                 className="flex w-6 cursor-pointer"

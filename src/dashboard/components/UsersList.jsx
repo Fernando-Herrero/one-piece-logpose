@@ -39,8 +39,7 @@ export const UsersList = () => {
     if (error) return <p className="text-linePrimary text-center p-10">{error}</p>;
 
     return (
-        <section className="hidden">
-            {/* flex flex-col items-center gap-1 w-full border border-white/30 p-1 rounded-xl */}
+        <section className="hidden sm:flex h-fit flex-col items-center gap-1 w-full border border-white/30 p-1 rounded-xl">
             <h2 className="font-bold font-family-pirate text-2xl text-primary">Ranking</h2>
 
             {loading
