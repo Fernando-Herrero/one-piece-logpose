@@ -1,5 +1,5 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { PostCard } from "@/dashboard/components/Community/PostCard";
+import { PostCard } from "@/dashboard/components/community/PostCard";
 import { SkeletonCard } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";

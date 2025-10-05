@@ -1,5 +1,5 @@
 import plusIcon from "@/assets/icons/plus-icon.svg";
-import { PostsSection } from "@/dashboard/components/Community/PostsSection";
+import { PostsSection } from "@/dashboard/components/community/PostsSection";
 import { UsersList } from "@/dashboard/components/UsersList";
 import { useGoTo } from "@/hooks/useGoTo";
 import { Outlet } from "react-router-dom";

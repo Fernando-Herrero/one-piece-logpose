@@ -1,6 +1,7 @@
 import { ContentProfile } from "@/dashboard/components/ContentProfile";
-import { ProfileArticle } from "@/dashboard/components/Profile/ProfileArticle";
-import { UserStats } from "@/dashboard/components/Profile/UserStats";
+import { ProfileArticle } from "@/dashboard/components/profile/ProfileArticle";
+import { UserProgress } from "@/dashboard/components/profile/UserProgrress";
+import { UserStats } from "@/dashboard/components/profile/UserStats";
 import { UsersList } from "@/dashboard/components/UsersList";
 import { Outlet } from "react-router-dom";
 
@@ -11,6 +12,7 @@ export const Profile = () => {
                 <div className="flex flex-col gap-2">
                     <ProfileArticle />
                     <UserStats />
+                    <UserProgress />
                 </div>
 
                 <UsersList />

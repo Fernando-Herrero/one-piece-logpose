@@ -3,7 +3,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
-import { MenuItem } from "@/dashboard/components/Header/MenuItem";
+import { MenuItem } from "@/dashboard/components/header/MenuItem";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";

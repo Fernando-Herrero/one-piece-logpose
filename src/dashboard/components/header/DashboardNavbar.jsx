@@ -1,11 +1,11 @@
 import notification from "@/assets/icons/notification-icon.svg";
 import logo from "@/assets/images/one-piece-logo.webp";
-import { Search } from "@/dashboard/components/Header/Search";
-import { UserMenu } from "@/dashboard/components/Header/UserMenu";
+import { Search } from "@/dashboard/components/header/Search";
+import { UserMenu } from "@/dashboard/components/header/UserMenu";
 
 export const DashboardNavbar = () => {
     return (
-        <header className="fixed flex items-center w-full py-2 px-4 border-b-2 border-primary bg-gradient-primary backdrop-blur-md z-30">
+        <header className="fixed flex items-center w-full py-2 px-4 border-b-2 border-primary bg-gradient-primary backdrop-blur-sm z-30">
             <div className="w-16 mr-auto">
                 <img className="w-full" src={logo} alt="One Piece logo" />
             </div>

@@ -1,21 +1,26 @@
-import { storage } from "@/helpers/storage";
-import { useStorage } from "@/hooks/useStorage";
-import { createContext, useState } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const SagaContext = createContext(null);
 
 export const SagaProvider = ({ children }) => {
-    const savedSaga = storage.get("saga");
-    const [saga, setSaga] = useState(savedSaga || { saga: "", chapter: "" });
+    const { user } = useContext(AuthContext);
+    const [saga, setSaga] = useState({ currentSaga: 0, episode: 0 });
 
-    useStorage("saga", saga);
+    useEffect(() => {
+        if (user?.sagaProgress) {
+            setSaga(user.sagaProgress);
+        }
+    }, [user]);
+
+    console.log("Mi saga actual es", saga);
 
     const nextChapter = () => {
-        setSaga((prev) => ({ ...prev, chapter: prev.chapter + 1 }));
+        setSaga((prev) => ({ ...prev, episode: prev.episode + 1 }));
     };
 
     const nextSaga = () => {
-        setSaga((prev) => ({ ...prev, saga: prev.saga + 1, chapter: 0 }));
+        setSaga((prev) => ({ ...prev, currentSaga: prev.currentSaga + 1 }));
     };
 
     return (

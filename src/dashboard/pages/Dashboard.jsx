@@ -1,14 +1,15 @@
 import { Overlay } from "@/components/Overlay";
 import { UserProvider } from "@/context/userContext";
 import { AppShell } from "@/dashboard/components/AppShell";
-import { AvatarSection } from "@/dashboard/components/Profile/AvatarSection";
-import { FollowersCard } from "@/dashboard/components/Profile/FollowersCard";
-import { FollowingCard } from "@/dashboard/components/Profile/FollowingCard";
+import { AvatarSection } from "@/dashboard/components/profile/AvatarSection";
+import { FollowersCard } from "@/dashboard/components/profile/FollowersCard";
+import { FollowingCard } from "@/dashboard/components/profile/FollowingCard";
 import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
 import { PostPage } from "@/dashboard/pages/PostPage";
 import { Profile } from "@/dashboard/pages/Profile";
+import { SearchResults } from "@/dashboard/pages/SearchResults";
 import { Serie } from "@/dashboard/pages/Serie";
 import { Settings } from "@/dashboard/pages/Settings";
 import { UserProfile } from "@/dashboard/pages/UserProfile";
@@ -90,6 +91,8 @@ export const Dashboard = () => {
                 </Route>
 
                 <Route path="/serie" element={<Serie />} />
+
+                <Route path="/search" element={<SearchResults />} />
 
                 <Route path="/settings" element={<Settings />} />
             </Routes>

@@ -1,4 +1,4 @@
-const boats = [
+export const boats = [
     {
         boat_id: 1,
         name: "Alvida's ship",

@@ -222,7 +222,7 @@ body.dark {
 }
 
 .dark .bg-gradient-primary {
-    @apply bg-gradient-to-br from-primary to-secondary;
+    @apply bg-gradient-to-br from-primary/70 to-secondary/70;
 }
 
 .dark .bg-gradient-card {

@@ -1,6 +1,6 @@
 import { ToggleButton } from "@/components/ToggleButton";
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { EditableField } from "@/dashboard/components/Profile/EditableField";
+import { EditableField } from "@/dashboard/components/profile/EditableField";
 import { getExtendedProfileFields } from "@/dashboard/data/ProfileData/profileFields";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";

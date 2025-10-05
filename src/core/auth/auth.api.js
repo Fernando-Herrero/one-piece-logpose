@@ -56,7 +56,7 @@ export const getProfileApi = async () => {
 export const updateProfileApi = async (user, updateFields) => {
     try {
         console.log("updateProfileApi");
-        const response = await api.patch(`/users/${user.id}`, updateFields);
+        const response = await api.patch(`/users/${user.id || user._id}`, updateFields);
         console.log("Respuesta de la api:", response);
 
         return response.data;

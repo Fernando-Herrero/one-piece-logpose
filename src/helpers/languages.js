@@ -246,6 +246,7 @@ export const languages = {
             swords: "Espadas",
             boats: "Barcos",
             experience: "Experiencia",
+            viewedChapter: "Capítulo visto",
         },
 
         settings: {
@@ -279,6 +280,16 @@ export const languages = {
 
             titleResources: "Additional resources",
             textResources: "Find more help, guidelines, and resources to get the most out of Twitter.",
+        },
+
+        search: {
+            searchResult: "Resultado de búsqueda",
+            searching: "Buscando",
+            writeSome: "Escribe algo para buscar",
+            notFound: "No se han encontrado resultados",
+            result: "Resultado",
+            exactMatches: "Coincidencias exactas",
+            otherResults: "Otros resultados",
         },
     },
 
@@ -533,6 +544,7 @@ export const languages = {
             swords: "Swords",
             boats: "Boats",
             experience: "Experience",
+            viewedChapter: "Episode watched",
         },
 
         settings: {
@@ -563,6 +575,16 @@ export const languages = {
 
             titleResources: "Additional resources",
             textResources: "Find more help, guidelines, and resources to make the most out of Twitter.",
+        },
+
+        search: {
+            searchResult: "Search result",
+            searching: "Searching",
+            writeSome: "Write something to search",
+            notFound: "Not results found",
+            result: "Result",
+            exactMatches: "Exact matches",
+            otherResults: "Others results",
         },
     },
 };

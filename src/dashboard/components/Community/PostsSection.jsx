@@ -1,7 +1,7 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { PostContext } from "@/context/PostContext";
-import { PostCard } from "@/dashboard/components/Community/PostCard";
-import { Spinner } from "@/dashboard/components/Community/Spinner";
+import { PostCard } from "@/dashboard/components/community/PostCard";
+import { Spinner } from "@/dashboard/components/community/Spinner";
 import { languages } from "@/helpers/languages";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { useContext } from "react";

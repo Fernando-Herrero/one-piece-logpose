@@ -1,4 +1,4 @@
-const fruits = [
+export const fruits = [
     {
         fruit_id: 1,
         name: "Gum-Gum Fruit",

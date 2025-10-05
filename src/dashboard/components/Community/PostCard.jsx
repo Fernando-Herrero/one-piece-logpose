@@ -1,7 +1,7 @@
-import { OptionsMenu } from "@/dashboard/components/Community/OptionsMenu";
-import { PostContent } from "@/dashboard/components/Community/PostContent";
-import { PostStats } from "@/dashboard/components/Community/PostStats";
-import { UserInfo } from "@/dashboard/components/Community/UserInfo";
+import { OptionsMenu } from "@/dashboard/components/community/OptionsMenu";
+import { PostContent } from "@/dashboard/components/community/PostContent";
+import { PostStats } from "@/dashboard/components/community/PostStats";
+import { UserInfo } from "@/dashboard/components/community/UserInfo";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";

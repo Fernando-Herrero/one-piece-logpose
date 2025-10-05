@@ -5,7 +5,7 @@ export const arcs = [
         description:
             "Luffy empieza su viaje, se convierte en pirata y forma la tripulación inicial enfrentando sus primeros desafíos.",
         total_episodes: 3,
-        first_epsiode: 1,
+        first_episode: 1,
         last_episode: 3,
         saga: "East Blue",
     },
@@ -15,7 +15,7 @@ export const arcs = [
         description:
             "Luffy y Zoro llegan a Orange Town, conocen a Nami y luchan para liberar el pueblo de Buggy el Payaso.",
         total_episodes: 5,
-        first_epsiode: 4,
+        first_episode: 4,
         last_episode: 8,
         saga: "East Blue",
     },
@@ -25,7 +25,7 @@ export const arcs = [
         description:
             "La tripulación busca un barco y conoce a Usopp mientras enfrentan a los piratas Black Cat.",
         total_episodes: 10,
-        first_epsiode: 9,
+        first_episode: 9,
         last_episode: 18,
         saga: "East Blue",
     },
@@ -35,7 +35,7 @@ export const arcs = [
         description:
             "El grupo visita un restaurante flotante en busca de un cocinero, Sanji se une, y surge conflicto con Don Krieg.",
         total_episodes: 12,
-        first_epsiode: 19,
+        first_episode: 19,
         last_episode: 30,
         saga: "East Blue",
     },
@@ -44,7 +44,7 @@ export const arcs = [
         name: "Arlong Park",
         description: "El pasado de Nami se revela al enfrentarse al dominio de Arlong en su isla natal.",
         total_episodes: 14,
-        first_epsiode: 31,
+        first_episode: 31,
         last_episode: 45,
         saga: "East Blue",
     },
@@ -54,7 +54,7 @@ export const arcs = [
         description:
             "Pequeña historia paralela donde se muestran eventos de Buggy y su tripulación, con momentos ligeros y humorísticos.",
         total_episodes: 3,
-        first_epsiode: 46,
+        first_episode: 46,
         last_episode: 47,
         saga: "East Blue",
     },
@@ -64,7 +64,7 @@ export const arcs = [
         description:
             "Última parada antes de la Grand Line: Loguetown es lugar de confrontaciones previas al gran viaje.",
         total_episodes: 7,
-        first_epsiode: 48,
+        first_episode: 48,
         last_episode: 53,
         saga: "East Blue",
     },
@@ -74,7 +74,7 @@ export const arcs = [
         description:
             "Una historia filler donde Luffy y su tripulación ayudan a una chica misteriosa mientras enfrentan piratas y secretos ocultos.",
         total_episodes: 8,
-        first_epsiode: 54,
+        first_episode: 54,
         last_episode: 61,
         saga: "East Blue",
     },

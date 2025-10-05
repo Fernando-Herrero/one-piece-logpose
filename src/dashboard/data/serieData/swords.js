@@ -1,4 +1,4 @@
-const swords = [
+export const swords = [
     {
         sword_id: 1,
         name: "Yoru",

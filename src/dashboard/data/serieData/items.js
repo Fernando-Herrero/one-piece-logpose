@@ -1,4 +1,4 @@
-const items = [
+export const items = [
     { item_id: 1, name: "Straw Hat", type: "legendary", owner: "Monkey D. Luffy", origin: "Given by Shanks" },
     { item_id: 2, name: "Buggy Ball", type: "rare", owner: "Buggy", origin: "Buggy's signature weapon" },
     { item_id: 3, name: "Buggy's cannon", type: "common", owner: "Buggy", origin: "Ship armament" },

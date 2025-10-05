@@ -1,7 +1,7 @@
 import cross from "@/assets/icons/cross-close.svg";
 import { PostContext } from "@/context/PostContext";
-import { PostCard } from "@/dashboard/components/Community/PostCard";
-import { PostComments } from "@/dashboard/components/Community/PostComments";
+import { PostCard } from "@/dashboard/components/community/PostCard";
+import { PostComments } from "@/dashboard/components/community/PostComments";
 import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 
