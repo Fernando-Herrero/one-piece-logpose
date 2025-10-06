@@ -8,7 +8,7 @@ const getEpisodesByArc = (firstEpisode, lastEpisode) => {
     );
 };
 
-export const ArcList = ({ arcsInSaga }) => (
+export const ArcList = ({ arcsInSaga, sagaId }) => (
     <>
         {arcsInSaga.map(({ arc_id, name, description, total_episodes, first_episode, last_episode }) => {
             const episodesInArc = getEpisodesByArc(first_episode, last_episode);
@@ -22,7 +22,14 @@ export const ArcList = ({ arcsInSaga }) => (
                     episodes={total_episodes}
                 >
                     {episodesInArc.map((episode) => (
-                        <EpisodeItem key={episode.episode_id} {...episode} />
+                        <EpisodeItem
+                            key={episode.episode_id}
+                            {...episode}
+                            currentArcId={arc_id}
+                            currentSagaId={sagaId}
+                            isLastEpisodeOfArc={episode.episode_id === last_episode}
+                            isLastArcOfSaga={arc_id === arcsInSaga[arcsInSaga.length - 1].arc_id}
+                        />
                     ))}
                 </AccordionSerie>
             );

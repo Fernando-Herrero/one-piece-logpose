@@ -21,7 +21,7 @@ export const Serie = () => {
                         text={japaneseName}
                         episodes={total_episodes}
                     >
-                        <ArcList arcsInSaga={arcsInSaga} />
+                        <ArcList arcsInSaga={arcsInSaga} sagaId={saga_id} />
                     </AccordionSerie>
                 );
             })}

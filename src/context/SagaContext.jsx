@@ -13,19 +13,29 @@ export const SagaProvider = ({ children }) => {
         }
     }, [user]);
 
-    console.log("Mi saga actual es", saga);
+    const updateProgress = (newSaga, newArc, newEpisode) => {
+        console.log("🔵 updateProgress llamado con:", { newSaga, newArc, newEpisode });
 
-    const nextChapter = () => {
-        setSaga((prev) => ({ ...prev, episode: prev.episode + 1 }));
+        setSaga((prev) => {
+            console.log("🟡 Estado actual:", prev);
+
+            if (newSaga > prev.saga) {
+                console.log("✅ Actualizando: nueva saga mayor");
+                return { saga: newSaga, arc: newArc, episode: newEpisode };
+            }
+            if (newSaga === prev.saga && newArc > prev.arc) {
+                console.log("✅ Actualizando: nuevo arco mayor");
+                return { saga: prev.saga, arc: newArc, episode: newEpisode };
+            }
+            if (newSaga === prev.saga && newArc === prev.arc && newEpisode > prev.episode) {
+                console.log("✅ Actualizando: nuevo episodio mayor");
+                return { saga: prev.saga, arc: prev.arc, episode: newEpisode };
+            }
+
+            console.log("❌ No se actualiza: progreso no es mayor");
+            return prev;
+        });
     };
 
-    const nextSaga = () => {
-        setSaga((prev) => ({ ...prev, currentSaga: prev.currentSaga + 1 }));
-    };
-
-    return (
-        <SagaContext.Provider value={{ saga, setSaga, nextChapter, nextSaga }}>
-            {children}
-        </SagaContext.Provider>
-    );
+    return <SagaContext.Provider value={{ saga, updateProgress }}>{children}</SagaContext.Provider>;
 };
