@@ -15,6 +15,14 @@ export const UserStats = () => {
     const { lang } = useContext(LanguagesContext);
     const { isMobile, isTablet } = useDevice();
 
+    const statsItems = [
+        { label: languages[lang].profile.myPosts, value: myPosts },
+        { label: languages[lang].profile.likedPosts, value: likedPosts },
+        { label: languages[lang].profile.bookmarkedPosts, value: bookmarkedPosts },
+        { label: languages[lang].profile.commentedPosts, value: commentedPosts },
+        { label: languages[lang].profile.totalComments, value: totalComments },
+    ];
+
     useEffect(() => {
         const fetchStats = async () => {
             if (loading) return;
@@ -48,35 +56,22 @@ export const UserStats = () => {
             ) : (
                 <div
                     className={classNames(
-                        "p-2 w-full bg-gradient-card shadow rounded-xl border border-white/30 transition-transform hover:-translate-y-0.5 hover:shadow-xl sm:p-4",
+                        "p-2 w-full bg-gradient-card shadow rounded-xl border border-white/30 transition-transform hover:-translate-y-0.5 hover:shadow-xl sm:p-6",
                         {
                             "p-6": isMobile,
                             "p-8": isTablet,
                         }
                     )}
                 >
-                    <h5 className="font-bold text-lg text-primary">{languages[lang].profile.myStats}</h5>
+                    <h5 className="font-bold text-lg text-primary underline sm:text-xl">
+                        {languages[lang].profile.myStats}
+                    </h5>
                     <article className="p-1 flex flex-col gap-1 w-full rounded-xl text-sm">
-                        <p className="text-primary font-semibold">
-                            {languages[lang].profile.bookmarkedPosts}:{" "}
-                            <span className="text-gradient font-normal">{bookmarkedPosts}</span>
-                        </p>
-                        <p className="text-primary font-semibold">
-                            {languages[lang].profile.commentedPosts}:{" "}
-                            <span className="text-gradient font-normal">{commentedPosts}</span>
-                        </p>
-                        <p className="text-primary font-semibold">
-                            {languages[lang].profile.likedPosts}:{" "}
-                            <span className="text-gradient font-normal">{likedPosts}</span>
-                        </p>
-                        <p className="text-primary font-semibold">
-                            {languages[lang].profile.myPosts}:{" "}
-                            <span className="text-gradient font-normal">{myPosts}</span>
-                        </p>
-                        <p className="text-primary font-semibold">
-                            {languages[lang].profile.totalComments}:{" "}
-                            <span className="text-gradient font-normal">{totalComments}</span>
-                        </p>
+                        {statsItems.map((stat, index) => (
+                            <p key={index} className="text-primary font-semibold sm:text-base">
+                                {stat.label}: <span className="text-gradient font-normal">{stat.value}</span>
+                            </p>
+                        ))}
                     </article>
                 </div>
             )}

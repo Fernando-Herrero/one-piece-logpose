@@ -16,6 +16,9 @@ export const EpisodeItem = ({ episode_id, name, description, achievements, exper
     const { user, setUser } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
 
+    // const totalExperience = experience.reduce((acc, exp) => acc + exp, 0);
+    // console.log(totalExperience);
+
     const handleInputCheck = async () => {
         const newCheckState = !inputCheck;
         setInputCheck(newCheckState);
@@ -36,15 +39,12 @@ export const EpisodeItem = ({ episode_id, name, description, achievements, exper
             try {
                 await updatedProfile(user, { experience: updatedUserLocal.experience });
                 saveUserInLocalStorage(updatedUserLocal);
-                console.log(`Experiencia ${newCheckState ? "sumada" : "restada"}: ${experience}`);
             } catch (error) {
                 setUser(user);
                 setInputCheck(!newCheckState);
                 local.save(`episode_${episode_id}`, !newCheckState);
-                console.error("Error al actualizar experiencia", error);
             }
         }
-        // GetCard(itemName, level);
     };
 
     return (

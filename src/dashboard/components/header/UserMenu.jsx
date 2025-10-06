@@ -7,6 +7,7 @@ import { MenuItem } from "@/dashboard/components/header/MenuItem";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import { useDevice } from "@/hooks/useDevice";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
@@ -19,6 +20,7 @@ export const UserMenu = () => {
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
     const { goTo } = useGoTo();
+    const { isMobileXs, isMobile, isTablet } = useDevice();
 
     const handleLogOut = () => {
         closeMenu();
@@ -37,11 +39,15 @@ export const UserMenu = () => {
         <div className=" relative" ref={menuRef}>
             <button
                 type="button"
-                className="flex h-6 rounded-full focus-ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 cursor-pointer"
+                className="flex h-6 rounded-full focus-ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 cursor-pointer md:h-8"
                 onClick={toggleMenu}
                 aria-label="Open user Menu"
             >
-                <UserAvatar src={user.avatar} size="xs" status={user.isActive ? "online" : "offline"} />
+                <UserAvatar
+                    src={user.avatar}
+                    status={user.isActive ? "online" : "offline"}
+                    size={isMobileXs || isMobile || isTablet ? "xs" : "sm"}
+                />
             </button>
 
             <DropDown open={isOpen} onClose={closeMenu} size="sm" className="divide-y divide-gray-400">

@@ -9,7 +9,7 @@ const getArcsBySaga = (firstArc, lastArc) => {
 
 export const Serie = () => {
     return (
-        <section className="p-2 space-y-1">
+        <section className="p-2 space-y-1 mx-auto max-w-container md:p-8">
             {sagas.map(({ name, saga_id, japaneseName, total_episodes, first_arc, last_arc }) => {
                 const arcsInSaga = getArcsBySaga(first_arc, last_arc);
 

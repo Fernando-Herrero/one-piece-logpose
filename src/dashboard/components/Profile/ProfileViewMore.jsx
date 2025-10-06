@@ -25,7 +25,7 @@ export const ProfileViewMore = ({ user, editorProps }) => {
             )}
         >
             <header className="flex items-center justify-between cursor-pointer" onClick={toggleBox}>
-                <p className="text-primary font-semibold">{languages[lang].profile.viewMore}</p>
+                <p className="text-primary font-semibold sm:text-base">{languages[lang].profile.viewMore}</p>
                 <ToggleButton isOpen={isOpen} />
             </header>
             <div

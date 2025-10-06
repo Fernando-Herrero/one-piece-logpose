@@ -57,7 +57,7 @@ export const SearchResults = () => {
     if (loading) return <Spinner />;
 
     return (
-        <div className="max-w-2xl mx-auto p-6">
+        <div className="max-w-xl mx-auto p-2 md:p-6">
             <h1 className="text-2xl font-bold mb-2 text-primary">{languages[lang].search.searchResult}</h1>
             <p className="text-muted mb-6">
                 {languages[lang].search.searching}: <span className="font-semibold">"{query}"</span>

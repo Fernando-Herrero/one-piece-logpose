@@ -48,7 +48,7 @@ export const Search = () => {
                     id="search"
                     value={search}
                     className={classNames(
-                        "text-xs bg-sunny focus:outline-none transition-all duration-300 ease-out dark:text-white",
+                        "text-xs bg-sunny focus:outline-none transition-all duration-300 ease-out dark:text-white ",
                         {
                             "w-25 opacity-100 px-2 sm:w-40": isOpen,
                             "w-0 opacity-0 px-0": !isOpen,
@@ -67,7 +67,7 @@ export const Search = () => {
                 aria-label={isOpen ? "Cerrar búsqueda" : "Abrir búsqueda"}
                 aria-expanded={isOpen}
                 className={classNames(
-                    "w-5 h-5 flex items-center justify-center cursor-pointer transition-all duration-200 ease-out hover:scale-110 focus:outline-none rounded",
+                    "w-5 h-5 flex items-center justify-center cursor-pointer transition-all duration-200 ease-out hover:scale-110 focus:outline-none rounded md:w-7 md:h-7",
                     {
                         "rotate-90 ring-2 ring-orange-200 animate-pulse": isOpen,
                         "rotate-0 focus:ring-2 focus:ring-orange-200 focus:ring-offset-1": !isOpen,
@@ -75,7 +75,12 @@ export const Search = () => {
                 )}
                 onClick={isOpen ? handleSearch : toggleSearch}
             >
-                <img className="w-4 transition-opacity duration-300" src={lens} alt="" role="presentation" />
+                <img
+                    className="w-4 transition-opacity duration-300 md:w-6"
+                    src={lens}
+                    alt=""
+                    role="presentation"
+                />
             </button>
         </div>
     );

@@ -64,11 +64,14 @@ export const EditableField = ({
     const getValueStyles = () =>
         classNames(
             !readOnly && "cursor-pointer",
-            fieldName === "displayName" ? "text-primary font-semibold" : "text-xs text-gradient",
+            fieldName === "displayName"
+                ? "text-primary font-semibold sm:text-xl"
+                : "text-xs text-gradient sm:text-base",
             (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
         );
 
-    const getEmptyStyles = () => classNames("text-xs text-muted italic", !readOnly && "cursor-pointer");
+    const getEmptyStyles = () =>
+        classNames("text-xs text-muted italic sm:text-sm", !readOnly && "cursor-pointer");
 
     if (isCurrentlyEditing && !readOnly) {
         return (
@@ -79,7 +82,7 @@ export const EditableField = ({
                         value={field}
                         onChange={(event) => setField(event.target.value)}
                         onKeyDown={handleKeyDown}
-                        className="px-1 py-0.5 rounded-xl text-xs no-focus dark:text-white"
+                        className="px-1 py-0.5 rounded-xl text-xs no-focus dark:text-white sm:text-sm"
                         placeholder={placeholder}
                         autoFocus
                     />
@@ -105,7 +108,7 @@ export const EditableField = ({
         <div className="flex items-center gap-1">
             {label && (
                 <span>
-                    <strong className="text-primary font-semibold">{label}</strong>
+                    <strong className="text-primary font-semibold sm:text-base">{label}</strong>
                 </span>
             )}
 
@@ -117,7 +120,7 @@ export const EditableField = ({
 
                     {fieldName === "displayName" && (
                         <img
-                            className="w-4"
+                            className="w-4 md:w-5"
                             src={user.verified ? verified : notVerified}
                             alt={user.verified ? "Verified icon" : "not verified icon"}
                         />

@@ -32,10 +32,10 @@ export const ContentProfile = () => {
                     <button
                         key={tab.key}
                         onClick={() => setActiveTab(tab.key)}
-                        className={`p-2 rounded-lg font-semibold transition-all duration-300 ease-in-out cursor-pointer ${
+                        className={`p-2 rounded-lg font-semibold transition-all duration-300 ease-in-out cursor-pointer, ${
                             activeTab === tab.key
-                                ? "bg-white text-gray-800 border border-black/30 shadow-lg scale-110"
-                                : "text-muted hover:text-gray-500"
+                                ? "bg-white text-gray-800 border border-black/30 shadow-lg scale-110 sm:text-base"
+                                : "text-muted hover:text-gray-500 sm:text-base"
                         }`}
                     >
                         {tab.label}

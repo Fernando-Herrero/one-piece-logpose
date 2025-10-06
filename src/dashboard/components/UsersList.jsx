@@ -46,7 +46,8 @@ export const UsersList = () => {
                 ? Array.from({ length: 8 }, (_, index) => (
                       <SkeletonCard key={index} className="w-full" showImage={false} showText={false} />
                   ))
-                : users
+                : [...users]
+                      .sort((a, b) => b.experience - a.experience)
                       ?.slice(0, 20)
                       .map((user) => (
                           <UserArticle

@@ -5,11 +5,11 @@ export const SagaContext = createContext(null);
 
 export const SagaProvider = ({ children }) => {
     const { user } = useContext(AuthContext);
-    const [saga, setSaga] = useState({ currentSaga: 0, episode: 0 });
+    const [saga, setSaga] = useState({ saga: 0, arc: 0, episode: 0 });
 
     useEffect(() => {
-        if (user?.sagaProgress) {
-            setSaga(user.sagaProgress);
+        if (user?.serieProgress) {
+            setSaga(user.serieProgress);
         }
     }, [user]);
 
