@@ -1,4 +1,4 @@
-const sagas = [
+export const sagas = [
     {
         saga_id: 1,
         name: "East Blue",

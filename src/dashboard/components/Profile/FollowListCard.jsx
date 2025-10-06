@@ -1,7 +1,7 @@
 import cross from "@/assets/icons/cross-close.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { getUserFollowersApi, getUserFollowingApi } from "@/core/user/user.api";
-import { Spinner } from "@/dashboard/components/Community/Spinner";
+import { Spinner } from "@/dashboard/components/community/Spinner";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";

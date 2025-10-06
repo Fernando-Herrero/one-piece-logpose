@@ -1,6 +1,6 @@
 import { ToggleButton } from "@/components/ToggleButton";
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { EditableField } from "@/dashboard/components/Profile/EditableField";
+import { EditableField } from "@/dashboard/components/profile/EditableField";
 import { getExtendedProfileFields } from "@/dashboard/data/ProfileData/profileFields";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
@@ -25,7 +25,7 @@ export const ProfileViewMore = ({ user, editorProps }) => {
             )}
         >
             <header className="flex items-center justify-between cursor-pointer" onClick={toggleBox}>
-                <p className="text-primary font-semibold">{languages[lang].profile.viewMore}</p>
+                <p className="text-primary font-semibold sm:text-base">{languages[lang].profile.viewMore}</p>
                 <ToggleButton isOpen={isOpen} />
             </header>
             <div

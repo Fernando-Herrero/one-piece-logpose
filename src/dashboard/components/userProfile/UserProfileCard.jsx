@@ -1,4 +1,4 @@
-import { FollowSection } from "@/dashboard/components/Profile/FollowSection";
+import { FollowSection } from "@/dashboard/components/profile/FollowSection";
 import { UserAdditionalInfo } from "@/dashboard/components/userProfile/UserAdditionalInfo";
 import { UserBasicInfo } from "@/dashboard/components/userProfile/UserBasicInfo";
 import { UserCoverAndAvatar } from "@/dashboard/components/userProfile/UserCoverAndAvatar";

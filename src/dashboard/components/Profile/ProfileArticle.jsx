@@ -1,10 +1,10 @@
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
-import { EditableField } from "@/dashboard/components/Profile/EditableField";
-import { FollowSection } from "@/dashboard/components/Profile/FollowSection";
-import { ProfileHeader } from "@/dashboard/components/Profile/ProfileHeader";
-import { ProfileViewMore } from "@/dashboard/components/Profile/ProfileViewMore";
+import { EditableField } from "@/dashboard/components/profile/EditableField";
+import { FollowSection } from "@/dashboard/components/profile/FollowSection";
+import { ProfileHeader } from "@/dashboard/components/profile/ProfileHeader";
+import { ProfileViewMore } from "@/dashboard/components/profile/ProfileViewMore";
 import { getProfileFields } from "@/dashboard/data/ProfileData/profileFields";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";

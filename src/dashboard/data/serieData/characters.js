@@ -1,4 +1,4 @@
-const characters = [
+export const characters = [
     {
         character_id: 1,
         name: "Monkey D. Luffy",

@@ -1,7 +1,7 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { PostContext } from "@/context/PostContext";
 import { usePosts } from "@/core/posts/usePosts";
-import { PostForm } from "@/dashboard/components/Community/PostForm";
+import { PostForm } from "@/dashboard/components/community/PostForm";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";

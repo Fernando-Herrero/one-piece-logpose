@@ -238,7 +238,18 @@ export const languages = {
             7: { title: "Isla Gyojin", saga_episode: "598 a 653" },
             8: { title: "Dressrosa", saga_episode: "654 a 801" },
             sagaLoading: "Cargando Saga",
+            saga: "Saga",
+            arc: "Arco",
+            episode: "Episodio",
             episodes: "Capitulos",
+            achievements: "Recompensas",
+            characters: "Personajes",
+            items: "Items",
+            fruits: "Frutas",
+            swords: "Espadas",
+            boats: "Barcos",
+            experience: "Experiencia",
+            viewedChapter: "Capítulo visto",
         },
 
         settings: {
@@ -272,6 +283,16 @@ export const languages = {
 
             titleResources: "Additional resources",
             textResources: "Find more help, guidelines, and resources to get the most out of Twitter.",
+        },
+
+        search: {
+            searchResult: "Resultado de búsqueda",
+            searching: "Buscando",
+            writeSome: "Escribe algo para buscar",
+            notFound: "No se han encontrado resultados",
+            result: "Resultado",
+            exactMatches: "Coincidencias exactas",
+            otherResults: "Otros resultados",
         },
     },
 
@@ -518,7 +539,18 @@ export const languages = {
             7: { title: "Fishman Island", saga_episode: "598 to 653" },
             8: { title: "Dressrosa", saga_episode: "654 to 801" },
             sagaLoading: "Loading Saga",
+            saga: "Saga",
+            arc: "Arc",
+            episode: "Episode",
             episodes: "Episodes",
+            achievements: "Achievements",
+            characters: "Characters",
+            items: "Items",
+            fruits: "Fruits",
+            swords: "Swords",
+            boats: "Boats",
+            experience: "Experience",
+            viewedChapter: "Episode watched",
         },
 
         settings: {
@@ -549,6 +581,16 @@ export const languages = {
 
             titleResources: "Additional resources",
             textResources: "Find more help, guidelines, and resources to make the most out of Twitter.",
+        },
+
+        search: {
+            searchResult: "Search result",
+            searching: "Searching",
+            writeSome: "Write something to search",
+            notFound: "Not results found",
+            result: "Result",
+            exactMatches: "Exact matches",
+            otherResults: "Others results",
         },
     },
 };

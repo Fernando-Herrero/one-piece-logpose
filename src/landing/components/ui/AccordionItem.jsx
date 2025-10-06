@@ -11,7 +11,7 @@ export const AccordionItem = ({ title, children, className = "", classHeader = "
                 "shadow-2xl": open,
             })}
         >
-            <header className="flex itmes-center justify-between cursor-pointer" onClick={toggleAccordion}>
+            <header className="flex items-center justify-between cursor-pointer" onClick={toggleAccordion}>
                 <p className={`text-xl font-bold ${classHeader}`}>{title}</p>
                 <ToggleButton isOpen={open} />
             </header>

@@ -1,4 +1,4 @@
-const episodes = [
+export const episodes = [
     {
         episode_id: 1,
         name: "I'm Luffy! The Man Who's Gonna Be King of the Pirates!",
@@ -12,7 +12,7 @@ const episodes = [
             swords: [],
             boats: [1],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 2,
@@ -27,7 +27,7 @@ const episodes = [
             swords: [2],
             boats: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 3,
@@ -42,7 +42,7 @@ const episodes = [
             swords: [],
             boats: [],
         },
-        experiece: 500,
+        experience: 500,
     },
     {
         episode_id: 4,
@@ -57,7 +57,7 @@ const episodes = [
             swords: [],
             boats: [2],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 5,
@@ -72,7 +72,7 @@ const episodes = [
             swords: [],
             boats: [3],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 6,
@@ -87,7 +87,7 @@ const episodes = [
             swords: [],
             boats: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 7,
@@ -102,7 +102,7 @@ const episodes = [
             swords: [],
             boats: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 8,
@@ -117,7 +117,7 @@ const episodes = [
             swords: [],
             boats: [],
         },
-        experiece: 500,
+        experience: 500,
     },
     {
         episode_id: 9,
@@ -132,7 +132,7 @@ const episodes = [
             boats: [],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 10,
@@ -147,7 +147,7 @@ const episodes = [
             boats: [],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 11,
@@ -162,7 +162,7 @@ const episodes = [
             boats: [],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 12,
@@ -177,7 +177,7 @@ const episodes = [
             boats: [4],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 13,
@@ -192,7 +192,7 @@ const episodes = [
             boats: [],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 14,
@@ -207,7 +207,7 @@ const episodes = [
             boats: [],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 15,
@@ -222,7 +222,7 @@ const episodes = [
             boats: [],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 16,
@@ -237,7 +237,7 @@ const episodes = [
             boats: [],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 17,
@@ -252,7 +252,7 @@ const episodes = [
             boats: [5],
             fruits: [],
         },
-        experiece: 100,
+        experience: 100,
     },
     {
         episode_id: 18,
@@ -267,7 +267,7 @@ const episodes = [
             boats: [],
             fruits: [],
         },
-        experiece: 500,
+        experience: 500,
     },
     {
         episode_id: 19,

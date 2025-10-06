@@ -1,5 +1,5 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { FollowCard } from "@/dashboard/components/Profile/FollowCard";
+import { FollowCard } from "@/dashboard/components/profile/FollowCard";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useGoTo } from "@/hooks/useGoTo";

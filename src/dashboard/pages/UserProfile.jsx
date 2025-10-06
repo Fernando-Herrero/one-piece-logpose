@@ -2,7 +2,7 @@ import notVerified from "@/assets/icons/not-verified-icon.svg";
 import verified from "@/assets/icons/verified-icon.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { UserContext } from "@/context/userContext";
-import { Spinner } from "@/dashboard/components/Community/Spinner";
+import { Spinner } from "@/dashboard/components/community/Spinner";
 import { UserProfileCard } from "@/dashboard/components/userProfile/UserProfileCard";
 import { languages } from "@/helpers/languages";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";

@@ -1,4 +1,4 @@
-import { FollowListCard } from "@/dashboard/components/Profile/FollowListCard";
+import { FollowListCard } from "@/dashboard/components/profile/FollowListCard";
 
 export const FollowingCard = (props) => {
     return <FollowListCard {...props} type="following" />;

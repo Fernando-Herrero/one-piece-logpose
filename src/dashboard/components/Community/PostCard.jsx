@@ -1,7 +1,7 @@
-import { OptionsMenu } from "@/dashboard/components/Community/OptionsMenu";
-import { PostContent } from "@/dashboard/components/Community/PostContent";
-import { PostStats } from "@/dashboard/components/Community/PostStats";
-import { UserInfo } from "@/dashboard/components/Community/UserInfo";
+import { OptionsMenu } from "@/dashboard/components/community/OptionsMenu";
+import { PostContent } from "@/dashboard/components/community/PostContent";
+import { PostStats } from "@/dashboard/components/community/PostStats";
+import { UserInfo } from "@/dashboard/components/community/UserInfo";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
@@ -12,9 +12,9 @@ export const PostCard = ({ post, classSelect = "primary", view = true, basePath,
 
     const classType = {
         primary:
-            "flex gap-2 w-full p-2 text-xs border border-white/30 rounded bg-gradient-card shadow-default sm:gap-4 sm:text-sm",
+            "flex gap-2 w-full p-2 text-xs border border-white/30 rounded bg-gradient-card shadow-default sm:gap-4 sm:text-base",
         secondary:
-            "flex gap-2 w-full p-2 text-xs border border-white/30 border-b-0 rounded-t bg-gradient-card shadow-default sm:gap-4 sm:text-sm",
+            "flex gap-2 w-full p-2 text-xs border border-white/30 border-b-0 rounded-t bg-gradient-card shadow-default sm:gap-4 sm:text-base",
     };
 
     return (

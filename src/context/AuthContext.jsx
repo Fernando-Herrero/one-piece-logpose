@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
         const fetchProfile = async () => {
             try {
                 setError(null);
+                setLoading(true);
 
                 const token = getTokenFromLocalStorage();
                 if (!token) return;

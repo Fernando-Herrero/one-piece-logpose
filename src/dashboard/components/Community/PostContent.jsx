@@ -1,5 +1,5 @@
-import { Hashtags } from "@/dashboard/components/Community/Hastags";
-import { PostImages } from "@/dashboard/components/Community/PostImages";
+import { Hashtags } from "@/dashboard/components/community/Hastags";
+import { PostImages } from "@/dashboard/components/community/PostImages";
 
 export const PostContent = ({ text, hashtags, images }) => {
     const textWithoutHashtags = text.replace(/#\w+/g, "").trim();

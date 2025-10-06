@@ -1,26 +1,41 @@
-import { storage } from "@/helpers/storage";
-import { useStorage } from "@/hooks/useStorage";
-import { createContext, useState } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const SagaContext = createContext(null);
 
 export const SagaProvider = ({ children }) => {
-    const savedSaga = storage.get("saga");
-    const [saga, setSaga] = useState(savedSaga || { saga: "", chapter: "" });
+    const { user } = useContext(AuthContext);
+    const [saga, setSaga] = useState({ saga: 0, arc: 0, episode: 0 });
 
-    useStorage("saga", saga);
+    useEffect(() => {
+        if (user?.serieProgress) {
+            setSaga(user.serieProgress);
+        }
+    }, [user]);
 
-    const nextChapter = () => {
-        setSaga((prev) => ({ ...prev, chapter: prev.chapter + 1 }));
+    const updateProgress = (newSaga, newArc, newEpisode) => {
+        console.log("🔵 updateProgress llamado con:", { newSaga, newArc, newEpisode });
+
+        setSaga((prev) => {
+            console.log("🟡 Estado actual:", prev);
+
+            if (newSaga > prev.saga) {
+                console.log("✅ Actualizando: nueva saga mayor");
+                return { saga: newSaga, arc: newArc, episode: newEpisode };
+            }
+            if (newSaga === prev.saga && newArc > prev.arc) {
+                console.log("✅ Actualizando: nuevo arco mayor");
+                return { saga: prev.saga, arc: newArc, episode: newEpisode };
+            }
+            if (newSaga === prev.saga && newArc === prev.arc && newEpisode > prev.episode) {
+                console.log("✅ Actualizando: nuevo episodio mayor");
+                return { saga: prev.saga, arc: prev.arc, episode: newEpisode };
+            }
+
+            console.log("❌ No se actualiza: progreso no es mayor");
+            return prev;
+        });
     };
 
-    const nextSaga = () => {
-        setSaga((prev) => ({ ...prev, saga: prev.saga + 1, chapter: 0 }));
-    };
-
-    return (
-        <SagaContext.Provider value={{ saga, setSaga, nextChapter, nextSaga }}>
-            {children}
-        </SagaContext.Provider>
-    );
+    return <SagaContext.Provider value={{ saga, updateProgress }}>{children}</SagaContext.Provider>;
 };
