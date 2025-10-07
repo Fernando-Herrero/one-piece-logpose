@@ -1,11 +1,15 @@
 import { AuthContext } from "@/context/AuthContext";
+import { saveUserInLocalStorage } from "@/core/auth/auth.service";
+import { useAuth } from "@/core/auth/useAuth";
+import { local } from "@/helpers/storage";
 import { createContext, useContext, useEffect, useState } from "react";
 
 export const SagaContext = createContext(null);
 
 export const SagaProvider = ({ children }) => {
-    const { user } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     const [saga, setSaga] = useState({ saga: 0, arc: 0, episode: 0 });
+    const { updatedProfile } = useAuth();
 
     useEffect(() => {
         if (user?.serieProgress) {
@@ -37,5 +41,42 @@ export const SagaProvider = ({ children }) => {
         });
     };
 
-    return <SagaContext.Provider value={{ saga, updateProgress }}>{children}</SagaContext.Provider>;
+    const resetProgress = async () => {
+        const resetState = { saga: 0, arc: 0, episode: 0 };
+        setSaga(resetState);
+
+        Object.keys(localStorage).forEach((key) => {
+            if (key.startsWith("episode_")) {
+                local.remove(key);
+            }
+        });
+
+        if (user) {
+            const updatedUserLocal = {
+                ...user,
+                serieProgress: resetState,
+            };
+
+            setUser(updatedUserLocal);
+            saveUserInLocalStorage(updatedUserLocal);
+
+            try {
+                await updatedProfile(user, {
+                    serieProgress: resetState,
+                    experience: 0,
+                });
+                console.log("✅ Progreso y experiencia reseteados en base de datos");
+            } catch (error) {
+                console.error("❌ Error al resetear progreso en BD:", error);
+            }
+        }
+
+        console.log("✅ Progreso de saga y experiencia reseteados completamente");
+    };
+
+    return (
+        <SagaContext.Provider value={{ saga, updateProgress, resetProgress }}>
+            {children}
+        </SagaContext.Provider>
+    );
 };

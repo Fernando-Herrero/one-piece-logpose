@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 export const AchievementsPanel = ({ inputCheck, achievementTypes, achievements, experience, lang }) => (
     <div
-        className={classNames("text-xs grid rounded-xl bg-black/30 transition-all duration-300 ease-out", {
+        className={classNames("text-xs grid rounded-xl bg-black/20 transition-all duration-300 ease-out", {
             "[grid-template-rows:1fr] gap-1 p-2 opacity-100": inputCheck,
             "[grid-template-rows:0fr] opacity-0": !inputCheck,
         })}

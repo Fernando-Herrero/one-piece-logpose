@@ -1,5 +1,13 @@
 import { AuthContext } from "@/context/AuthContext";
 import { SagaContext } from "@/context/SagaContext";
+import { unlockCard } from "@/core/achievements/achievementsStorage";
+import {
+    getBoatCard,
+    getCharacterCard,
+    getFruitCard,
+    getItemCard,
+    getSwordCard,
+} from "@/core/achievements/getCardById";
 import { saveUserInLocalStorage } from "@/core/auth/auth.service";
 import { useAuth } from "@/core/auth/useAuth";
 import {
@@ -16,7 +24,8 @@ export const useEpisodeCheck = (
     currentSagaId,
     currentArcId,
     isLastEpisodeOfArc,
-    isLastArcOfSaga
+    isLastArcOfSaga,
+    achievements
 ) => {
     const checkedSaved = local.get(`episode_${episode_id}`);
     const [inputCheck, setInputCheck] = useState(checkedSaved || false);
@@ -30,6 +39,43 @@ export const useEpisodeCheck = (
         const newCheckState = !inputCheck;
         setInputCheck(newCheckState);
         local.save(`episode_${episode_id}`, newCheckState);
+
+        if (newCheckState && achievements) {
+            if (achievements.characters?.length) {
+                achievements.characters.forEach((characterId) => {
+                    const card = getCharacterCard(characterId);
+                    unlockCard("characters", card);
+                });
+            }
+
+            if (achievements.items?.length) {
+                achievements.items.forEach((itemId) => {
+                    const card = getItemCard(itemId);
+                    unlockCard("items", card);
+                });
+            }
+
+            if (achievements.fruits?.length) {
+                achievements.fruits.forEach((fruitId) => {
+                    const card = getFruitCard(fruitId);
+                    unlockCard("fruits", card);
+                });
+            }
+
+            if (achievements.swords?.length) {
+                achievements.swords.forEach((swordId) => {
+                    const card = getSwordCard(swordId);
+                    unlockCard("swords", card);
+                });
+            }
+
+            if (achievements.boats?.length) {
+                achievements.boats.forEach((boatId) => {
+                    const card = getBoatCard(boatId);
+                    unlockCard("boats", card);
+                });
+            }
+        }
 
         if (!user) return;
 

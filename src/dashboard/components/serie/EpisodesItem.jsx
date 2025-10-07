@@ -25,7 +25,8 @@ export const EpisodeItem = ({
         currentSagaId,
         currentArcId,
         isLastEpisodeOfArc,
-        isLastArcOfSaga
+        isLastArcOfSaga,
+        achievements
     );
 
     return (

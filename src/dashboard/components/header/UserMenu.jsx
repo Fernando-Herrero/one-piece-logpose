@@ -5,6 +5,7 @@ import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { MenuItem } from "@/dashboard/components/header/MenuItem";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
+import { UserBarProgress } from "@/dashboard/components/UserBarProgress";
 import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useDevice } from "@/hooks/useDevice";
@@ -56,6 +57,7 @@ export const UserMenu = () => {
                         {user?.displayName ?? user?.email}
                     </span>
                     <span className="py-0.5 px-2 block text-xs text-gradient">@{user?.username}</span>
+                    <UserBarProgress experience={user?.experience} className="h-2" />
                 </div>
                 <div className="flex flex-col pt-2 text-xs">
                     <MenuItem

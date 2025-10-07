@@ -1,3 +1,6 @@
+import chopchop from "@/assets/images/cards/chop-chop-fruit.webp";
+import gumgum from "@/assets/images/cards/gumgum-fruit.webp";
+
 export const fruits = [
     {
         fruit_id: 1,
@@ -7,6 +10,7 @@ export const fruits = [
         description:
             "Gomu Gomu no Mi, also known as the Fruit of Gum-Gum, is a Paramecia-type Devil Fruit that grants the user's body the properties of rubber, making them a Rubber Human (ゴム人間, Gomu Ningen).",
         current_user: "Monkey D. Luffy",
+        image: gumgum,
     },
     {
         fruit_id: 2,
@@ -16,6 +20,7 @@ export const fruits = [
         description:
             "Bara Bara no Mi allows the user to split their body into pieces and control them independently. The user is immune to slashing attacks but remains vulnerable to blunt attacks.",
         current_user: "Buggy",
+        image: chopchop,
     },
     {
         fruit_id: 3,

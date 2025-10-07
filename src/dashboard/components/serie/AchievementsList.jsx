@@ -30,7 +30,7 @@ export const AchievementList = ({ labelKey, items: itemIds, lang }) => {
 
     return (
         <div className="flex items-center gap-1 flex-wrap">
-            <p className="text-gradient">{languages[lang].sagaData[labelKey]}</p>
+            <p className="text-primary">{languages[lang].sagaData[labelKey]}</p>
             <img className="w-2" src={arrow} alt="Right arrow icon" />
             {itemIds.map((itemId, index) => {
                 const foundItem = dataSource?.find((element) => element[idKey] === itemId);

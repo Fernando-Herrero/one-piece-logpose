@@ -4,6 +4,7 @@ import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/profile/AvatarSection";
 import { FollowersCard } from "@/dashboard/components/profile/FollowersCard";
 import { FollowingCard } from "@/dashboard/components/profile/FollowingCard";
+import { Cards } from "@/dashboard/pages/Cards";
 import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
@@ -91,6 +92,8 @@ export const Dashboard = () => {
                 </Route>
 
                 <Route path="/serie" element={<Serie />} />
+
+                <Route path="/cards" element={<Cards />} />
 
                 <Route path="/search" element={<SearchResults />} />
 

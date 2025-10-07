@@ -1,3 +1,7 @@
+import alvidaShip from "@/assets/images/cards/alvida-ship.webp";
+import bigTop from "@/assets/images/cards/big-top.webp";
+import redForce from "@/assets/images/cards/red-force.webp";
+
 export const boats = [
     {
         boat_id: 1,
@@ -5,6 +9,7 @@ export const boats = [
         type: "common",
         crew: ["Alvida"],
         description: "Standard pirate ship",
+        images: alvidaShip,
     },
     {
         boat_id: 2,
@@ -12,6 +17,7 @@ export const boats = [
         type: "legendary",
         crew: ["Shanks", "Red Hair Pirates"],
         description: "Yonko flagship",
+        image: redForce,
     },
     {
         boat_id: 3,
@@ -19,6 +25,7 @@ export const boats = [
         type: "rare",
         crew: ["Buggy", "Mohji", "Cabaji", "Richie"],
         description: "Buggy's circus-themed ship",
+        image: bigTop,
     },
     {
         boat_id: 4,
