@@ -1,6 +1,23 @@
+import bugyBall from "@/assets/images/cards/buggy-ball.webp";
+import strawHat from "@/assets/images/cards/straw-hat.webp";
+
 export const items = [
-    { item_id: 1, name: "Straw Hat", type: "legendary", owner: "Monkey D. Luffy", origin: "Given by Shanks" },
-    { item_id: 2, name: "Buggy Ball", type: "rare", owner: "Buggy", origin: "Buggy's signature weapon" },
+    {
+        item_id: 1,
+        name: "Straw Hat",
+        type: "legendary",
+        owner: "Monkey D. Luffy",
+        origin: "Given by Shanks",
+        image: strawHat,
+    },
+    {
+        item_id: 2,
+        name: "Buggy Ball",
+        type: "rare",
+        owner: "Buggy",
+        origin: "Buggy's signature weapon",
+        image: bugyBall,
+    },
     { item_id: 3, name: "Buggy's cannon", type: "common", owner: "Buggy", origin: "Ship armament" },
     { item_id: 4, name: "Acrobatic unicycle", type: "common", owner: "Cabaji", origin: "Combat equipment" },
     { item_id: 5, name: "Slingshot", type: "rare", owner: "Usopp", origin: "Usopp's main weapon" },

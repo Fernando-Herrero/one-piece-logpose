@@ -1,3 +1,4 @@
+import chopchop from "@/assets/images/cards/chop-chop-fruit.webp";
 import gumgum from "@/assets/images/cards/gumgum-fruit.webp";
 
 export const fruits = [
@@ -19,6 +20,7 @@ export const fruits = [
         description:
             "Bara Bara no Mi allows the user to split their body into pieces and control them independently. The user is immune to slashing attacks but remains vulnerable to blunt attacks.",
         current_user: "Buggy",
+        image: chopchop,
     },
     {
         fruit_id: 3,

@@ -1,3 +1,5 @@
+import { CardImage } from "@/dashboard/components/cards/CardImageBack";
+
 export const FruitCard = ({ fruit }) => {
     const typeStyles = {
         Paramecia: {
@@ -36,16 +38,14 @@ export const FruitCard = ({ fruit }) => {
         >
             <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            {fruit.image && (
-                <div className="relative overflow-hidden">
-                    <img
-                        src={fruit.image}
-                        alt={fruit.name}
-                        className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </div>
-            )}
+            <div className="relative overflow-hidden">
+                <CardImage
+                    src={fruit.image}
+                    alt={fruit.name}
+                    className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            </div>
 
             <div className="p-4 bg-black/30 backdrop-blur-sm">
                 <h3 className="font-bold text-xl text-white mb-1 tracking-wide">{fruit.name}</h3>

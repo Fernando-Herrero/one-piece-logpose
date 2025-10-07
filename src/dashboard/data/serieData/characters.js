@@ -1,6 +1,16 @@
 import alvida from "@/assets/images/cards/alvida.webp";
+import buggy from "@/assets/images/cards/buggy.webp";
+import cabaji from "@/assets/images/cards/cabaji.webp";
+import morgan from "@/assets/images/cards/captain-morgan.webp";
+import chouchou from "@/assets/images/cards/chouchou.webp";
+import helmeppo from "@/assets/images/cards/helmeppo.webp";
 import koby from "@/assets/images/cards/koby.webp";
 import luffy from "@/assets/images/cards/luffy.webp";
+import mohji from "@/assets/images/cards/mohji.webp";
+import nami from "@/assets/images/cards/nami.webp";
+import richie from "@/assets/images/cards/richie.webp";
+import shanks from "@/assets/images/cards/shanks.webp";
+import zoro from "@/assets/images/cards/zoro.webp";
 
 export const characters = [
     {
@@ -56,6 +66,7 @@ export const characters = [
         fruit: null,
         crew: "Straw Hat Pirates",
         position: "Swordsman/First Mate",
+        image: zoro,
     },
     {
         character_id: 5,
@@ -66,6 +77,7 @@ export const characters = [
         fruit: null,
         crew: "Marines",
         position: "Captain",
+        image: morgan,
     },
     {
         character_id: 6,
@@ -76,6 +88,7 @@ export const characters = [
         fruit: null,
         crew: "Marines",
         position: "Marine",
+        image: helmeppo,
     },
     {
         character_id: 7,
@@ -86,6 +99,7 @@ export const characters = [
         fruit: null,
         crew: "Straw Hat Pirates",
         position: "Navigator",
+        image: nami,
     },
     {
         character_id: 8,
@@ -96,6 +110,7 @@ export const characters = [
         fruit: null,
         crew: "Red Hair Pirates",
         position: "Captain/Yonko",
+        image: shanks,
     },
     {
         character_id: 9,
@@ -106,6 +121,7 @@ export const characters = [
         fruit: "Bara Bara no Mi",
         crew: "Buggy Pirates",
         position: "Captain",
+        image: buggy,
     },
     {
         character_id: 10,
@@ -116,6 +132,7 @@ export const characters = [
         fruit: null,
         crew: "Buggy Pirates",
         position: "Chief of Staff",
+        image: mohji,
     },
     {
         character_id: 11,
@@ -126,6 +143,7 @@ export const characters = [
         fruit: null,
         crew: "Buggy Pirates",
         position: "Beast",
+        image: richie,
     },
     {
         character_id: 12,
@@ -136,6 +154,7 @@ export const characters = [
         fruit: null,
         crew: "Buggy Pirates",
         position: "Chief of Staff",
+        image: cabaji,
     },
     {
         character_id: 13,
@@ -146,6 +165,7 @@ export const characters = [
         fruit: null,
         crew: "Independent",
         position: "Pet store guardian",
+        image: chouchou,
     },
     {
         character_id: 14,

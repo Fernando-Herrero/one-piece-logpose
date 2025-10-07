@@ -1,6 +1,6 @@
 import { CardImage } from "@/dashboard/components/cards/CardImageBack";
 
-export const BoatCard = ({ boat }) => {
+export const ItemCard = ({ item }) => {
     const typeStyles = {
         common: {
             gradient: "from-slate-700 via-slate-600 to-slate-700",
@@ -28,50 +28,52 @@ export const BoatCard = ({ boat }) => {
         },
     };
 
-    const style = typeStyles[boat.type];
+    const style = typeStyles[item.type];
 
     return (
         <div
             className={`
-            relative rounded-xl overflow-hidden
-            bg-gradient-to-br ${style.gradient}
-            border-2 ${style.border}
-            shadow-xl ${style.shadow}
-            transition-all duration-500 ease-out
-            hover:scale-105 hover:-translate-y-2 ${style.glow}
-            cursor-pointer group
-        `}
+                relative rounded-xl overflow-hidden
+                bg-gradient-to-br ${style.gradient}
+                border-2 ${style.border}
+                shadow-xl ${style.shadow}
+                transition-all duration-500 ease-out
+                hover:scale-105 hover:-translate-y-2 ${style.glow}
+                cursor-pointer group
+            `}
         >
             <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative overflow-hidden">
                 <CardImage
-                    src={boat.image}
-                    alt={boat.name}
+                    src={item.image}
+                    alt={item.name}
                     className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
 
             <div className="p-4 bg-black/30 backdrop-blur-sm">
-                <h3 className="font-bold text-xl text-white mb-2 tracking-wide">{boat.name}</h3>
-                <p className="text-sm text-white/80 mb-3">{boat.description}</p>
-                <div className="border-t border-white/20 pt-2">
-                    <p className="text-xs text-white/70">
-                        <span className="font-semibold">Crew:</span> {boat.crew.join(", ")}
-                    </p>
+                <h3 className="font-bold text-xl text-white mb-2 tracking-wide">{item.name}</h3>
+                <div className="border-t border-white/20 pt-2 space-y-1">
+                    {item.owner && (
+                        <p className="text-xs text-white/70">
+                            <span className="font-semibold">Owner:</span> {item.owner}
+                        </p>
+                    )}
+                    {item.origin && <p className="text-xs text-white/80 italic">{item.origin}</p>}
                 </div>
             </div>
 
             <div
                 className={`
-                absolute top-3 right-3 px-3 py-1 rounded-full
-                text-xs font-bold uppercase tracking-wider
-                bg-black/60 backdrop-blur-sm text-white
-                border ${style.border}
-            `}
+                    absolute top-3 right-3 px-3 py-1 rounded-full
+                    text-xs font-bold uppercase tracking-wider
+                    bg-black/60 backdrop-blur-sm text-white
+                    border ${style.border}
+                `}
             >
-                {boat.type}
+                {item.type}
             </div>
         </div>
     );

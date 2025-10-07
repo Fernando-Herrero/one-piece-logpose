@@ -1,3 +1,5 @@
+import { CardImage } from "@/dashboard/components/cards/CardImageBack";
+
 export const CharacterCardUser = ({ character }) => {
     const cardType = character.type[character.type.length - 1];
 
@@ -45,10 +47,10 @@ export const CharacterCardUser = ({ character }) => {
             <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative overflow-hidden">
-                <img
+                <CardImage
                     src={character.image}
                     alt={character.name}
-                    className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-56 object-cover object-[center_0%] transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>

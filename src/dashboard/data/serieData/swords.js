@@ -1,3 +1,5 @@
+import wado from "@/assets/images/cards/wado-ichimonji.webp";
+
 export const swords = [
     {
         sword_id: 1,
@@ -23,6 +25,7 @@ export const swords = [
         blade_type: "Normal",
         length: "Katana",
         first_appearance: "Episode 2",
+        image: wado,
     },
     {
         sword_id: 3,

@@ -4,6 +4,8 @@ import { clearAllCards, getUnlockedCards } from "@/core/achievements/achievement
 import { BoatCard } from "@/dashboard/components/cards/BoatCard";
 import { CharacterCardUser } from "@/dashboard/components/cards/CharacterCardUser";
 import { FruitCard } from "@/dashboard/components/cards/FruitCard";
+import { ItemCard } from "@/dashboard/components/cards/ItemCard";
+import { SwordCard } from "@/dashboard/components/cards/SwordCard";
 import { languages } from "@/helpers/languages";
 import { useContext, useEffect, useState } from "react";
 
@@ -17,7 +19,7 @@ export const Cards = () => {
         swords: [],
         boats: [],
     });
-    const [activeFilter, setActiveFilter] = useState("all"); // all, characters, boats, fruits, items, swords
+    const [activeFilter, setActiveFilter] = useState("all");
 
     useEffect(() => {
         const cards = getUnlockedCards();
@@ -42,8 +44,10 @@ export const Cards = () => {
     const getAllCards = () => {
         return [
             ...unlockedCards.characters.map((character) => ({ ...character, cardType: "character" })),
-            ...unlockedCards.boats.map((boat) => ({ ...boat, cardType: "boat" })),
+            ...unlockedCards.items.map((item) => ({ ...item, cardType: "item" })),
             ...unlockedCards.fruits.map((fruit) => ({ ...fruit, cardType: "fruit" })),
+            ...unlockedCards.swords.map((sword) => ({ ...sword, cardType: "sword" })),
+            ...unlockedCards.boats.map((boat) => ({ ...boat, cardType: "boat" })),
         ];
     };
 
@@ -51,10 +55,14 @@ export const Cards = () => {
         if (activeFilter === "all") return getAllCards();
         if (activeFilter === "characters")
             return unlockedCards.characters.map((character) => ({ ...character, cardType: "character" }));
-        if (activeFilter === "boats")
-            return unlockedCards.boats.map((boat) => ({ ...boat, cardType: "boat" }));
+        if (activeFilter === "items")
+            return unlockedCards.items.map((item) => ({ ...item, cardType: "item" }));
         if (activeFilter === "fruits")
             return unlockedCards.fruits.map((fruit) => ({ ...fruit, cardType: "fruit" }));
+        if (activeFilter === "swords")
+            return unlockedCards.swords.map((sword) => ({ ...sword, cardType: "sword" }));
+        if (activeFilter === "boats")
+            return unlockedCards.boats.map((boat) => ({ ...boat, cardType: "boat" }));
         return [];
     };
 
@@ -63,8 +71,10 @@ export const Cards = () => {
     const totalCards = getAllCards().length;
     const counts = {
         characters: unlockedCards.characters.length,
-        boats: unlockedCards.boats.length,
+        items: unlockedCards.items.length,
         fruits: unlockedCards.fruits.length,
+        swords: unlockedCards.swords.length,
+        boats: unlockedCards.boats.length,
     };
 
     const filters = [
@@ -74,8 +84,10 @@ export const Cards = () => {
             label: languages[lang].cards.characters || "Characters",
             count: counts.characters,
         },
-        { key: "boats", label: languages[lang].cards.boats || "Boats", count: counts.boats },
+        { key: "items", label: languages[lang].cards.items || "Items", count: counts.items },
         { key: "fruits", label: languages[lang].cards.fruits || "Fruits", count: counts.fruits },
+        { key: "swords", label: languages[lang].cards.swords || "Swords", count: counts.swords },
+        { key: "boats", label: languages[lang].cards.boats || "Boats", count: counts.boats },
     ];
 
     return (
@@ -114,11 +126,17 @@ export const Cards = () => {
                     if (card.cardType === "character") {
                         return <CharacterCardUser key={`char-${card.character_id}`} character={card} />;
                     }
-                    if (card.cardType === "boat") {
-                        return <BoatCard key={`boat-${card.boat_id}`} boat={card} />;
+                    if (card.cardType === "item") {
+                        return <ItemCard key={`item-${card.item_id}`} item={card} />;
                     }
                     if (card.cardType === "fruit") {
                         return <FruitCard key={`fruit-${card.fruit_id}`} fruit={card} />;
+                    }
+                    if (card.cardType === "sword") {
+                        return <SwordCard key={`sword-${card.sword_id}`} sword={card} />;
+                    }
+                    if (card.cardType === "boat") {
+                        return <BoatCard key={`boat-${card.boat_id}`} boat={card} />;
                     }
                     return null;
                 })}
