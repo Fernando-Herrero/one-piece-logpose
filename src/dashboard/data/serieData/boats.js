@@ -1,3 +1,5 @@
+import alvidaShip from "@/assets/images/cards/alvida-ship.webp";
+
 export const boats = [
     {
         boat_id: 1,
@@ -5,6 +7,7 @@ export const boats = [
         type: "common",
         crew: ["Alvida"],
         description: "Standard pirate ship",
+        images: alvidaShip,
     },
     {
         boat_id: 2,

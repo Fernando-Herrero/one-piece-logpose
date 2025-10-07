@@ -1,3 +1,7 @@
+import alvida from "@/assets/images/cards/alvida.webp";
+import koby from "@/assets/images/cards/koby.webp";
+import luffy from "@/assets/images/cards/luffy.webp";
+
 export const characters = [
     {
         character_id: 1,
@@ -19,6 +23,7 @@ export const characters = [
         fruit: "Gomu Gomu no Mi",
         crew: "Straw Hat Pirates",
         position: "Captain",
+        image: luffy,
     },
     {
         character_id: 2,
@@ -29,6 +34,7 @@ export const characters = [
         fruit: "Sube Sube no Mi",
         crew: "Alvida Pirates",
         position: "Captain",
+        image: alvida,
     },
     {
         character_id: 3,
@@ -39,6 +45,7 @@ export const characters = [
         fruit: null,
         crew: "Marines",
         position: "Marine",
+        image: koby,
     },
     {
         character_id: 4,

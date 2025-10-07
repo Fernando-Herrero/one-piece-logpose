@@ -57,6 +57,7 @@ export const languages = {
                 "¡Mensaje recibido, nakama! 🏴‍☠️ Gracias por escribirnos. La tripulación revisará tu mensaje y nos pondremos en contacto contigo lo antes posible.",
             logOutMessage: "⚓ ¿Estás seguro de que quieres cerrar sesión, nakama?",
             confirmLogOut: "Si",
+            deleteCards: "⚠️ ¿Estás seguro? Esto eliminará todas las cartas.",
         },
 
         characters: {
@@ -250,6 +251,17 @@ export const languages = {
             boats: "Barcos",
             experience: "Experiencia",
             viewedChapter: "Capítulo visto",
+            resetProgress: "Resetear progreso",
+        },
+
+        cards: {
+            deleteCards: "Limpiar cartas",
+            characters: "Personajes",
+            boats: "Barcos",
+            fruits: "Frutas",
+            collection: "Colección",
+            noCards: "No tienes cartas desbloqueadas aún",
+            unlockCards: "Completa episodios para desbloquearlas!",
         },
 
         settings: {
@@ -355,6 +367,7 @@ export const languages = {
                 "Message received, nakama! 🏴‍☠️ Thanks for reaching out. The crew will review your message and get back to you as soon as possible.",
             logOutMessage: "⚓ Are you sure you want to log out, nakama?",
             confirmLogOut: "Yes",
+            deleteCards: "⚠️ Are you sure? This will delete all cards progress.",
         },
 
         characters: {
@@ -551,6 +564,17 @@ export const languages = {
             boats: "Boats",
             experience: "Experience",
             viewedChapter: "Episode watched",
+            resetProgress: "Reset progress",
+        },
+
+        cards: {
+            deleteCards: "Delete Cards",
+            characters: "Characters",
+            boats: "Boats",
+            fruits: "Fruits",
+            collection: "Collection",
+            noCards: "You don't have any unlocked cards yet",
+            unlockCards: "Complete episodes to unlock them!",
         },
 
         settings: {

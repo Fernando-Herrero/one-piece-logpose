@@ -1,3 +1,5 @@
+import gumgum from "@/assets/images/cards/gumgum-fruit.webp";
+
 export const fruits = [
     {
         fruit_id: 1,
@@ -7,6 +9,7 @@ export const fruits = [
         description:
             "Gomu Gomu no Mi, also known as the Fruit of Gum-Gum, is a Paramecia-type Devil Fruit that grants the user's body the properties of rubber, making them a Rubber Human (ゴム人間, Gomu Ningen).",
         current_user: "Monkey D. Luffy",
+        image: gumgum,
     },
     {
         fruit_id: 2,
