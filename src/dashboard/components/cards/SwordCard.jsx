@@ -1,0 +1,92 @@
+import { CardImage } from "@/dashboard/components/cards/CardImageBack";
+
+export const SwordCard = ({ sword }) => {
+    const typeStyles = {
+        common: {
+            gradient: "from-slate-700 via-slate-600 to-slate-700",
+            shadow: "shadow-slate-500/50",
+            glow: "hover:shadow-slate-400/70",
+            border: "border-slate-500",
+        },
+        uncommon: {
+            gradient: "from-emerald-700 via-emerald-600 to-emerald-700",
+            shadow: "shadow-emerald-500/50",
+            glow: "hover:shadow-emerald-400/70",
+            border: "border-emerald-500",
+        },
+        rare: {
+            gradient: "from-blue-700 via-blue-600 to-blue-700",
+            shadow: "shadow-blue-500/50",
+            glow: "hover:shadow-blue-400/70",
+            border: "border-blue-500",
+        },
+        legendary: {
+            gradient: "from-amber-600 via-yellow-500 to-amber-600",
+            shadow: "shadow-yellow-500/60",
+            glow: "hover:shadow-yellow-400/80",
+            border: "border-yellow-500",
+        },
+    };
+
+    const style = typeStyles[sword.type];
+
+    return (
+        <div
+            className={`
+                relative rounded-xl overflow-hidden
+                bg-gradient-to-br ${style.gradient}
+                border-2 ${style.border}
+                shadow-xl ${style.shadow}
+                transition-all duration-500 ease-out
+                hover:scale-105 hover:-translate-y-2 ${style.glow}
+                cursor-pointer group
+            `}
+        >
+            <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative overflow-hidden">
+                <CardImage
+                    src={sword.image}
+                    alt={sword.name}
+                    className="w-full h-56 object-cover  transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            </div>
+
+            <div className="p-4 bg-black/30 backdrop-blur-sm">
+                <h3 className="font-bold text-xl text-white mb-2 tracking-wide">{sword.name}</h3>
+                {sword.description && (
+                    <p className="text-sm text-white/80 mb-3 line-clamp-2">{sword.description}</p>
+                )}
+                <div className="border-t border-white/20 pt-2 space-y-1">
+                    {sword.current_owner && (
+                        <p className="text-xs text-white/70">
+                            <span className="font-semibold">Owner:</span> {sword.current_owner}
+                        </p>
+                    )}
+                    {sword.grade && (
+                        <p className="text-xs text-white/70">
+                            <span className="font-semibold">Grade:</span> {sword.grade}
+                        </p>
+                    )}
+                    {sword.blade_type && (
+                        <p className="text-xs text-white/70">
+                            <span className="font-semibold">Type:</span> {sword.blade_type}
+                        </p>
+                    )}
+                </div>
+            </div>
+
+            <div
+                className={`
+                    absolute top-3 right-3 px-3 py-1 rounded-full
+                    text-xs font-bold uppercase tracking-wider
+                    bg-black/60 backdrop-blur-sm text-white
+                    border ${style.border}
+                `}
+            >
+                {sword.type}
+            </div>
+        </div>
+    );
+};

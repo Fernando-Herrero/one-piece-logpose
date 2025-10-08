@@ -1,0 +1,100 @@
+import alvidaShip from "@/assets/images/cards/alvida-ship.webp";
+import bigTop from "@/assets/images/cards/big-top.webp";
+import redForce from "@/assets/images/cards/red-force.webp";
+
+export const boats = [
+    {
+        boat_id: 1,
+        name: "Alvida's ship",
+        type: "common",
+        crew: ["Alvida"],
+        description: "Standard pirate ship",
+        images: alvidaShip,
+    },
+    {
+        boat_id: 2,
+        name: "Red Force",
+        type: "legendary",
+        crew: ["Shanks", "Red Hair Pirates"],
+        description: "Yonko flagship",
+        image: redForce,
+    },
+    {
+        boat_id: 3,
+        name: "Big Top",
+        type: "rare",
+        crew: ["Buggy", "Mohji", "Cabaji", "Richie"],
+        description: "Buggy's circus-themed ship",
+        image: bigTop,
+    },
+    {
+        boat_id: 4,
+        name: "Bezan Black",
+        type: "uncommon",
+        crew: ["Kuro", "Jango", "Sham", "Buchi"],
+        description: "Black Cat Pirates' ship",
+    },
+    {
+        boat_id: 5,
+        name: "Going Merry",
+        type: "legendary",
+        crew: ["Straw Hat Pirates"],
+        description: "Straw Hat Pirates' first ship, gift from Kaya",
+    },
+    {
+        boat_id: 6,
+        name: "Baratie",
+        type: "legendary",
+        crew: ["Zeff", "Sanji", "Patty", "Carne"],
+        description: "Sea restaurant ship",
+    },
+    {
+        boat_id: 7,
+        name: "Dreadnaught Sabre",
+        type: "rare",
+        crew: ["Don Krieg", "Pearl", "Gin"],
+        description: "Krieg Pirates' flagship",
+    },
+    {
+        boat_id: 8,
+        name: "Coffin Boat",
+        type: "legendary",
+        crew: ["Dracule Mihawk"],
+        description: "Mihawk's personal vessel",
+    },
+    {
+        boat_id: 9,
+        name: "Marine ships",
+        type: "common",
+        crew: ["Various Marines"],
+        description: "Standard Marine vessels",
+    },
+    {
+        boat_id: 10,
+        name: "Nezumi's ship",
+        type: "common",
+        crew: ["Captain Nezumi", "Corrupt Marines"],
+        description: "Corrupt Marine vessel",
+    },
+    {
+        boat_id: 11,
+        name: "Smoker's ship",
+        type: "rare",
+        crew: ["Smoker", "Tashigi", "Marines"],
+        description: "Marine Captain's vessel",
+    },
+    {
+        boat_id: 12,
+        name: "Nelson's warship",
+        type: "rare",
+        crew: ["Admiral Nelson", "Eric", "Marines"],
+        description: "Marine Admiral's flagship (filler)",
+    },
+    {
+        boat_id: 13,
+        name: "Shark Superb",
+        type: "uncommon",
+        crew: ["Arlong", "Kuroobi", "Chu", "Hatchan"],
+        description: "Arlong Pirates' ship",
+    },
+];
