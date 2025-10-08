@@ -36,29 +36,24 @@ export const BoatCard = ({ boat }) => {
             relative rounded-xl overflow-hidden
             bg-gradient-to-br ${style.gradient}
             border-2 ${style.border}
-            shadow-xl ${style.shadow}
+            shadow-md ${style.shadow}
             transition-all duration-500 ease-out
-            hover:scale-105 hover:-translate-y-2 ${style.glow}
-            cursor-pointer group
+            hover:scale-105 hover:-translate-y-2 hover:shadow-xl ${style.glow}
+            cursor-pointer group flex flex-col justify-between
         `}
         >
-            <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <CardImage
+                src={boat.image}
+                alt={boat.name}
+                className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+            />
 
-            <div className="relative overflow-hidden">
-                <CardImage
-                    src={boat.image}
-                    alt={boat.name}
-                    className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            </div>
-
-            <div className="p-4 bg-black/30 backdrop-blur-sm">
-                <h3 className="font-bold text-xl text-white mb-2 tracking-wide">{boat.name}</h3>
-                <p className="text-sm text-white/80 mb-3">{boat.description}</p>
-                <div className="border-t border-white/20 pt-2">
+            <div className="p-4 flex flex-col gap-2 flex-1">
+                <h3 className="font-bold text-xl text-white tracking-wide lg:text-lg">{boat.name}</h3>
+                <p className="text-sm text-white/80">{boat.description}</p>
+                <div className="border-t border-white/20 pt-1 mt-auto">
                     <p className="text-xs text-white/70">
-                        <span className="font-semibold">Crew:</span> {boat.crew.join(", ")}
+                        <span className="font-semibold">Crew:</span> {boat.crew[boat.crew.length - 1]}
                     </p>
                 </div>
             </div>

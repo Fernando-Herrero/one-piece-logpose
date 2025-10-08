@@ -39,29 +39,23 @@ export const ItemCard = ({ item }) => {
                 shadow-xl ${style.shadow}
                 transition-all duration-500 ease-out
                 hover:scale-105 hover:-translate-y-2 ${style.glow}
-                cursor-pointer group
+                cursor-pointer group flex flex-col justify-between
             `}
         >
-            <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <CardImage
+                src={item.image}
+                alt={item.name}
+                className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+            />
 
-            <div className="relative overflow-hidden">
-                <CardImage
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            </div>
-
-            <div className="p-4 bg-black/30 backdrop-blur-sm">
-                <h3 className="font-bold text-xl text-white mb-2 tracking-wide">{item.name}</h3>
-                <div className="border-t border-white/20 pt-2 space-y-1">
+            <div className="p-4 flex flex-col gap-2 flex-1">
+                <h3 className="font-bold text-xl text-white tracking-wide">{item.name}</h3>
+                <div className="border-t border-white/20 pt-1 space-y-1 mt-auto">
                     {item.owner && (
                         <p className="text-xs text-white/70">
                             <span className="font-semibold">Owner:</span> {item.owner}
                         </p>
                     )}
-                    {item.origin && <p className="text-xs text-white/80 italic">{item.origin}</p>}
                 </div>
             </div>
 

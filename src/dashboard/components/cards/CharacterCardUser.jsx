@@ -36,36 +36,31 @@ export const CharacterCardUser = ({ character }) => {
         <div
             className={`
             relative rounded-xl overflow-hidden
-            bg-gradient-to-br ${style.gradient}
+            bg-gradient-to-br  ${style.gradient}
             border-2 ${style.border}
-            shadow-xl ${style.shadow}
+            shadow-md ${style.shadow}
             transition-all duration-500 ease-out
-            hover:scale-105 hover:-translate-y-2 ${style.glow}
-            cursor-pointer group
+            hover:scale-105 hover:-translate-y-2 hover:shadow-xl ${style.glow}
+            cursor-pointer group flex flex-col justify-between
         `}
         >
-            <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <CardImage
+                src={character.image}
+                alt={character.name}
+                className="w-full h-56 object-cover object-[center_0%] transition-transform duration-300 group-hover:scale-110"
+            />
 
-            <div className="relative overflow-hidden">
-                <CardImage
-                    src={character.image}
-                    alt={character.name}
-                    className="w-full h-56 object-cover object-[center_0%] transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            </div>
-
-            <div className="p-4 bg-black/30 backdrop-blur-sm">
-                <h3 className="font-bold text-xl text-white mb-2 tracking-wide">{character.name}</h3>
-                <div className="space-y-1 text-white/90">
+            <div className="p-4 flex flex-col gap-2 flex-1">
+                <h3 className="font-bold text-xl text-white tracking-wide lg:text-lg">{character.name}</h3>
+                <div className="space-y-1 text-white/80">
                     <p className="text-sm font-medium">{character.crew}</p>
                     <p className="text-sm">{character.position}</p>
-                    {character.fruit && (
-                        <p className="text-xs mt-3 italic text-white/70 border-t border-white/20 pt-2">
-                            {character.fruit}
-                        </p>
-                    )}
                 </div>
+                {character.fruit && (
+                    <p className="text-xs italic text-white/80 border-t border-white/20 pt-1 mt-auto">
+                        {character.fruit}
+                    </p>
+                )}
             </div>
 
             <div

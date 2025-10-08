@@ -33,24 +33,19 @@ export const FruitCard = ({ fruit }) => {
             shadow-xl ${style.shadow}
             transition-all duration-500 ease-out
             hover:scale-105 hover:-translate-y-2 ${style.glow}
-            cursor-pointer group
+            cursor-pointer group flex flex-col justify-between
         `}
         >
-            <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <CardImage
+                src={fruit.image}
+                alt={fruit.name}
+                className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+            />
 
-            <div className="relative overflow-hidden">
-                <CardImage
-                    src={fruit.image}
-                    alt={fruit.name}
-                    className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            </div>
-
-            <div className="p-4 bg-black/30 backdrop-blur-sm">
-                <h3 className="font-bold text-xl text-white mb-1 tracking-wide">{fruit.name}</h3>
+            <div className="p-4 flex flex-col gap-2 flex-1">
+                <h3 className="font-bold text-xl text-white mb-1 tracking-wide lg:text-lg">{fruit.name}</h3>
                 <p className="text-sm italic text-white/80 mb-3">{fruit.roman_name}</p>
-                <div className="border-t border-white/20 pt-2 space-y-1">
+                <div className="border-t border-white/20 pt-1 space-y-1 mt-auto">
                     <p className="text-xs text-white/70">
                         <span className="font-semibold">Type:</span> {fruit.type}
                     </p>

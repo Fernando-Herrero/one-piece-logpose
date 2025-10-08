@@ -9,7 +9,7 @@ export const boats = [
         type: "common",
         crew: ["Alvida"],
         description: "Standard pirate ship",
-        images: alvidaShip,
+        image: alvidaShip,
     },
     {
         boat_id: 2,
