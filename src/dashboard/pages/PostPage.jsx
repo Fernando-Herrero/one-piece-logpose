@@ -21,7 +21,7 @@ export const PostPage = ({ onCancel }) => {
             </div>
 
             <div className="rounded w-full bg-white">
-                <PostCard post={post} view={false} classSelect="secondary" />
+                <PostCard postId={post.id} view={false} classSelect="secondary" />
                 <PostComments post={post} />
             </div>
         </section>

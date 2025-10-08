@@ -81,7 +81,7 @@ export const SearchResults = () => {
                             </h2>
                             <div className="flex flex-col items-center space-y-4 pointer-events-none">
                                 {exactMatches.map((post, index) => (
-                                    <PostCard key={post.id} post={post} index={index} />
+                                    <PostCard key={post.id} postId={post.id} index={index} />
                                 ))}
                             </div>
                         </div>
@@ -94,7 +94,7 @@ export const SearchResults = () => {
                             </h2>
                             <div className="flex flex-col items-center space-y-4">
                                 {partialMatches.map((post, index) => (
-                                    <PostCard key={post.id} post={post} index={index} />
+                                    <PostCard key={post.id} postId={post.id} index={index} />
                                 ))}
                             </div>
                         </div>

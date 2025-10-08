@@ -51,7 +51,7 @@ export const PostForm = ({
                         onChange={handleInputs}
                         maxLength={280}
                         placeholder={placeholderText}
-                        className="bg-sunny p-2 min-h-80 w-full rounded-xl no-focus dark:text-white"
+                        className="bg-sunny p-2 min-h-80 w-full rounded-xl no-focus text-primary"
                     />
                 </label>
 
@@ -62,7 +62,7 @@ export const PostForm = ({
                         placeholder="Image URL"
                         value={formData.image}
                         onChange={handleInputs}
-                        className="bg-sunny p-2 rounded-xl no-focus"
+                        className="bg-sunny text-muted p-2 rounded-xl no-focus"
                     />
                     {formData.image && (
                         <img

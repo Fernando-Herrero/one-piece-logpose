@@ -87,7 +87,7 @@ export const FollowListCard = ({ onCancel, type = "followers" }) => {
         );
 
     return (
-        <section className="flex flex-col items-center gap-4 w-[80vw]">
+        <section className="flex flex-col items-center gap-4 w-[80vw] max-w-2xs">
             <button onClick={() => goTo(from)} className="cursor-pointer">
                 <img className="w-8" src={cross} alt="Cross icon" />
             </button>

@@ -37,8 +37,8 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
         );
     };
 
-    const amIUser = user._id === userId.id;
-    const alreadyFollow = user.following.includes(userId.id);
+    const amIUser = user?.id === userId.id || user?._id === userId.id;
+    const alreadyFollow = user?.following?.includes(userId.id);
 
     return (
         <div className="relative text-xs" ref={menuRef}>

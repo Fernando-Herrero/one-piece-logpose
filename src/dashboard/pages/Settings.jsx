@@ -11,11 +11,11 @@ export const Settings = () => {
     const fields = settingsMenu(lang);
 
     return (
-        <section className="p-2">
+        <section className="p-2 md:p-8">
             <div
                 className={classNames(
-                    "grid grid-cols-1 justify-items-center gap-1 text-sm max-w-2xl",
-                    "md:grid-cols-2",
+                    "grid grid-cols-1 justify-items-center gap-1 w-full text-sm max-w-3xl md:text-base",
+                    "md:grid-cols-2 md:gap-4",
                     {
                         "grid-cols-2": isTablet,
                     }
@@ -24,7 +24,7 @@ export const Settings = () => {
                 {fields.map(({ emoji, title, text }, index) => (
                     <div
                         key={`${title}-${index}}`}
-                        className="flex items-center gap-2 p-2 bg-gradient-card rounded shadow max-w-80 min-h-32"
+                        className="flex items-center gap-2 p-2 bg-gradient-card w-full rounded shadow min-h-32 md:p-4 "
                     >
                         <span>{emoji}</span>
                         <div className="flex flex-col gap-2">

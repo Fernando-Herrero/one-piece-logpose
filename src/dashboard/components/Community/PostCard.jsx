@@ -1,3 +1,4 @@
+import { PostContext } from "@/context/PostContext";
 import { OptionsMenu } from "@/dashboard/components/community/OptionsMenu";
 import { PostContent } from "@/dashboard/components/community/PostContent";
 import { PostStats } from "@/dashboard/components/community/PostStats";
@@ -5,8 +6,12 @@ import { UserInfo } from "@/dashboard/components/community/UserInfo";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
+import { useContext } from "react";
 
-export const PostCard = ({ post, classSelect = "primary", view = true, basePath, className }) => {
+export const PostCard = ({ postId, classSelect = "primary", view = true, basePath, className }) => {
+    const { posts } = useContext(PostContext);
+    const post = posts.find((post) => post.id === postId);
+    if (!post) return null;
     const { id, userId, text, images, hashtags } = post;
     const { isMobile, isTablet } = useDevice();
 

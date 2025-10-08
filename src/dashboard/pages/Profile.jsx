@@ -7,9 +7,9 @@ import { Outlet } from "react-router-dom";
 
 export const Profile = () => {
     return (
-        <div className="p-2 flex flex-col gap-2 max-w-container mx-auto md:p-6">
-            <div className="flex gap-2">
-                <div className="flex flex-col gap-2">
+        <div className="p-2 flex flex-col gap-2 max-w-container mx-auto md:p-8">
+            <div className="flex gap-2 md:gap-4">
+                <div className="flex flex-col gap-2 md:gap-4">
                     <ProfileArticle />
                     <UserProgress />
                     <UserStats />

@@ -7,7 +7,7 @@ import { useFetchData } from "@/hooks/useFecthData";
 import { useContext } from "react";
 
 export const ProfileContentList = ({ fetchFunction, emptyMessageKey, basePath = "/dashboard/profile" }) => {
-    const { data, loading, error, refetch } = useFetchData(fetchFunction);
+    const { data, loading, error } = useFetchData(fetchFunction);
     const { lang } = useContext(LanguagesContext);
     const { isMobileXs, isMobile } = useDevice();
 
@@ -48,7 +48,7 @@ export const ProfileContentList = ({ fetchFunction, emptyMessageKey, basePath = 
             {data.map((post) => (
                 <PostCard
                     key={post.id}
-                    post={post}
+                    postId={post.id}
                     basePath={basePath}
                     className={`${
                         isMobileXs

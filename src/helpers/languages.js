@@ -58,6 +58,7 @@ export const languages = {
             logOutMessage: "⚓ ¿Estás seguro de que quieres cerrar sesión, nakama?",
             confirmLogOut: "Si",
             deleteCards: "⚠️ ¿Estás seguro? Esto eliminará todas las cartas.",
+            deleteProgress: "⚠️ ¿Estás seguro? Esto eliminará todo el progreso de la serie.",
         },
 
         characters: {
@@ -176,6 +177,7 @@ export const languages = {
             email: "Correo",
             emptyEmail: "No hay correo",
             viewMore: "Ver más",
+            viewLess: "Ver menos",
             followers: "Seguidores",
             notFollowersYet: "Sin seguidores todavía",
             following: "Seguidos",
@@ -261,7 +263,7 @@ export const languages = {
             fruits: "Frutas",
             collection: "Colección",
             noCards: "No tienes cartas desbloqueadas aún",
-            unlockCards: "Completa episodios para desbloquearlas!",
+            unlockCards: "¡Completa episodios para desbloquearlas!",
         },
 
         settings: {
@@ -368,6 +370,7 @@ export const languages = {
             logOutMessage: "⚓ Are you sure you want to log out, nakama?",
             confirmLogOut: "Yes",
             deleteCards: "⚠️ Are you sure? This will delete all cards progress.",
+            deleteProgress: "⚠️ Are you sure? This will delete all series progress.",
         },
 
         characters: {
@@ -490,6 +493,7 @@ export const languages = {
             email: "Email",
             emptyEmail: "No email provided",
             viewMore: "View more",
+            viewLess: "View less",
             followers: "Followers",
             notFollowersYet: "No folllowers yet",
             following: "Following",

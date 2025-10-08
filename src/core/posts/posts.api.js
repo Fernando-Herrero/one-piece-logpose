@@ -103,3 +103,16 @@ export const getUserApi = async (id) => {
         throw error;
     }
 };
+
+export const getUserPostsApi = async (userId) => {
+    try {
+        console.log("Recibiendo user de la api", userId);
+        const response = await api.get(`/posts/search`, { params: { userId } });
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al recibir user", error);
+        throw error;
+    }
+};

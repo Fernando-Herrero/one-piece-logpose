@@ -12,7 +12,7 @@ export const Community = () => {
     };
 
     return (
-        <div className="p-2 pb-20 min-h-screen max-w-container relative flex gap-2 mx-auto md:p-8">
+        <div className="p-2 pb-20 min-h-screen max-w-container relative flex gap-2 mx-auto md:p-8 md:gap-4">
             <PostsSection />
             <button className="floating-btn bg-secondary" onClick={handleCreatePost}>
                 <img className="w-8 h-8" src={plusIcon} alt="Plus icon" />

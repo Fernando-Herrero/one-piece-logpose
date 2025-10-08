@@ -1,15 +1,15 @@
 import cross from "@/assets/icons/cross-close.svg";
+import { AvatarSelected } from "@/components/AvatarSelected";
 import { Button } from "@/components/Button";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
-import { AvatarSelected } from "@/dashboard/components/AvatarSelected";
 import { languages } from "@/helpers/languages";
 import { useAvatar } from "@/hooks/useAvatar";
 import { useContext } from "react";
 
 export const AvatarSection = ({ onCancel }) => {
-    const { selectedAvatar } = useAvatar();
+    const { selectedAvatar, setSelectedAvatar } = useAvatar();
     const { user } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
     const { lang } = useContext(LanguagesContext);
@@ -18,6 +18,7 @@ export const AvatarSection = ({ onCancel }) => {
         if (selectedAvatar && user) {
             await updatedProfile(user, { avatar: selectedAvatar });
             onCancel();
+            setSelectedAvatar(null);
         }
     };
 

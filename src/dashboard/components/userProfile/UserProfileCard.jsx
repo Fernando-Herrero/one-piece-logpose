@@ -4,7 +4,7 @@ import { UserBasicInfo } from "@/dashboard/components/userProfile/UserBasicInfo"
 import { UserCoverAndAvatar } from "@/dashboard/components/userProfile/UserCoverAndAvatar";
 
 export const UserProfileCard = ({ user, lang, verified, notVerified, languages }) => (
-    <section className="p-2">
+    <section className="p-2 md:p-8">
         <div className="bg-gradient-card shadow-lg rounded-xl text-sm w-full max-w-xs mx-auto">
             <div className="flex flex-col items-center gap-2">
                 <UserCoverAndAvatar user={user} />

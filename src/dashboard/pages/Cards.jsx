@@ -96,7 +96,7 @@ export const Cards = () => {
                 <h1 className="text-3xl font-bold text-primary">{languages[lang].cards.collection}</h1>
                 <button
                     onClick={handleReset}
-                    className="bg-linePrimary hover:bg-lineDark text-dark dark:text-white px-4 py-2 rounded-lg transition-all hover:-translate-y-0.5"
+                    className="bg-linePrimary hover:bg-lineDark dark:text-black !text-white px-4 py-2 rounded-lg transition-all hover:-translate-y-0.5"
                 >
                     🗑️ {languages[lang].cards.deleteCards}
                 </button>
@@ -145,7 +145,7 @@ export const Cards = () => {
             {filteredCards.length === 0 && (
                 <div className="text-center py-20 text-white/50">
                     <p className="text-xl">{languages[lang].cards.noCards}</p>
-                    <p className="text-sm mt-2">{languages[lang].cards.unlockedCards}</p>
+                    <p className="text-sm mt-2">{languages[lang].cards.unlockCards}</p>
                 </div>
             )}
         </div>
