@@ -15,8 +15,12 @@ import { useContext, useState } from "react";
 export const ProfileArticle = () => {
     const { user, loading, error } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
-    const editorProps = useProfileEditor(user, updatedProfile);
+    const { isMobile, isTablet } = useDevice();
+    const [coverImg, setCoverImg] = useState(false);
+
+    const editorProps = useProfileEditor(user, updatedProfile, setCoverImg);
     const { lang } = useContext(LanguagesContext);
+    const basicFields = getProfileFields(user, lang, coverImg);
 
     if (!user) return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.noUser}</p>;
     if (loading)
@@ -30,10 +34,6 @@ export const ProfileArticle = () => {
             </div>
         );
     if (error) return <p className="text-linePrimary text-center pt-10">{error}</p>;
-
-    const [coverImg, setCoverImg] = useState(false);
-    const basicFields = getProfileFields(user, lang, coverImg);
-    const { isMobile, isTablet } = useDevice();
 
     return (
         <article className="text-sm card gap-1 bg-gradient-card transition">

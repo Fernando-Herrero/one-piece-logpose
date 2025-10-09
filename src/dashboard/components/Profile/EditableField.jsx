@@ -55,8 +55,13 @@ export const EditableField = ({
     const shouldShowValue = () => value && !isCoverImageHidden();
 
     const getDisplayValue = () => {
+        // Mostrar el texto “Cambiar imagen” si se activó el cambio
         if (fieldName === "coverImage" && changeCoverImg) {
-            return <span className="italic">{languages[lang].profile.changeCoverImg}</span>;
+            return <span className="italic text-muted">{languages[lang].profile.changeCoverImg}</span>;
+        }
+        // Mostrar algo neutro si ya hay imagen
+        if (fieldName === "coverImage" && value) {
+            return <span className="italic text-muted">Imagen establecida</span>;
         }
         return value;
     };
@@ -83,7 +88,7 @@ export const EditableField = ({
                         value={field}
                         onChange={(event) => setField(event.target.value)}
                         onKeyDown={handleKeyDown}
-                        className="px-1 py-0.5 rounded-xl text-xs no-focus dark:text-white sm:text-sm"
+                        className="px-1 py-0.5 rounded-xl text-xs no-focus text-muted sm:text-sm"
                         placeholder={placeholder}
                         autoFocus
                     />

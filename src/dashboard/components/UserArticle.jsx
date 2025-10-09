@@ -30,7 +30,6 @@ export const UserArticle = ({
                 status={isActive ? "online" : "offline"}
                 className="border-2 border-white"
                 alt={name}
-                fallback={lastName}
             />
 
             <div className="flex flex-col">
