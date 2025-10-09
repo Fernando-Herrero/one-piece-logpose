@@ -1,6 +1,7 @@
+import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
-import { clearAllCards, getUnlockedCards } from "@/core/achievements/achievementsStorage";
+import { clearUserCards, getUnlockedCards } from "@/core/achievements/achievementsStorage";
 import { BoatCard } from "@/dashboard/components/cards/BoatCard";
 import { CharacterCardUser } from "@/dashboard/components/cards/CharacterCardUser";
 import { FruitCard } from "@/dashboard/components/cards/FruitCard";
@@ -10,6 +11,8 @@ import { languages } from "@/helpers/languages";
 import { useContext, useEffect, useState } from "react";
 
 export const Cards = () => {
+    const { user } = useContext(AuthContext);
+    const userId = user?.id || user?._id;
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
     const [unlockedCards, setUnlockedCards] = useState({
@@ -22,7 +25,7 @@ export const Cards = () => {
     const [activeFilter, setActiveFilter] = useState("all");
 
     useEffect(() => {
-        const cards = getUnlockedCards();
+        const cards = getUnlockedCards(userId);
         setUnlockedCards(cards);
     }, []);
 
@@ -30,7 +33,7 @@ export const Cards = () => {
         showModal({
             message: languages[lang].modal.deleteCards,
             onConfirm: () => {
-                clearAllCards();
+                clearUserCards(userId);
                 hideModal();
                 setTimeout(() => {
                     window.location.reload();

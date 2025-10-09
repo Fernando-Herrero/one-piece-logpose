@@ -8,6 +8,7 @@ export const SagaContext = createContext(null);
 
 export const SagaProvider = ({ children }) => {
     const { user, setUser } = useContext(AuthContext);
+    const userId = user?.id || user?._id;
     const [saga, setSaga] = useState({ saga: 0, arc: 0, episode: 0 });
     const { updatedProfile } = useAuth();
 
@@ -45,11 +46,13 @@ export const SagaProvider = ({ children }) => {
         const resetState = { saga: 0, arc: 0, episode: 0 };
         setSaga(resetState);
 
-        Object.keys(localStorage).forEach((key) => {
-            if (key.startsWith("episode_")) {
-                local.remove(key);
-            }
-        });
+        if (userId) {
+            Object.keys(localStorage).forEach((key) => {
+                if (key.startsWith("episode_") && key.endsWith(`_${userId}`)) {
+                    local.remove(key);
+                }
+            });
+        }
 
         if (user) {
             const updatedUserLocal = {
