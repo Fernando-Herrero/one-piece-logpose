@@ -4,10 +4,17 @@ import { SkeletonCard } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useFetchData } from "@/hooks/useFecthData";
+import classNames from "classnames";
 import { useContext } from "react";
 
-export const ProfileContentList = ({ fetchFunction, emptyMessageKey, basePath = "/dashboard/profile" }) => {
+export const ProfileContentList = ({
+    fetchFunction,
+    emptyMessageKey,
+    basePath = "/dashboard/profile",
+    isMyProfile,
+}) => {
     const { data, loading, error } = useFetchData(fetchFunction);
+    console.log("Que cojones me esta llegando", data);
     const { lang } = useContext(LanguagesContext);
     const { isMobileXs, isMobile } = useDevice();
 
@@ -43,18 +50,29 @@ export const ProfileContentList = ({ fetchFunction, emptyMessageKey, basePath = 
             </div>
         );
     }
+
+    const getPostCardClassName = () => {
+        if (!isMyProfile) return "";
+        if (isMobileXs) return "min-w-[calc(100vw-100px)]";
+        if (data.length === 1) return "w-full max-w-none";
+        return "max-w-[350px] sm:min-w-[400px] snap-center flex-shrink-0 sm:min-h-40";
+    };
+
     return (
-        <div className="flex gap-1 overflow-x-auto snap-x snap-mandatory scroll-smooth p-1 w-full custom-scrollbar">
+        <div
+            className={classNames(
+                "flex gap-1 overflow-x-auto snap-x snap-mandatory scroll-smooth p-1 w-full custom-scrollbar",
+                {
+                    "flex-col": !isMyProfile,
+                }
+            )}
+        >
             {data.map((post) => (
                 <PostCard
-                    key={post.id}
-                    postId={post.id}
+                    key={post.id || post._id}
+                    postId={post.id || post._id}
                     basePath={basePath}
-                    className={`${
-                        isMobileXs
-                            ? "min-w-[calc(100vw-100px)]"
-                            : "max-w-[350px] sm:min-w-[200px] snap-center flex-shrink-0"
-                    }`}
+                    className={getPostCardClassName()}
                 />
             ))}
         </div>

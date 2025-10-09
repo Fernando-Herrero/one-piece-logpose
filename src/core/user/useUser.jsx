@@ -2,12 +2,9 @@ import { AuthContext } from "@/context/AuthContext";
 import { saveUserInLocalStorage } from "@/core/auth/auth.service";
 import {
     followUserApi,
-    getMyBookmarkedPostsApi,
-    getMyCommentedPostsApi,
-    getMyLikedPostsApi,
-    getMyPostsApi,
+    getLikesUserApi,
+    getPostsUserApi,
     getUsersApi,
-    getUserStatsApi,
     unfollowUserApi,
 } from "@/core/user/user.api";
 import { useContext } from "react";
@@ -60,49 +57,23 @@ export const useUser = () => {
         }
     };
 
-    const getUserStats = async () => {
+    const getPostsUser = async (userId) => {
         try {
-            const dataStats = await getUserStatsApi();
-            return dataStats;
+            const dataPostsUser = await getPostsUserApi(userId);
+
+            return dataPostsUser.posts;
         } catch (error) {
-            console.error("Error al obtener stats del usuario", error);
+            console.error("Error al obtener los posts del usuario", error);
         }
     };
 
-    const getMyPosts = async () => {
+    const getLikesUser = async (userId) => {
         try {
-            const dataPosts = await getMyPostsApi();
-            console.log("Esta es la data de mis posts", dataPosts);
-            return dataPosts;
+            const dataPostsUser = await getLikesUserApi(userId);
+
+            return dataPostsUser;
         } catch (error) {
-            console.error("Error al obtener mis posts", error);
-        }
-    };
-    const getMyLikedPosts = async () => {
-        try {
-            const dataLikedPosts = await getMyLikedPostsApi();
-            console.log("Esta es la data de mis posts", dataLikedPosts);
-            return dataLikedPosts;
-        } catch (error) {
-            console.error("Error al obtener mis liked posts", error);
-        }
-    };
-    const getMyBookmarkedPosts = async () => {
-        try {
-            const dataBookmarkedPosts = await getMyBookmarkedPostsApi();
-            console.log("Esta es la data de mis posts", dataBookmarkedPosts);
-            return dataBookmarkedPosts;
-        } catch (error) {
-            console.error("Error al obtener mis bookmarked posts", error);
-        }
-    };
-    const getMyCommentedPosts = async () => {
-        try {
-            const dataCommentedPosts = await getMyCommentedPostsApi();
-            console.log("Esta es la data de mis posts", dataCommentedPosts);
-            return dataCommentedPosts;
-        } catch (error) {
-            console.error("Error al obtener mis commented posts", error);
+            console.error("Error al obtener los likes del usuario", error);
         }
     };
 
@@ -110,10 +81,7 @@ export const useUser = () => {
         followUser,
         unfollowUser,
         getUsers,
-        getUserStats,
-        getMyPosts,
-        getMyLikedPosts,
-        getMyBookmarkedPosts,
-        getMyCommentedPosts,
+        getPostsUser,
+        getLikesUser,
     };
 };

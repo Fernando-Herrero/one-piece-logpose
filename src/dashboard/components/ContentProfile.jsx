@@ -6,9 +6,10 @@ import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
 import { useState } from "react";
 
-export const ContentProfile = () => {
+export const ContentProfile = ({ context = "myProfile", userId }) => {
     const [activeTab, setActiveTab] = useState("posts");
     const { isMobileXs } = useDevice();
+    const isMyProfile = context === "myProfile";
 
     const tabs = [
         { key: "posts", label: "Posts" },
@@ -18,7 +19,11 @@ export const ContentProfile = () => {
     ];
 
     return (
-        <section className="p-2 bg-gradient-card rounded-xl border border-white/30 w-full">
+        <section
+            className={classNames("p-2 bg-gradient-card rounded-xl border border-white/30 w-full shadow-lg", {
+                "": !isMyProfile,
+            })}
+        >
             <div
                 className={classNames(
                     "flex items-center justify-center gap-2 p-2 text-xs overflow-x-auto bg-white/20 rounded-lg",
@@ -43,7 +48,7 @@ export const ContentProfile = () => {
                 ))}
             </div>
 
-            {activeTab === "posts" && <MyPosts />}
+            {activeTab === "posts" && <MyPosts context={context} userId={userId} isMyProfile={isMyProfile} />}
             {activeTab === "liked" && <MyLikedPosts />}
             {activeTab === "bookmarked" && <MyBookmarkedPosts />}
             {activeTab === "comments" && <MyCommentedPosts />}

@@ -43,6 +43,13 @@ export const EditableField = ({
         return () => window.removeEventListener("mousedown", handleClickOutside);
     }, [isCurrentlyEditing, cancelEditing]);
 
+    const fieldTextStyles = {
+        displayName: "text-primary font-semibold sm:text-xl",
+        bio: "mt-2 px-2 font-family-decorative text-gradient text-xl",
+        coverImage: "mt-2",
+        default: "text-xs text-gradient sm:text-base",
+    };
+
     const isCoverImageHidden = () => fieldName === "coverImage" && !changeCoverImg;
 
     const shouldShowValue = () => value && !isCoverImageHidden();
@@ -62,13 +69,7 @@ export const EditableField = ({
     };
 
     const getValueStyles = () =>
-        classNames(
-            !readOnly && "cursor-pointer",
-            fieldName === "displayName"
-                ? "text-primary font-semibold sm:text-xl"
-                : "text-xs text-gradient sm:text-base",
-            (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
-        );
+        classNames(!readOnly && "cursor-pointer", fieldTextStyles[fieldName] || fieldTextStyles.default);
 
     const getEmptyStyles = () =>
         classNames("text-xs text-muted italic sm:text-sm", !readOnly && "cursor-pointer");

@@ -1,24 +1,25 @@
 export const FollowCard = ({ title, content, onClick, noFollow }) => {
+    const isThereFollows = content > 0;
+
     return (
-        <div className="flex items-center gap-1">
-            <p>
-                <strong className="text-primary font-semibold sm:text-base">{title}:</strong>
-            </p>{" "}
-            {content > 0 ? (
-                <div className="hover:underline group relative z-10">
-                    {" "}
-                    <button onClick={onClick}>
-                        <span className=" cursor-pointer text-gradient group-hover:text-link sm:text-base">
-                            {content}
-                        </span>
-                    </button>
-                    <div className="hidden absolute p-2 text-link rounded-xl text-xs bg-sunny group-hover:block sm:text-base">
-                        <p>{title}</p>
-                    </div>
-                </div>
+        <button
+            onClick={onClick}
+            disabled={!isThereFollows}
+            aria-label={isThereFollows ? `View ${title}` : undefined}
+            className={`
+                flex items-center gap-1 w-full text-left
+                ${isThereFollows ? "cursor-pointer group" : ""}
+            `}
+        >
+            <strong className="text-primary font-semibold sm:text-base">{title}:</strong>
+
+            {isThereFollows ? (
+                <span className="text-muted sm:text-base group-hover:underline group-hover:text-link">
+                    {content}
+                </span>
             ) : (
-                <p className="text-xs text-gray-600 italic sm:text-sm">{noFollow}</p>
+                <span className="text-xs text-muted italic sm:text-sm ml-1">{noFollow}</span>
             )}
-        </div>
+        </button>
     );
 };

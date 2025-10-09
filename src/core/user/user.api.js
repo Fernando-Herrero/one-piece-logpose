@@ -13,19 +13,6 @@ export const getUserApi = async (userId) => {
     }
 };
 
-export const getUserStatsApi = async () => {
-    try {
-        console.log("Obteniendo stats del user");
-        const response = await api.get("users/me/stats");
-        console.log("Respuesta de la api"), response;
-
-        return response.data;
-    } catch (error) {
-        console.error("Error al obtener user", error);
-        throw error;
-    }
-};
-
 export const getUsersApi = async () => {
     try {
         console.log("Obteniendo todos los users de la api");
@@ -36,54 +23,6 @@ export const getUsersApi = async () => {
     } catch (error) {
         console.error("Error al obtener todos los users", error);
         throw error;
-    }
-};
-
-export const getMyPostsApi = async () => {
-    try {
-        console.log("Obteniendo mis posts");
-        const response = await api.get("users/me/my-posts");
-        console.log("Respuesta de la api", response);
-
-        return response.data;
-    } catch (error) {
-        console.error("Error al obtener mis posts", error);
-    }
-};
-
-export const getMyLikedPostsApi = async () => {
-    try {
-        console.log("Obteniendo mis likes de posts");
-        const response = await api.get("users/me/liked-posts");
-        console.log("Respuesta de la api", response);
-
-        return response.data;
-    } catch (error) {
-        console.error("Error al obtener mis likes posts", error);
-    }
-};
-
-export const getMyBookmarkedPostsApi = async () => {
-    try {
-        console.log("Obteniendo mis favoritos posts");
-        const response = await api.get("users/me/bookmarked-posts");
-        console.log("Respuesta de la api", response);
-
-        return response.data;
-    } catch (error) {
-        console.error("Error al obtener mis favoritos posts", error);
-    }
-};
-
-export const getMyCommentedPostsApi = async () => {
-    try {
-        console.log("Obteniendo mis comentarios posts");
-        const response = await api.get("users/me/commented-posts");
-        console.log("Respuesta de la api", response);
-
-        return response.data;
-    } catch (error) {
-        console.error("Error al obtener mis comentarios posts", error);
     }
 };
 
@@ -136,3 +75,42 @@ export const unfollowUserApi = async (userId) => {
         throw error;
     }
 };
+
+export const getPostsUserApi = async (userId) => {
+    try {
+        console.log("Obteniendo posts del user", userId);
+        const response = await api.get(`/posts/search?userId=${userId}`);
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener posts del user", error);
+        throw error;
+    }
+};
+
+export const getLikesUserApi = async (userId) => {
+    try {
+        console.log("Obteniendo likes del user", userId);
+        const response = await api.get(`/likes/search?userId=${userId}`);
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener likes del user", error);
+        throw error;
+    }
+};
+
+// export const getUserPostsApi = async (userId) => {
+//     try {
+//         console.log("Recibiendo user de la api", userId);
+//         const response = await api.get(`/posts/search`, { params: { userId } });
+//         console.log("respuesta de la api", response);
+
+//         return response.data;
+//     } catch (error) {
+//         console.error("Error al recibir user", error);
+//         throw error;
+//     }
+// };

@@ -1,7 +1,7 @@
-import { useUser } from "@/core/user/useUser";
+import { useAuth } from "@/core/auth/useAuth";
 import { ProfileContentList } from "@/dashboard/components/ProfileComponentList";
 
 export const MyBookmarkedPosts = () => {
-    const { getMyBookmarkedPosts } = useUser();
+    const { getMyBookmarkedPosts } = useAuth();
     return <ProfileContentList fetchFunction={getMyBookmarkedPosts} emptyMessageKey="noBookmarkedPosts" />;
 };
