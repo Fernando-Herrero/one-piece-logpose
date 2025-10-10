@@ -1,6 +1,6 @@
 import notification from "@/assets/icons/notification-icon.svg";
 import logo from "@/assets/images/one-piece-logo.webp";
-import { Search } from "@/dashboard/components/header/Search";
+import { Search } from "@/dashboard/components/Search/Search";
 import { UserMenu } from "@/dashboard/components/header/UserMenu";
 
 export const DashboardNavbar = () => {

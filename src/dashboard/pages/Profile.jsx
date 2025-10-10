@@ -9,7 +9,7 @@ export const Profile = () => {
     return (
         <div className="p-2 flex flex-col gap-2 max-w-container mx-auto md:p-8">
             <div className="flex gap-2 md:gap-4">
-                <div className="flex flex-col gap-2 md:gap-4 w-full max-w-sm md:min-w-xs">
+                <div className="flex flex-col mx-auto gap-2 md:gap-4 w-full max-w-sm md:min-w-xs">
                     <ProfileArticle />
                     <UserProgress />
                     <UserStats />
