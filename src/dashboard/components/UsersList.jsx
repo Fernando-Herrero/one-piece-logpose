@@ -1,37 +1,14 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { useUser } from "@/core/user/useUser";
+import { UsersContext } from "@/context/UsersContext";
 import { SkeletonCard } from "@/dashboard/components/Skeleton";
 import { UserArticle } from "@/dashboard/components/UserArticle";
 import { languages } from "@/helpers/languages";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 export const UsersList = () => {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const { getUsers } = useUser();
+    const { users, loading, error } = useContext(UsersContext);
+
     const { lang } = useContext(LanguagesContext);
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            if (loading) return;
-            try {
-                setLoading(true);
-                setError(null);
-
-                const data = await getUsers();
-                console.log(data);
-                setUsers(data);
-            } catch (error) {
-                console.error("Error al obtener todos los usuarios", error);
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchUsers();
-    }, []);
 
     if (users?.length === 0 && !loading)
         return <p className="text-linePrimary text-center p-10">{languages[lang].profile.noUsers}</p>;
