@@ -26,6 +26,19 @@ export const getUsersApi = async () => {
     }
 };
 
+export const deleteUserApi = async (userId) => {
+    try {
+        console.log("Borrando user de la api", userId);
+        const response = await api.delete(`/users/${userId}`);
+        console.log("Respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al eliminar el user", error);
+        throw error;
+    }
+};
+
 export const getUserFollowersApi = async (userId) => {
     try {
         console.log("Recibiendo followers del user", userId);

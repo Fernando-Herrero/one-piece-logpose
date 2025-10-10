@@ -218,6 +218,11 @@ export const languages = {
             noBookmarkedPosts: "No se ecnontraron posts con favoritos",
             noCommentedPosts: "No se ecnontraron posts con comentarios tuyos",
             emptyMessagePosts: "Aún no hay posts",
+            totalUsers: "Usuarios totales",
+            usersOnline: "Usuarios conectados",
+            usersOffline: "Usuarios desconectados",
+            deleteUser: "Eliminar usuario",
+            viewUsers: "Ver usuarios",
         },
 
         posts: {
@@ -534,6 +539,11 @@ export const languages = {
             noBookmarkedPosts: "No bookmarked posts",
             noCommentedPosts: "No commented posts",
             emptyMessagePosts: "No posts found",
+            totalUsers: "Total users",
+            usersOnline: "Users online",
+            usersOffline: "Users offline",
+            deleteUser: "Delete user",
+            viewUsers: "View users",
         },
 
         posts: {
