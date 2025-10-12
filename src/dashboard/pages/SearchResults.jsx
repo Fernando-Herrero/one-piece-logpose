@@ -2,7 +2,7 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { PostContext } from "@/context/PostContext";
 import { UsersContext } from "@/context/UsersContext";
 import { Spinner } from "@/dashboard/components/community/Spinner";
-import { SearchResultSection } from "@/dashboard/components/Search/SearchResultSection";
+import { SearchResultSection } from "@/dashboard/components/search/SearchResultSection";
 import { languages } from "@/helpers/languages";
 import { useSearchFilter } from "@/hooks/useSearchFilter";
 import { useContext } from "react";

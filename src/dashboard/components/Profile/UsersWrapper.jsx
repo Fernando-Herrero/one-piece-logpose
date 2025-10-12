@@ -27,10 +27,13 @@ export const UsersWrapper = () => {
 
     return (
         <section
-            className={classNames("fixed top-20 right-2 z-25 flex flex-col transition-all duration-300", {
-                "w-2xs": headerExpanded,
-                "w-fit": !headerExpanded,
-            })}
+            className={classNames(
+                "fixed top-20 right-2 z-25 flex flex-col transition-all duration-300 lg:hidden",
+                {
+                    "w-2xs": headerExpanded,
+                    "w-fit": !headerExpanded,
+                }
+            )}
         >
             <header
                 className={classNames(

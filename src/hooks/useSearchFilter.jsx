@@ -1,5 +1,5 @@
-import { FilterPosts } from "@/dashboard/components/Search/FilterPosts";
-import { FilterUsers } from "@/dashboard/components/Search/FilterUsers";
+import { FilterPosts } from "@/dashboard/components/search/FilterPosts";
+import { FilterUsers } from "@/dashboard/components/search/FilterUsers";
 import { useEffect, useState } from "react";
 
 export const useSearchFilter = (query, posts, users) => {

@@ -1,5 +1,5 @@
-import { PostCard } from "@/dashboard/components/Community/PostCard";
-import { UserCard } from "@/dashboard/components/Search/UserCard";
+import { PostCard } from "@/dashboard/components/community/PostCard";
+import { UserCard } from "@/dashboard/components/search/UserCard";
 import { languages } from "@/helpers/languages";
 
 export const SearchResultSection = ({ title, items, type, icon, colorClass, lang }) => {

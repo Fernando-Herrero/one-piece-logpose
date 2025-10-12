@@ -18,9 +18,9 @@ export const FollowSection = ({ user, className = "", basePath = "/dashboard/use
 
     return (
         <div
-            className={classNames(`flex flex-col gap-1 md:px-6 pb-4 sm:flex-1 ${className}`, {
-                "px-6 pb-4": isMobile,
-                "px-8 pb-6": isTablet,
+            className={classNames(`flex flex-col gap-1 md:px-6 sm:flex-1 ${className}`, {
+                "px-6": isMobile,
+                "px-8": isTablet,
             })}
         >
             <FollowCard

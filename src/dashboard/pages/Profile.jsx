@@ -3,7 +3,7 @@ import { ContentProfile } from "@/dashboard/components/ContentProfile";
 import { ProfileArticle } from "@/dashboard/components/profile/ProfileArticle";
 import { UserProgress } from "@/dashboard/components/profile/UserProgrress";
 import { UserStats } from "@/dashboard/components/profile/UserStats";
-import { UsersWrapper } from "@/dashboard/components/Profile/UsersWrapper";
+import { UsersWrapper } from "@/dashboard/components/profile/UsersWrapper";
 import { UsersList } from "@/dashboard/components/UsersList";
 import { useContext } from "react";
 import { Outlet } from "react-router-dom";

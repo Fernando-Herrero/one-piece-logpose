@@ -1,4 +1,4 @@
-import { useUser } from "@/core/user/useUser";
+import { getUsersApi } from "@/core/user/user.api";
 import { createContext, useState } from "react";
 
 export const UsersContext = createContext(null);
@@ -7,7 +7,6 @@ export const UsersProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const { getUsers } = useUser();
 
     console.log("Los users bonitos", users);
 
@@ -17,7 +16,7 @@ export const UsersProvider = ({ children }) => {
             setLoading(true);
             setError(null);
 
-            const data = await getUsers();
+            const data = await getUsersApi();
             console.log(data);
             setUsers(data);
         } catch (error) {
@@ -29,7 +28,7 @@ export const UsersProvider = ({ children }) => {
     };
 
     return (
-        <UsersContext.Provider value={{ users, loading, error, fetchUsers }}>
+        <UsersContext.Provider value={{ users, loading, error, setError, fetchUsers }}>
             {children}
         </UsersContext.Provider>
     );

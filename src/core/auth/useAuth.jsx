@@ -3,6 +3,7 @@ import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import {
+    deleteAccountApi,
     getMyBookmarkedPostsApi,
     getMyCommentedPostsApi,
     getMyLikedPostsApi,
@@ -64,6 +65,22 @@ export const useAuth = () => {
 
         if (logoutResponse?.logout) {
             console.log("logout del hook", logoutResponse);
+            removeTokenFromLocalStorage();
+            removeUserFromLocalStorage();
+            setUser(null);
+            local.save("theme", false);
+            local.remove("lang");
+            document.body.classList.remove("dark");
+            goTo("/");
+        }
+    };
+
+    const deleteAccount = async (userId) => {
+        console.log("Eliminando usuario");
+        const deleteAccountResponse = await deleteAccountApi(userId);
+
+        if (deleteAccountResponse) {
+            console.log("logout del hook", deleteAccountResponse);
             removeTokenFromLocalStorage();
             removeUserFromLocalStorage();
             setUser(null);
@@ -161,5 +178,6 @@ export const useAuth = () => {
         getMyLikedPosts,
         getMyBookmarkedPosts,
         getMyCommentedPosts,
+        deleteAccount,
     };
 };

@@ -35,7 +35,7 @@ export const UsersList = () => {
     if (error) return <p className="text-linePrimary text-center p-10">{error}</p>;
 
     return (
-        <section className="hidden md:flex h-fit flex-col items-center gap-1 w-full border border-white/30 p-1 rounded-xl">
+        <section className="hidden lg:flex h-fit flex-col items-center gap-1 w-full border border-white/30 p-1 rounded-xl">
             {!isAdmin && <h2 className="font-bold font-family-pirate text-2xl text-primary">Ranking</h2>}
             {isAdmin && (
                 <section className="bg-gradient-card border border-white/30 p-2 rounded-xl w-full max-w-2xs">
