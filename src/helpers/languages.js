@@ -225,6 +225,8 @@ export const languages = {
             deleteUser: "Eliminar usuario",
             viewUsers: "Ver usuarios",
             deleteAccount: "Eliminar cuenta",
+            followUser: "Seguir",
+            unfollowUser: "Dejar de seguir",
         },
 
         posts: {
@@ -549,6 +551,8 @@ export const languages = {
             deleteUser: "Delete user",
             viewUsers: "View users",
             deleteAccount: "Delete account",
+            followUser: "Follow",
+            unfollowUser: "Unfollow",
         },
 
         posts: {
