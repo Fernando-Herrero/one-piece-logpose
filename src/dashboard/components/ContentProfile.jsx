@@ -49,9 +49,9 @@ export const ContentProfile = ({ context = "myProfile", userId }) => {
             </div>
 
             {activeTab === "posts" && <MyPosts context={context} userId={userId} isMyProfile={isMyProfile} />}
-            {activeTab === "liked" && <MyLikedPosts />}
-            {activeTab === "bookmarked" && <MyBookmarkedPosts />}
-            {activeTab === "comments" && <MyCommentedPosts />}
+            {activeTab === "liked" && <MyLikedPosts isMyProfile={isMyProfile} />}
+            {activeTab === "bookmarked" && <MyBookmarkedPosts isMyProfile={isMyProfile} />}
+            {activeTab === "comments" && <MyCommentedPosts isMyProfile={isMyProfile} />}
         </section>
     );
 };

@@ -41,6 +41,19 @@ export const logOutApi = async (user) => {
     }
 };
 
+export const deleteAccountApi = async (userId) => {
+    try {
+        console.log("Eliminando usuario", user);
+        const response = await api.post(`/users/${userId}`);
+        console.log("Respuesta de la api al eliminar usuario:", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al eliminar usuario", error);
+        throw error;
+    }
+};
+
 export const getProfileApi = async () => {
     try {
         console.log("getProfileApi");

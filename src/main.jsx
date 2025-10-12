@@ -15,19 +15,19 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
         <LanguagesProvider>
             <AuthProvider>
-                <SagaProvider>
-                    <AvatarProvider>
-                        <PostProvider>
-                            <UsersProvider>
+                <PostProvider>
+                    <UsersProvider>
+                        <SagaProvider>
+                            <AvatarProvider>
                                 <ModdalProvider>
                                     <DeviceProvider>
                                         <App />
                                     </DeviceProvider>
                                 </ModdalProvider>
-                            </UsersProvider>
-                        </PostProvider>
-                    </AvatarProvider>
-                </SagaProvider>
+                            </AvatarProvider>
+                        </SagaProvider>
+                    </UsersProvider>
+                </PostProvider>
             </AuthProvider>
         </LanguagesProvider>
     </BrowserRouter>

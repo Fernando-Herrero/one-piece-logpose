@@ -7,7 +7,7 @@ export const PostProvider = ({ children }) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
+    console.log("Estos son los posts del context", posts);
     useEffect(() => {
         const fetchPosts = async () => {
             if (loading) return;

@@ -59,6 +59,7 @@ export const languages = {
             confirmLogOut: "Si",
             deleteCards: "⚠️ ¿Estás seguro? Esto eliminará todas las cartas.",
             deleteProgress: "⚠️ ¿Estás seguro? Esto eliminará todo el progreso de la serie.",
+            deleteAccount: "⚠️ ¿Seguro? Esta acción eliminará todos tus datos permanentemente.",
         },
 
         characters: {
@@ -218,6 +219,12 @@ export const languages = {
             noBookmarkedPosts: "No se ecnontraron posts con favoritos",
             noCommentedPosts: "No se ecnontraron posts con comentarios tuyos",
             emptyMessagePosts: "Aún no hay posts",
+            totalUsers: "Usuarios totales",
+            usersOnline: "Usuarios conectados",
+            usersOffline: "Usuarios desconectados",
+            deleteUser: "Eliminar usuario",
+            viewUsers: "Ver usuarios",
+            deleteAccount: "Eliminar cuenta",
         },
 
         posts: {
@@ -268,36 +275,37 @@ export const languages = {
         },
 
         settings: {
-            titleSecurity: "Security and account access",
+            titleSecurity: "Seguridad y acceso a la cuenta",
             textSecurity:
-                "Manage your account’s security settings and keep track of login sessions and connected apps.",
+                "Administra la seguridad de tu cuenta, revisa tus sesiones activas y controla las aplicaciones conectadas.",
 
-            titleMonetisation: "Monetisation",
+            titleMonetisation: "Monetización",
             textMonetisation:
-                "Discover tools to earn money with your content and manage your monetisation preferences.",
+                "Descubre herramientas para generar ingresos con tu contenido y gestiona tus preferencias de monetización.",
 
             titlePremium: "Premium",
             textPremium:
-                "Unlock exclusive features and enhance your Twitter experience with Premium options.",
+                "Desbloquea funciones exclusivas y mejora tu experiencia en la plataforma con las opciones Premium.",
 
-            titleTimeline: "Timeline",
+            titleTimeline: "Cronología",
             textTimeline:
-                "Control how Tweets appear in your timeline and customise the order you see content.",
+                "Controla cómo se muestran las publicaciones en tu cronología y personaliza el orden del contenido.",
 
-            titlePrivacy: "Privacy and safety",
+            titlePrivacy: "Privacidad y seguridad",
             textPrivacy:
-                "Adjust who can interact with you and manage your content visibility and safety settings.",
+                "Configura quién puede interactuar contigo y gestiona la visibilidad de tu contenido y las opciones de seguridad.",
 
-            titleNotifications: "Notifications",
+            titleNotifications: "Notificaciones",
             textNotifications:
-                "Choose what type of notifications you want to receive and how you’re notified.",
+                "Elige qué tipo de notificaciones deseas recibir y cómo quieres que se te notifiquen.",
 
-            titleAccessibility: "Accessibility",
+            titleAccessibility: "Accesibilidad",
             textAccessibility:
-                "Personalise accessibility features, display preferences, and language options.",
+                "Personaliza las opciones de accesibilidad, las preferencias de visualización y el idioma de la interfaz.",
 
-            titleResources: "Additional resources",
-            textResources: "Find more help, guidelines, and resources to get the most out of Twitter.",
+            titleResources: "Recursos adicionales",
+            textResources:
+                "Encuentra ayuda, guías y recursos para aprovechar al máximo tu experiencia en la plataforma.",
         },
 
         search: {
@@ -372,6 +380,7 @@ export const languages = {
             confirmLogOut: "Yes",
             deleteCards: "⚠️ Are you sure? This will delete all cards progress.",
             deleteProgress: "⚠️ Are you sure? This will delete all series progress.",
+            deleteAccount: "⚠️ Are you sure? This action will delete all your data permanently.",
         },
 
         characters: {
@@ -534,6 +543,12 @@ export const languages = {
             noBookmarkedPosts: "No bookmarked posts",
             noCommentedPosts: "No commented posts",
             emptyMessagePosts: "No posts found",
+            totalUsers: "Total users",
+            usersOnline: "Users online",
+            usersOffline: "Users offline",
+            deleteUser: "Delete user",
+            viewUsers: "View users",
+            deleteAccount: "Delete account",
         },
 
         posts: {

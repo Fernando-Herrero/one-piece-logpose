@@ -1,5 +1,7 @@
+import { Button } from "@/components/Button";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { EditableField } from "@/dashboard/components/profile/EditableField";
 import { FollowSection } from "@/dashboard/components/profile/FollowSection";
@@ -14,13 +16,26 @@ import { useContext, useState } from "react";
 
 export const ProfileArticle = () => {
     const { user, loading, error } = useContext(AuthContext);
-    const { updatedProfile } = useAuth();
+    const { updatedProfile, deleteAccount } = useAuth();
     const { isMobile, isTablet } = useDevice();
     const [coverImg, setCoverImg] = useState(false);
+    const { showModal, hideModal } = useContext(ModalContext);
 
     const editorProps = useProfileEditor(user, updatedProfile, setCoverImg);
     const { lang } = useContext(LanguagesContext);
     const basicFields = getProfileFields(user, lang, coverImg);
+
+    const handleDeleteAccount = () => {
+        showModal({
+            message: languages[lang].modal.deleteAccount,
+            onConfirm: () => {
+                deleteAccount();
+                hideModal();
+            },
+            onCancel: hideModal,
+            confirmText: languages[lang].modal.confirmLogOut,
+        });
+    };
 
     if (!user) return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.noUser}</p>;
     if (loading)
@@ -60,7 +75,11 @@ export const ProfileArticle = () => {
 
                 <ProfileViewMore user={user} editorProps={editorProps} />
 
-                <FollowSection user={user} className="px-2 pb-2" basePath="/dashboard/profile" />
+                <FollowSection user={user} className="px-2" basePath="/dashboard/profile" />
+
+                <Button variant="danger" className="mb-4" onClick={handleDeleteAccount}>
+                    {languages[lang].profile.deleteAccount}
+                </Button>
             </div>
         </article>
     );

@@ -11,9 +11,10 @@ import { useContext } from "react";
 export const PostCard = ({ postId, classSelect = "primary", view = true, basePath, className }) => {
     const { isMobile, isTablet } = useDevice();
     const { posts } = useContext(PostContext);
-    const post = posts.find((post) => post.id === postId);
+    const post = posts?.find((post) => post.id === postId);
     if (!post) return null;
     const { id, userId, text, images, hashtags } = post;
+    console.log("ahora qeu carajos me esta llegando aqui como post", post);
 
     const classType = {
         primary:
@@ -29,7 +30,7 @@ export const PostCard = ({ postId, classSelect = "primary", view = true, basePat
                 "px-6 pt-4": isTablet,
             })}
         >
-            <UserAvatar src={userId.avatar} status={false} className="sm:w-12 sm:h-12" />
+            <UserAvatar src={userId?.avatar} status={false} className="sm:w-12 sm:h-12" />
             <div className="flex-8 flex justify-between flex-col gap-1 sm:gap-2">
                 <div className="flex items-center justify-between">
                     <UserInfo user={userId} />

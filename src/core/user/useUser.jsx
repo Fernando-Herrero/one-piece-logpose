@@ -1,6 +1,8 @@
 import { AuthContext } from "@/context/AuthContext";
+import { UsersContext } from "@/context/UsersContext";
 import { saveUserInLocalStorage } from "@/core/auth/auth.service";
 import {
+    deleteUserApi,
     followUserApi,
     getLikesUserApi,
     getPostsUserApi,
@@ -10,7 +12,8 @@ import {
 import { useContext } from "react";
 
 export const useUser = () => {
-    const { user, setUser } = useContext(AuthContext);
+    const { setUser } = useContext(AuthContext);
+    const { setUsers } = useContext(UsersContext);
 
     const followUser = async (userId) => {
         try {
@@ -57,6 +60,17 @@ export const useUser = () => {
         }
     };
 
+    const deleteUser = async (userId) => {
+        try {
+            const deleteUser = await deleteUserApi(userId);
+            setUsers((prev) => prev.filter((user) => user.id !== userId));
+            return deleteUser;
+        } catch (error) {
+            console.error("Error al eliminar el usuario", error);
+            setError(error);
+        }
+    };
+
     const getPostsUser = async (userId) => {
         try {
             const dataPostsUser = await getPostsUserApi(userId);
@@ -83,5 +97,6 @@ export const useUser = () => {
         getUsers,
         getPostsUser,
         getLikesUser,
+        deleteUser,
     };
 };

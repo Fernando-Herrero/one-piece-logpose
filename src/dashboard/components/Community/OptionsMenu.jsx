@@ -16,7 +16,7 @@ import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 
 export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community" }) => {
-    const { user } = useContext(AuthContext);
+    const { user, isAdmin } = useContext(AuthContext);
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
     const { deletePost } = usePosts();
@@ -24,6 +24,9 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
     const { goTo } = useGoTo();
 
     const menuRef = useClickOutside(toggleMenu, isOpen);
+
+    const amIUser = user?.id === userId?.id || user?._id === userId?.id;
+    const alreadyFollow = user?.following?.includes(userId?.id);
 
     const ItemOptionsMenu = ({ onClick, content, icon, view }) => {
         const className = "flex items-center justify-between w-full cursor-pointer drop-item-style group";
@@ -36,9 +39,6 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
             </button>
         );
     };
-
-    const amIUser = user?.id === userId.id || user?._id === userId.id;
-    const alreadyFollow = user?.following?.includes(userId.id);
 
     return (
         <div className="relative text-xs" ref={menuRef}>
@@ -54,30 +54,31 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
             <DropDown open={isOpen} onClose={closeMenu} size="sm" className="mt-0">
                 {!amIUser && (
                     <ItemOptionsMenu
-                        onClick={() => goTo(`/dashboard/userProfile?userId=${userId.id}`)}
+                        onClick={() => goTo(`/dashboard/userProfile?userId=${userId?.id}`)}
                         content={languages[lang].posts.viewProfile}
                         icon={profileIcon}
                     />
                 )}
 
-                {amIUser && (
-                    <ItemOptionsMenu
-                        onClick={() => deletePost(id)}
-                        content={languages[lang].posts.deletePost}
-                        icon={trash}
-                    />
-                )}
+                {amIUser ||
+                    (isAdmin && (
+                        <ItemOptionsMenu
+                            onClick={() => deletePost(id)}
+                            content={languages[lang].posts.deletePost}
+                            icon={trash}
+                        />
+                    ))}
 
                 {!amIUser &&
                     (alreadyFollow ? (
                         <ItemOptionsMenu
-                            onClick={() => unfollowUser(userId.id)}
+                            onClick={() => unfollowUser(userId?.id)}
                             content={languages[lang].posts.unfollow}
                             icon={minus}
                         />
                     ) : (
                         <ItemOptionsMenu
-                            onClick={() => followUser(userId.id)}
+                            onClick={() => followUser(userId?.id)}
                             content={languages[lang].posts.follow}
                             icon={plus}
                         />
