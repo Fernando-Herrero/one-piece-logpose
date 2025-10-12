@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { SagaContext } from "@/context/SagaContext";
@@ -34,12 +35,9 @@ export const Serie = () => {
 
     return (
         <section className="flex flex-col gap-2 p-2 space-y-1 mx-auto max-w-container md:p-8">
-            <button
-                className="px-4 py-2 bg-linePrimary hover:bg-linePrimary rounded-xl transition-all hover:-translate-y-0.5 text-white ml-auto cursor-pointer"
-                onClick={handleReset}
-            >
+            <Button variant="danger" onClick={handleReset} className="ml-auto">
                 {languages[lang].sagaData.resetProgress}
-            </button>
+            </Button>
             {sagas.map(({ name, saga_id, japaneseName, total_episodes, first_arc, last_arc }) => {
                 const arcsInSaga = getArcsBySaga(first_arc, last_arc);
 

@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
@@ -97,12 +98,9 @@ export const Cards = () => {
         <div className="p-2 md:p-8">
             <div className="flex justify-between flex-wrap items-center mb-6">
                 <h1 className="text-3xl font-bold text-primary">{languages[lang].cards.collection}</h1>
-                <button
-                    onClick={handleReset}
-                    className="bg-linePrimary hover:bg-lineDark dark:text-black !text-white px-4 py-2 rounded-lg transition-all hover:-translate-y-0.5"
-                >
+                <Button variant="danger" onClick={handleReset}>
                     🗑️ {languages[lang].cards.deleteCards}
-                </button>
+                </Button>
             </div>
 
             <div className="flex flex-wrap gap-2 mb-8">
