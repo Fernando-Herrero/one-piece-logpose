@@ -330,6 +330,22 @@ export const languages = {
             settingPremium: "Ajustes → Premium",
             verifyAccount: "para verificar tu cuenta.",
         },
+
+        premium: {
+            title: "Verificación Premium",
+            verify: "Verifica tu cuenta para desbloquear funciones Premium y mostrar tu insignia azul.",
+            cancel: "Cancelar",
+            errorName: "Introduce el nombre tal como aparece en la tarjeta.",
+            errorNumber: "Número de tarjeta inválido.",
+            errorExpiryFormat: "Formato inválido (usa MM/AA).",
+            errorExpiryMonth: "Mes inválido.",
+            errorExpiryExpired: "Tarjeta caducada.",
+            errorCvv: "CVV inválido.",
+            loading: "Procesando...",
+            payVerify: "Pagar y verificar",
+            close: "Cerrar",
+            verified: "Tu cuenta ya está verificada. ¡Gracias por tu apoyo! 💙",
+        },
     },
 
     en: {
@@ -662,6 +678,22 @@ export const languages = {
             goTo: "Go to",
             settingPremium: "Settings → Premium",
             verifyAccount: "to verify your account.",
+        },
+
+        premium: {
+            title: "Premium Verification",
+            verify: "Verify your account to unlock Premium features and display your blue badge.",
+            cancel: "Cancel",
+            errorName: "Enter the name exactly as it appears on the card.",
+            errorNumber: "Invalid card number.",
+            errorExpiryFormat: "Invalid format (use MM/YY).",
+            errorExpiryMonth: "Invalid month.",
+            errorExpiryExpired: "Card expired.",
+            errorCvv: "Invalid CVV.",
+            loading: "Processing...",
+            payVerify: "Pay and verify",
+            close: "Close",
+            verified: "Your account is already verified. Thank you for your support! 💙",
         },
     },
 };

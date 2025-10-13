@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     const isAdmin = user?.role === "admin";
-    const isVerified = user?.isVerified;
+    const isVerified = user?.verified;
 
     useEffect(() => {
         const fetchProfile = async () => {
