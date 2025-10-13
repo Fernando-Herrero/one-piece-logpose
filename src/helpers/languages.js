@@ -43,6 +43,7 @@ export const languages = {
             reset: "Eliminar Cuenta",
             search: "buscar...",
             settings: "Ajustes",
+            purchases: "Compras",
         },
 
         modal: {
@@ -319,6 +320,32 @@ export const languages = {
             exactMatches: "Coincidencias exactas",
             otherResults: "Otros resultados",
         },
+
+        purchases: {
+            purchases: "Compras",
+            verified: "¡Tu cuenta está verificada!",
+            thanks: "Gracias por apoyar nuestra plataforma. Las funciones Premium ahora están activas.",
+            noPurchases: "Aún no has comprado la verificación.",
+            goTo: "Ve a",
+            settingPremium: "Ajustes → Premium",
+            verifyAccount: "para verificar tu cuenta.",
+        },
+
+        premium: {
+            title: "Verificación Premium",
+            verify: "Verifica tu cuenta para desbloquear funciones Premium y mostrar tu insignia azul.",
+            cancel: "Cancelar",
+            errorName: "Introduce el nombre tal como aparece en la tarjeta.",
+            errorNumber: "Número de tarjeta inválido.",
+            errorExpiryFormat: "Formato inválido (usa MM/AA).",
+            errorExpiryMonth: "Mes inválido.",
+            errorExpiryExpired: "Tarjeta caducada.",
+            errorCvv: "CVV inválido.",
+            loading: "Procesando...",
+            payVerify: "Pagar y verificar",
+            close: "Cerrar",
+            verified: "Tu cuenta ya está verificada. ¡Gracias por tu apoyo! 💙",
+        },
     },
 
     en: {
@@ -366,6 +393,7 @@ export const languages = {
             reset: "Delete Account",
             search: "search...",
             settings: "Settings",
+            purchases: "Purchases",
         },
 
         modal: {
@@ -640,6 +668,32 @@ export const languages = {
             result: "Result",
             exactMatches: "Exact matches",
             otherResults: "Others results",
+        },
+
+        purchases: {
+            purchases: "Purchases",
+            verified: "You are verified!",
+            thanks: "Thank you for supporting our platform. Premium features are now active.",
+            noPurchases: "You haven’t purchased verification yet.",
+            goTo: "Go to",
+            settingPremium: "Settings → Premium",
+            verifyAccount: "to verify your account.",
+        },
+
+        premium: {
+            title: "Premium Verification",
+            verify: "Verify your account to unlock Premium features and display your blue badge.",
+            cancel: "Cancel",
+            errorName: "Enter the name exactly as it appears on the card.",
+            errorNumber: "Invalid card number.",
+            errorExpiryFormat: "Invalid format (use MM/YY).",
+            errorExpiryMonth: "Invalid month.",
+            errorExpiryExpired: "Card expired.",
+            errorCvv: "Invalid CVV.",
+            loading: "Processing...",
+            payVerify: "Pay and verify",
+            close: "Close",
+            verified: "Your account is already verified. Thank you for your support! 💙",
         },
     },
 };

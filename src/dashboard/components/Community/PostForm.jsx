@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button";
+import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useContext, useState } from "react";
@@ -12,6 +13,7 @@ export const PostForm = ({
     placeholderText,
     initialData = { text: "", image: "" },
 }) => {
+    const { isVerified } = useContext(AuthContext);
     const [formData, setFormData] = useState(initialData);
     const { lang } = useContext(LanguagesContext);
 
@@ -49,7 +51,7 @@ export const PostForm = ({
                         name="text"
                         value={formData.text}
                         onChange={handleInputs}
-                        maxLength={280}
+                        maxLength={isVerified ? 600 : 280}
                         placeholder={placeholderText}
                         className="bg-sunny p-2 min-h-80 w-full rounded-xl no-focus text-primary"
                     />

@@ -1,6 +1,6 @@
 import { languages } from "@/helpers/languages";
 
-export const settingsMenu = (lang) => [
+export const settingsMenu = (lang, goTo) => [
     {
         emoji: "🔒",
         title: languages[lang].settings.titleSecurity,
@@ -15,6 +15,7 @@ export const settingsMenu = (lang) => [
         emoji: "⭐",
         title: languages[lang].settings.titlePremium,
         text: languages[lang].settings.textPremium,
+        onClick: () => goTo("/dashboard/settings/premium"),
     },
     {
         emoji: "🕒",

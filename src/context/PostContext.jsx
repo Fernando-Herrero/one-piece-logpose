@@ -1,5 +1,6 @@
+import { AuthContext } from "@/context/AuthContext";
 import { getPostsApi } from "@/core/posts/posts.api";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const PostContext = createContext(null);
 
@@ -7,9 +8,14 @@ export const PostProvider = ({ children }) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    console.log("Estos son los posts del context", posts);
+    const { user } = useContext(AuthContext);
+
     useEffect(() => {
         const fetchPosts = async () => {
+            if (!user) {
+                setPosts([]);
+                return;
+            }
             if (loading) return;
             try {
                 setLoading(true);
@@ -26,7 +32,7 @@ export const PostProvider = ({ children }) => {
         };
 
         fetchPosts();
-    }, []);
+    }, [user]);
 
     return (
         <PostContext.Provider value={{ posts, setPosts, loading, error, setError }}>
