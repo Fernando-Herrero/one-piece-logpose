@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     const isAdmin = user?.role === "admin";
+    const isVerified = user?.isVerified;
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -37,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, setUser, error, setError, loading, isAdmin }}>
+        <AuthContext.Provider value={{ user, setUser, error, setError, loading, isAdmin, isVerified }}>
             {children}
         </AuthContext.Provider>
     );

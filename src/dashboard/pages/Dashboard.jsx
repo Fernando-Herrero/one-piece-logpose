@@ -10,6 +10,7 @@ import { Community } from "@/dashboard/pages/Community";
 import { Post } from "@/dashboard/pages/Post";
 import { PostPage } from "@/dashboard/pages/PostPage";
 import { Profile } from "@/dashboard/pages/Profile";
+import { Purchases } from "@/dashboard/pages/Purchases";
 import { SearchResults } from "@/dashboard/pages/SearchResults";
 import { Serie } from "@/dashboard/pages/Serie";
 import { Settings } from "@/dashboard/pages/Settings";
@@ -98,6 +99,8 @@ export const Dashboard = () => {
                 <Route path="/search" element={<SearchResults />} />
 
                 <Route path="/settings" element={<Settings />} />
+
+                <Route path="/purchases" element={<Purchases />} />
             </Routes>
         </AppShell>
     );

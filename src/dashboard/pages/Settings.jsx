@@ -7,7 +7,6 @@ import { useContext } from "react";
 export const Settings = () => {
     const { isTablet } = useDevice();
     const { lang } = useContext(LanguagesContext);
-
     const fields = settingsMenu(lang);
 
     return (

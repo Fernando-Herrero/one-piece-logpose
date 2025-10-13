@@ -43,6 +43,7 @@ export const languages = {
             reset: "Eliminar Cuenta",
             search: "buscar...",
             settings: "Ajustes",
+            purchases: "Compras",
         },
 
         modal: {
@@ -319,6 +320,16 @@ export const languages = {
             exactMatches: "Coincidencias exactas",
             otherResults: "Otros resultados",
         },
+
+        purchases: {
+            purchases: "Compras",
+            verified: "¡Tu cuenta está verificada!",
+            thanks: "Gracias por apoyar nuestra plataforma. Las funciones Premium ahora están activas.",
+            noPurchases: "Aún no has comprado la verificación.",
+            goTo: "Ve a",
+            settingPremium: "Ajustes → Premium",
+            verifyAccount: "para verificar tu cuenta.",
+        },
     },
 
     en: {
@@ -366,6 +377,7 @@ export const languages = {
             reset: "Delete Account",
             search: "search...",
             settings: "Settings",
+            purchases: "Purchases",
         },
 
         modal: {
@@ -640,6 +652,16 @@ export const languages = {
             result: "Result",
             exactMatches: "Exact matches",
             otherResults: "Others results",
+        },
+
+        purchases: {
+            purchases: "Purchases",
+            verified: "You are verified!",
+            thanks: "Thank you for supporting our platform. Premium features are now active.",
+            noPurchases: "You haven’t purchased verification yet.",
+            goTo: "Go to",
+            settingPremium: "Settings → Premium",
+            verifyAccount: "to verify your account.",
         },
     },
 };
