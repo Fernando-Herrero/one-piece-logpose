@@ -4,7 +4,7 @@ import { Overlay } from "@/components/Overlay";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext.jsx";
-import { Spinner } from "@/dashboard/components/community/Spinner";
+import { Spinner } from "@/dashboard/components/community/Spinner.jsx";
 import { Dashboard } from "@/dashboard/pages/Dashboard";
 import { languages } from "@/helpers/languages";
 import { Footer } from "@/landing/components/features/Footer";
