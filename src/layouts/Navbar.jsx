@@ -2,7 +2,7 @@ import cardsIcon from "@/assets/icons/cards-icon.svg";
 import profileIcon from "@/assets/icons/home-icon.svg";
 import serieIcon from "@/assets/icons/serie-icon.svg";
 import socialIcon from "@/assets/icons/social-icon.svg";
-import { AuthContext } from "@/context/authContext";
+import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { NavbarItems } from "@/landing/components/features/NavbarItems";
