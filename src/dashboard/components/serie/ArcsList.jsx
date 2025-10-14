@@ -1,5 +1,5 @@
 import { AccordionSerie } from "@/dashboard/components/serie/AccordionSerie";
-import { EpisodeItem } from "@/dashboard/components/serie/episodesItem";
+import { EpisodeItem } from "@/dashboard/components/serie/EpisodesItem";
 import { episodes } from "@/dashboard/data/serieData/episodes";
 
 const getEpisodesByArc = (firstEpisode, lastEpisode) => {
