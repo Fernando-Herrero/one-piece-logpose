@@ -1,5 +1,5 @@
 import { Overlay } from "@/components/Overlay";
-import { UserProvider } from "@/context/userContext";
+import { UserProvider } from "@/context/UserContext";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/profile/AvatarSection";
 import { FollowersCard } from "@/dashboard/components/profile/FollowersCard";
