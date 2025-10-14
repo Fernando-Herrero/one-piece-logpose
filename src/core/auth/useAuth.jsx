@@ -1,7 +1,7 @@
+import { AuthContext } from "@/context/AuthContext";
 import { local } from "@/helpers/storage";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
-import { AuthContext } from "../../context/authContext";
 import {
     deleteAccountApi,
     getMyBookmarkedPostsApi,
