@@ -27,52 +27,54 @@ export const useEpisodeCheck = (
     isLastArcOfSaga,
     achievements
 ) => {
-    const checkedSaved = local.get(`episode_${episode_id}`);
-    const [inputCheck, setInputCheck] = useState(checkedSaved || false);
-    const [isLoading, setIsLoading] = useState(false);
-
     const { user, setUser } = useContext(AuthContext);
+    const userId = user?.id || user?._id;
     const { updateProgress } = useContext(SagaContext);
     const { updatedProfile } = useAuth();
+
+    const episodeKey = userId ? `episode_${episode_id}_${userId}` : `episode_${episode_id}`;
+    const checkedSaved = local.get(episodeKey);
+    const [inputCheck, setInputCheck] = useState(checkedSaved || false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleToggleCheck = async () => {
         const newCheckState = !inputCheck;
         setInputCheck(newCheckState);
-        local.save(`episode_${episode_id}`, newCheckState);
+        local.save(episodeKey, newCheckState);
 
         if (newCheckState && achievements) {
             if (achievements.characters?.length) {
                 achievements.characters.forEach((characterId) => {
                     const card = getCharacterCard(characterId);
-                    unlockCard("characters", card);
+                    unlockCard("characters", card, userId);
                 });
             }
 
             if (achievements.items?.length) {
                 achievements.items.forEach((itemId) => {
                     const card = getItemCard(itemId);
-                    unlockCard("items", card);
+                    unlockCard("items", card, userId);
                 });
             }
 
             if (achievements.fruits?.length) {
                 achievements.fruits.forEach((fruitId) => {
                     const card = getFruitCard(fruitId);
-                    unlockCard("fruits", card);
+                    unlockCard("fruits", card, userId);
                 });
             }
 
             if (achievements.swords?.length) {
                 achievements.swords.forEach((swordId) => {
                     const card = getSwordCard(swordId);
-                    unlockCard("swords", card);
+                    unlockCard("swords", card, userId);
                 });
             }
 
             if (achievements.boats?.length) {
                 achievements.boats.forEach((boatId) => {
                     const card = getBoatCard(boatId);
-                    unlockCard("boats", card);
+                    unlockCard("boats", card, userId);
                 });
             }
         }
@@ -134,10 +136,9 @@ export const useEpisodeCheck = (
             });
         } catch (error) {
             console.error("❌ Error al actualizar progreso:", error);
-
             setUser(user);
             setInputCheck(!newCheckState);
-            local.save(`episode_${episode_id}`, !newCheckState);
+            local.save(episodeKey, !newCheckState);
         } finally {
             setIsLoading(false);
         }

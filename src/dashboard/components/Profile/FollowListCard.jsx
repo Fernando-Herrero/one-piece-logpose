@@ -91,7 +91,7 @@ export const FollowListCard = ({ onCancel, type = "followers" }) => {
             <button onClick={() => goTo(from)} className="cursor-pointer">
                 <img className="w-8" src={cross} alt="Cross icon" />
             </button>
-            <div className="bg-white p-2 rounded-xl w-full flex flex-col gap-1">
+            <div className="bg-sunny p-1 rounded-xl w-full flex flex-col gap-1">
                 {users?.length > 0 ? (
                     users.map(({ username, firstName, lastName, displayName }, index) => (
                         <article

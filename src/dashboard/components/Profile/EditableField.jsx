@@ -43,13 +43,23 @@ export const EditableField = ({
         return () => window.removeEventListener("mousedown", handleClickOutside);
     }, [isCurrentlyEditing, cancelEditing]);
 
+    const fieldTextStyles = {
+        displayName: "text-primary font-semibold sm:text-xl",
+        bio: "mt-2 px-2 font-family-decorative text-gradient text-xl",
+        coverImage: "mt-2",
+        default: "text-xs text-gradient sm:text-base",
+    };
+
     const isCoverImageHidden = () => fieldName === "coverImage" && !changeCoverImg;
 
     const shouldShowValue = () => value && !isCoverImageHidden();
 
     const getDisplayValue = () => {
         if (fieldName === "coverImage" && changeCoverImg) {
-            return <span className="italic">{languages[lang].profile.changeCoverImg}</span>;
+            return <span className="italic text-muted">{languages[lang].profile.changeCoverImg}</span>;
+        }
+        if (fieldName === "coverImage" && value) {
+            return <span className="italic text-muted">Imagen establecida</span>;
         }
         return value;
     };
@@ -62,13 +72,7 @@ export const EditableField = ({
     };
 
     const getValueStyles = () =>
-        classNames(
-            !readOnly && "cursor-pointer",
-            fieldName === "displayName"
-                ? "text-primary font-semibold sm:text-xl"
-                : "text-xs text-gradient sm:text-base",
-            (fieldName === "bio" || fieldName === "coverImage") && "mt-2"
-        );
+        classNames(!readOnly && "cursor-pointer", fieldTextStyles[fieldName] || fieldTextStyles.default);
 
     const getEmptyStyles = () =>
         classNames("text-xs text-muted italic sm:text-sm", !readOnly && "cursor-pointer");
@@ -82,7 +86,7 @@ export const EditableField = ({
                         value={field}
                         onChange={(event) => setField(event.target.value)}
                         onKeyDown={handleKeyDown}
-                        className="px-1 py-0.5 rounded-xl text-xs no-focus dark:text-white sm:text-sm"
+                        className="px-1 py-0.5 rounded-xl text-xs no-focus text-muted sm:text-sm"
                         placeholder={placeholder}
                         autoFocus
                     />

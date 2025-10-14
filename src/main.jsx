@@ -1,8 +1,9 @@
 import { PostProvider } from "@/context/PostContext.jsx";
+import { UsersProvider } from "@/context/UsersContext.jsx";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App.jsx";
-import { AuthProvider } from "./context/authContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import { AvatarProvider } from "./context/AvatarContext.jsx";
 import { DeviceProvider } from "./context/DeviceContext.jsx";
 import { LanguagesProvider } from "./context/LanguagesContext.jsx";
@@ -14,17 +15,19 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
         <LanguagesProvider>
             <AuthProvider>
-                <SagaProvider>
-                    <AvatarProvider>
-                        <PostProvider>
-                            <ModdalProvider>
-                                <DeviceProvider>
-                                    <App />
-                                </DeviceProvider>
-                            </ModdalProvider>
-                        </PostProvider>
-                    </AvatarProvider>
-                </SagaProvider>
+                <PostProvider>
+                    <UsersProvider>
+                        <SagaProvider>
+                            <AvatarProvider>
+                                <ModdalProvider>
+                                    <DeviceProvider>
+                                        <App />
+                                    </DeviceProvider>
+                                </ModdalProvider>
+                            </AvatarProvider>
+                        </SagaProvider>
+                    </UsersProvider>
+                </PostProvider>
             </AuthProvider>
         </LanguagesProvider>
     </BrowserRouter>

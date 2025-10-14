@@ -1,5 +1,5 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { useUser } from "@/core/user/useUser";
+import { useAuth } from "@/core/auth/useAuth";
 import { SkeletonText } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
@@ -11,7 +11,7 @@ export const UserStats = () => {
     const { bookmarkedPosts, commentedPosts, likedPosts, myPosts, totalComments } = stats;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const { getUserStats } = useUser();
+    const { getUserStats } = useAuth();
     const { lang } = useContext(LanguagesContext);
     const { isMobile, isTablet } = useDevice();
 

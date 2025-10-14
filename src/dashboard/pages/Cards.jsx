@@ -1,6 +1,8 @@
+import { Button } from "@/components/Button";
+import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
-import { clearAllCards, getUnlockedCards } from "@/core/achievements/achievementsStorage";
+import { clearUserCards, getUnlockedCards } from "@/core/achievements/achievementsStorage";
 import { BoatCard } from "@/dashboard/components/cards/BoatCard";
 import { CharacterCardUser } from "@/dashboard/components/cards/CharacterCardUser";
 import { FruitCard } from "@/dashboard/components/cards/FruitCard";
@@ -10,6 +12,8 @@ import { languages } from "@/helpers/languages";
 import { useContext, useEffect, useState } from "react";
 
 export const Cards = () => {
+    const { user } = useContext(AuthContext);
+    const userId = user?.id || user?._id;
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
     const [unlockedCards, setUnlockedCards] = useState({
@@ -22,7 +26,7 @@ export const Cards = () => {
     const [activeFilter, setActiveFilter] = useState("all");
 
     useEffect(() => {
-        const cards = getUnlockedCards();
+        const cards = getUnlockedCards(userId);
         setUnlockedCards(cards);
     }, []);
 
@@ -30,7 +34,7 @@ export const Cards = () => {
         showModal({
             message: languages[lang].modal.deleteCards,
             onConfirm: () => {
-                clearAllCards();
+                clearUserCards(userId);
                 hideModal();
                 setTimeout(() => {
                     window.location.reload();
@@ -94,12 +98,9 @@ export const Cards = () => {
         <div className="p-2 md:p-8">
             <div className="flex justify-between flex-wrap items-center mb-6">
                 <h1 className="text-3xl font-bold text-primary">{languages[lang].cards.collection}</h1>
-                <button
-                    onClick={handleReset}
-                    className="bg-linePrimary hover:bg-lineDark dark:text-black !text-white px-4 py-2 rounded-lg transition-all hover:-translate-y-0.5"
-                >
+                <Button variant="danger" onClick={handleReset}>
                     🗑️ {languages[lang].cards.deleteCards}
-                </button>
+                </Button>
             </div>
 
             <div className="flex flex-wrap gap-2 mb-8">

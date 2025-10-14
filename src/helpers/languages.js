@@ -43,6 +43,7 @@ export const languages = {
             reset: "Eliminar Cuenta",
             search: "buscar...",
             settings: "Ajustes",
+            purchases: "Compras",
         },
 
         modal: {
@@ -59,6 +60,7 @@ export const languages = {
             confirmLogOut: "Si",
             deleteCards: "⚠️ ¿Estás seguro? Esto eliminará todas las cartas.",
             deleteProgress: "⚠️ ¿Estás seguro? Esto eliminará todo el progreso de la serie.",
+            deleteAccount: "⚠️ ¿Seguro? Esta acción eliminará todos tus datos permanentemente.",
         },
 
         characters: {
@@ -197,7 +199,8 @@ export const languages = {
             emptyBio: "Escribe tu biografía",
             inputCoverImage: "Inserta una URL para tu imagen de fondo",
             emptyCoverImage: "Inserta una URL para tu imagen de fondo",
-            changeCoverImg: "Cambiar cover Img",
+            setCoverImg: "Establece una imagen de background",
+            changeCoverImg: "Cambiar la imagen de background",
             loadingProfile: "Cargando Perfil",
             viewFollowers: "Ver seguidores",
             userError: "Reintentar",
@@ -217,6 +220,14 @@ export const languages = {
             noBookmarkedPosts: "No se ecnontraron posts con favoritos",
             noCommentedPosts: "No se ecnontraron posts con comentarios tuyos",
             emptyMessagePosts: "Aún no hay posts",
+            totalUsers: "Usuarios totales",
+            usersOnline: "Usuarios conectados",
+            usersOffline: "Usuarios desconectados",
+            deleteUser: "Eliminar usuario",
+            viewUsers: "Ver usuarios",
+            deleteAccount: "Eliminar cuenta",
+            followUser: "Seguir",
+            unfollowUser: "Dejar de seguir",
         },
 
         posts: {
@@ -267,36 +278,37 @@ export const languages = {
         },
 
         settings: {
-            titleSecurity: "Security and account access",
+            titleSecurity: "Seguridad y acceso a la cuenta",
             textSecurity:
-                "Manage your account’s security settings and keep track of login sessions and connected apps.",
+                "Administra la seguridad de tu cuenta, revisa tus sesiones activas y controla las aplicaciones conectadas.",
 
-            titleMonetisation: "Monetisation",
+            titleMonetisation: "Monetización",
             textMonetisation:
-                "Discover tools to earn money with your content and manage your monetisation preferences.",
+                "Descubre herramientas para generar ingresos con tu contenido y gestiona tus preferencias de monetización.",
 
             titlePremium: "Premium",
             textPremium:
-                "Unlock exclusive features and enhance your Twitter experience with Premium options.",
+                "Desbloquea funciones exclusivas y mejora tu experiencia en la plataforma con las opciones Premium.",
 
-            titleTimeline: "Timeline",
+            titleTimeline: "Cronología",
             textTimeline:
-                "Control how Tweets appear in your timeline and customise the order you see content.",
+                "Controla cómo se muestran las publicaciones en tu cronología y personaliza el orden del contenido.",
 
-            titlePrivacy: "Privacy and safety",
+            titlePrivacy: "Privacidad y seguridad",
             textPrivacy:
-                "Adjust who can interact with you and manage your content visibility and safety settings.",
+                "Configura quién puede interactuar contigo y gestiona la visibilidad de tu contenido y las opciones de seguridad.",
 
-            titleNotifications: "Notifications",
+            titleNotifications: "Notificaciones",
             textNotifications:
-                "Choose what type of notifications you want to receive and how you’re notified.",
+                "Elige qué tipo de notificaciones deseas recibir y cómo quieres que se te notifiquen.",
 
-            titleAccessibility: "Accessibility",
+            titleAccessibility: "Accesibilidad",
             textAccessibility:
-                "Personalise accessibility features, display preferences, and language options.",
+                "Personaliza las opciones de accesibilidad, las preferencias de visualización y el idioma de la interfaz.",
 
-            titleResources: "Additional resources",
-            textResources: "Find more help, guidelines, and resources to get the most out of Twitter.",
+            titleResources: "Recursos adicionales",
+            textResources:
+                "Encuentra ayuda, guías y recursos para aprovechar al máximo tu experiencia en la plataforma.",
         },
 
         search: {
@@ -307,6 +319,32 @@ export const languages = {
             result: "Resultado",
             exactMatches: "Coincidencias exactas",
             otherResults: "Otros resultados",
+        },
+
+        purchases: {
+            purchases: "Compras",
+            verified: "¡Tu cuenta está verificada!",
+            thanks: "Gracias por apoyar nuestra plataforma. Las funciones Premium ahora están activas.",
+            noPurchases: "Aún no has comprado la verificación.",
+            goTo: "Ve a",
+            settingPremium: "Ajustes → Premium",
+            verifyAccount: "para verificar tu cuenta.",
+        },
+
+        premium: {
+            title: "Verificación Premium",
+            verify: "Verifica tu cuenta para desbloquear funciones Premium y mostrar tu insignia azul.",
+            cancel: "Cancelar",
+            errorName: "Introduce el nombre tal como aparece en la tarjeta.",
+            errorNumber: "Número de tarjeta inválido.",
+            errorExpiryFormat: "Formato inválido (usa MM/AA).",
+            errorExpiryMonth: "Mes inválido.",
+            errorExpiryExpired: "Tarjeta caducada.",
+            errorCvv: "CVV inválido.",
+            loading: "Procesando...",
+            payVerify: "Pagar y verificar",
+            close: "Cerrar",
+            verified: "Tu cuenta ya está verificada. ¡Gracias por tu apoyo! 💙",
         },
     },
 
@@ -355,6 +393,7 @@ export const languages = {
             reset: "Delete Account",
             search: "search...",
             settings: "Settings",
+            purchases: "Purchases",
         },
 
         modal: {
@@ -371,6 +410,7 @@ export const languages = {
             confirmLogOut: "Yes",
             deleteCards: "⚠️ Are you sure? This will delete all cards progress.",
             deleteProgress: "⚠️ Are you sure? This will delete all series progress.",
+            deleteAccount: "⚠️ Are you sure? This action will delete all your data permanently.",
         },
 
         characters: {
@@ -513,6 +553,7 @@ export const languages = {
             emptyBio: "Insert your biography",
             inputCoverImage: "Insert a URL for your cover image",
             emptyCoverImage: "Insert a URL for your cover image",
+            setCoverImg: "Set a cover image",
             changeCoverImg: "Change cover Img",
             loadingProfile: "Loading Profile",
             userError: "Try again",
@@ -532,6 +573,14 @@ export const languages = {
             noBookmarkedPosts: "No bookmarked posts",
             noCommentedPosts: "No commented posts",
             emptyMessagePosts: "No posts found",
+            totalUsers: "Total users",
+            usersOnline: "Users online",
+            usersOffline: "Users offline",
+            deleteUser: "Delete user",
+            viewUsers: "View users",
+            deleteAccount: "Delete account",
+            followUser: "Follow",
+            unfollowUser: "Unfollow",
         },
 
         posts: {
@@ -619,6 +668,32 @@ export const languages = {
             result: "Result",
             exactMatches: "Exact matches",
             otherResults: "Others results",
+        },
+
+        purchases: {
+            purchases: "Purchases",
+            verified: "You are verified!",
+            thanks: "Thank you for supporting our platform. Premium features are now active.",
+            noPurchases: "You haven’t purchased verification yet.",
+            goTo: "Go to",
+            settingPremium: "Settings → Premium",
+            verifyAccount: "to verify your account.",
+        },
+
+        premium: {
+            title: "Premium Verification",
+            verify: "Verify your account to unlock Premium features and display your blue badge.",
+            cancel: "Cancel",
+            errorName: "Enter the name exactly as it appears on the card.",
+            errorNumber: "Invalid card number.",
+            errorExpiryFormat: "Invalid format (use MM/YY).",
+            errorExpiryMonth: "Invalid month.",
+            errorExpiryExpired: "Card expired.",
+            errorCvv: "Invalid CVV.",
+            loading: "Processing...",
+            payVerify: "Pay and verify",
+            close: "Close",
+            verified: "Your account is already verified. Thank you for your support! 💙",
         },
     },
 };

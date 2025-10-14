@@ -1,5 +1,6 @@
 import helpIcon from "@/assets/icons/help-icon.svg";
 import settings from "@/assets/icons/settings-icon.svg";
+import trolley from "@/assets/icons/trolley-icon.svg";
 import { LanguageSelect } from "@/components/LanguageSelect";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { DarkTheme } from "@/dashboard/components/DarkTheme";
@@ -32,11 +33,11 @@ export const SideBar = () => {
     return (
         <aside
             ref={containRef}
-            className="fixed flex flex-col w-fit h-screen bg-gradient-primary border-r-2 border-primary p-2 text-sm mt-11 pb-20 z-5 md:p-4 md:mt-13 md:pb-24"
+            className="fixed flex flex-col w-fit h-screen bg-gradient-primary border-r-2 border-primary p-2 text-sm mt-11 pb-20 z-5 md:p-4 md:mt-13"
         >
             <Navbar ref={containRef} isOpen={isOpen} toggleMenu={toggleMenu} />
 
-            <div className="flex flex-col items-center gap-2 pl-1 mt-auto md:items-start md:text-base">
+            <div className="flex flex-col items-center gap-2 pl-1 mt-auto md:items-start md:text-base md:mb-12">
                 <DarkTheme />
                 <LanguageSelect placement="bottom" align="left" />
 
@@ -56,6 +57,14 @@ export const SideBar = () => {
                 >
                     <img className="w-4" src={settings} alt="Settings icon" />
                     <span className="hidden text-gradient md:block">{languages[lang].navbar.settings}</span>
+                </button>
+
+                <button
+                    className="flex items-center gap-1 py-2 cursor-pointer"
+                    onClick={() => goTo("/dashboard/purchases")}
+                >
+                    <img className="w-4" src={trolley} alt="Settings icon" />
+                    <span className="hidden text-gradient md:block">{languages[lang].navbar.purchases}</span>
                 </button>
             </div>
         </aside>

@@ -19,7 +19,7 @@ export const ProfileHeader = ({ user, setCoverImg }) => {
                     />
                 ) : (
                     <div className="flex items-center justify-center h-full text-gray-500 italic">
-                        No cover image
+                        {languages[lang].profile.setCoverImg}
                     </div>
                 )}
                 <button

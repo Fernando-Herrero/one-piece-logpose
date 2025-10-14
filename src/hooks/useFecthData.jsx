@@ -13,7 +13,6 @@ export const useFetchData = (fetchFunction) => {
                 setError(null);
 
                 const result = await fetchFunction();
-                console.log("Fetched data", result);
                 setData(result);
             } catch (error) {
                 console.error("Error al obtener mis posts", error);

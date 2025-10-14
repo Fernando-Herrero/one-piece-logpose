@@ -1,7 +1,7 @@
 import { useToggle } from "@/hooks/useToggle";
 import { useState } from "react";
 
-export const useProfileEditor = (user, updatedProfileFunction) => {
+export const useProfileEditor = (user, updatedProfileFunction, setChangeCoverImg) => {
     const [isEditing, toggleEditing] = useToggle();
     const [field, setField] = useState("");
     const [editingField, setEditingField] = useState(null);
@@ -18,6 +18,11 @@ export const useProfileEditor = (user, updatedProfileFunction) => {
         try {
             const updateField = { [editingField]: field.trim() };
             await updatedProfileFunction(user, updateField);
+
+            if (editingField === "coverImage" && typeof setChangeCoverImg === "function") {
+                setChangeCoverImg(false);
+            }
+
             resetEditing();
         } catch (error) {
             console.error("Error al guardar:", error);

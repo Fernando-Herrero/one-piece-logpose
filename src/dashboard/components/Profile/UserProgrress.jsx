@@ -13,6 +13,12 @@ export const UserProgress = () => {
     const { lang } = useContext(LanguagesContext);
     const { isMobile, isTablet } = useDevice();
 
+    const items = [
+        { title: languages[lang].sagaData.saga, value: saga?.saga },
+        { title: languages[lang].sagaData.arc, value: saga?.arc },
+        { title: languages[lang].sagaData.episode, value: saga?.episode },
+    ];
+
     return (
         <>
             {loading ? (
@@ -27,19 +33,15 @@ export const UserProgress = () => {
                         }
                     )}
                 >
-                    <div className="flex gap-1 text-sm sm:text-base">
-                        <p className="flex gap-1 text-primary font-semibold">
-                            {languages[lang].sagaData.saga}:
-                            <span className="text-gradient font-normal">{saga?.saga}</span>
-                        </p>
-                        <p className="flex gap-1 text-primary font-semibold">
-                            {languages[lang].sagaData.arc}:
-                            <span className="text-gradient font-normal">{saga?.arc}</span>
-                        </p>
-                        <p className="flex gap-1 text-primary font-semibold">
-                            {languages[lang].sagaData.episode}:
-                            <span className="text-gradient font-normal">{saga?.episode}</span>
-                        </p>
+                    <div className="flex gap-1 text-sm sm:text-base w-full">
+                        {items.map(({ title, value }, index) => (
+                            <p
+                                key={`${title}-${index}`}
+                                className="flex items-center gap-1 text-primary font-semibold pl-4 first:p-0"
+                            >
+                                {title}:<span className="text-gradient font-normal">{value}</span>
+                            </p>
+                        ))}
                     </div>
 
                     <div className="flex flex-col text-sm sm:text-base">

@@ -1,3 +1,4 @@
+import backImage from "@/assets/images/luffy-lies-backavatar.webp";
 import classNames from "classnames";
 import { useState } from "react";
 
@@ -24,7 +25,7 @@ export const UserAvatar = ({
     alt = "",
     size = "md",
     variant = "circle",
-    fallback,
+    fallback = backImage,
     online = false,
     status = "offline",
     className = "",
@@ -99,7 +100,6 @@ export const UserAvatar = ({
     const [imgError, setImgError] = useState(false);
 
     const getFallbackText = () => {
-        if (fallback) return fallback.slice(0, 2).toUpperCase();
         if (alt) return alt.charAt(0).toUpperCase();
         return "?";
     };
@@ -120,10 +120,18 @@ export const UserAvatar = ({
                 )}
 
                 {/* Fallback text cuando la imagen está rota */}
-                {src && imgError && <span className="select-none">{getFallbackText()}</span>}
+                {imgError && fallback && typeof fallback === "string" && (
+                    <img src={fallback} alt="fallback" className="w-full h-full object-cover" />
+                )}
 
                 {/* Fallback text cuando no hay imagen */}
-                {!src && <span className="select-none">{getFallbackText()}</span>}
+                {!src && fallback && typeof fallback === "string" && (
+                    <img src={fallback} alt="fallback" className="w-full h-full object-cover" />
+                )}
+
+                {!src && !fallback && (
+                    <span className="select-none text-gray-600 text-lg">{getFallbackText()}</span>
+                )}
             </div>
 
             {/* Indicador de estado online */}

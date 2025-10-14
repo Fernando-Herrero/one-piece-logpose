@@ -9,7 +9,7 @@ import { useContext } from "react";
 export const PostsSection = () => {
     const { posts, loading, error } = useContext(PostContext);
     const { lang } = useContext(LanguagesContext);
-
+    console.log("En postsection me estan llegando los posts", posts);
     if (!posts) return <p>{languages[lang].posts.noPosts}</p>;
     if (loading)
         return (
