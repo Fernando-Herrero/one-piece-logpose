@@ -3,7 +3,7 @@ import { UsersProvider } from "@/context/UsersContext.jsx";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App.jsx";
-import { AuthProvider } from "./context/authContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import { AvatarProvider } from "./context/AvatarContext.jsx";
 import { DeviceProvider } from "./context/DeviceContext.jsx";
 import { LanguagesProvider } from "./context/LanguagesContext.jsx";
