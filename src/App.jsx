@@ -1,4 +1,3 @@
-import { LoginPage } from "@//landing/pages/LoginPage.jsx";
 import { Modal } from "@/components/Modal";
 import { Overlay } from "@/components/Overlay";
 import { AuthContext } from "@/context/AuthContext";
@@ -17,6 +16,7 @@ import { ContactPage } from "@/landing/pages/ContactPage";
 import { FaqHelpPage } from "@/landing/pages/FaqHelpPage";
 import { HistoryPage } from "@/landing/pages/HistoryPage";
 import { HomePage } from "@/landing/pages/HomePage.jsx";
+import { LoginPage } from "@/landing/pages/LoginPage.jsx";
 import { NotFoundPage } from "@/landing/pages/NotFoundPage.jsx";
 import { RegisterPage } from "@/landing/pages/RegisterPage";
 import { useContext } from "react";
