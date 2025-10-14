@@ -14,7 +14,6 @@ export const ProfileContentList = ({
     isMyProfile,
 }) => {
     const { data, loading, error } = useFetchData(fetchFunction);
-    console.log("Que cojones me esta llegando", data);
     const { lang } = useContext(LanguagesContext);
     const { isMobileXs, isMobile } = useDevice();
 
@@ -67,14 +66,16 @@ export const ProfileContentList = ({
                 }
             )}
         >
-            {data.map((post) => (
-                <PostCard
-                    key={post.id || post._id}
-                    postId={post.id || post._id}
-                    basePath={basePath}
-                    className={getPostCardClassName()}
-                />
-            ))}
+            {data
+                .filter((post) => post.userId)
+                .map((post) => (
+                    <PostCard
+                        key={post.id || post._id}
+                        postId={post.id || post._id}
+                        basePath={basePath}
+                        className={getPostCardClassName()}
+                    />
+                ))}
         </div>
     );
 };

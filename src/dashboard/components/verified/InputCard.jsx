@@ -1,15 +1,6 @@
 import classNames from "classnames";
 
-export const RenderInputCard = ({
-    label,
-    field,
-    value,
-    onChange,
-    placeholder,
-    error,
-    isValid,
-    submitted,
-}) => {
+export const InputCard = ({ label, field, value, onChange, placeholder, error, isValid, submitted }) => {
     const showError = !!error && value.length > 0 && submitted;
     const showValid = value && isValid(field, value) && !showError;
 

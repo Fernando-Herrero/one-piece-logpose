@@ -14,7 +14,7 @@ export const PostCard = ({ postId, classSelect = "primary", view = true, basePat
     const post = posts?.find((post) => post.id === postId);
     if (!post) return null;
     const { id, userId, text, images, hashtags } = post;
-    console.log("ahora qeu carajos me esta llegando aqui como post", post);
+    if (!userId) return null;
 
     const classType = {
         primary:

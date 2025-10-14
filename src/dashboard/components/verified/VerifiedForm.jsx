@@ -1,7 +1,7 @@
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
-import { RenderInputCard } from "@/dashboard/components/verified/RenderInputCard";
+import { InputCard } from "@/dashboard/components/verified/InputCard";
 import { languages } from "@/helpers/languages";
 import { useCardValidation } from "@/hooks/useCardValidation";
 import classNames from "classnames";
@@ -29,6 +29,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
 
     const handlePayment = async () => {
         setSubmitted(true);
+        console.log("click click");
         if (!validateAll(form)) return;
 
         setLoading(true);
@@ -47,7 +48,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
 
     return (
         <div className="flex flex-col gap-3">
-            <RenderInputCard
+            <InputCard
                 label="Nombre en la tarjeta"
                 field="name"
                 value={form.name}
@@ -57,7 +58,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
                 isValid={isValid}
                 submitted={submitted}
             />
-            <RenderInputCard
+            <InputCard
                 label="Número de tarjeta"
                 field="number"
                 value={form.number}
@@ -70,7 +71,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
             <div className="flex gap-3">
                 <div className="w-fit">
                     {" "}
-                    <RenderInputCard
+                    <InputCard
                         label="Expiración (MM/AA)"
                         field="expiry"
                         value={form.expiry}
@@ -82,7 +83,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
                     />
                 </div>
 
-                <RenderInputCard
+                <InputCard
                     label="CVV"
                     field="cvv"
                     value={form.cvv}
