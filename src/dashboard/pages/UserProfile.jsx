@@ -1,7 +1,7 @@
 import notVerified from "@/assets/icons/not-verified-icon.svg";
 import verified from "@/assets/icons/verified-icon.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { UserContext } from "@/context/userContext";
+import { UserContext } from "@/context/UserContext";
 import { useUser } from "@/core/user/useUser";
 import { Spinner } from "@/dashboard/components/community/Spinner";
 import { ContentProfile } from "@/dashboard/components/ContentProfile";
