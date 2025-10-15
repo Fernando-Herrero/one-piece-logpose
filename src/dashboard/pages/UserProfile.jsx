@@ -5,6 +5,7 @@ import { UserContext } from "@/context/UserContext";
 import { useUser } from "@/core/user/useUser";
 import { Spinner } from "@/dashboard/components/community/Spinner";
 import { ContentProfile } from "@/dashboard/components/ContentProfile";
+import { UserStats } from "@/dashboard/components/profile/UserStats";
 import { UserProfileCard } from "@/dashboard/components/userProfile/UserProfileCard";
 import { languages } from "@/helpers/languages";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
@@ -52,16 +53,21 @@ export const UserProfile = () => {
 
     return (
         <div className="flex flex-col items-center gap-3 p-2 max-w-md mx-auto sm:max-w-xl md:p-8 lg:flex-row lg:max-w-5xl lg:items-start">
-            <UserProfileCard
-                user={user}
-                lang={lang}
-                verified={verified}
-                notVerified={notVerified}
-                languages={languages}
-            />
-            <Outlet />
+            <div className="flex flex-col gap-3">
+                <UserProfileCard
+                    user={user}
+                    lang={lang}
+                    verified={verified}
+                    notVerified={notVerified}
+                    languages={languages}
+                />
+
+                <UserStats context="ProfileUser" userId={userId} />
+            </div>
 
             <ContentProfile context="ProfileUser" userId={userId} />
+
+            <Outlet />
         </div>
     );
 };

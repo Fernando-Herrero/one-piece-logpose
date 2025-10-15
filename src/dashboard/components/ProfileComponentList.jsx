@@ -67,7 +67,7 @@ export const ProfileContentList = ({
             )}
         >
             {data
-                .filter((post) => post.userId)
+                ?.filter((post) => post.userId)
                 .map((post) => (
                     <PostCard
                         key={post.id || post._id}

@@ -4,8 +4,11 @@ import { saveUserInLocalStorage } from "@/core/auth/auth.service";
 import {
     deleteUserApi,
     followUserApi,
+    getBookmarksUserApi,
+    getCommentsUserApi,
     getLikesUserApi,
     getPostsUserApi,
+    getStatsUserApi,
     getUsersApi,
     unfollowUserApi,
 } from "@/core/user/user.api";
@@ -75,7 +78,7 @@ export const useUser = () => {
         try {
             const dataPostsUser = await getPostsUserApi(userId);
 
-            return dataPostsUser.posts;
+            return dataPostsUser;
         } catch (error) {
             console.error("Error al obtener los posts del usuario", error);
         }
@@ -91,6 +94,36 @@ export const useUser = () => {
         }
     };
 
+    const getBookmarksUser = async (userId) => {
+        try {
+            const dataPostsUser = await getBookmarksUserApi(userId);
+
+            return dataPostsUser;
+        } catch (error) {
+            console.error("Error al obtener los likes del usuario", error);
+        }
+    };
+
+    const getCommentsUser = async (userId) => {
+        try {
+            const dataPostsUser = await getCommentsUserApi(userId);
+
+            return dataPostsUser;
+        } catch (error) {
+            console.error("Error al obtener los likes del usuario", error);
+        }
+    };
+
+    const getStatsUser = async (userId) => {
+        try {
+            const dataPostsUser = await getStatsUserApi(userId);
+
+            return dataPostsUser;
+        } catch (error) {
+            console.error("Error al obtener los likes del usuario", error);
+        }
+    };
+
     return {
         followUser,
         unfollowUser,
@@ -98,5 +131,8 @@ export const useUser = () => {
         getPostsUser,
         getLikesUser,
         deleteUser,
+        getBookmarksUser,
+        getCommentsUser,
+        getStatsUser,
     };
 };

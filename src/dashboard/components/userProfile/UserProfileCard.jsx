@@ -18,8 +18,8 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
     };
 
     return (
-        <section className="bg-gradient-card shadow-lg rounded-xl text-sm w-full mx-auto z-0">
-            <div className="flex flex-col items-center gap-2 sm:flex-row lg:flex-col">
+        <section className="bg-gradient-card shadow-lg rounded-xl text-sm w-full mx-auto z-0 border border-white/30">
+            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-0 lg:flex-col">
                 <UserCoverAndAvatar user={user} />
                 <UserBasicInfo
                     user={user}
@@ -33,8 +33,8 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
             <div className="flex flex-col sm:flex-row lg:flex-col">
                 <UserAdditionalInfo user={user} lang={lang} languages={languages} />
 
-                <div className="flex flex-col justify-between">
-                    <FollowSection user={user} className="px-4 pb-2 pt-4 sm:self-end lg:self-auto" />
+                <div className="flex flex-col justify-between sm:flex-1 sm:items-start">
+                    <FollowSection user={user} className="px-4 pb-2 pt-4 sm:self-start lg:self-auto" />
                     <Button
                         className="mb-4 mx-auto text-center sm:mb-8 lg:mb-4"
                         onClick={() => handleFollow(profileUserId)}

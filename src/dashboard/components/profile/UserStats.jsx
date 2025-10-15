@@ -1,19 +1,24 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
+import { useUser } from "@/core/user/useUser";
 import { SkeletonText } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
 import { useContext, useEffect, useState } from "react";
 
-export const UserStats = () => {
+export const UserStats = ({ context = "myProfile", userId }) => {
     const [stats, setStats] = useState([]);
     const { bookmarkedPosts, commentedPosts, likedPosts, myPosts, totalComments } = stats;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const { getUserStats } = useAuth();
+    const { getStatsUser } = useUser();
     const { lang } = useContext(LanguagesContext);
     const { isMobile, isTablet } = useDevice();
+
+    const statsUser = context === "myProfile" ? getUserStats : () => getStatsUser(userId);
+    console.log(statsUser);
 
     const statsItems = [
         { label: languages[lang].profile.myPosts, value: myPosts },
@@ -30,7 +35,7 @@ export const UserStats = () => {
                 setLoading(true);
                 setError(null);
 
-                const data = await getUserStats();
+                const data = await statsUser();
                 console.log(data);
                 setStats(data);
             } catch (error) {
