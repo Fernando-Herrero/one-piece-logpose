@@ -3,7 +3,7 @@ import { api } from "../http/axios";
 export const registerApi = async (user) => {
     try {
         console.log("registerApi:", user);
-        const response = await api.post("auth/register", user);
+        const response = await api.post("/auth/register", user);
         console.log("respuesta de la api", response);
 
         return response.data;
@@ -17,7 +17,7 @@ export const registerApi = async (user) => {
 export const loginApi = async (user) => {
     try {
         console.log("loginApi:", user);
-        const response = await api.post("auth/login", user);
+        const response = await api.post("/auth/login", user);
         console.log("respuesta de la api", response);
 
         return response.data;
@@ -57,7 +57,7 @@ export const deleteAccountApi = async (userId) => {
 export const getProfileApi = async () => {
     try {
         console.log("getProfileApi");
-        const response = await api.get("auth/me");
+        const response = await api.get("/auth/me");
 
         return response.data.user;
     } catch (error) {
@@ -82,7 +82,7 @@ export const updateProfileApi = async (user, updateFields) => {
 export const getUserStatsApi = async () => {
     try {
         console.log("Obteniendo stats del user");
-        const response = await api.get("users/me/stats");
+        const response = await api.get("/users/me/stats");
         console.log("Respuesta de la api"), response;
 
         return response.data;
@@ -95,7 +95,7 @@ export const getUserStatsApi = async () => {
 export const getMyPostsApi = async () => {
     try {
         console.log("Obteniendo mis posts");
-        const response = await api.get("users/me/my-posts");
+        const response = await api.get("/users/me/my-posts");
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -107,7 +107,7 @@ export const getMyPostsApi = async () => {
 export const getMyLikedPostsApi = async () => {
     try {
         console.log("Obteniendo mis likes de posts");
-        const response = await api.get("users/me/liked-posts");
+        const response = await api.get("/users/me/liked-posts");
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -119,7 +119,7 @@ export const getMyLikedPostsApi = async () => {
 export const getMyBookmarkedPostsApi = async () => {
     try {
         console.log("Obteniendo mis favoritos posts");
-        const response = await api.get("users/me/bookmarked-posts");
+        const response = await api.get("/users/me/bookmarked-posts");
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -131,7 +131,19 @@ export const getMyBookmarkedPostsApi = async () => {
 export const getMyCommentedPostsApi = async () => {
     try {
         console.log("Obteniendo mis comentarios posts");
-        const response = await api.get("users/me/commented-posts");
+        const response = await api.get("/users/me/commented-posts");
+        console.log("Respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener mis comentarios posts", error);
+    }
+};
+
+export const notificationApi = async (newNotification) => {
+    try {
+        console.log("Notificando una accion", newNotification);
+        const response = await api.post("/notifications", newNotification);
         console.log("Respuesta de la api", response);
 
         return response.data;
