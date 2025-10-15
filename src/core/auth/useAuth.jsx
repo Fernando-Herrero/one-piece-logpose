@@ -12,7 +12,6 @@ import {
     getUserStatsApi,
     loginApi,
     logOutApi,
-    notificationApi,
     registerApi,
     updateProfileApi,
 } from "./auth.api";
@@ -168,16 +167,6 @@ export const useAuth = () => {
         }
     };
 
-    const notification = async (newNotification) => {
-        try {
-            const data = await notificationApi(newNotification);
-            console.log("Esta es la data de mis posts", data);
-            return data;
-        } catch (error) {
-            console.error("Error al obtener mis commented posts", error);
-        }
-    };
-
     return {
         register,
         login,
@@ -190,6 +179,5 @@ export const useAuth = () => {
         getMyBookmarkedPosts,
         getMyCommentedPosts,
         deleteAccount,
-        notification,
     };
 };
