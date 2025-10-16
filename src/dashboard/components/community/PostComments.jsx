@@ -5,7 +5,6 @@ import { usePosts } from "@/core/posts/usePosts";
 import { useContext, useState } from "react";
 
 export const PostComments = ({ post }) => {
-    console.log(post);
     const { comments } = post;
     const { user } = useContext(AuthContext);
     const userId = user._id;

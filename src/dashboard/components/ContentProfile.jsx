@@ -6,7 +6,7 @@ import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
 import { useState } from "react";
 
-export const ContentProfile = ({ context = "myProfile", userId }) => {
+export const ContentProfile = ({ context = "myProfile", userId, basePath }) => {
     const [activeTab, setActiveTab] = useState("posts");
     const { isMobileXs } = useDevice();
     const isMyProfile = context === "myProfile";
@@ -48,7 +48,9 @@ export const ContentProfile = ({ context = "myProfile", userId }) => {
                 ))}
             </div>
 
-            {activeTab === "posts" && <MyPosts context={context} userId={userId} isMyProfile={isMyProfile} />}
+            {activeTab === "posts" && (
+                <MyPosts context={context} userId={userId} isMyProfile={isMyProfile} basePath={basePath} />
+            )}
             {activeTab === "liked" && (
                 <MyLikedPosts context={context} userId={userId} isMyProfile={isMyProfile} />
             )}

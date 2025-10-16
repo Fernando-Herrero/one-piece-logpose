@@ -2,7 +2,6 @@ import notVerified from "@/assets/icons/not-verified-icon.svg";
 import verified from "@/assets/icons/verified-icon.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { UserContext } from "@/context/UserContext";
-import { useUser } from "@/core/user/useUser";
 import { Spinner } from "@/dashboard/components/community/Spinner";
 import { ContentProfile } from "@/dashboard/components/ContentProfile";
 import { UserStats } from "@/dashboard/components/profile/UserStats";
@@ -15,10 +14,6 @@ import { Outlet, useSearchParams } from "react-router-dom";
 export const UserProfile = () => {
     const [searchParams] = useSearchParams();
     const userId = searchParams.get("userId");
-
-    const { getLikesUser } = useUser();
-    console.log(getLikesUser(userId));
-
     const { lang } = useContext(LanguagesContext);
     const { user, loading, error } = useContext(UserContext);
 
@@ -65,7 +60,7 @@ export const UserProfile = () => {
                 <UserStats context="ProfileUser" userId={userId} />
             </div>
 
-            <ContentProfile context="ProfileUser" userId={userId} />
+            <ContentProfile context="ProfileUser" userId={userId} basePath="/dashboard/userProfile" />
 
             <Outlet />
         </div>

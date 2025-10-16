@@ -15,21 +15,32 @@ import {
 import { useContext } from "react";
 
 export const useUser = () => {
-    const { setUser } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     const { setUsers } = useContext(UsersContext);
+
+    const userAuthId = user?.id || user?._id;
 
     const followUser = async (userId) => {
         try {
             const response = await followUserApi(userId);
 
-            setUser((prev) => {
-                const updatedUser = {
-                    ...prev,
-                    following: [...prev.following, userId],
-                };
-                saveUserInLocalStorage(updatedUser);
-                return updatedUser;
-            });
+            // setUser((prev) => {
+            //     const updatedUser = {
+            //         ...prev,
+            //         following: [...prev.following, userId],
+            //     };
+            //     saveUserInLocalStorage(updatedUser);
+            //     return updatedUser;
+            // });
+
+            // setUsers((prev) =>
+            //     prev.map((user) =>
+            //         user.id === userId || user._id === userId
+            //             ? { ...user, followers: [...(user.followers || []), userAuthId] }
+            //             : user
+            //     )
+            // );
+
             return response;
         } catch (error) {
             console.error("Error al seguir al usuario", error);
