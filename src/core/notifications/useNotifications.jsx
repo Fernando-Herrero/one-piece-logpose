@@ -1,4 +1,4 @@
-import { notificationApi } from "@/core/notifications/notifications.api";
+import { getNotificationsCountApi, notificationApi } from "@/core/notifications/notifications.api";
 
 export const useNotifications = () => {
     const notification = async (newNotification) => {
@@ -11,7 +11,18 @@ export const useNotifications = () => {
         }
     };
 
+    const getNotificationsCount = async () => {
+        try {
+            const data = await getNotificationsCountApi();
+            console.log("La notificaciones sin leer que tenemos son", data);
+            return data;
+        } catch (error) {
+            console.error("Error al realizar la notificacion", error);
+        }
+    };
+
     return {
         notification,
+        getNotificationsCount,
     };
 };

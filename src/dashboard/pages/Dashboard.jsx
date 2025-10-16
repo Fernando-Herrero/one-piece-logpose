@@ -1,4 +1,5 @@
 import { Overlay } from "@/components/Overlay";
+import { NotificationsProvider } from "@/context/NotificationsContext";
 import { UserProvider } from "@/context/UserContext";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/profile/AvatarSection";
@@ -7,6 +8,7 @@ import { FollowingCard } from "@/dashboard/components/profile/FollowingCard";
 import { Cards } from "@/dashboard/pages/Cards";
 import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
+import { Notifications } from "@/dashboard/pages/Notifications";
 import { Post } from "@/dashboard/pages/Post";
 import { PostPage } from "@/dashboard/pages/PostPage";
 import { Profile } from "@/dashboard/pages/Profile";
@@ -100,6 +102,15 @@ export const Dashboard = () => {
                         element={<Overlay>{(handleClose) => <Verified onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
+
+                <Route
+                    path="/notifications"
+                    element={
+                        <NotificationsProvider>
+                            <Notifications />
+                        </NotificationsProvider>
+                    }
+                />
 
                 <Route path="/purchases" element={<Purchases />} />
             </Routes>

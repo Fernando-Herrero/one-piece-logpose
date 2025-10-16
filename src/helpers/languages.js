@@ -346,6 +346,18 @@ export const languages = {
             close: "Cerrar",
             verified: "Tu cuenta ya está verificada. ¡Gracias por tu apoyo! 💙",
         },
+        notifications: {
+            title: "Notificaciones",
+            total: "Total",
+            unread: "Sin leer",
+            unreadTag: "Nueva",
+            liked: "le dio Me gusta a tu publicación",
+            followed: "te ha comenzado a seguir",
+            bookmarked: "guardó tu publicación",
+            loading: "Cargando tus notificaciones",
+            noNotis: "No tienes notificaciones nuevas",
+            error: "Hubo un error al cargar las notificaciones",
+        },
     },
 
     en: {
@@ -694,6 +706,19 @@ export const languages = {
             payVerify: "Pay and verify",
             close: "Close",
             verified: "Your account is already verified. Thank you for your support! 💙",
+        },
+
+        notifications: {
+            title: "Notifications",
+            total: "Total",
+            unread: "Unread",
+            unreadTag: "New",
+            liked: "liked your post",
+            followed: "started following you",
+            bookmarked: "saved your post",
+            loading: "Loading your notifications",
+            noNotis: "You have no new notifications",
+            error: "There was an error loading notifications",
         },
     },
 };
