@@ -1,4 +1,5 @@
 import cross from "@/assets/icons/cross-close.svg";
+import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { UserContext } from "@/context/UserContext";
 import { useUser } from "@/core/user/useUser";
@@ -17,8 +18,11 @@ export const FollowListCard = ({ onCancel, type = "followers" }) => {
     const userId = searchParams.get("userId");
     const from = searchParams.get("from");
 
-    const { user: profileUser } = useContext(UserContext);
-    console.log("el user es pepit", profileUser);
+    const userContext = useContext(UserContext);
+    const authContext = useContext(AuthContext);
+    console.log("este es el authcontext", authContext);
+    const profileUser = userContext?.user || authContext?.user;
+
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -107,7 +111,7 @@ export const FollowListCard = ({ onCancel, type = "followers" }) => {
                         <UserItem
                             key={`${user.username}-${user.id}`}
                             user={user}
-                            canUnfollow={profileUser?.following.includes(user.id)}
+                            canUnfollow={profileUser?.following?.includes(user.id)}
                         />
                     ))
                 ) : (

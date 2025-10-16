@@ -24,26 +24,27 @@ export const useUser = () => {
         try {
             const response = await followUserApi(userId);
 
-            // setUser((prev) => {
-            //     const updatedUser = {
-            //         ...prev,
-            //         following: [...prev.following, userId],
-            //     };
-            //     saveUserInLocalStorage(updatedUser);
-            //     return updatedUser;
-            // });
+            setUser((prev) => {
+                const updatedUser = {
+                    ...prev,
+                    following: [...prev.following, userId],
+                };
+                saveUserInLocalStorage(updatedUser);
+                return updatedUser;
+            });
 
-            // setUsers((prev) =>
-            //     prev.map((user) =>
-            //         user.id === userId || user._id === userId
-            //             ? { ...user, followers: [...(user.followers || []), userAuthId] }
-            //             : user
-            //     )
-            // );
+            setUsers((prev) =>
+                prev.map((user) =>
+                    user.id === userId || user._id === userId
+                        ? { ...user, followers: [...(user.followers || []), userAuthId] }
+                        : user
+                )
+            );
 
             return response;
         } catch (error) {
             console.error("Error al seguir al usuario", error);
+            throw error;
         }
     };
 
@@ -59,9 +60,19 @@ export const useUser = () => {
                 saveUserInLocalStorage(updatedUser);
                 return updatedUser;
             });
+
+            setUsers((prev) =>
+                prev.map((user) =>
+                    user.id === userId || user._id === userId
+                        ? { ...user, followers: user.followers.filter((id) => id !== userAuthId) }
+                        : user
+                )
+            );
+
             return response;
         } catch (error) {
             console.error("Error al dejar de seguir al usuario", error);
+            throw error;
         }
     };
 

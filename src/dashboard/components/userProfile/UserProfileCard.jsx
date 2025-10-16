@@ -19,28 +19,31 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
     const profileUserId = user?.id || user?._id;
     const imAlreadyFollowing = authUser?.following.includes(profileUserId);
 
-    const follow = async (userId) => {
-        await followUser(userId);
-        await notification({
-            type: "follow",
-            to: userId,
-            from: userAuthId,
-        });
-    };
-
     const handleFollow = async (userId) => {
-        if (imAlreadyFollowing) {
-            await unfollowUser(userId);
-            setUser((prev) => ({
-                ...prev,
-                followers: prev.followers.filter((id) => id !== userAuthId),
-            }));
-        } else {
-            await follow(userId);
-            setUser((prev) => ({
-                ...prev,
-                followers: [...(prev.followers || []), userAuthId],
-            }));
+        try {
+            if (imAlreadyFollowing) {
+                await unfollowUser(userId);
+
+                setUser((prev) => ({
+                    ...prev,
+                    followers: prev.followers.filter((id) => id !== userAuthId),
+                }));
+            } else {
+                await followUser(userId);
+
+                setUser((prev) => ({
+                    ...prev,
+                    followers: [...(prev.followers || []), userAuthId],
+                }));
+
+                await notification({
+                    type: "follow",
+                    to: userId,
+                    from: userAuthId,
+                });
+            }
+        } catch (error) {
+            console.error("Error al cambiar seguimiento", error);
         }
     };
 
