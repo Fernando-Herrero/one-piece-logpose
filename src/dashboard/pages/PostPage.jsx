@@ -5,13 +5,13 @@ import { PostComments } from "@/dashboard/components/community/PostComments";
 import { useContext } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-export const PostPage = ({ onCancel }) => {
+export const PostPage = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const postId = searchParams.get("postId");
 
     const { posts } = useContext(PostContext);
-    const post = posts.find((p) => p.id === postId);
+    const post = posts.find((post) => post.id === postId);
 
     const handleClose = () => {
         navigate(-1);
