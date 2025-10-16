@@ -31,16 +31,16 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
     const handleFollow = async (userId) => {
         if (imAlreadyFollowing) {
             await unfollowUser(userId);
-            // setUser((prev) => ({
-            //     ...prev,
-            //     followers: prev.followers.filter((id) => id !== userAuthId),
-            // }));
+            setUser((prev) => ({
+                ...prev,
+                followers: prev.followers.filter((id) => id !== userAuthId),
+            }));
         } else {
-            await followUser(userId);
-            // setUser((prev) => ({
-            //     ...prev,
-            //     followers: [...(prev.followers || []), userAuthId],
-            // }));
+            await follow(userId);
+            setUser((prev) => ({
+                ...prev,
+                followers: [...(prev.followers || []), userAuthId],
+            }));
         }
     };
 
