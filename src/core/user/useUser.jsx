@@ -15,8 +15,10 @@ import {
 import { useContext } from "react";
 
 export const useUser = () => {
-    const { setUser } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     const { setUsers } = useContext(UsersContext);
+
+    const userAuthId = user?.id || user?._id;
 
     const followUser = async (userId) => {
         try {
@@ -30,9 +32,19 @@ export const useUser = () => {
                 saveUserInLocalStorage(updatedUser);
                 return updatedUser;
             });
+
+            setUsers((prev) =>
+                prev.map((user) =>
+                    user.id === userId || user._id === userId
+                        ? { ...user, followers: [...(user.followers || []), userAuthId] }
+                        : user
+                )
+            );
+
             return response;
         } catch (error) {
             console.error("Error al seguir al usuario", error);
+            throw error;
         }
     };
 
@@ -48,9 +60,19 @@ export const useUser = () => {
                 saveUserInLocalStorage(updatedUser);
                 return updatedUser;
             });
+
+            setUsers((prev) =>
+                prev.map((user) =>
+                    user.id === userId || user._id === userId
+                        ? { ...user, followers: user.followers.filter((id) => id !== userAuthId) }
+                        : user
+                )
+            );
+
             return response;
         } catch (error) {
             console.error("Error al dejar de seguir al usuario", error);
+            throw error;
         }
     };
 

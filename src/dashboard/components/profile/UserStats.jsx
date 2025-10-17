@@ -18,7 +18,6 @@ export const UserStats = ({ context = "myProfile", userId }) => {
     const { isMobile, isTablet } = useDevice();
 
     const statsUser = context === "myProfile" ? getUserStats : () => getStatsUser(userId);
-    console.log(statsUser);
 
     const statsItems = [
         { label: languages[lang].profile.myPosts, value: myPosts },

@@ -3,13 +3,21 @@ import bookmarkIcon from "@/assets/icons/bookmark-icon.svg";
 import commentIcon from "@/assets/icons/comment-icon.svg";
 import heartIcon from "@/assets/icons/heart-icon.svg";
 import likeHeart from "@/assets/icons/heart-red-icon.svg";
+import { AuthContext } from "@/context/AuthContext";
+import { useNotifications } from "@/core/notifications/useNotifications";
 import { usePosts } from "@/core/posts/usePosts";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export const PostStats = ({ post, view }) => {
     const { likePost, bookmarkPost } = usePosts();
     const { goTo } = useGoTo();
+    const { notification } = useNotifications();
+    const { user } = useContext(AuthContext);
+
+    const userId = user?.id || user?._id;
+    const postUserId = post?.userId.id;
+    const postId = post?.id || post?._id;
 
     const [isLiking, setIsLiking] = useState(false);
     const [isBookmarking, setIsBookmarking] = useState(false);
@@ -21,7 +29,20 @@ export const PostStats = ({ post, view }) => {
         if (isLiking) return;
         setIsLiking(true);
         try {
+            const wasliked = shouldShowLiked;
             await likePost(post.id);
+
+            if (!wasliked) {
+                const notificationData = {
+                    type: "like",
+                    to: postUserId,
+                    from: userId,
+                    postId: postId,
+                };
+
+                console.log("Datos de la notificacion enviados", notificationData);
+                await notification(notificationData);
+            }
         } finally {
             setIsLiking(false);
         }
@@ -31,7 +52,20 @@ export const PostStats = ({ post, view }) => {
         if (isBookmarking) return;
         setIsBookmarking(true);
         try {
+            const wasBookmarked = shouldShowBookmarked;
             await bookmarkPost(post.id);
+
+            if (!wasBookmarked) {
+                const notificationData = {
+                    type: "bookmark",
+                    to: postUserId,
+                    from: userId,
+                    postId: postId,
+                };
+
+                console.log("Datos de la notificacion enviados", notificationData);
+                await notification(notificationData);
+            }
         } finally {
             setIsBookmarking(false);
         }

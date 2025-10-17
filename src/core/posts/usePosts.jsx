@@ -90,7 +90,13 @@ export const usePosts = () => {
             console.log("este es el comentario creado", created);
             setPosts((prev) =>
                 prev.map((post) =>
-                    post.id === created.postId ? { ...post, commentsCount: post.commentsCount + 1 } : post
+                    post.id === created.postId
+                        ? {
+                              ...post,
+                              comments: [...(post.comments || []), created],
+                              commentsCount: post.commentsCount + 1,
+                          }
+                        : post
                 )
             );
         } catch (error) {

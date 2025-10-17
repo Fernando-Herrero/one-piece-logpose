@@ -15,7 +15,7 @@ import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 
-export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community" }) => {
+export const OptionsMenu = ({ id, userId, view, basePath = "/dashboard/community" }) => {
     const { user, isAdmin } = useContext(AuthContext);
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
@@ -38,6 +38,13 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
                 <img className="w-4" src={icon} alt="Profile icon" />
             </button>
         );
+    };
+
+    const buildPostPageUrl = () => {
+        const params = new URLSearchParams();
+        params.append("postId", id);
+        params.append("userId", userId?.id);
+        return `${basePath}/postPage?${params.toString()}`;
     };
 
     return (
@@ -88,7 +95,7 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
                     <ItemOptionsMenu
                         onClick={() => {
                             toggleMenu();
-                            goTo(`${basepath}/postPage?postId=${id}`);
+                            goTo(buildPostPageUrl());
                         }}
                         content={languages[lang].posts.viewPost}
                         icon={viewPost}

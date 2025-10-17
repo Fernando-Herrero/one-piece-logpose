@@ -7,6 +7,7 @@ import { FollowingCard } from "@/dashboard/components/profile/FollowingCard";
 import { Cards } from "@/dashboard/pages/Cards";
 import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
+import { Notifications } from "@/dashboard/pages/Notifications";
 import { Post } from "@/dashboard/pages/Post";
 import { PostPage } from "@/dashboard/pages/PostPage";
 import { Profile } from "@/dashboard/pages/Profile";
@@ -43,10 +44,7 @@ export const Dashboard = () => {
                             <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
                         }
                     />
-                    <Route
-                        path="postPage"
-                        element={<Overlay>{(handleClose) => <PostPage onCancel={handleClose} />}</Overlay>}
-                    />
+                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
                 </Route>
 
                 <Route
@@ -65,10 +63,7 @@ export const Dashboard = () => {
                         path="comment"
                         element={<Overlay>{(handleClose) => <Comment onCancel={handleClose} />}</Overlay>}
                     />
-                    <Route
-                        path="postPage"
-                        element={<Overlay>{(handleClose) => <PostPage onCancel={handleClose} />}</Overlay>}
-                    />
+                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
                 </Route>
 
                 <Route
@@ -91,6 +86,7 @@ export const Dashboard = () => {
                             <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
                         }
                     />
+                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
                 </Route>
 
                 <Route path="/serie" element={<Serie />} />
@@ -105,6 +101,8 @@ export const Dashboard = () => {
                         element={<Overlay>{(handleClose) => <Verified onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
+
+                <Route path="/notifications" element={<Notifications />} />
 
                 <Route path="/purchases" element={<Purchases />} />
             </Routes>
