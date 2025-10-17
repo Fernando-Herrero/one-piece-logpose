@@ -1,3 +1,4 @@
+import { NotificationsProvider } from "@/context/NotificationsContext.jsx";
 import { NotificationsCountProvider } from "@/context/NotificationsCountContext.jsx";
 import { PostProvider } from "@/context/PostContext.jsx";
 import { UsersProvider } from "@/context/UsersContext.jsx";
@@ -19,15 +20,17 @@ createRoot(document.getElementById("root")).render(
                 <PostProvider>
                     <UsersProvider>
                         <NotificationsCountProvider>
-                            <SagaProvider>
-                                <AvatarProvider>
-                                    <ModdalProvider>
-                                        <DeviceProvider>
-                                            <App />
-                                        </DeviceProvider>
-                                    </ModdalProvider>
-                                </AvatarProvider>
-                            </SagaProvider>
+                            <NotificationsProvider>
+                                <SagaProvider>
+                                    <AvatarProvider>
+                                        <ModdalProvider>
+                                            <DeviceProvider>
+                                                <App />
+                                            </DeviceProvider>
+                                        </ModdalProvider>
+                                    </AvatarProvider>
+                                </SagaProvider>
+                            </NotificationsProvider>
                         </NotificationsCountProvider>
                     </UsersProvider>
                 </PostProvider>

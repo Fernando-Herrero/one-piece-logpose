@@ -61,6 +61,7 @@ export const languages = {
             deleteCards: "⚠️ ¿Estás seguro? Esto eliminará todas las cartas.",
             deleteProgress: "⚠️ ¿Estás seguro? Esto eliminará todo el progreso de la serie.",
             deleteAccount: "⚠️ ¿Seguro? Esta acción eliminará todos tus datos permanentemente.",
+            deleteAllNotifications: "⚠️ ¿Estás seguro? Esto eliminará todas tus notificaciones.",
         },
 
         characters: {
@@ -354,9 +355,14 @@ export const languages = {
             liked: "le dio Me gusta a tu publicación",
             followed: "te ha comenzado a seguir",
             bookmarked: "guardó tu publicación",
+            comment: "comentó tu publicación",
             loading: "Cargando tus notificaciones",
             noNotis: "No tienes notificaciones nuevas",
             error: "Hubo un error al cargar las notificaciones",
+            allRead: "Marcar todo leído",
+            markAsRead: "Marcar como leído",
+            deleteAll: "Eliminar todas",
+            deleting: "Eliminando...",
         },
     },
 
@@ -423,6 +429,7 @@ export const languages = {
             deleteCards: "⚠️ Are you sure? This will delete all cards progress.",
             deleteProgress: "⚠️ Are you sure? This will delete all series progress.",
             deleteAccount: "⚠️ Are you sure? This action will delete all your data permanently.",
+            deleteAllNotifications: "⚠️ Are you sure? This will delete all your notifications.",
         },
 
         characters: {
@@ -716,9 +723,14 @@ export const languages = {
             liked: "liked your post",
             followed: "started following you",
             bookmarked: "saved your post",
+            comment: "commented your post",
             loading: "Loading your notifications",
             noNotis: "You have no new notifications",
             error: "There was an error loading notifications",
+            allRead: "Mark all read",
+            markAsRead: "Marcar as read",
+            deleteAll: "Delete All",
+            deleting: "Deleting...",
         },
     },
 };

@@ -30,7 +30,7 @@ export const DashboardNavbar = () => {
                     <div className="absolute rounded-full flex items-center justify-center top-0 right-1 md:right-2">
                         {" "}
                         <span className="inline-block text-center text-[10px] text-primary font-bold">
-                            {notisCount?.count}
+                            {notisCount}
                         </span>
                     </div>
                 </button>

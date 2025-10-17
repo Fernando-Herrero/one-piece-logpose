@@ -1,21 +1,30 @@
+import { AuthContext } from "@/context/AuthContext";
 import { getNotificationsApi } from "@/core/notifications/notifications.api";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-export const NotificationContext = createContext(null);
+export const NotificationsContext = createContext(null);
 
 export const NotificationsProvider = ({ children }) => {
-    const [notis, setNotis] = useState(null);
+    const { user } = useContext(AuthContext);
+    const userId = user?.id || user?._id;
+    const [notis, setNotis] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        if (!userId) {
+            setNotis([]);
+            setError(null);
+            return;
+        }
+
         const fetchNotifications = async () => {
             try {
                 setError(null);
                 setLoading(true);
 
                 const data = await getNotificationsApi();
-                setNotis(data);
+                setNotis(Array.isArray(data) ? data : []);
             } catch (error) {
                 console.error("Error al obtener las notificaciones", error);
                 setError(error);
@@ -25,11 +34,11 @@ export const NotificationsProvider = ({ children }) => {
         };
 
         fetchNotifications();
-    }, []);
+    }, [userId]);
 
     return (
-        <NotificationContext.Provider value={{ notis, loading, error }}>
+        <NotificationsContext.Provider value={{ notis, setNotis, loading, error }}>
             {children}
-        </NotificationContext.Provider>
+        </NotificationsContext.Provider>
     );
 };

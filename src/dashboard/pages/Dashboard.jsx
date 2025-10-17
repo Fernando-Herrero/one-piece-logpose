@@ -1,5 +1,4 @@
 import { Overlay } from "@/components/Overlay";
-import { NotificationsProvider } from "@/context/NotificationsContext";
 import { UserProvider } from "@/context/UserContext";
 import { AppShell } from "@/dashboard/components/AppShell";
 import { AvatarSection } from "@/dashboard/components/profile/AvatarSection";
@@ -103,14 +102,7 @@ export const Dashboard = () => {
                     />
                 </Route>
 
-                <Route
-                    path="/notifications"
-                    element={
-                        <NotificationsProvider>
-                            <Notifications />
-                        </NotificationsProvider>
-                    }
-                />
+                <Route path="/notifications" element={<Notifications />} />
 
                 <Route path="/purchases" element={<Purchases />} />
             </Routes>
