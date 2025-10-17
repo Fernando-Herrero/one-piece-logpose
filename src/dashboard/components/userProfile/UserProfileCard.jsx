@@ -7,6 +7,8 @@ import { FollowSection } from "@/dashboard/components/profile/FollowSection";
 import { UserAdditionalInfo } from "@/dashboard/components/userProfile/UserAdditionalInfo";
 import { UserBasicInfo } from "@/dashboard/components/userProfile/UserBasicInfo";
 import { UserCoverAndAvatar } from "@/dashboard/components/userProfile/UserCoverAndAvatar";
+import { useDevice } from "@/hooks/useDevice";
+import classNames from "classnames";
 import { useContext } from "react";
 
 export const UserProfileCard = ({ user, lang, verified, notVerified, languages }) => {
@@ -14,6 +16,7 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
     const { notification } = useNotifications();
     const { user: authUser } = useContext(AuthContext);
     const { setUser } = useContext(UserContext);
+    const { isMobile, isTablet } = useDevice();
 
     const userAuthId = authUser?.id || authUser?._id;
     const profileUserId = user?.id || user?._id;
@@ -48,8 +51,8 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
     };
 
     return (
-        <section className="bg-gradient-card shadow-lg rounded-xl text-sm w-full mx-auto z-0 border border-white/30">
-            <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-0 lg:flex-col">
+        <section className="bg-gradient-card shadow-lg rounded-xl text-sm w-full mx-auto z-0 border border-white/30 card-content">
+            <div className="flex flex-col items-center gap-2">
                 <UserCoverAndAvatar user={user} />
                 <UserBasicInfo
                     user={user}
@@ -60,11 +63,16 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
                 />
             </div>
 
-            <div className="flex flex-col sm:flex-row lg:flex-col">
+            <div
+                className={classNames("flex flex-col gap-2 sm:gap-4 sm:px-12", {
+                    "px-6": isMobile,
+                    "px-8": isTablet,
+                })}
+            >
                 <UserAdditionalInfo user={user} lang={lang} languages={languages} />
 
-                <div className="flex flex-col justify-between sm:flex-2">
-                    <FollowSection user={user} className="px-4 pb-2 pt-4 sm:self-start lg:self-auto" />
+                <div className="flex flex-col gap-2 justify-between sm:flex-2">
+                    <FollowSection user={user} />
                     <Button
                         className="mb-4 mx-auto text-center sm:mb-8 lg:mb-4"
                         onClick={() => handleFollow(profileUserId)}

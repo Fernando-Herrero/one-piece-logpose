@@ -6,7 +6,7 @@ import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useContext, useEffect } from "react";
 
-export const UsersList = () => {
+export const UsersList = ({ className }) => {
     const { users, loading, error, fetchUsers } = useContext(UsersContext);
     const { isTabletXl, isDesktop } = useDevice();
     const { isAdmin } = useContext(AuthContext);
@@ -35,7 +35,9 @@ export const UsersList = () => {
     if (error) return <p className="text-linePrimary text-center p-10">{error}</p>;
 
     return (
-        <section className="hidden lg:flex h-fit flex-col items-center gap-1 w-full max-w-2xs border border-white/30 p-1 rounded-xl">
+        <section
+            className={`hidden lg:flex h-fit flex-col items-center gap-1 w-full max-w-2xs border border-white/30 p-1 rounded-xl ${className}`}
+        >
             {!isAdmin && <h2 className="font-bold font-family-pirate text-2xl text-primary">Ranking</h2>}
             {isAdmin && (
                 <section className="bg-gradient-card border border-white/30 p-2 rounded-xl w-full max-w-2xs">

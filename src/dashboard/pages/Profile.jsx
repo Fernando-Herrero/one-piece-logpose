@@ -1,7 +1,7 @@
 import { AuthContext } from "@/context/AuthContext";
 import { ContentProfile } from "@/dashboard/components/ContentProfile";
 import { ProfileArticle } from "@/dashboard/components/profile/ProfileArticle";
-import { UserProgress } from "@/dashboard/components/profile/UserProgrress";
+import { UserProgress } from "@/dashboard/components/profile/UserProgress";
 import { UserStats } from "@/dashboard/components/profile/UserStats";
 import { UsersWrapper } from "@/dashboard/components/profile/UsersWrapper";
 import { UsersList } from "@/dashboard/components/UsersList";
@@ -11,21 +11,13 @@ import { Outlet } from "react-router-dom";
 export const Profile = () => {
     const { isAdmin } = useContext(AuthContext);
     return (
-        <div className="p-2 flex flex-col gap-2 max-w-container mx-auto md:p-8 relative">
-            <div className="flex gap-2 md:gap-4">
-                <div className="flex flex-col mx-auto gap-2 md:gap-4 w-full max-w-sm md:min-w-xs lg:ml-0">
-                    <ProfileArticle />
-                    <UserProgress />
-                    <UserStats />
-                </div>
-
-                <UsersList />
-            </div>
-
+        <div className="relative flex flex-col items-center gap-2 mb-10 sm:gap-4 sm:pt-8 lg:items-start lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:max-w-fit lg:max-h-fit">
+            <ProfileArticle />
+            <UserProgress />
+            <UserStats className="lg:h-fit lg:col-start-2 lg:-mt-108" />
             <ContentProfile />
-
+            <UsersList className="lg:col-start-2 lg:-mt-192" />
             {isAdmin && <UsersWrapper />}
-
             <Outlet />
         </div>
     );

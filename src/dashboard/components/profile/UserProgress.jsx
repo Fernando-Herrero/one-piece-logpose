@@ -24,16 +24,16 @@ export const UserProgress = () => {
             {loading ? (
                 <SkeletonText lines={4} className="bg-primary border border-white/30 rounded-xl p-2" />
             ) : (
-                <section
+                <article
                     className={classNames(
-                        "flex flex-col gap-2 p-2 rounded-xl border border-white/30 bg-gradient-card shadow transition hover:-translate-0.5 hover:shadow-2xl sm:p-6",
+                        "flex flex-col gap-2 p-2 rounded-xl border border-white/30 bg-gradient-card shadow card-content w-full sm:p-6 transition hover:-translate-0.5 hover:shadow-2xl lg:h-fit",
                         {
                             "p-6": isMobile,
                             "p-8": isTablet,
                         }
                     )}
                 >
-                    <div className="flex gap-1 text-sm sm:text-base w-full">
+                    <div className="flex gap-1 text-sm sm:text-base">
                         {items.map(({ title, value }, index) => (
                             <p
                                 key={`${title}-${index}`}
@@ -53,7 +53,7 @@ export const UserProgress = () => {
                             <span className="text-gradient font-normal">{user?.experience}</span>
                         </div>
                     </div>
-                </section>
+                </article>
             )}
         </>
     );

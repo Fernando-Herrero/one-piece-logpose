@@ -1,6 +1,6 @@
 import { useAuth } from "@/core/auth/useAuth";
 import { useUser } from "@/core/user/useUser";
-import { ProfileContentList } from "@/dashboard/components/ProfileComponentList";
+import { ProfileContentList } from "@/dashboard/components/ProfileContentList";
 
 export const MyBookmarkedPosts = ({ context, userId, isMyProfile }) => {
     const { getMyBookmarkedPosts } = useAuth();
