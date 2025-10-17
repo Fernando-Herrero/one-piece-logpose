@@ -19,11 +19,7 @@ export const ContentProfile = ({ context = "myProfile", userId, basePath }) => {
     ];
 
     return (
-        <section
-            className={classNames("p-2 bg-gradient-card rounded-xl border border-white/30 w-full shadow-lg", {
-                "": !isMyProfile,
-            })}
-        >
+        <section className="p-2 bg-gradient-card rounded-xl border border-white/30 w-full shadow-lg card-content lg:col-start-1 lg:row-start-2">
             <div
                 className={classNames(
                     "flex items-center justify-center gap-2 p-2 text-xs overflow-x-auto bg-white/20 rounded-lg",

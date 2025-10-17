@@ -1,6 +1,6 @@
 import { useAuth } from "@/core/auth/useAuth";
 import { useUser } from "@/core/user/useUser";
-import { ProfileContentList } from "@/dashboard/components/ProfileComponentList";
+import { ProfileContentList } from "@/dashboard/components/ProfileContentList";
 
 export const MyPosts = ({ context, userId, isMyProfile, basePath }) => {
     const { getMyPosts } = useAuth();

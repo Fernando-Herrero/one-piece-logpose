@@ -3,7 +3,6 @@ import { FollowCard } from "@/dashboard/components/profile/FollowCard";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useGoTo } from "@/hooks/useGoTo";
-import classNames from "classnames";
 import { useContext } from "react";
 
 export const FollowSection = ({ user, className = "", basePath = "/dashboard/userProfile" }) => {
@@ -17,12 +16,7 @@ export const FollowSection = ({ user, className = "", basePath = "/dashboard/use
         basePath === "/dashboard/profile" ? basePath : `/dashboard/userProfile?userId=${userId}`;
 
     return (
-        <div
-            className={classNames(`flex flex-col gap-1 md:px-6 sm:flex-1 ${className}`, {
-                "px-6": isMobile,
-                "px-8": isTablet,
-            })}
-        >
+        <div className={`flex flex-col gap-1 sm:flex-1 ${className}`}>
             <FollowCard
                 title={languages[lang].profile.followers}
                 content={user.followers?.length}
