@@ -26,17 +26,17 @@ export const UserArticle = ({
 }) => {
     const { isAdmin } = useContext(AuthContext);
     const { deleteUser } = useUser();
-    const { isTabletXl, isDesktop } = useDevice();
+    const { isMobileXs, isMobile, isTablet, isTabletXl, isDesktop } = useDevice();
     const { lang } = useContext(LanguagesContext);
     const avatarSizes = () => {
-        if (isTabletXl) return "lg";
+        if (isMobileXs || isMobile || isTablet || isTabletXl) return "lg";
         if (isDesktop) return "xl";
         return "2xl";
     };
     return (
         <article
             key={id}
-            className="flex items-center gap-2 bg-gradient-card border min-h-16 border-white/30 px-4 py-2 rounded-xl w-full max-w-2xs shadow relative transition hover:-translate-y-0.5 hover:shadow-xl lg:gap-4"
+            className="flex items-center gap-2 bg-gradient-card border border-white/30 px-4 py-2 rounded-xl w-full max-w-2xs shadow relative transition hover:-translate-y-0.5 hover:shadow-xl lg:gap-4"
         >
             <UserAvatar
                 src={avatar}

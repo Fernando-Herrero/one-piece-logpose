@@ -26,7 +26,7 @@ export const UserProgress = () => {
             ) : (
                 <article
                     className={classNames(
-                        "flex flex-col gap-2 p-2 rounded-xl border border-white/30 bg-gradient-card shadow card-content w-full sm:p-6 transition hover:-translate-0.5 hover:shadow-2xl lg:h-fit",
+                        "flex flex-col gap-2 p-2 rounded-xl border border-white/30 bg-gradient-card shadow card-content w-full sm:p-6 transition hover:-translate-0.5 hover:shadow-2xl",
                         {
                             "p-6": isMobile,
                             "p-8": isTablet,

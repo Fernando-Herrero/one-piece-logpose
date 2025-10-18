@@ -49,7 +49,7 @@ export const ProfileContentList = ({
         );
     }
     return (
-        <div className="flex flex-col gap-1 overflow-y-auto snap-y snap-mandatory scroll-smooth p-1 w-full max-h-72 custom-scrollbar">
+        <div className="flex flex-col gap-1 overflow-y-auto snap-y snap-mandatory scroll-smooth p-1 w-full max-h-72 custom-scrollbar lg:max-h-full">
             {data
                 ?.filter((post) => post.userId)
                 .map((post) => (
