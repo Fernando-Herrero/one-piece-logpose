@@ -29,7 +29,6 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
 
     const handlePayment = async () => {
         setSubmitted(true);
-        console.log("click click");
         if (!validateAll(form)) return;
 
         setLoading(true);
@@ -52,7 +51,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
                 label="Nombre en la tarjeta"
                 field="name"
                 value={form.name}
-                onChange={(val) => handleChange("name", val)}
+                onChange={(value) => handleChange("name", value)}
                 placeholder="Nombre Apellido"
                 error={errors.name}
                 isValid={isValid}
@@ -62,7 +61,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
                 label="Número de tarjeta"
                 field="number"
                 value={form.number}
-                onChange={(val) => handleChange("number", val)}
+                onChange={(value) => handleChange("number", value)}
                 placeholder="1234 5678 9012 3456"
                 error={errors.number}
                 isValid={isValid}
@@ -75,7 +74,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
                         label="Expiración (MM/AA)"
                         field="expiry"
                         value={form.expiry}
-                        onChange={(val) => handleChange("expiry", val)}
+                        onChange={(value) => handleChange("expiry", value)}
                         placeholder="08/26"
                         error={errors.expiry}
                         isValid={isValid}
@@ -87,7 +86,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
                     label="CVV"
                     field="cvv"
                     value={form.cvv}
-                    onChange={(val) => handleChange("cvv", val)}
+                    onChange={(value) => handleChange("cvv", value)}
                     placeholder="123"
                     error={errors.cvv}
                     isValid={isValid}
