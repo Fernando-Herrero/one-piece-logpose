@@ -15,7 +15,7 @@ export const UserProfile = () => {
     const [searchParams] = useSearchParams();
     const userId = searchParams.get("userId");
     const { lang } = useContext(LanguagesContext);
-    const { user, loading, error } = useContext(UserContext);
+    const { user, loading, error, userPrivacy } = useContext(UserContext);
 
     if (!userId) {
         return <p className="text-linePrimary text-center p-4">{languages[lang].profile.userNotValid}</p>;
@@ -56,7 +56,12 @@ export const UserProfile = () => {
                 languages={languages}
             />
             <UserStats context="ProfileUser" userId={userId} />
-            <ContentProfile context="ProfileUser" userId={userId} basePath="/dashboard/userProfile" />
+            <ContentProfile
+                context="ProfileUser"
+                userId={userId}
+                basePath="/dashboard/userProfile"
+                userPrivacy={userPrivacy}
+            />
 
             <Outlet />
         </div>

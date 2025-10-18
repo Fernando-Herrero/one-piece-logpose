@@ -10,6 +10,7 @@ import { Community } from "@/dashboard/pages/Community";
 import { Notifications } from "@/dashboard/pages/Notifications";
 import { Post } from "@/dashboard/pages/Post";
 import { PostPage } from "@/dashboard/pages/PostPage";
+import { Privacy } from "@/dashboard/pages/Privacy";
 import { Profile } from "@/dashboard/pages/Profile";
 import { Purchases } from "@/dashboard/pages/Purchases";
 import { SearchResults } from "@/dashboard/pages/SearchResults";
@@ -99,6 +100,10 @@ export const Dashboard = () => {
                     <Route
                         path="premium"
                         element={<Overlay>{(handleClose) => <Verified onCancel={handleClose} />}</Overlay>}
+                    />
+                    <Route
+                        path="privacy"
+                        element={<Overlay>{(handleClose) => <Privacy onCancel={handleClose} />}</Overlay>}
                     />
                 </Route>
 
