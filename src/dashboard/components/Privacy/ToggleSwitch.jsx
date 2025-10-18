@@ -12,7 +12,7 @@ export const ToggleSwitch = ({
             aria-checked={isOn}
             onClick={handleToggle}
             disabled={isLoading}
-            className={`relative w-14 h-8 rounded-full transition-colors focus:outline-none ${
+            className={`relative w-14 h-8 rounded-full transition-colors focus:outline-none cursor-pointer ${
                 isOn ? offColor : onColor
             } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
         >

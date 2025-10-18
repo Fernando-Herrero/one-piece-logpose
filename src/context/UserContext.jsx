@@ -12,6 +12,8 @@ export const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const userPrivacy = user?.privacy;
+
     useEffect(() => {
         const fetchUser = async () => {
             if (!userId) {
@@ -39,5 +41,9 @@ export const UserProvider = ({ children }) => {
         fetchUser();
     }, [userId]);
 
-    return <UserContext.Provider value={{ user, setUser, loading, error }}>{children}</UserContext.Provider>;
+    return (
+        <UserContext.Provider value={{ user, setUser, loading, error, userPrivacy }}>
+            {children}
+        </UserContext.Provider>
+    );
 };

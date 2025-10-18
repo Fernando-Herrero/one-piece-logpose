@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const userPrivacy = user?.privacy;
     const isAdmin = user?.role === "admin";
     const isVerified = user?.verified;
 
@@ -38,7 +39,9 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, setUser, error, setError, loading, isAdmin, isVerified }}>
+        <AuthContext.Provider
+            value={{ user, setUser, error, setError, loading, isAdmin, isVerified, userPrivacy }}
+        >
             {children}
         </AuthContext.Provider>
     );

@@ -234,6 +234,10 @@ export const languages = {
             likes: "Likes",
             bookmarks: "Favoritos",
             comments: "Comentarios",
+            privateContent: "Este contenido está marcado como privado",
+            privateLikes: "Tus likes están marcados como privados",
+            privateBookmarks: "Tus favoritos están marcados como privados",
+            privateComments: "Tus comentarios están marcados como privados",
         },
 
         posts: {
@@ -616,6 +620,10 @@ export const languages = {
             likes: "Likes",
             bookmarks: "Bookmarks",
             comments: "Comments",
+            privateContent: "This content is marked as private",
+            privateLikes: "Your liked posts are marked as private",
+            privateBookmarks: "Your bookmarked posts are marked as private",
+            privateComments: "Your comments are marked as private",
         },
 
         posts: {

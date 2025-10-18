@@ -7,7 +7,6 @@ import { useContext, useEffect, useState } from "react";
 
 export const PrivacySelection = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
     const { updatedProfile } = useAuth();
     const { lang } = useContext(LanguagesContext);
     const [privacy, setPrivacy] = useState({

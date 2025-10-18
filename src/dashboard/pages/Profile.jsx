@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 
 export const Profile = () => {
-    const { isAdmin } = useContext(AuthContext);
+    const { isAdmin, userPrivacy } = useContext(AuthContext);
 
     return (
         <div className="relative flex justify-center gap-4 sm:py-8">
@@ -17,7 +17,7 @@ export const Profile = () => {
                 <ProfileArticle />
                 <UserProgress />
                 <UserStats />
-                <ContentProfile />
+                <ContentProfile userPrivacy={userPrivacy} />
             </div>
 
             <UsersList />
