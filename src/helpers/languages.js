@@ -62,6 +62,8 @@ export const languages = {
             deleteProgress: "⚠️ ¿Estás seguro? Esto eliminará todo el progreso de la serie.",
             deleteAccount: "⚠️ ¿Seguro? Esta acción eliminará todos tus datos permanentemente.",
             deleteAllNotifications: "⚠️ ¿Estás seguro? Esto eliminará todas tus notificaciones.",
+            cancelPremium:
+                "⚠️ ¿Seguro que deseas cancelar el proceso de verificación? Podrás retomarlo más adelante cuando quieras.",
         },
 
         characters: {
@@ -430,6 +432,8 @@ export const languages = {
             deleteProgress: "⚠️ Are you sure? This will delete all series progress.",
             deleteAccount: "⚠️ Are you sure? This action will delete all your data permanently.",
             deleteAllNotifications: "⚠️ Are you sure? This will delete all your notifications.",
+            cancelPremium:
+                "⚠️ Are you sure you want to cancel the verification process? You can resume it anytime you want.",
         },
 
         characters: {
