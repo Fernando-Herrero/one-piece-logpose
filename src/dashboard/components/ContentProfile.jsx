@@ -1,21 +1,24 @@
+import { LanguagesContext } from "@/context/LanguagesContext";
 import { MyBookmarkedPosts } from "@/dashboard/components/MyBookmarkedPosts";
 import { MyCommentedPosts } from "@/dashboard/components/MyCommentedPosts";
 import { MyLikedPosts } from "@/dashboard/components/MyLikedPosts";
 import { MyPosts } from "@/dashboard/components/MyPosts";
+import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export const ContentProfile = ({ context = "myProfile", userId, basePath }) => {
     const [activeTab, setActiveTab] = useState("posts");
     const { isMobileXs } = useDevice();
     const isMyProfile = context === "myProfile";
+    const { lang } = useContext(LanguagesContext);
 
     const tabs = [
         { key: "posts", label: "Posts" },
-        { key: "liked", label: "Liked" },
-        { key: "bookmarked", label: "Bookmarked" },
-        { key: "comments", label: "Comments" },
+        { key: "liked", label: languages[lang].profile.likes },
+        { key: "bookmarked", label: languages[lang].profile.bookmarks },
+        { key: "comments", label: languages[lang].profile.comments },
     ];
 
     return (

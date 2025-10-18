@@ -231,6 +231,9 @@ export const languages = {
             deleteAccount: "Eliminar cuenta",
             followUser: "Seguir",
             unfollowUser: "Dejar de seguir",
+            likes: "Likes",
+            bookmarks: "Favoritos",
+            comments: "Comentarios",
         },
 
         posts: {
@@ -365,6 +368,12 @@ export const languages = {
             markAsRead: "Marcar como leído",
             deleteAll: "Eliminar todas",
             deleting: "Eliminando...",
+        },
+
+        privacy: {
+            title: "Privacidad",
+            text: "Selecciona qué contenido quieres que los demás usuarios puedan ver en tu perfil.",
+            cancel: "Cerrar",
         },
     },
 
@@ -604,6 +613,9 @@ export const languages = {
             deleteAccount: "Delete account",
             followUser: "Follow",
             unfollowUser: "Unfollow",
+            likes: "Likes",
+            bookmarks: "Bookmarks",
+            comments: "Comments",
         },
 
         posts: {
@@ -735,6 +747,12 @@ export const languages = {
             markAsRead: "Marcar as read",
             deleteAll: "Delete All",
             deleting: "Deleting...",
+        },
+
+        privacy: {
+            title: "Privacy",
+            text: "Select which content you want other users to be able to see on your profile.",
+            cancel: "Close",
         },
     },
 };
