@@ -8,6 +8,9 @@ export const AvatarProvider = ({ children }) => {
     const { user } = useContext(AuthContext);
     const savedAvatar = local.get("avatarSelected");
     const [selectedAvatar, setSelectedAvatar] = useState((user?.avatar ?? savedAvatar) || null);
+    console.log(user);
+    console.log(savedAvatar);
+    console.log(selectedAvatar);
 
     useEffect(() => {
         if (user?.avatar && !savedAvatar) {

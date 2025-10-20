@@ -17,23 +17,23 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
         <LanguagesProvider>
             <AuthProvider>
-                <PostProvider>
-                    <UsersProvider>
-                        <NotificationsCountProvider>
-                            <NotificationsProvider>
-                                <SagaProvider>
-                                    <AvatarProvider>
+                <AvatarProvider>
+                    <PostProvider>
+                        <UsersProvider>
+                            <NotificationsCountProvider>
+                                <NotificationsProvider>
+                                    <SagaProvider>
                                         <ModdalProvider>
                                             <DeviceProvider>
                                                 <App />
                                             </DeviceProvider>
                                         </ModdalProvider>
-                                    </AvatarProvider>
-                                </SagaProvider>
-                            </NotificationsProvider>
-                        </NotificationsCountProvider>
-                    </UsersProvider>
-                </PostProvider>
+                                    </SagaProvider>
+                                </NotificationsProvider>
+                            </NotificationsCountProvider>
+                        </UsersProvider>
+                    </PostProvider>
+                </AvatarProvider>
             </AuthProvider>
         </LanguagesProvider>
     </BrowserRouter>
