@@ -16,7 +16,7 @@ import {
     isProgressGreater,
 } from "@/dashboard/data/serieProgressHelper";
 import { local } from "@/helpers/storage";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export const useEpisodeCheck = (
     episode_id,
@@ -35,6 +35,23 @@ export const useEpisodeCheck = (
     const episodeKey = userId ? `episode_${episode_id}_${userId}` : `episode_${episode_id}`;
     const checkedSaved = local.get(episodeKey);
     const [inputCheck, setInputCheck] = useState(checkedSaved || false);
+
+    useEffect(() => {
+        if (!checkedSaved && user?.serieProgress) {
+            const { saga, arc, episode } = user.serieProgress;
+
+            const alreadySeen =
+                currentSagaId < saga ||
+                (currentSagaId === saga && currentArcId < arc) ||
+                (currentSagaId === saga && currentArcId === arc && episode_id <= episode);
+
+            if (alreadySeen) {
+                setInputCheck(true);
+                local.save(episodeKey, true);
+            }
+        }
+    }, [user, episode_id, currentSagaId, currentArcId]);
+
     const [isLoading, setIsLoading] = useState(false);
 
     const handleToggleCheck = async () => {
