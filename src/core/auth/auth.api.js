@@ -43,8 +43,8 @@ export const logOutApi = async (user) => {
 
 export const deleteAccountApi = async (userId) => {
     try {
-        console.log("Eliminando usuario", user);
-        const response = await api.post(`/users/${userId}`);
+        console.log("Eliminando usuario", userId);
+        const response = await api.delete(`/users/${userId}`);
         console.log("Respuesta de la api al eliminar usuario:", response);
 
         return response.data;

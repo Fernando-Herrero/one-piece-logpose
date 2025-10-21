@@ -8,31 +8,41 @@ const getEpisodesByArc = (firstEpisode, lastEpisode) => {
     );
 };
 
-export const ArcList = ({ arcsInSaga, sagaId }) => (
-    <>
-        {arcsInSaga.map(({ arc_id, name, description, total_episodes, first_episode, last_episode }) => {
-            const episodesInArc = getEpisodesByArc(first_episode, last_episode);
+export const ArcList = ({ arcsInSaga, sagaId }) => {
+    console.log("Rendering ArcList for sagaId:", sagaId);
 
-            return (
-                <AccordionSerie
-                    key={arc_id}
-                    type="arcs"
-                    name={name}
-                    text={description}
-                    episodes={total_episodes}
-                >
-                    {episodesInArc.map((episode) => (
-                        <EpisodeItem
-                            key={episode.episode_id}
-                            {...episode}
-                            currentArcId={arc_id}
-                            currentSagaId={sagaId}
-                            isLastEpisodeOfArc={episode.episode_id === last_episode}
-                            isLastArcOfSaga={arc_id === arcsInSaga[arcsInSaga.length - 1].arc_id}
-                        />
-                    ))}
-                </AccordionSerie>
-            );
-        })}
-    </>
-);
+    return (
+        <>
+            {arcsInSaga.map(({ arc_id, name, description, total_episodes, first_episode, last_episode }) => {
+                const episodesInArc = getEpisodesByArc(first_episode, last_episode);
+                console.log(
+                    "Rendering arc:",
+                    name,
+                    "with episodes:",
+                    episodesInArc.map((e) => e.name)
+                );
+
+                return (
+                    <AccordionSerie
+                        key={arc_id}
+                        type="arcs"
+                        name={name}
+                        text={description}
+                        episodes={total_episodes}
+                    >
+                        {episodesInArc.map((episode) => (
+                            <EpisodeItem
+                                key={episode.episode_id}
+                                {...episode}
+                                currentArcId={arc_id}
+                                currentSagaId={sagaId}
+                                isLastEpisodeOfArc={episode.episode_id === last_episode}
+                                isLastArcOfSaga={arc_id === arcsInSaga[arcsInSaga.length - 1].arc_id}
+                            />
+                        ))}
+                    </AccordionSerie>
+                );
+            })}
+        </>
+    );
+};

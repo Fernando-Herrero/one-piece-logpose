@@ -8,7 +8,7 @@ import classNames from "classnames";
 import { useContext, useState } from "react";
 
 export const UsersWrapper = () => {
-    const { users, loading, error, fetchUsers } = useContext(UsersContext);
+    const { users, loading, error } = useContext(UsersContext);
     const { lang } = useContext(LanguagesContext);
     const [isOpen, toggleBox] = useToggle();
     const [headerExpanded, setHeaderExpanded] = useState(false);
@@ -16,7 +16,6 @@ export const UsersWrapper = () => {
     const handleOpen = () => {
         if (!isOpen) {
             setHeaderExpanded(true);
-            fetchUsers();
         } else {
             setTimeout(() => {
                 setHeaderExpanded(false);

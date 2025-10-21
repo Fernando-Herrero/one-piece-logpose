@@ -17,7 +17,6 @@ export const UserArticle = ({
     isActive,
     name,
     lastName,
-    firstName,
     verified,
     username,
     createdAt,
@@ -50,7 +49,7 @@ export const UserArticle = ({
                 <div className="flex items-center gap-1 flex-wrap">
                     <div className="flex gap-1">
                         <p className="font-semibold text-primary text-sm lg:text-base">
-                            {displayName ? displayName : firstName + lastName}
+                            {displayName ? displayName : name + lastName}
                         </p>
                         <img
                             className="w-3"

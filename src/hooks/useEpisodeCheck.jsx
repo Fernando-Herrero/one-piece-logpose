@@ -93,20 +93,8 @@ export const useEpisodeCheck = (
             );
 
             const currentProgress = user.serieProgress || { saga: 0, arc: 0, episode: 0 };
-
             const isGreaterProgress = isProgressGreater(calculatedProgress, currentProgress);
-
             const progressToSave = newCheckState && isGreaterProgress ? calculatedProgress : currentProgress;
-
-            console.log("📊 Comparación de progreso:", {
-                episodio: episode_id,
-                marcando: newCheckState,
-                calculado: calculatedProgress,
-                actual: currentProgress,
-                esMayor: isGreaterProgress,
-                seGuardará: progressToSave,
-            });
-
             const newExperience = calculateNewExperience(user.experience, experience, newCheckState);
 
             const updatedUserLocal = {
@@ -127,13 +115,6 @@ export const useEpisodeCheck = (
             });
 
             saveUserInLocalStorage(updatedUserLocal);
-
-            console.log("✅ Progreso actualizado correctamente:", {
-                episode: episode_id,
-                checked: newCheckState,
-                progressGuardado: progressToSave,
-                experience: newExperience,
-            });
         } catch (error) {
             console.error("❌ Error al actualizar progreso:", error);
             setUser(user);

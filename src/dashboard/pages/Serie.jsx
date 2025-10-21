@@ -18,7 +18,10 @@ export const Serie = () => {
     const { resetProgress } = useContext(SagaContext);
     const { showModal, hideModal } = useContext(ModalContext);
 
+    console.log("Render Serie");
+
     const handleReset = () => {
+        console.log("handleReset triggered");
         showModal({
             message: languages[lang].modal.deleteProgress,
             onConfirm: () => {
@@ -40,6 +43,12 @@ export const Serie = () => {
             </Button>
             {sagas.map(({ name, saga_id, japaneseName, total_episodes, first_arc, last_arc }) => {
                 const arcsInSaga = getArcsBySaga(first_arc, last_arc);
+                console.log(
+                    "Rendering saga:",
+                    name,
+                    "with arcs:",
+                    arcsInSaga.map((a) => a.name)
+                );
 
                 return (
                     <AccordionSerie

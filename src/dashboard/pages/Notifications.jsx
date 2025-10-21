@@ -12,6 +12,7 @@ import { useContext, useState } from "react";
 
 export const Notifications = () => {
     const { notis, loading, error } = useContext(NotificationsContext);
+    console.log(notis);
     const { markNotificationRead, markAllNotificationsRead, deleteNotification, deleteAllNotifications } =
         useNotifications();
     const { notisCount } = useContext(NotificationsCountContext);
@@ -84,20 +85,23 @@ export const Notifications = () => {
                     </p>
                 </div>
 
-                <div className="flex gap-2 flex-wrap">
-                    <Button onClick={() => markAllNotificationsRead()}>
-                        {languages[lang].notifications.allRead}
-                    </Button>
-                    <Button variant="danger" onClick={handleDeleteAll} disabled={isDeleting}>
-                        {isDeleting
-                            ? languages[lang].notifications.deleting
-                            : languages[lang].notifications.deleteAll}
-                    </Button>
-                </div>
+                {notis.length > 0 && (
+                    <div className="flex gap-2 flex-wrap">
+                        <Button onClick={() => markAllNotificationsRead()}>
+                            {languages[lang].notifications.allRead}
+                        </Button>
+                        <Button variant="danger" onClick={handleDeleteAll} disabled={isDeleting}>
+                            {isDeleting
+                                ? languages[lang].notifications.deleting
+                                : languages[lang].notifications.deleteAll}
+                        </Button>
+                    </div>
+                )}
             </header>
 
             <div className="flex flex-col gap-4">
                 {[...notis]
+                    ?.filter((noti) => noti.from)
                     ?.sort((a, b) => a.read - b.read)
                     .map((noti) => (
                         <div
@@ -106,7 +110,7 @@ export const Notifications = () => {
                                 noti.read ? "bg-sunny" : "bg-secondary border-l-4 border-sunny"
                             }`}
                         >
-                            <div className="flex-1">
+                            <div className="flex-1 pr-1">
                                 <p className="text-sm text-primary">
                                     <strong>{noti.from.displayName || noti.from.username}</strong>{" "}
                                     {noti.type === "like" && languages[lang].notifications.liked}

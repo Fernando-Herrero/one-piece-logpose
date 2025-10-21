@@ -35,7 +35,6 @@ export const UserStats = ({ context = "myProfile", userId, className }) => {
                 setError(null);
 
                 const data = await statsUser();
-                console.log(data);
                 setStats(data);
             } catch (error) {
                 console.error("Error al obtener stats del usuario", error);

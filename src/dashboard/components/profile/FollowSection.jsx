@@ -1,16 +1,26 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { UsersContext } from "@/context/UsersContext";
 import { FollowCard } from "@/dashboard/components/profile/FollowCard";
 import { languages } from "@/helpers/languages";
-import { useDevice } from "@/hooks/useDevice";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
 
 export const FollowSection = ({ user, className = "", basePath = "/dashboard/userProfile" }) => {
+    const { users } = useContext(UsersContext);
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
-    const { isMobile, isTablet } = useDevice();
 
     const userId = user._id ? user._id : user.id;
+
+    const validFollowers =
+        user.followers?.filter((followerId) =>
+            users.some((u) => u.id === followerId || u._id === followerId)
+        ) || [];
+
+    const validFollowing =
+        user.following?.filter((followingId) =>
+            users.some((u) => u.id === followingId || u._id === followingId)
+        ) || [];
 
     const finalBasePath =
         basePath === "/dashboard/profile" ? basePath : `/dashboard/userProfile?userId=${userId}`;
@@ -19,7 +29,7 @@ export const FollowSection = ({ user, className = "", basePath = "/dashboard/use
         <div className={`flex flex-col gap-1 sm:flex-1 ${className}`}>
             <FollowCard
                 title={languages[lang].profile.followers}
-                content={user.followers?.length}
+                content={validFollowers.length}
                 onClick={() =>
                     goTo(`${basePath}/followers?userId=${userId}&from=${encodeURIComponent(finalBasePath)}`)
                 }
@@ -27,7 +37,7 @@ export const FollowSection = ({ user, className = "", basePath = "/dashboard/use
             />
             <FollowCard
                 title={languages[lang].profile.following}
-                content={user.following?.length}
+                content={validFollowing.length}
                 onClick={() =>
                     goTo(`${basePath}/followings?userId=${userId}&from=${encodeURIComponent(finalBasePath)}`)
                 }

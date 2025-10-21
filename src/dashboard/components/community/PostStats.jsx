@@ -4,6 +4,7 @@ import commentIcon from "@/assets/icons/comment-icon.svg";
 import heartIcon from "@/assets/icons/heart-icon.svg";
 import likeHeart from "@/assets/icons/heart-red-icon.svg";
 import { AuthContext } from "@/context/AuthContext";
+import { UsersContext } from "@/context/UsersContext";
 import { useNotifications } from "@/core/notifications/useNotifications";
 import { usePosts } from "@/core/posts/usePosts";
 import { useGoTo } from "@/hooks/useGoTo";
@@ -14,6 +15,7 @@ export const PostStats = ({ post, view }) => {
     const { goTo } = useGoTo();
     const { notification } = useNotifications();
     const { user } = useContext(AuthContext);
+    const { users } = useContext(UsersContext);
 
     const userId = user?.id || user?._id;
     const postUserId = post?.userId.id;
@@ -24,6 +26,9 @@ export const PostStats = ({ post, view }) => {
 
     const shouldShowLiked = post.liked !== undefined ? post.liked : post.userLiked;
     const shouldShowBookmarked = post.bookmarked !== undefined ? post.bookmarked : post.userBookmarked;
+
+    const invalidComments = post.comments?.filter((comment) => comment.userId === null).length || 0;
+    const commentCountValid = post.commentsCount - invalidComments;
 
     const toggleLike = async () => {
         if (isLiking) return;
@@ -78,7 +83,7 @@ export const PostStats = ({ post, view }) => {
     const statsConfig = [
         {
             icon: commentIcon,
-            count: post.commentsCount,
+            count: commentCountValid,
             alt: "Comment icon",
             onClick: handleComment,
             disabled: false,

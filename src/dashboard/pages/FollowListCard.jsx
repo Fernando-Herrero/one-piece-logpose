@@ -13,7 +13,7 @@ import { useGoTo } from "@/hooks/useGoTo";
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export const FollowListCard = ({ onCancel, type = "followers" }) => {
+export const FollowListCard = ({ onCancel, type = "followers", view = true }) => {
     const [searchParams] = useSearchParams();
     const userId = searchParams.get("userId");
     const from = searchParams.get("from");
@@ -31,7 +31,7 @@ export const FollowListCard = ({ onCancel, type = "followers" }) => {
     const { goTo } = useGoTo();
     const { unfollowUser } = useUser();
 
-    const { fetchFn, emptyKey } = FOLLOW_CONFIG[type];
+    const { fetchFn } = FOLLOW_CONFIG[type];
 
     useEffect(() => {
         if (!userId) {
@@ -112,6 +112,8 @@ export const FollowListCard = ({ onCancel, type = "followers" }) => {
                             key={`${user.username}-${user.id}`}
                             user={user}
                             canUnfollow={profileUser?.following?.includes(user.id)}
+                            onUnfollow={handleUnfollow}
+                            view={view}
                         />
                     ))
                 ) : (

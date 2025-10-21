@@ -42,7 +42,7 @@ export const PrivacySelection = () => {
     }, [user]);
 
     return (
-        <div className="flex flex-col gap-2 w-2/4">
+        <div className="flex flex-col gap-2 w-2/3 sm:w-2/4">
             {toggleItems.map(({ key, label }) => (
                 <div key={key} className="flex items-center justify-between gap-2">
                     <p className="text-primary">{label}</p>

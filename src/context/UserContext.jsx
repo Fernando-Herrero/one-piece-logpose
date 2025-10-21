@@ -29,7 +29,6 @@ export const UserProvider = ({ children }) => {
                 setError(null);
 
                 const userData = await getUserApi(userId);
-                console.log("El user es", userData);
                 setUser(userData);
             } catch (error) {
                 console.error("Error al obtener el usuario", error);

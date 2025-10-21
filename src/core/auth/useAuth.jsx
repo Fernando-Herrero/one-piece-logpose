@@ -97,6 +97,10 @@ export const useAuth = () => {
             local.save("theme", false);
             local.remove("lang");
             document.body.classList.remove("dark");
+            local.remove("avatarSelected");
+            setSelectedAvatar(null);
+            setNotis([]);
+            setNotisCount(0);
             goTo("/");
         }
     };

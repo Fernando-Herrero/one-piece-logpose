@@ -4,10 +4,10 @@ import { UsersContext } from "@/context/UsersContext";
 import { UsersListContent } from "@/dashboard/components/UsersListContent";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 export const UsersList = ({ className }) => {
-    const { users, loading, error, fetchUsers } = useContext(UsersContext);
+    const { users, loading, error } = useContext(UsersContext);
     const { isTabletXl, isDesktop } = useDevice();
     const { isAdmin } = useContext(AuthContext);
     const { lang } = useContext(LanguagesContext);
@@ -20,12 +20,6 @@ export const UsersList = ({ className }) => {
             value: users.filter((user) => user.isActive === false).length,
         },
     ];
-
-    useEffect(() => {
-        if ((isTabletXl || isDesktop) && users?.length === 0 && !loading) {
-            fetchUsers();
-        }
-    }, [isTabletXl, isDesktop]);
 
     if (!isTabletXl && !isDesktop) return null;
 

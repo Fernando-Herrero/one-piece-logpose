@@ -1,5 +1,5 @@
 import { getUsersApi } from "@/core/user/user.api";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const UsersContext = createContext(null);
 
@@ -8,8 +8,6 @@ export const UsersProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    console.log("Los users bonitos", users);
-
     const fetchUsers = async () => {
         if (loading) return;
         try {
@@ -17,7 +15,6 @@ export const UsersProvider = ({ children }) => {
             setError(null);
 
             const data = await getUsersApi();
-            console.log(data);
             setUsers(data);
         } catch (error) {
             console.error("Error al obtener todos los usuarios", error);
@@ -27,8 +24,12 @@ export const UsersProvider = ({ children }) => {
         }
     };
 
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
     return (
-        <UsersContext.Provider value={{ users, setUsers, loading, error, setError, fetchUsers }}>
+        <UsersContext.Provider value={{ users, setUsers, loading, error, setError }}>
             {children}
         </UsersContext.Provider>
     );

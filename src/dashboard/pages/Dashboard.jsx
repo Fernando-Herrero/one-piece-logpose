@@ -78,13 +78,17 @@ export const Dashboard = () => {
                     <Route
                         path="followers"
                         element={
-                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                            <Overlay>
+                                {(handleClose) => <FollowersCard onCancel={handleClose} view={false} />}
+                            </Overlay>
                         }
                     />
                     <Route
                         path="followings"
                         element={
-                            <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
+                            <Overlay>
+                                {(handleClose) => <FollowingCard onCancel={handleClose} view={false} />}
+                            </Overlay>
                         }
                     />
                     <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />

@@ -64,7 +64,7 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
             </div>
 
             <div
-                className={classNames("flex flex-col gap-2 sm:gap-4 sm:px-12", {
+                className={classNames("flex flex-col gap-2 px-4 sm:gap-4 sm:px-12", {
                     "px-6": isMobile,
                     "px-8": isTablet,
                 })}

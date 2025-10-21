@@ -21,7 +21,7 @@ export const Modal = ({ message, onConfirm, onCancel, confirmText = "Ok", cancel
 
     return (
         <div>
-            <div className="relative flex flex-col">
+            <div className="relative flex flex-col m-1 sm:m-0">
                 <div className="flex flex-col gap-5 bg-white rounded-2xl border-2 border-gray-800 px-6 py-4 shadow-lg max-w-sm">
                     <p>{message || defaultMessage}</p>
                     <div className="self-center flex gap-1">

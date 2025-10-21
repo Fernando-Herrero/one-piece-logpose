@@ -12,7 +12,7 @@ export const Profile = () => {
     const { isAdmin, userPrivacy } = useContext(AuthContext);
 
     return (
-        <div className="relative flex justify-center gap-4 sm:py-8">
+        <div className="relative flex justify-center gap-4 p-1 sm:pr-0 sm:py-8">
             <div className="flex flex-col gap-2 sm:gap-4">
                 <ProfileArticle />
                 <UserProgress />

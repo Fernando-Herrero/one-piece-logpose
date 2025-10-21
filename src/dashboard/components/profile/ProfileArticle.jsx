@@ -16,6 +16,7 @@ import { useContext, useState } from "react";
 
 export const ProfileArticle = () => {
     const { user, loading, error } = useContext(AuthContext);
+    const userId = user?.id || user?._id;
     const { updatedProfile, deleteAccount } = useAuth();
     const { isMobile, isTablet } = useDevice();
     const [coverImg, setCoverImg] = useState(false);
@@ -28,8 +29,8 @@ export const ProfileArticle = () => {
     const handleDeleteAccount = () => {
         showModal({
             message: languages[lang].modal.deleteAccount,
-            onConfirm: () => {
-                deleteAccount();
+            onConfirm: async () => {
+                await deleteAccount(userId);
                 hideModal();
             },
             onCancel: hideModal,

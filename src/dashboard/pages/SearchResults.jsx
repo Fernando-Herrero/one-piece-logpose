@@ -5,20 +5,29 @@ import { Spinner } from "@/dashboard/components/community/Spinner";
 import { SearchResultSection } from "@/dashboard/components/search/SearchResultSection";
 import { languages } from "@/helpers/languages";
 import { useSearchFilter } from "@/hooks/useSearchFilter";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const SearchResults = () => {
     const [searchParamas] = useSearchParams();
     const query = searchParamas.get("q") || "";
     const { posts, loading: loadingPosts } = useContext(PostContext);
-    const { users, loading: loadingUsers } = useContext(UsersContext);
+    const { users, loading: loadingUsers, fetchUsers } = useContext(UsersContext);
     const { lang } = useContext(LanguagesContext);
 
     const { exactPostsMatches, partialPostsMatches, exactUserMatches, partialUserMatches, totalResults } =
         useSearchFilter(query, posts, users);
 
-    if (loadingPosts || loadingUsers) return <Spinner />;
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+    if (loadingPosts || loadingUsers)
+        return (
+            <div className="flex justify-center pt-10">
+                <Spinner />
+            </div>
+        );
 
     return (
         <div className="max-w-xl mx-auto p-2 md:p-6">

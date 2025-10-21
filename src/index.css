@@ -201,7 +201,7 @@ progress::-moz-progress-bar {
 }
 
 .card-content {
-    @apply max-w-md sm:min-w-xs;
+    @apply max-w-md w-[82vw] sm:min-w-xs;
 }
 
 /* DARK THEME */
