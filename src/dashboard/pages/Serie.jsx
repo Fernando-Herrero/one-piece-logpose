@@ -46,8 +46,8 @@ export const Serie = () => {
                 console.log(
                     "Rendering saga:",
                     name,
-                    "with arcs:",
-                    arcsInSaga.map((a) => a.name)
+                    "with arcs:"
+                    // arcsInSaga.map((a) => a.name)
                 );
 
                 return (
