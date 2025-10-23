@@ -70,7 +70,6 @@ export const useAuth = () => {
         const logoutResponse = await logOutApi();
 
         if (logoutResponse?.logout) {
-            console.log("logout del hook", logoutResponse);
             removeTokenFromLocalStorage();
             removeUserFromLocalStorage();
             setUser(null);
@@ -81,7 +80,7 @@ export const useAuth = () => {
             setSelectedAvatar(null);
             setNotis([]);
             setNotisCount(0);
-            goTo("/");
+            // goTo("/");
         }
     };
 

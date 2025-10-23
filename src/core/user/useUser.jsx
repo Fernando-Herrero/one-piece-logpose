@@ -1,4 +1,5 @@
 import { AuthContext } from "@/context/AuthContext";
+import { PostContext } from "@/context/PostContext";
 import { UsersContext } from "@/context/UsersContext";
 import { saveUserInLocalStorage } from "@/core/auth/auth.service";
 import {
@@ -17,6 +18,7 @@ import { useContext } from "react";
 export const useUser = () => {
     const { user, setUser } = useContext(AuthContext);
     const { setUsers } = useContext(UsersContext);
+    const { posts, setPosts } = useContext(PostContext);
 
     const userAuthId = user?.id || user?._id;
 
@@ -87,6 +89,7 @@ export const useUser = () => {
 
     const deleteUser = async (userId) => {
         try {
+            setPosts((prevPosts) => prevPosts.filter((post) => post.userId?.id !== userId));
             const deleteUser = await deleteUserApi(userId);
             setUsers((prev) => prev.filter((user) => user.id !== userId));
             return deleteUser;

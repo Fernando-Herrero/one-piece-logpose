@@ -70,8 +70,7 @@ export const App = () => {
 
             <main className="flex flex-col justify-center pt-24">
                 <Routes>
-                    <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <HomePage />} />
-
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/home" element={<HomePage />} />
                     <Route
                         path="/login"
@@ -94,6 +93,8 @@ export const App = () => {
                             </Overlay>
                         }
                     />
+
+                    <Route path="/dashboard/*" element={<Navigate to="/" replace />} />
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>

@@ -73,14 +73,13 @@ export const OptionsMenu = ({ id, userId, view, basePath = "/dashboard/community
                     />
                 )}
 
-                {amIUser ||
-                    (isAdmin && (
-                        <ItemOptionsMenu
-                            onClick={() => deletePost(id)}
-                            content={languages[lang].posts.deletePost}
-                            icon={trash}
-                        />
-                    ))}
+                {(amIUser || isAdmin) && (
+                    <ItemOptionsMenu
+                        onClick={() => deletePost(id)}
+                        content={languages[lang].posts.deletePost}
+                        icon={trash}
+                    />
+                )}
 
                 {!amIUser &&
                     (alreadyFollow ? (

@@ -43,7 +43,7 @@ export const NotFoundPage = () => {
                         <img src={crewImg} alt="sombrero de paja crew" />
                     </div>
                     <Link
-                        className="text-xl text-secondary underline rounded p-1 bg-white/30 hover:bg-white/50"
+                        className="text-xl text-link underline rounded p-1 bg-white/30 hover:bg-white/50"
                         to={redirectPath}
                     >
                         {languages[lang].notFoundPage.inicio}

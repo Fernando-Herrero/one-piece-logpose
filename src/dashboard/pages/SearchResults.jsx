@@ -5,7 +5,7 @@ import { Spinner } from "@/dashboard/components/community/Spinner";
 import { SearchResultSection } from "@/dashboard/components/search/SearchResultSection";
 import { languages } from "@/helpers/languages";
 import { useSearchFilter } from "@/hooks/useSearchFilter";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const SearchResults = () => {
@@ -17,10 +17,6 @@ export const SearchResults = () => {
 
     const { exactPostsMatches, partialPostsMatches, exactUserMatches, partialUserMatches, totalResults } =
         useSearchFilter(query, posts, users);
-
-    useEffect(() => {
-        fetchUsers();
-    }, []);
 
     if (loadingPosts || loadingUsers)
         return (

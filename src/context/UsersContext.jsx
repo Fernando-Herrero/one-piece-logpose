@@ -1,9 +1,11 @@
+import { AuthContext } from "@/context/AuthContext";
 import { getUsersApi } from "@/core/user/user.api";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const UsersContext = createContext(null);
 
 export const UsersProvider = ({ children }) => {
+    const { user } = useContext(AuthContext);
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -25,8 +27,10 @@ export const UsersProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        fetchUsers();
-    }, []);
+        if (user) {
+            fetchUsers();
+        }
+    }, [user]);
 
     return (
         <UsersContext.Provider value={{ users, setUsers, loading, error, setError }}>

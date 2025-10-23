@@ -64,6 +64,8 @@ export const languages = {
             deleteAllNotifications: "⚠️ ¿Estás seguro? Esto eliminará todas tus notificaciones.",
             cancelPremium:
                 "⚠️ ¿Seguro que deseas cancelar el proceso de verificación? Podrás retomarlo más adelante cuando quieras.",
+            deleteUserMessage:
+                "⚠️ ¿Estás seguro? Esto eliminará permanentemente al usuario y todos sus tesoros (datos) del sistema.",
         },
 
         characters: {
@@ -250,6 +252,8 @@ export const languages = {
             follow: "Seguir",
             unfollow: "Dejar de seguir",
             viewPost: "Ver post",
+            send: "Enviar",
+            sending: "Enviando...",
         },
 
         sagaData: {
@@ -447,6 +451,8 @@ export const languages = {
             deleteAllNotifications: "⚠️ Are you sure? This will delete all your notifications.",
             cancelPremium:
                 "⚠️ Are you sure you want to cancel the verification process? You can resume it anytime you want.",
+            deleteUserMessage:
+                "⚠️ Are you sure? This action will permanently delete the user's account and all associated data.",
         },
 
         characters: {
@@ -636,6 +642,8 @@ export const languages = {
             follow: "Follow",
             unfollow: "Unfollow",
             viewPost: "See post",
+            send: "Send",
+            sending: "Sending...",
         },
 
         sagaData: {

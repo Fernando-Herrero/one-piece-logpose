@@ -3,6 +3,7 @@ import notVerifiedIcon from "@/assets/icons/not-verified-icon.svg";
 import verifiedIcon from "@/assets/icons/verified-icon.svg";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { ModalContext } from "@/context/ModalContext";
 import { useUser } from "@/core/user/useUser";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { UserBarProgress } from "@/dashboard/components/UserBarProgress";
@@ -27,11 +28,26 @@ export const UserArticle = ({
     const { deleteUser } = useUser();
     const { isMobileXs, isMobile, isTablet, isTabletXl, isDesktop } = useDevice();
     const { lang } = useContext(LanguagesContext);
+    const { showModal, hideModal } = useContext(ModalContext);
+
     const avatarSizes = () => {
         if (isMobileXs || isMobile || isTablet || isTabletXl) return "lg";
         if (isDesktop) return "xl";
         return "2xl";
     };
+
+    const handleDeleteUser = (userId) => {
+        showModal({
+            message: languages[lang].modal.deleteUserMessage,
+            onConfirm: async () => {
+                await deleteUser(userId);
+                hideModal();
+            },
+            onCancel: hideModal,
+            confirmText: languages[lang].modal.confirmLogOut,
+        });
+    };
+
     return (
         <article
             key={id}
@@ -71,7 +87,7 @@ export const UserArticle = ({
                 <div className="rounded-full border border-black bg-linePrimary tansition-all duration-300 hover:bg-lineDark hover:scale-110 absolute -top-1 -right-1 group">
                     {" "}
                     <button
-                        onClick={() => deleteUser(id)}
+                        onClick={() => handleDeleteUser(id)}
                         className="w-4 h-4 flex items-center justify-center cursor-pointer"
                         aria-label="Eliminar usuario"
                     >
