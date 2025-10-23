@@ -12,6 +12,8 @@ export const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const userPrivacy = user?.privacy;
+
     useEffect(() => {
         const fetchUser = async () => {
             if (!userId) {
@@ -27,7 +29,6 @@ export const UserProvider = ({ children }) => {
                 setError(null);
 
                 const userData = await getUserApi(userId);
-                console.log("El user es", userData);
                 setUser(userData);
             } catch (error) {
                 console.error("Error al obtener el usuario", error);
@@ -39,5 +40,9 @@ export const UserProvider = ({ children }) => {
         fetchUser();
     }, [userId]);
 
-    return <UserContext.Provider value={{ user, loading, error }}>{children}</UserContext.Provider>;
+    return (
+        <UserContext.Provider value={{ user, setUser, loading, error, userPrivacy }}>
+            {children}
+        </UserContext.Provider>
+    );
 };

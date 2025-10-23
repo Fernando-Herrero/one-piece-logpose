@@ -7,8 +7,10 @@ import { FollowingCard } from "@/dashboard/components/profile/FollowingCard";
 import { Cards } from "@/dashboard/pages/Cards";
 import { Comment } from "@/dashboard/pages/Comment";
 import { Community } from "@/dashboard/pages/Community";
+import { Notifications } from "@/dashboard/pages/Notifications";
 import { Post } from "@/dashboard/pages/Post";
 import { PostPage } from "@/dashboard/pages/PostPage";
+import { Privacy } from "@/dashboard/pages/Privacy";
 import { Profile } from "@/dashboard/pages/Profile";
 import { Purchases } from "@/dashboard/pages/Purchases";
 import { SearchResults } from "@/dashboard/pages/SearchResults";
@@ -43,10 +45,7 @@ export const Dashboard = () => {
                             <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
                         }
                     />
-                    <Route
-                        path="postPage"
-                        element={<Overlay>{(handleClose) => <PostPage onCancel={handleClose} />}</Overlay>}
-                    />
+                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
                 </Route>
 
                 <Route
@@ -65,10 +64,7 @@ export const Dashboard = () => {
                         path="comment"
                         element={<Overlay>{(handleClose) => <Comment onCancel={handleClose} />}</Overlay>}
                     />
-                    <Route
-                        path="postPage"
-                        element={<Overlay>{(handleClose) => <PostPage onCancel={handleClose} />}</Overlay>}
-                    />
+                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
                 </Route>
 
                 <Route
@@ -82,15 +78,20 @@ export const Dashboard = () => {
                     <Route
                         path="followers"
                         element={
-                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                            <Overlay>
+                                {(handleClose) => <FollowersCard onCancel={handleClose} view={false} />}
+                            </Overlay>
                         }
                     />
                     <Route
                         path="followings"
                         element={
-                            <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
+                            <Overlay>
+                                {(handleClose) => <FollowingCard onCancel={handleClose} view={false} />}
+                            </Overlay>
                         }
                     />
+                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
                 </Route>
 
                 <Route path="/serie" element={<Serie />} />
@@ -104,7 +105,13 @@ export const Dashboard = () => {
                         path="premium"
                         element={<Overlay>{(handleClose) => <Verified onCancel={handleClose} />}</Overlay>}
                     />
+                    <Route
+                        path="privacy"
+                        element={<Overlay>{(handleClose) => <Privacy onCancel={handleClose} />}</Overlay>}
+                    />
                 </Route>
+
+                <Route path="/notifications" element={<Notifications />} />
 
                 <Route path="/purchases" element={<Purchases />} />
             </Routes>

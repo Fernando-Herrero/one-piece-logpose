@@ -19,25 +19,16 @@ export const SagaProvider = ({ children }) => {
     }, [user]);
 
     const updateProgress = (newSaga, newArc, newEpisode) => {
-        console.log("🔵 updateProgress llamado con:", { newSaga, newArc, newEpisode });
-
         setSaga((prev) => {
-            console.log("🟡 Estado actual:", prev);
-
             if (newSaga > prev.saga) {
-                console.log("✅ Actualizando: nueva saga mayor");
                 return { saga: newSaga, arc: newArc, episode: newEpisode };
             }
             if (newSaga === prev.saga && newArc > prev.arc) {
-                console.log("✅ Actualizando: nuevo arco mayor");
                 return { saga: prev.saga, arc: newArc, episode: newEpisode };
             }
             if (newSaga === prev.saga && newArc === prev.arc && newEpisode > prev.episode) {
-                console.log("✅ Actualizando: nuevo episodio mayor");
                 return { saga: prev.saga, arc: prev.arc, episode: newEpisode };
             }
-
-            console.log("❌ No se actualiza: progreso no es mayor");
             return prev;
         });
     };
@@ -68,13 +59,10 @@ export const SagaProvider = ({ children }) => {
                     serieProgress: resetState,
                     experience: 0,
                 });
-                console.log("✅ Progreso y experiencia reseteados en base de datos");
             } catch (error) {
                 console.error("❌ Error al resetear progreso en BD:", error);
             }
         }
-
-        console.log("✅ Progreso de saga y experiencia reseteados completamente");
     };
 
     return (

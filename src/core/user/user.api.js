@@ -92,7 +92,7 @@ export const unfollowUserApi = async (userId) => {
 export const getPostsUserApi = async (userId) => {
     try {
         console.log("Obteniendo posts del user", userId);
-        const response = await api.get(`/posts/search?userId=${userId}`);
+        const response = await api.get(`/users/${userId}/posts`);
         console.log("respuesta de la api", response);
 
         return response.data;
@@ -105,7 +105,7 @@ export const getPostsUserApi = async (userId) => {
 export const getLikesUserApi = async (userId) => {
     try {
         console.log("Obteniendo likes del user", userId);
-        const response = await api.get(`/likes/search?userId=${userId}`);
+        const response = await api.get(`/users/${userId}/liked-posts`);
         console.log("respuesta de la api", response);
 
         return response.data;
@@ -115,15 +115,41 @@ export const getLikesUserApi = async (userId) => {
     }
 };
 
-// export const getUserPostsApi = async (userId) => {
-//     try {
-//         console.log("Recibiendo user de la api", userId);
-//         const response = await api.get(`/posts/search`, { params: { userId } });
-//         console.log("respuesta de la api", response);
+export const getBookmarksUserApi = async (userId) => {
+    try {
+        console.log("Obteniendo bookmarkes del user", userId);
+        const response = await api.get(`/users/${userId}/bookmarked-posts`);
+        console.log("respuesta de la api", response);
 
-//         return response.data;
-//     } catch (error) {
-//         console.error("Error al recibir user", error);
-//         throw error;
-//     }
-// };
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener likes del user", error);
+        throw error;
+    }
+};
+
+export const getCommentsUserApi = async (userId) => {
+    try {
+        console.log("Obteniendo bookmarkes del user", userId);
+        const response = await api.get(`/users/${userId}/commented-posts`);
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener likes del user", error);
+        throw error;
+    }
+};
+
+export const getStatsUserApi = async (userId) => {
+    try {
+        console.log("Obteniendo bookmarkes del user", userId);
+        const response = await api.get(`/users/${userId}/stats`);
+        console.log("respuesta de la api", response);
+
+        return response.data;
+    } catch (error) {
+        console.error("Error al obtener likes del user", error);
+        throw error;
+    }
+};

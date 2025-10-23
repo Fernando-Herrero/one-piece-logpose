@@ -15,10 +15,8 @@ export const usePosts = () => {
     const createPost = async (newPost) => {
         try {
             const created = await createPostApi(newPost);
-            console.log("este es el post creado", created);
             setPosts((prev) => {
                 const newPost = [created, ...prev];
-                console.log("Este es mi nuevo post", newPost);
                 return newPost;
             });
         } catch (error) {
@@ -87,10 +85,15 @@ export const usePosts = () => {
     const replyPost = async (newComment) => {
         try {
             const created = await replyPostApi(newComment);
-            console.log("este es el comentario creado", created);
             setPosts((prev) =>
                 prev.map((post) =>
-                    post.id === created.postId ? { ...post, commentsCount: post.commentsCount + 1 } : post
+                    post.id === created.postId
+                        ? {
+                              ...post,
+                              comments: [...(post.comments || []), created],
+                              commentsCount: post.commentsCount + 1,
+                          }
+                        : post
                 )
             );
         } catch (error) {

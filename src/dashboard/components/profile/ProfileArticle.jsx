@@ -16,6 +16,7 @@ import { useContext, useState } from "react";
 
 export const ProfileArticle = () => {
     const { user, loading, error } = useContext(AuthContext);
+    const userId = user?.id || user?._id;
     const { updatedProfile, deleteAccount } = useAuth();
     const { isMobile, isTablet } = useDevice();
     const [coverImg, setCoverImg] = useState(false);
@@ -28,8 +29,8 @@ export const ProfileArticle = () => {
     const handleDeleteAccount = () => {
         showModal({
             message: languages[lang].modal.deleteAccount,
-            onConfirm: () => {
-                deleteAccount();
+            onConfirm: async () => {
+                await deleteAccount(userId);
                 hideModal();
             },
             onCancel: hideModal,
@@ -51,7 +52,7 @@ export const ProfileArticle = () => {
     if (error) return <p className="text-linePrimary text-center pt-10">{error}</p>;
 
     return (
-        <article className="text-sm card gap-1 bg-gradient-card transition">
+        <article className="text-sm card gap-1 bg-gradient-card transition card-content lg:h-fit">
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col items-center gap-2">
                     <ProfileHeader user={user} setCoverImg={setCoverImg} />
@@ -73,13 +74,20 @@ export const ProfileArticle = () => {
                     </div>
                 </div>
 
-                <ProfileViewMore user={user} editorProps={editorProps} />
+                <div
+                    className={classNames("flex flex-col gap-2 px-2 sm:px-6", {
+                        "px-6": isMobile,
+                        "px-8": isTablet,
+                    })}
+                >
+                    <ProfileViewMore user={user} editorProps={editorProps} />
 
-                <FollowSection user={user} className="px-2" basePath="/dashboard/profile" />
+                    <FollowSection user={user} basePath="/dashboard/profile" />
 
-                <Button variant="danger" className="mb-4" onClick={handleDeleteAccount}>
-                    {languages[lang].profile.deleteAccount}
-                </Button>
+                    <Button variant="danger" className="mb-4" onClick={handleDeleteAccount}>
+                        {languages[lang].profile.deleteAccount}
+                    </Button>
+                </div>
             </div>
         </article>
     );

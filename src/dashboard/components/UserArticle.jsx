@@ -3,6 +3,7 @@ import notVerifiedIcon from "@/assets/icons/not-verified-icon.svg";
 import verifiedIcon from "@/assets/icons/verified-icon.svg";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
+import { ModalContext } from "@/context/ModalContext";
 import { useUser } from "@/core/user/useUser";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { UserBarProgress } from "@/dashboard/components/UserBarProgress";
@@ -17,7 +18,6 @@ export const UserArticle = ({
     isActive,
     name,
     lastName,
-    firstName,
     verified,
     username,
     createdAt,
@@ -26,17 +26,32 @@ export const UserArticle = ({
 }) => {
     const { isAdmin } = useContext(AuthContext);
     const { deleteUser } = useUser();
-    const { isTabletXl, isDesktop } = useDevice();
+    const { isMobileXs, isMobile, isTablet, isTabletXl, isDesktop } = useDevice();
     const { lang } = useContext(LanguagesContext);
+    const { showModal, hideModal } = useContext(ModalContext);
+
     const avatarSizes = () => {
-        if (isTabletXl) return "lg";
+        if (isMobileXs || isMobile || isTablet || isTabletXl) return "lg";
         if (isDesktop) return "xl";
         return "2xl";
     };
+
+    const handleDeleteUser = (userId) => {
+        showModal({
+            message: languages[lang].modal.deleteUserMessage,
+            onConfirm: async () => {
+                await deleteUser(userId);
+                hideModal();
+            },
+            onCancel: hideModal,
+            confirmText: languages[lang].modal.confirmLogOut,
+        });
+    };
+
     return (
         <article
             key={id}
-            className="flex items-center gap-2 bg-gradient-card border min-h-16 border-white/30 px-4 py-2 rounded-xl w-full max-w-2xs shadow relative transition hover:-translate-y-0.5 hover:shadow-xl lg:gap-4"
+            className="flex items-center gap-2 bg-gradient-card border border-white/30 px-4 py-2 rounded-xl w-full max-w-2xs shadow relative transition hover:-translate-y-0.5 hover:shadow-xl lg:gap-4"
         >
             <UserAvatar
                 src={avatar}
@@ -50,7 +65,7 @@ export const UserArticle = ({
                 <div className="flex items-center gap-1 flex-wrap">
                     <div className="flex gap-1">
                         <p className="font-semibold text-primary text-sm lg:text-base">
-                            {displayName ? displayName : firstName + lastName}
+                            {displayName ? displayName : name + lastName}
                         </p>
                         <img
                             className="w-3"
@@ -72,7 +87,7 @@ export const UserArticle = ({
                 <div className="rounded-full border border-black bg-linePrimary tansition-all duration-300 hover:bg-lineDark hover:scale-110 absolute -top-1 -right-1 group">
                     {" "}
                     <button
-                        onClick={() => deleteUser(id)}
+                        onClick={() => handleDeleteUser(id)}
                         className="w-4 h-4 flex items-center justify-center cursor-pointer"
                         aria-label="Eliminar usuario"
                     >

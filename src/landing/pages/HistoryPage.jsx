@@ -38,7 +38,7 @@ export const HistoryPage = () => {
     const history = historyOnePiece(lang);
 
     return (
-        <Container className="flex flex-col gap-4 pb-20 relativerelative p-6 relative rounded-xl border-4 border-yellow-800 border-dashed shadow-lg bg-amber-50 filter contrast-150">
+        <Container className="flex flex-col gap-4 pb-10 mb-10 relativerelative p-6 relative rounded-xl border-4 border-yellow-800 border-dashed shadow-lg bg-amber-50 filter contrast-150">
             <div className="absolute top-2 left-2">⚔️</div>
             <div className="absolute bottom-2 right-2">⚓</div>
             {history.map(({ section, content, subContent }, index) => {

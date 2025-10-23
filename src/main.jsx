@@ -1,3 +1,5 @@
+import { NotificationsProvider } from "@/context/NotificationsContext.jsx";
+import { NotificationsCountProvider } from "@/context/NotificationsCountContext.jsx";
 import { PostProvider } from "@/context/PostContext.jsx";
 import { UsersProvider } from "@/context/UsersContext.jsx";
 import { createRoot } from "react-dom/client";
@@ -15,19 +17,23 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
         <LanguagesProvider>
             <AuthProvider>
-                <PostProvider>
-                    <UsersProvider>
-                        <SagaProvider>
-                            <AvatarProvider>
-                                <ModdalProvider>
-                                    <DeviceProvider>
-                                        <App />
-                                    </DeviceProvider>
-                                </ModdalProvider>
-                            </AvatarProvider>
-                        </SagaProvider>
-                    </UsersProvider>
-                </PostProvider>
+                <AvatarProvider>
+                    <PostProvider>
+                        <UsersProvider>
+                            <NotificationsCountProvider>
+                                <NotificationsProvider>
+                                    <SagaProvider>
+                                        <ModdalProvider>
+                                            <DeviceProvider>
+                                                <App />
+                                            </DeviceProvider>
+                                        </ModdalProvider>
+                                    </SagaProvider>
+                                </NotificationsProvider>
+                            </NotificationsCountProvider>
+                        </UsersProvider>
+                    </PostProvider>
+                </AvatarProvider>
             </AuthProvider>
         </LanguagesProvider>
     </BrowserRouter>

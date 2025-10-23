@@ -18,7 +18,7 @@ export const FollowCard = ({ title, content, onClick, noFollow }) => {
                     {content}
                 </span>
             ) : (
-                <span className="text-xs text-muted italic sm:text-sm ml-1">{noFollow}</span>
+                <span className="text-xs text-muted italic sm:text-sm">{noFollow}</span>
             )}
         </button>
     );

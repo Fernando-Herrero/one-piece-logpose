@@ -38,7 +38,7 @@ export const RegisterForm = () => {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const validationError = validateRegisterForm(form, lang);
@@ -48,10 +48,8 @@ export const RegisterForm = () => {
 
         if (selectedAvatar) dataToSend.avatar = selectedAvatar;
 
-        console.log("Datos que se envían al registro:", dataToSend);
-
         try {
-            register(dataToSend);
+            await register(dataToSend);
 
             setTimeout(() => {
                 showModal({

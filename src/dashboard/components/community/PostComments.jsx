@@ -5,10 +5,11 @@ import { usePosts } from "@/core/posts/usePosts";
 import { useContext, useState } from "react";
 
 export const PostComments = ({ post }) => {
-    console.log(post);
     const { comments } = post;
     const { user } = useContext(AuthContext);
     const userId = user._id;
+
+    const validComments = comments?.filter((comment) => comment.userId) || [];
 
     const { likeComment } = usePosts();
     const [isLiking, setIsLiking] = useState({});
@@ -34,7 +35,7 @@ export const PostComments = ({ post }) => {
                     : "border border-white/30"
             }
         >
-            {comments?.map((comment) => (
+            {validComments?.map((comment) => (
                 <article
                     key={comment.id}
                     className="flex items-center justify-between p-1 border-b border-white/30 last:border-0"

@@ -36,7 +36,7 @@ export const AccordionSerie = ({ className, type, name, text, episodes, children
                 "shadow-2xl": isOpen && type === "saga",
             })}
         >
-            <header className="flex items-center justify-between cursor-pointer" onClick={toggleBox}>
+            <header className="flex items-center justify-between cursor-pointer" onClick={() => toggleBox()}>
                 <div>
                     <div className="flex items-center gap-2">
                         <p className={`font-family-pirate text-primary  ${stylesTitle[type]}`}>{name}</p>

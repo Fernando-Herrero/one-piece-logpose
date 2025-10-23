@@ -1,12 +1,12 @@
 import classNames from "classnames";
 
 export const InputCard = ({ label, field, value, onChange, placeholder, error, isValid, submitted }) => {
-    const showError = !!error && value.length > 0 && submitted;
+    const showError = !!error && submitted;
     const showValid = value && isValid(field, value) && !showError;
 
     return (
         <label className="flex flex-col text-sm flex-1">
-            <span className="mb-1 font-semibold">{label}</span>
+            <span className="mb-1 font-semibold self-start">{label}</span>
             <div className="relative">
                 <input
                     type="text"

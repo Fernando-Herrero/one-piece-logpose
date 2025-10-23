@@ -1,19 +1,26 @@
 import { AuthContext } from "@/context/AuthContext";
+import { PostContext } from "@/context/PostContext";
 import { UsersContext } from "@/context/UsersContext";
 import { saveUserInLocalStorage } from "@/core/auth/auth.service";
 import {
     deleteUserApi,
     followUserApi,
+    getBookmarksUserApi,
+    getCommentsUserApi,
     getLikesUserApi,
     getPostsUserApi,
+    getStatsUserApi,
     getUsersApi,
     unfollowUserApi,
 } from "@/core/user/user.api";
 import { useContext } from "react";
 
 export const useUser = () => {
-    const { setUser } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     const { setUsers } = useContext(UsersContext);
+    const { posts, setPosts } = useContext(PostContext);
+
+    const userAuthId = user?.id || user?._id;
 
     const followUser = async (userId) => {
         try {
@@ -27,9 +34,19 @@ export const useUser = () => {
                 saveUserInLocalStorage(updatedUser);
                 return updatedUser;
             });
+
+            setUsers((prev) =>
+                prev.map((user) =>
+                    user.id === userId || user._id === userId
+                        ? { ...user, followers: [...(user.followers || []), userAuthId] }
+                        : user
+                )
+            );
+
             return response;
         } catch (error) {
             console.error("Error al seguir al usuario", error);
+            throw error;
         }
     };
 
@@ -45,9 +62,19 @@ export const useUser = () => {
                 saveUserInLocalStorage(updatedUser);
                 return updatedUser;
             });
+
+            setUsers((prev) =>
+                prev.map((user) =>
+                    user.id === userId || user._id === userId
+                        ? { ...user, followers: user.followers.filter((id) => id !== userAuthId) }
+                        : user
+                )
+            );
+
             return response;
         } catch (error) {
             console.error("Error al dejar de seguir al usuario", error);
+            throw error;
         }
     };
 
@@ -62,6 +89,7 @@ export const useUser = () => {
 
     const deleteUser = async (userId) => {
         try {
+            setPosts((prevPosts) => prevPosts.filter((post) => post.userId?.id !== userId));
             const deleteUser = await deleteUserApi(userId);
             setUsers((prev) => prev.filter((user) => user.id !== userId));
             return deleteUser;
@@ -75,7 +103,7 @@ export const useUser = () => {
         try {
             const dataPostsUser = await getPostsUserApi(userId);
 
-            return dataPostsUser.posts;
+            return dataPostsUser;
         } catch (error) {
             console.error("Error al obtener los posts del usuario", error);
         }
@@ -91,6 +119,36 @@ export const useUser = () => {
         }
     };
 
+    const getBookmarksUser = async (userId) => {
+        try {
+            const dataPostsUser = await getBookmarksUserApi(userId);
+
+            return dataPostsUser;
+        } catch (error) {
+            console.error("Error al obtener los likes del usuario", error);
+        }
+    };
+
+    const getCommentsUser = async (userId) => {
+        try {
+            const dataPostsUser = await getCommentsUserApi(userId);
+
+            return dataPostsUser;
+        } catch (error) {
+            console.error("Error al obtener los likes del usuario", error);
+        }
+    };
+
+    const getStatsUser = async (userId) => {
+        try {
+            const dataPostsUser = await getStatsUserApi(userId);
+
+            return dataPostsUser;
+        } catch (error) {
+            console.error("Error al obtener los likes del usuario", error);
+        }
+    };
+
     return {
         followUser,
         unfollowUser,
@@ -98,5 +156,8 @@ export const useUser = () => {
         getPostsUser,
         getLikesUser,
         deleteUser,
+        getBookmarksUser,
+        getCommentsUser,
+        getStatsUser,
     };
 };

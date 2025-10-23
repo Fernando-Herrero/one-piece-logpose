@@ -9,7 +9,7 @@ export const Footer = () => {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="border-t border-linePrimary py-2 relative">
+        <footer className="border-t border-linePrimary py-2 relative bg-secondary">
             <Container className="flex flex-col items-center text-center gap-1">
                 <div className="hidden md:flex">
                     <LanguageSelect placement="top" align="center" />

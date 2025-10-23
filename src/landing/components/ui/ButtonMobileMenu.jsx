@@ -12,20 +12,17 @@ export const ButtonMobileMenu = ({ isOpen, toggleMenu }) => {
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
         >
             <span
-                className={classNames(
-                    "block h-1 bg-white transition-all duration-300 ease-out transform absolute",
-                    {
-                        "rotate-45 translate-y-0 w-4": isOpen,
-                        "rotate-0 -translate-y-1 w-6": !isOpen,
-                    }
-                )}
+                className={classNames("block h-1 transition-all duration-300 ease-out transform absolute", {
+                    "rotate-45 translate-y-0 w-4 bg-white": isOpen,
+                    "rotate-0 -translate-y-1 w-6 bg-black": !isOpen,
+                })}
             ></span>
             <span
                 className={classNames(
-                    "block h-1 bg-white transition-all duration-300 ease-out transform absolute",
+                    "block h-1 bg-black transition-all duration-300 ease-out transform absolute",
                     {
-                        "-rotate-45 w-4": isOpen,
-                        "rotate-0 translate-y-1 w-6": !isOpen,
+                        "-rotate-45 w-4 bg-white": isOpen,
+                        "rotate-0 translate-y-1 w-6 bg-black": !isOpen,
                     }
                 )}
             ></span>

@@ -1,5 +1,5 @@
 export const UserBasicInfo = ({ user, lang, verified, notVerified, languages }) => (
-    <div className="text-center sm:flex-1">
+    <div className="text-center p-2 sm:flex-1 sm:p-2">
         <p className="flex items-center justify-center gap-1 text-lg font-semibold text-primary sm:text-xl">
             {user.displayName ?? user.name}
             {user.verified ? (

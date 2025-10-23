@@ -9,13 +9,14 @@ export const PostForm = ({
     onCancel,
     error,
     onErrorChange,
-    submitButtonText,
+
     placeholderText,
     initialData = { text: "", image: "" },
 }) => {
     const { isVerified } = useContext(AuthContext);
-    const [formData, setFormData] = useState(initialData);
     const { lang } = useContext(LanguagesContext);
+    const [formData, setFormData] = useState(initialData);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleInputs = ({ target: { value, name } }) => {
         if (error) onErrorChange(null);
@@ -26,13 +27,19 @@ export const PostForm = ({
         event.preventDefault();
         if (!formData.text.trim()) return onErrorChange(languages[lang].posts.textError);
 
+        setIsLoading(true);
+
         const processData = {
             text: formData.text,
             images: formData.image?.trim() ? [formData.image.trim()] : [],
         };
 
-        await onSubmit(processData);
-        setFormData({ text: "", image: "" });
+        try {
+            await onSubmit(processData);
+            setFormData({ text: "", image: "" });
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const handleCancel = () => {
@@ -86,8 +93,8 @@ export const PostForm = ({
                     <Button type="button" variant="danger" onClick={handleCancel}>
                         {languages[lang].modal.cancelText}
                     </Button>
-                    <Button type="submit" variant="submit">
-                        {submitButtonText}
+                    <Button type="submit" variant="submit" disabled={isLoading}>
+                        {isLoading ? languages[lang].posts.sending : languages[lang].posts.send}
                     </Button>
                 </div>
             </form>

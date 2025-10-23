@@ -34,7 +34,7 @@ export const PostCard = ({ postId, classSelect = "primary", view = true, basePat
             <div className="flex-8 flex justify-between flex-col gap-1 sm:gap-2">
                 <div className="flex items-center justify-between">
                     <UserInfo user={userId} />
-                    <OptionsMenu id={id} userId={userId} view={view} basepath={basePath} />
+                    <OptionsMenu id={id} userId={userId} view={view} basePath={basePath} />
                 </div>
 
                 <PostContent text={text} hashtags={hashtags} images={images} />

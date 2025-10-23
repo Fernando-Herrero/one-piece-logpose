@@ -15,15 +15,7 @@ export const ProfileViewMore = ({ user, editorProps }) => {
     const { isMobile, isTablet } = useDevice();
 
     return (
-        <section
-            className={classNames(
-                "min-w-fit rounded-xl border border-white py-1 px-2 transition mx-2 sm:mx-6",
-                {
-                    "mx-6": isMobile,
-                    "mx-8": isTablet,
-                }
-            )}
-        >
+        <section className="min-w-fit rounded-xl border border-white py-1 px-2 transition">
             <header className="flex items-center justify-between cursor-pointer" onClick={toggleBox}>
                 <p className="text-primary font-semibold sm:text-base">
                     {" "}

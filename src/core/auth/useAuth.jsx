@@ -1,5 +1,8 @@
 import { AuthContext } from "@/context/AuthContext";
+import { NotificationsContext } from "@/context/NotificationsContext";
+import { NotificationsCountContext } from "@/context/NotificationsCountContext";
 import { local } from "@/helpers/storage";
+import { useAvatar } from "@/hooks/useAvatar";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
 import {
@@ -25,6 +28,9 @@ import {
 export const useAuth = () => {
     const { setUser } = useContext(AuthContext);
     const { goTo } = useGoTo();
+    const { setNotis } = useContext(NotificationsContext);
+    const { setNotisCount } = useContext(NotificationsCountContext);
+    const { setSelectedAvatar } = useAvatar();
 
     const register = async (user) => {
         console.log("Registrando usuario", user);
@@ -64,14 +70,17 @@ export const useAuth = () => {
         const logoutResponse = await logOutApi();
 
         if (logoutResponse?.logout) {
-            console.log("logout del hook", logoutResponse);
             removeTokenFromLocalStorage();
             removeUserFromLocalStorage();
             setUser(null);
             local.save("theme", false);
             local.remove("lang");
             document.body.classList.remove("dark");
-            goTo("/");
+            local.remove("avatarSelected");
+            setSelectedAvatar(null);
+            setNotis([]);
+            setNotisCount(0);
+            // goTo("/");
         }
     };
 
@@ -87,6 +96,10 @@ export const useAuth = () => {
             local.save("theme", false);
             local.remove("lang");
             document.body.classList.remove("dark");
+            local.remove("avatarSelected");
+            setSelectedAvatar(null);
+            setNotis([]);
+            setNotisCount(0);
             goTo("/");
         }
     };

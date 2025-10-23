@@ -17,8 +17,8 @@ export const AvatarSection = ({ onCancel }) => {
     const saveAvatarProfile = async () => {
         if (selectedAvatar && user) {
             await updatedProfile(user, { avatar: selectedAvatar });
-            onCancel();
             setSelectedAvatar(null);
+            onCancel();
         }
     };
 

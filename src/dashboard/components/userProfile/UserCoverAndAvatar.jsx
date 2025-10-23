@@ -6,11 +6,11 @@ export const UserCoverAndAvatar = ({ user }) => {
     const [coverSrc, setCoverSrc] = useState(user.coverImage || backImage);
 
     return (
-        <div className="relative w-full max-h-44 overflow-hidden sm:flex-1">
+        <div className="relative w-full max-h-44 overflow-hidden sm:flex-1 sm:self-start">
             <img
                 src={coverSrc}
                 alt=""
-                className="w-full h-full object-cover brightness-50 rounded-tl-xl rounded-tr-xl sm:rounded-tr-none"
+                className="w-full h-full object-cover brightness-50 rounded-tl-xl rounded-tr-xl sm:rounded-tr-none lg:rounded-tr-xl"
                 onError={() => setCoverSrc(backImage)}
             />
 

@@ -61,6 +61,11 @@ export const languages = {
             deleteCards: "⚠️ ¿Estás seguro? Esto eliminará todas las cartas.",
             deleteProgress: "⚠️ ¿Estás seguro? Esto eliminará todo el progreso de la serie.",
             deleteAccount: "⚠️ ¿Seguro? Esta acción eliminará todos tus datos permanentemente.",
+            deleteAllNotifications: "⚠️ ¿Estás seguro? Esto eliminará todas tus notificaciones.",
+            cancelPremium:
+                "⚠️ ¿Seguro que deseas cancelar el proceso de verificación? Podrás retomarlo más adelante cuando quieras.",
+            deleteUserMessage:
+                "⚠️ ¿Estás seguro? Esto eliminará permanentemente al usuario y todos sus tesoros (datos) del sistema.",
         },
 
         characters: {
@@ -228,6 +233,13 @@ export const languages = {
             deleteAccount: "Eliminar cuenta",
             followUser: "Seguir",
             unfollowUser: "Dejar de seguir",
+            likes: "Likes",
+            bookmarks: "Favoritos",
+            comments: "Comentarios",
+            privateContent: "Este contenido está marcado como privado",
+            privateLikes: "Tus likes están marcados como privados",
+            privateBookmarks: "Tus favoritos están marcados como privados",
+            privateComments: "Tus comentarios están marcados como privados",
         },
 
         posts: {
@@ -240,6 +252,8 @@ export const languages = {
             follow: "Seguir",
             unfollow: "Dejar de seguir",
             viewPost: "Ver post",
+            send: "Enviar",
+            sending: "Enviando...",
         },
 
         sagaData: {
@@ -346,6 +360,29 @@ export const languages = {
             close: "Cerrar",
             verified: "Tu cuenta ya está verificada. ¡Gracias por tu apoyo! 💙",
         },
+        notifications: {
+            title: "Notificaciones",
+            total: "Total",
+            unread: "Sin leer",
+            unreadTag: "Nueva",
+            liked: "le dio Me gusta a tu publicación",
+            followed: "te ha comenzado a seguir",
+            bookmarked: "guardó tu publicación",
+            comment: "comentó tu publicación",
+            loading: "Cargando tus notificaciones",
+            noNotis: "No tienes notificaciones nuevas",
+            error: "Hubo un error al cargar las notificaciones",
+            allRead: "Marcar todo leído",
+            markAsRead: "Marcar como leído",
+            deleteAll: "Eliminar todas",
+            deleting: "Eliminando...",
+        },
+
+        privacy: {
+            title: "Privacidad",
+            text: "Selecciona qué contenido quieres que los demás usuarios puedan ver en tu perfil.",
+            cancel: "Cerrar",
+        },
     },
 
     en: {
@@ -411,6 +448,11 @@ export const languages = {
             deleteCards: "⚠️ Are you sure? This will delete all cards progress.",
             deleteProgress: "⚠️ Are you sure? This will delete all series progress.",
             deleteAccount: "⚠️ Are you sure? This action will delete all your data permanently.",
+            deleteAllNotifications: "⚠️ Are you sure? This will delete all your notifications.",
+            cancelPremium:
+                "⚠️ Are you sure you want to cancel the verification process? You can resume it anytime you want.",
+            deleteUserMessage:
+                "⚠️ Are you sure? This action will permanently delete the user's account and all associated data.",
         },
 
         characters: {
@@ -581,6 +623,13 @@ export const languages = {
             deleteAccount: "Delete account",
             followUser: "Follow",
             unfollowUser: "Unfollow",
+            likes: "Likes",
+            bookmarks: "Bookmarks",
+            comments: "Comments",
+            privateContent: "This content is marked as private",
+            privateLikes: "Your liked posts are marked as private",
+            privateBookmarks: "Your bookmarked posts are marked as private",
+            privateComments: "Your comments are marked as private",
         },
 
         posts: {
@@ -593,6 +642,8 @@ export const languages = {
             follow: "Follow",
             unfollow: "Unfollow",
             viewPost: "See post",
+            send: "Send",
+            sending: "Sending...",
         },
 
         sagaData: {
@@ -694,6 +745,30 @@ export const languages = {
             payVerify: "Pay and verify",
             close: "Close",
             verified: "Your account is already verified. Thank you for your support! 💙",
+        },
+
+        notifications: {
+            title: "Notifications",
+            total: "Total",
+            unread: "Unread",
+            unreadTag: "New",
+            liked: "liked your post",
+            followed: "started following you",
+            bookmarked: "saved your post",
+            comment: "commented your post",
+            loading: "Loading your notifications",
+            noNotis: "You have no new notifications",
+            error: "There was an error loading notifications",
+            allRead: "Mark all read",
+            markAsRead: "Marcar as read",
+            deleteAll: "Delete All",
+            deleting: "Deleting...",
+        },
+
+        privacy: {
+            title: "Privacy",
+            text: "Select which content you want other users to be able to see on your profile.",
+            cancel: "Close",
         },
     },
 };

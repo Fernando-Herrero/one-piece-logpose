@@ -122,7 +122,7 @@ export const Cards = () => {
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-2xs mx-auto sm:max-w-container">
+            <div className="grid grid-cols-1 justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-2xs mx-auto sm:max-w-container">
                 {filteredCards.map((card) => {
                     if (card.cardType === "character") {
                         return <CharacterCardUser key={`char-${card.character_id}`} character={card} />;

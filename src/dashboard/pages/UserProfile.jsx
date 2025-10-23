@@ -2,9 +2,9 @@ import notVerified from "@/assets/icons/not-verified-icon.svg";
 import verified from "@/assets/icons/verified-icon.svg";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { UserContext } from "@/context/UserContext";
-import { useUser } from "@/core/user/useUser";
 import { Spinner } from "@/dashboard/components/community/Spinner";
 import { ContentProfile } from "@/dashboard/components/ContentProfile";
+import { UserStats } from "@/dashboard/components/profile/UserStats";
 import { UserProfileCard } from "@/dashboard/components/userProfile/UserProfileCard";
 import { languages } from "@/helpers/languages";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
@@ -14,12 +14,8 @@ import { Outlet, useSearchParams } from "react-router-dom";
 export const UserProfile = () => {
     const [searchParams] = useSearchParams();
     const userId = searchParams.get("userId");
-
-    const { getLikesUser } = useUser();
-    console.log(getLikesUser(userId));
-
     const { lang } = useContext(LanguagesContext);
-    const { user, loading, error } = useContext(UserContext);
+    const { user, loading, error, userPrivacy } = useContext(UserContext);
 
     if (!userId) {
         return <p className="text-linePrimary text-center p-4">{languages[lang].profile.userNotValid}</p>;
@@ -51,7 +47,7 @@ export const UserProfile = () => {
         return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.userNotFound}</p>;
 
     return (
-        <div className="flex flex-col items-center gap-3 p-2 max-w-md mx-auto sm:max-w-xl md:p-8 lg:flex-row lg:max-w-5xl lg:items-start">
+        <div className="flex flex-col items-center py-2 mx-auto gap-2 sm:gap-4 sm:py-8">
             <UserProfileCard
                 user={user}
                 lang={lang}
@@ -59,9 +55,15 @@ export const UserProfile = () => {
                 notVerified={notVerified}
                 languages={languages}
             />
-            <Outlet />
+            <UserStats context="ProfileUser" userId={userId} />
+            <ContentProfile
+                context="ProfileUser"
+                userId={userId}
+                basePath="/dashboard/userProfile"
+                userPrivacy={userPrivacy}
+            />
 
-            <ContentProfile context="ProfileUser" userId={userId} />
+            <Outlet />
         </div>
     );
 };

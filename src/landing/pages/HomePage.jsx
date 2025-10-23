@@ -46,10 +46,6 @@ export const HomePage = () => {
 
     const heightContainer = heightdevice[device];
 
-    console.log("Device actual:", device);
-    console.log("Height aplicada:", heightContainer);
-    console.log("Todas las variables:", { isMobileXs, isMobile, isTablet, isTabletXl, isDesktop });
-
     useEffect(() => {
         const tl = gsap.timeline({
             ease: "power2.out",

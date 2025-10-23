@@ -15,7 +15,7 @@ import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
 import { useContext } from "react";
 
-export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community" }) => {
+export const OptionsMenu = ({ id, userId, view, basePath = "/dashboard/community" }) => {
     const { user, isAdmin } = useContext(AuthContext);
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
@@ -28,16 +28,29 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
     const amIUser = user?.id === userId?.id || user?._id === userId?.id;
     const alreadyFollow = user?.following?.includes(userId?.id);
 
-    const ItemOptionsMenu = ({ onClick, content, icon, view }) => {
+    const ItemOptionsMenu = ({ onClick, content, icon }) => {
         const className = "flex items-center justify-between w-full cursor-pointer drop-item-style group";
         const subClass = "underline-hover text-gradient";
 
+        const handleClick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onClick();
+        };
+
         return (
-            <button onClick={onClick} className={className}>
+            <button type="button" onClick={handleClick} className={className}>
                 <p className={subClass}>{content}</p>
-                <img className="w-4" src={icon} alt="Profile icon" />
+                <img className="w-4" src={icon} alt="Menu icon" />
             </button>
         );
+    };
+
+    const buildPostPageUrl = () => {
+        const params = new URLSearchParams();
+        params.append("postId", id);
+        params.append("userId", userId?.id);
+        return `${basePath}/postPage?${params.toString()}`;
     };
 
     return (
@@ -60,14 +73,13 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
                     />
                 )}
 
-                {amIUser ||
-                    (isAdmin && (
-                        <ItemOptionsMenu
-                            onClick={() => deletePost(id)}
-                            content={languages[lang].posts.deletePost}
-                            icon={trash}
-                        />
-                    ))}
+                {(amIUser || isAdmin) && (
+                    <ItemOptionsMenu
+                        onClick={() => deletePost(id)}
+                        content={languages[lang].posts.deletePost}
+                        icon={trash}
+                    />
+                )}
 
                 {!amIUser &&
                     (alreadyFollow ? (
@@ -88,7 +100,7 @@ export const OptionsMenu = ({ id, userId, view, basepath = "/dashboard/community
                     <ItemOptionsMenu
                         onClick={() => {
                             toggleMenu();
-                            goTo(`${basepath}/postPage?postId=${id}`);
+                            goTo(buildPostPageUrl());
                         }}
                         content={languages[lang].posts.viewPost}
                         icon={viewPost}

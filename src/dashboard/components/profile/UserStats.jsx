@@ -1,19 +1,23 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
+import { useUser } from "@/core/user/useUser";
 import { SkeletonText } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
 import { useContext, useEffect, useState } from "react";
 
-export const UserStats = () => {
+export const UserStats = ({ context = "myProfile", userId, className }) => {
     const [stats, setStats] = useState([]);
     const { bookmarkedPosts, commentedPosts, likedPosts, myPosts, totalComments } = stats;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const { getUserStats } = useAuth();
+    const { getStatsUser } = useUser();
     const { lang } = useContext(LanguagesContext);
     const { isMobile, isTablet } = useDevice();
+
+    const statsUser = context === "myProfile" ? getUserStats : () => getStatsUser(userId);
 
     const statsItems = [
         { label: languages[lang].profile.myPosts, value: myPosts },
@@ -30,8 +34,7 @@ export const UserStats = () => {
                 setLoading(true);
                 setError(null);
 
-                const data = await getUserStats();
-                console.log(data);
+                const data = await statsUser();
                 setStats(data);
             } catch (error) {
                 console.error("Error al obtener stats del usuario", error);
@@ -54,9 +57,9 @@ export const UserStats = () => {
             {loading ? (
                 <SkeletonText lines={5} className="bg-primary border border-white/30 rounded-xl p-2" />
             ) : (
-                <div
+                <article
                     className={classNames(
-                        "p-2 w-full bg-gradient-card shadow rounded-xl border border-white/30 transition-transform hover:-translate-y-0.5 hover:shadow-xl sm:p-6",
+                        `p-2 w-full bg-gradient-card shadow rounded-xl border border-white/30 card-content transition-transform hover:-translate-y-0.5 hover:shadow-xl sm:p-6 ${className}`,
                         {
                             "p-6": isMobile,
                             "p-8": isTablet,
@@ -66,14 +69,14 @@ export const UserStats = () => {
                     <h5 className="font-bold text-lg text-primary underline sm:text-xl">
                         {languages[lang].profile.myStats}
                     </h5>
-                    <article className="p-1 flex flex-col gap-1 w-full rounded-xl text-sm">
+                    <div className="p-1 flex flex-col gap-1 w-full rounded-xl text-sm">
                         {statsItems.map((stat, index) => (
                             <p key={index} className="text-primary font-semibold sm:text-base">
                                 {stat.label}: <span className="text-gradient font-normal">{stat.value}</span>
                             </p>
                         ))}
-                    </article>
-                </div>
+                    </div>
+                </article>
             )}
         </>
     );

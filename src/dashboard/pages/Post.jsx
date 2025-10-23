@@ -30,7 +30,6 @@ export const Post = ({ onCancel }) => {
             onCancel={handleCancel}
             error={error}
             onErrorChange={setError}
-            submitButtonText={languages[lang].contact.button}
             placeholderText={languages[lang].posts.areaTextPost}
         />
     );

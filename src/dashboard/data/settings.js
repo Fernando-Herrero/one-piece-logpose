@@ -26,6 +26,7 @@ export const settingsMenu = (lang, goTo) => [
         emoji: "🛡️",
         title: languages[lang].settings.titlePrivacy,
         text: languages[lang].settings.textPrivacy,
+        onClick: () => goTo("/dashboard/settings/privacy"),
     },
     {
         emoji: "🔔",

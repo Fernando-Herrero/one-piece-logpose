@@ -9,11 +9,10 @@ import { useContext } from "react";
 export const PostsSection = () => {
     const { posts, loading, error } = useContext(PostContext);
     const { lang } = useContext(LanguagesContext);
-    console.log("En postsection me estan llegando los posts", posts);
     if (!posts) return <p>{languages[lang].posts.noPosts}</p>;
     if (loading)
         return (
-            <div className="flex flex-col items-center gap-1">
+            <div className="flex flex-col items-center mx-auto gap-1">
                 <Spinner className="mx-auto mt-5" />{" "}
                 <p className="text-gradient dark:text-black">
                     {languages[lang].posts.loadingPosts}

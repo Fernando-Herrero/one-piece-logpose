@@ -200,6 +200,10 @@ progress::-moz-progress-bar {
     background-color: #3b82f6;
 }
 
+.card-content {
+    @apply max-w-md w-[82vw] sm:min-w-xs;
+}
+
 /* DARK THEME */
 .dark {
     /* Colores de fondo */
@@ -250,7 +254,7 @@ progress::-moz-progress-bar {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-    height: 6px;
+    width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {

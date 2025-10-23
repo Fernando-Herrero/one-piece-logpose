@@ -16,7 +16,7 @@ import {
     isProgressGreater,
 } from "@/dashboard/data/serieProgressHelper";
 import { local } from "@/helpers/storage";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export const useEpisodeCheck = (
     episode_id,
@@ -35,6 +35,23 @@ export const useEpisodeCheck = (
     const episodeKey = userId ? `episode_${episode_id}_${userId}` : `episode_${episode_id}`;
     const checkedSaved = local.get(episodeKey);
     const [inputCheck, setInputCheck] = useState(checkedSaved || false);
+
+    useEffect(() => {
+        if (!checkedSaved && user?.serieProgress) {
+            const { saga, arc, episode } = user.serieProgress;
+
+            const alreadySeen =
+                currentSagaId < saga ||
+                (currentSagaId === saga && currentArcId < arc) ||
+                (currentSagaId === saga && currentArcId === arc && episode_id <= episode);
+
+            if (alreadySeen) {
+                setInputCheck(true);
+                local.save(episodeKey, true);
+            }
+        }
+    }, [user, episode_id, currentSagaId, currentArcId]);
+
     const [isLoading, setIsLoading] = useState(false);
 
     const handleToggleCheck = async () => {
@@ -93,20 +110,8 @@ export const useEpisodeCheck = (
             );
 
             const currentProgress = user.serieProgress || { saga: 0, arc: 0, episode: 0 };
-
             const isGreaterProgress = isProgressGreater(calculatedProgress, currentProgress);
-
             const progressToSave = newCheckState && isGreaterProgress ? calculatedProgress : currentProgress;
-
-            console.log("📊 Comparación de progreso:", {
-                episodio: episode_id,
-                marcando: newCheckState,
-                calculado: calculatedProgress,
-                actual: currentProgress,
-                esMayor: isGreaterProgress,
-                seGuardará: progressToSave,
-            });
-
             const newExperience = calculateNewExperience(user.experience, experience, newCheckState);
 
             const updatedUserLocal = {
@@ -127,13 +132,6 @@ export const useEpisodeCheck = (
             });
 
             saveUserInLocalStorage(updatedUserLocal);
-
-            console.log("✅ Progreso actualizado correctamente:", {
-                episode: episode_id,
-                checked: newCheckState,
-                progressGuardado: progressToSave,
-                experience: newExperience,
-            });
         } catch (error) {
             console.error("❌ Error al actualizar progreso:", error);
             setUser(user);
