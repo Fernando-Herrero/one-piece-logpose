@@ -41,7 +41,10 @@ export const App = () => {
 
     if (user) {
         return (
-            <div className="min-h-screen h-dvh">
+            <div
+                className="min-h-screen overflow-y-auto"
+                style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+            >
                 <main>
                     <Routes>
                         <Route
