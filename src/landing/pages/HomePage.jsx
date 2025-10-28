@@ -36,12 +36,12 @@ export const HomePage = () => {
     const subtitleSettings = subTitle[device];
 
     const heightdevice = {
-        mobileXs: "h-[370vh]",
-        mobile: "h-[280vh]",
-        tablet: "h-[270vh]",
-        tabletXl: "h-[270vh]",
-        desktop: "h-[200vh]",
-        desktopXl: "h-[200vh]",
+        mobileXs: "h-[400dvh]",
+        mobile: "h-[300dvh]",
+        tablet: "h-[270dvh]",
+        tabletXl: "h-[270dvh]",
+        desktop: "h-[200dvh]",
+        desktopXl: "h-[200dvh]",
     };
 
     const heightContainer = heightdevice[device];
