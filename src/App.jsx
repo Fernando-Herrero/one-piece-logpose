@@ -65,7 +65,7 @@ export const App = () => {
     }
 
     return (
-        <div className="min-h-screen grid grid-rows-[1fr_auto] font-family-body text-sm overflow-x-hidden overflow-y-hidden">
+        <div className="min-h-screen grid grid-rows-[1fr_auto] font-family-body text-sm overflow-x-hidden overflow-y-auto">
             <Header />
 
             <main className="flex flex-col justify-center pt-24">
