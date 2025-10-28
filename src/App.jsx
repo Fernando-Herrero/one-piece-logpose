@@ -6,6 +6,7 @@ import { ModalContext } from "@/context/ModalContext.jsx";
 import { Spinner } from "@/dashboard/components/community/Spinner";
 import { Dashboard } from "@/dashboard/pages/Dashboard";
 import { languages } from "@/helpers/languages";
+import { useRealVh } from "@/hooks/useRealVh";
 import { Footer } from "@/landing/components/features/Footer";
 import { MapSection } from "@/landing/components/features/MapSection";
 import { PrivateRoute } from "@/landing/components/features/PrivateRoute";
@@ -23,6 +24,7 @@ import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 export const App = () => {
+    useRealVh();
     const { modalData } = useContext(ModalContext);
     const { isOpen } = modalData;
     const { user, loading } = useContext(AuthContext);
