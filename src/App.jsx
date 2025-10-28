@@ -41,7 +41,7 @@ export const App = () => {
 
     if (user) {
         return (
-            <div className="min-h-screen">
+            <div className="min-h-screen h-dvh">
                 <main>
                     <Routes>
                         <Route
