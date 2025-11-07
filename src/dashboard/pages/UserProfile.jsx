@@ -47,7 +47,7 @@ export const UserProfile = () => {
         return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.userNotFound}</p>;
 
     return (
-        <div className="flex flex-col items-center py-2 mx-auto gap-2 sm:gap-4 sm:py-8">
+        <div className="flex flex-col items-center pt-2 mb-40 mx-auto gap-2 sm:mb-10 sm:gap-4 sm:py-8">
             <UserProfileCard
                 user={user}
                 lang={lang}

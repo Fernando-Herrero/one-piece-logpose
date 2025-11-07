@@ -34,7 +34,7 @@ export const Serie = () => {
     };
 
     return (
-        <section className="flex flex-col gap-2 p-2 space-y-1 mx-auto max-w-lg md:p-8 lg:max-w-container">
+        <section className="flex flex-col gap-2 p-2 space-y-1 mx-auto max-w-lg mb-40 sm:mb-10 md:p-8 lg:max-w-container">
             <Button variant="danger" onClick={handleReset} className="ml-auto">
                 {languages[lang].sagaData.resetProgress}
             </Button>
