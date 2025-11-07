@@ -33,7 +33,7 @@ export const SideBar = () => {
     return (
         <aside
             ref={containRef}
-            className="fixed flex flex-col w-fit h-screen bg-gradient-primary border-r-2 border-primary p-2 text-sm mt-11 pb-20 z-5 md:p-4 md:mt-13"
+            className="fixed flex flex-col w-fit h-screen bg-gradient-primary border-r-2 border-primary p-2 text-sm mt-11 pb-40 z-5 md:p-4 md:mt-13"
         >
             <Navbar ref={containRef} isOpen={isOpen} toggleMenu={toggleMenu} />
 
