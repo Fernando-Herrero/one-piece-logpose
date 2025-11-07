@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 export const HomePage = () => {
-    const { isMobileXs, isMobile, isTablet, isTabletXl, isDesktop, device } = useDevice();
+    const { isMobileXs, isMobile, isTablet, device } = useDevice();
 
     const heroImgRef = useRef(null);
     const logoMask = useRef(null);
@@ -152,7 +152,7 @@ export const HomePage = () => {
                     />
                 </picture>
 
-                <div className="absolute z-10 bottom-20 left-[50%] -translate-x-1/2 bg-gradient-card p-4 rounded-xl text center animate-bounce perfect-center">
+                <div className="absolute z-10 bottom-30 left-[50%] -translate-x-1/2 bg-gradient-card p-4 rounded-xl text center animate-bounce perfect-center">
                     <p className="text-4xl font-family-pirate">SCROLL</p>
                     <img className="w-4" src={downArrow} alt="icon down arrow" />
                 </div>
