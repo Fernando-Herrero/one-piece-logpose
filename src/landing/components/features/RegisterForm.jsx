@@ -19,15 +19,13 @@ export const RegisterForm = () => {
     const { selectedAvatar, setSelectedAvatar } = useAvatar();
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
-
     const savedRegisterInputs = session.get("registerInputs");
     const [form, setForm] = useState({ ...INITIAL_REGISTER_FORM, ...(savedRegisterInputs || {}) });
     const [isChecked, setIsChecked] = useState(false);
-
     const [isVisible, toggleVisible] = useToggle();
     const [isConfirmVisible, toggleConfirmVisible] = useToggle();
-
     const { error, validateRegisterForm, clearError } = useRegisterValidation();
+    const [isRegister, setIsRegister] = useState(false);
 
     const handleInputChange = ({ target: { name, value } }) => {
         clearError();
@@ -40,15 +38,13 @@ export const RegisterForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        const validationError = validateRegisterForm(form, lang);
-        if (validationError) return;
-
-        const { confirmPassword, ...dataToSend } = form;
-
-        if (selectedAvatar) dataToSend.avatar = selectedAvatar;
+        setIsRegister(true);
 
         try {
+            const validationError = validateRegisterForm(form, lang);
+            if (validationError) return;
+            const { confirmPassword, ...dataToSend } = form;
+            if (selectedAvatar) dataToSend.avatar = selectedAvatar;
             await register(dataToSend);
 
             setTimeout(() => {
@@ -64,6 +60,8 @@ export const RegisterForm = () => {
             setSelectedAvatar(null);
         } catch (error) {
             setError(error.message);
+        } finally {
+            setIsRegister(false);
         }
     };
 
@@ -91,8 +89,14 @@ export const RegisterForm = () => {
 
             {error && <p className="text-linePrimary self-center">{error}</p>}
 
-            <Button type="submit" className="bg-accent hover:bg-accentSecondary">
-                {languages[lang].login.registerSubmit}
+            <Button type="submit" className="bg-accent hover:bg-accentSecondary" disabled={isRegister}>
+                {isRegister ? (
+                    <>
+                        {languages[lang].login.registerSubmit} <LoadingDots />
+                    </>
+                ) : (
+                    languages[lang].login.registerSubmit
+                )}
             </Button>
         </form>
     );

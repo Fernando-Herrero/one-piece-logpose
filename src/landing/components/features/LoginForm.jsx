@@ -8,6 +8,7 @@ import { useLoginValidation } from "@/hooks/useLoginValidation";
 import { useToggle } from "@/hooks/useToggle";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
 import { LabelPassword } from "@/landing/components/ui/LabelPassword";
+import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -16,14 +17,12 @@ const EMPTY_USER = { email: "", password: "" };
 export const LoginForm = () => {
     const savedForm = session.get("loginInputs");
     const [form, setForm] = useState(savedForm || EMPTY_USER);
-
     const [isVisible, toggleVisible] = useToggle();
-
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);
-
     const { login } = useAuth();
     const { error, setError, validateLoginForm } = useLoginValidation();
+    const [isLogin, setIsLogin] = useState(false);
 
     const handleInputForm = ({ target: { name, value } }) => {
         setError(null);
@@ -37,6 +36,7 @@ export const LoginForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        setIsLogin(true);
         try {
             const isValid = validateLoginForm(form, lang);
             if (!isValid) return;
@@ -58,6 +58,8 @@ export const LoginForm = () => {
             } else {
                 setError(error.message);
             }
+        } finally {
+            setIsLogin(false);
         }
     };
 
@@ -101,8 +103,14 @@ export const LoginForm = () => {
                     </Link>
                 </p>
 
-                <Button type="submit" className="bg-accent hover:bg-accentHover">
-                    Login
+                <Button type="submit" className="bg-accent hover:bg-accentHover" disabled={isLogin}>
+                    {isLogin ? (
+                        <>
+                            Login <LoadingDots />
+                        </>
+                    ) : (
+                        "Login"
+                    )}
                 </Button>
 
                 {error && <p className="self-center text-linePrimary">{error}</p>}

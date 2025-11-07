@@ -33,7 +33,7 @@ export const App = () => {
             <div className="flex flex-col items-center gap-1">
                 <Spinner className="mx-auto mt-5" />{" "}
                 <p className="text-gradient dark:text-black">
-                    {languages[lang].profile.loadingProfile}
+                    {languages[lang].profile.loading}
                     <LoadingDots />
                 </p>
             </div>
