@@ -1,5 +1,6 @@
 import { SkeletonCard } from "@/dashboard/components/Skeleton";
 import { UserArticle } from "@/dashboard/components/UserArticle";
+import { useMemo } from "react";
 
 export const UsersListContent = ({
     users = [],
@@ -9,6 +10,8 @@ export const UsersListContent = ({
     limit = 20,
     sortFn = (a, b) => b.experience - a.experience,
 }) => {
+    const usersToRender = useMemo(() => [...users].sort(sortFn).slice(0, limit), [users, sortFn, limit]);
+
     if (loading) {
         return (
             <div className="flex flex-col gap-1 w-full">
@@ -21,12 +24,9 @@ export const UsersListContent = ({
 
     return (
         <>
-            {[...users]
-                .sort(sortFn)
-                .slice(0, limit)
-                .map((user) => (
-                    <UserArticle key={user.id} {...user} createdAtLabel={createdAtLabel} />
-                ))}
+            {usersToRender.map((user) => (
+                <UserArticle key={user.id} {...user} createdAtLabel={createdAtLabel} />
+            ))}
         </>
     );
 };

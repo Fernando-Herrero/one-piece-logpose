@@ -1,6 +1,7 @@
 import { episodes } from "@/dashboard/data/serieData/episodes";
+import { memo } from "react";
 
-export const UserBarProgress = ({ experience, className }) => {
+export const UserBarProgress = memo(({ experience, className }) => {
     const totalExperience = episodes.reduce((acc, episode) => acc + episode.experience, 0);
 
     return (
@@ -14,4 +15,4 @@ export const UserBarProgress = ({ experience, className }) => {
             ></progress>
         </div>
     );
-};
+});

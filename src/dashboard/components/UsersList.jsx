@@ -4,22 +4,28 @@ import { UsersContext } from "@/context/UsersContext";
 import { UsersListContent } from "@/dashboard/components/UsersListContent";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
-import { useContext } from "react";
+import { memo, useContext, useMemo } from "react";
 
-export const UsersList = ({ className }) => {
+export const UsersList = memo(({ className }) => {
     const { users, loading, error } = useContext(UsersContext);
     const { isTabletXl, isDesktop } = useDevice();
     const { isAdmin } = useContext(AuthContext);
     const { lang } = useContext(LanguagesContext);
 
-    const itemsAdmin = [
-        { title: languages[lang].profile.totalUsers, value: users.length },
-        { title: languages[lang].profile.usersOnline, value: users.filter((user) => user.isActive).length },
-        {
-            title: languages[lang].profile.usersOffline,
-            value: users.filter((user) => user.isActive === false).length,
-        },
-    ];
+    const itemsAdmin = useMemo(
+        () => [
+            { title: languages[lang].profile.totalUsers, value: users.length },
+            {
+                title: languages[lang].profile.usersOnline,
+                value: users.filter((user) => user.isActive).length,
+            },
+            {
+                title: languages[lang].profile.usersOffline,
+                value: users.filter((user) => user.isActive === false).length,
+            },
+        ],
+        [users, lang]
+    );
 
     if (!isTabletXl && !isDesktop) return null;
 
@@ -55,4 +61,4 @@ export const UsersList = ({ className }) => {
             />
         </section>
     );
-};
+});

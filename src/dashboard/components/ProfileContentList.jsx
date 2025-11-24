@@ -18,12 +18,14 @@ export const ProfileContentList = ({
 
     const skeletonNum = isMobileXs || isMobile ? 1 : 2;
 
-    const dataFiltered = useMemo(() =>
-        data
-            ?.filter((post) => post.userId)
-            .map((post) => (
-                <PostCard key={post.id || post._id} postId={post.id || post._id} basePath={basePath} />
-            ))
+    const dataFiltered = useMemo(
+        () =>
+            data
+                ?.filter((post) => post.userId)
+                .map((post) => (
+                    <PostCard key={post.id || post._id} postId={post.id || post._id} basePath={basePath} />
+                )),
+        [data, basePath]
     );
 
     if (!data) {
