@@ -1,7 +1,7 @@
 import { AvatarContext } from "@/context/AvatarContext";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
-export const AvatarArticle = ({ character, selectAvatar }) => {
+export const AvatarArticle = memo(({ character, selectAvatar }) => {
     const { selectedAvatar } = useContext(AvatarContext);
 
     return (
@@ -39,4 +39,4 @@ export const AvatarArticle = ({ character, selectAvatar }) => {
             <p className="mt-2 font-extrabold text-center text-gradient">{character.name}</p>
         </article>
     );
-};
+});
