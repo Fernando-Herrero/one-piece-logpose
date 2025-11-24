@@ -1,8 +1,9 @@
 import { useAuth } from "@/core/auth/useAuth";
 import { useUser } from "@/core/user/useUser";
 import { ProfileContentList } from "@/dashboard/components/ProfileContentList";
+import { memo } from "react";
 
-export const MyCommentedPosts = ({ context, userId, isMyProfile }) => {
+export const MyCommentedPosts = memo(({ context, userId, isMyProfile }) => {
     const { getMyCommentedPosts } = useAuth();
     const { getCommentsUser } = useUser();
     const fetchFn = context === "myProfile" ? getMyCommentedPosts : () => getCommentsUser(userId);
@@ -13,4 +14,4 @@ export const MyCommentedPosts = ({ context, userId, isMyProfile }) => {
             isMyProfile={isMyProfile}
         />
     );
-};
+});

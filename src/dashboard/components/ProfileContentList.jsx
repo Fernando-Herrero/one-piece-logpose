@@ -4,7 +4,7 @@ import { SkeletonCard } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useFetchData } from "@/hooks/useFecthData";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 
 export const ProfileContentList = ({
     fetchFunction,
@@ -17,6 +17,14 @@ export const ProfileContentList = ({
     const { isMobileXs, isMobile } = useDevice();
 
     const skeletonNum = isMobileXs || isMobile ? 1 : 2;
+
+    const dataFiltered = useMemo(() =>
+        data
+            ?.filter((post) => post.userId)
+            .map((post) => (
+                <PostCard key={post.id || post._id} postId={post.id || post._id} basePath={basePath} />
+            ))
+    );
 
     if (!data) {
         return (
@@ -50,11 +58,7 @@ export const ProfileContentList = ({
     }
     return (
         <div className="flex flex-col gap-1 overflow-y-auto snap-y snap-mandatory scroll-smooth p-1 w-full max-h-72 custom-scrollbar lg:max-h-full">
-            {data
-                ?.filter((post) => post.userId)
-                .map((post) => (
-                    <PostCard key={post.id || post._id} postId={post.id || post._id} basePath={basePath} />
-                ))}
+            {dataFiltered}
         </div>
     );
 };
