@@ -13,9 +13,9 @@ import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
-export const OptionsMenu = ({ id, userId, view, basePath = "/dashboard/community" }) => {
+export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/community" }) => {
     const { user, isAdmin } = useContext(AuthContext);
     const [isOpen, toggleMenu, closeMenu] = useToggle();
     const { lang } = useContext(LanguagesContext);
@@ -65,49 +65,53 @@ export const OptionsMenu = ({ id, userId, view, basePath = "/dashboard/community
             </button>
 
             <DropDown open={isOpen} onClose={closeMenu} size="sm" className="mt-0">
-                {!amIUser && (
-                    <ItemOptionsMenu
-                        onClick={() => goTo(`/dashboard/userProfile?userId=${userId?.id}`)}
-                        content={languages[lang].posts.viewProfile}
-                        icon={profileIcon}
-                    />
-                )}
+                {isOpen && (
+                    <>
+                        {!amIUser && (
+                            <ItemOptionsMenu
+                                onClick={() => goTo(`/dashboard/userProfile?userId=${userId?.id}`)}
+                                content={languages[lang].posts.viewProfile}
+                                icon={profileIcon}
+                            />
+                        )}
 
-                {(amIUser || isAdmin) && (
-                    <ItemOptionsMenu
-                        onClick={() => deletePost(id)}
-                        content={languages[lang].posts.deletePost}
-                        icon={trash}
-                    />
-                )}
+                        {(amIUser || isAdmin) && (
+                            <ItemOptionsMenu
+                                onClick={() => deletePost(id)}
+                                content={languages[lang].posts.deletePost}
+                                icon={trash}
+                            />
+                        )}
 
-                {!amIUser &&
-                    (alreadyFollow ? (
-                        <ItemOptionsMenu
-                            onClick={() => unfollowUser(userId?.id)}
-                            content={languages[lang].posts.unfollow}
-                            icon={minus}
-                        />
-                    ) : (
-                        <ItemOptionsMenu
-                            onClick={() => followUser(userId?.id)}
-                            content={languages[lang].posts.follow}
-                            icon={plus}
-                        />
-                    ))}
+                        {!amIUser &&
+                            (alreadyFollow ? (
+                                <ItemOptionsMenu
+                                    onClick={() => unfollowUser(userId?.id)}
+                                    content={languages[lang].posts.unfollow}
+                                    icon={minus}
+                                />
+                            ) : (
+                                <ItemOptionsMenu
+                                    onClick={() => followUser(userId?.id)}
+                                    content={languages[lang].posts.follow}
+                                    icon={plus}
+                                />
+                            ))}
 
-                {view && (
-                    <ItemOptionsMenu
-                        onClick={() => {
-                            toggleMenu();
-                            goTo(buildPostPageUrl());
-                        }}
-                        content={languages[lang].posts.viewPost}
-                        icon={viewPost}
-                        view={view}
-                    />
+                        {view && (
+                            <ItemOptionsMenu
+                                onClick={() => {
+                                    toggleMenu();
+                                    goTo(buildPostPageUrl());
+                                }}
+                                content={languages[lang].posts.viewPost}
+                                icon={viewPost}
+                                view={view}
+                            />
+                        )}
+                    </>
                 )}
             </DropDown>
         </div>
     );
-};
+});
