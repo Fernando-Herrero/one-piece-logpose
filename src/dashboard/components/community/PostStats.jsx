@@ -7,9 +7,9 @@ import { AuthContext } from "@/context/AuthContext";
 import { useNotifications } from "@/core/notifications/useNotifications";
 import { usePosts } from "@/core/posts/usePosts";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useContext, useState } from "react";
+import { memo, useCallback, useContext, useMemo, useState } from "react";
 
-export const PostStats = ({ post, view }) => {
+export const PostStats = memo(({ post, view }) => {
     const { likePost, bookmarkPost } = usePosts();
     const { goTo } = useGoTo();
     const { notification } = useNotifications();
@@ -28,7 +28,7 @@ export const PostStats = ({ post, view }) => {
     const invalidComments = post.comments?.filter((comment) => comment.userId === null).length || 0;
     const commentCountValid = post.commentsCount - invalidComments;
 
-    const toggleLike = async () => {
+    const toggleLike = useCallback(async () => {
         if (isLiking) return;
         setIsLiking(true);
         try {
@@ -49,9 +49,9 @@ export const PostStats = ({ post, view }) => {
         } finally {
             setIsLiking(false);
         }
-    };
+    }, [isLiking, shouldShowLiked, likePost, notification, postId, userId, postUserId]);
 
-    const toggleBookmark = async () => {
+    const toggleBookmark = useCallback(async () => {
         if (isBookmarking) return;
         setIsBookmarking(true);
         try {
@@ -72,35 +72,48 @@ export const PostStats = ({ post, view }) => {
         } finally {
             setIsBookmarking(false);
         }
-    };
+    }, [isBookmarking, shouldShowBookmarked, bookmarkPost, postUserId, userId, postId]);
 
     const handleComment = () => {
         goTo(`/dashboard/community/comment?postId=${post.id}`);
     };
 
-    const statsConfig = [
-        {
-            icon: commentIcon,
-            count: commentCountValid,
-            alt: "Comment icon",
-            onClick: handleComment,
-            disabled: false,
-        },
-        {
-            icon: shouldShowLiked ? likeHeart : heartIcon,
-            count: post.likesCount,
-            alt: "Heart icon",
-            onClick: toggleLike,
-            disabled: isLiking,
-        },
-        {
-            icon: shouldShowBookmarked ? bookBlue : bookmarkIcon,
-            count: post.bookmarksCount,
-            alt: "Bookmark icon",
-            onClick: toggleBookmark,
-            disabled: isBookmarking,
-        },
-    ];
+    const statsConfig = useMemo(
+        [
+            {
+                icon: commentIcon,
+                count: commentCountValid,
+                alt: "Comment icon",
+                onClick: handleComment,
+                disabled: false,
+            },
+            {
+                icon: shouldShowLiked ? likeHeart : heartIcon,
+                count: post.likesCount,
+                alt: "Heart icon",
+                onClick: toggleLike,
+                disabled: isLiking,
+            },
+            {
+                icon: shouldShowBookmarked ? bookBlue : bookmarkIcon,
+                count: post.bookmarksCount,
+                alt: "Bookmark icon",
+                onClick: toggleBookmark,
+                disabled: isBookmarking,
+            },
+        ],
+        [
+            commentCountValid,
+            shouldShowBookmarked,
+            shouldShowLiked,
+            post.likesCount,
+            post.bookmarksCount,
+            toggleLike,
+            toggleBookmark,
+            isLiking,
+            isBookmarking,
+        ]
+    );
 
     return (
         <div className="flex items-center justify-between px-4 mt-2 pt-1 border-t border-white/50">
@@ -127,4 +140,4 @@ export const PostStats = ({ post, view }) => {
             ))}
         </div>
     );
-};
+});

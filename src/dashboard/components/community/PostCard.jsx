@@ -6,9 +6,9 @@ import { UserInfo } from "@/dashboard/components/community/UserInfo";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
-export const PostCard = ({ postId, classSelect = "primary", view = true, basePath, className }) => {
+export const PostCard = memo(({ postId, classSelect = "primary", view = true, basePath, className }) => {
     const { isMobile, isTablet } = useDevice();
     const { posts } = useContext(PostContext);
     const post = posts?.find((post) => post.id === postId);
@@ -42,4 +42,4 @@ export const PostCard = ({ postId, classSelect = "primary", view = true, basePat
             </div>
         </article>
     );
-};
+});
