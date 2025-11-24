@@ -5,7 +5,7 @@ import { SkeletonText } from "@/dashboard/components/Skeleton";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 export const UserStats = ({ context = "myProfile", userId, className }) => {
     const [stats, setStats] = useState([]);
@@ -19,13 +19,16 @@ export const UserStats = ({ context = "myProfile", userId, className }) => {
 
     const statsUser = context === "myProfile" ? getUserStats : () => getStatsUser(userId);
 
-    const statsItems = [
-        { label: languages[lang].profile.myPosts, value: myPosts },
-        { label: languages[lang].profile.likedPosts, value: likedPosts },
-        { label: languages[lang].profile.bookmarkedPosts, value: bookmarkedPosts },
-        { label: languages[lang].profile.commentedPosts, value: commentedPosts },
-        { label: languages[lang].profile.totalComments, value: totalComments },
-    ];
+    const statsItems = useMemo(
+        () => [
+            { label: languages[lang].profile.myPosts, value: myPosts },
+            { label: languages[lang].profile.likedPosts, value: likedPosts },
+            { label: languages[lang].profile.bookmarkedPosts, value: bookmarkedPosts },
+            { label: languages[lang].profile.commentedPosts, value: commentedPosts },
+            { label: languages[lang].profile.totalComments, value: totalComments },
+        ],
+        [myPosts, likedPosts, bookmarkedPosts, commentedPosts, totalComments, lang]
+    );
 
     useEffect(() => {
         const fetchStats = async () => {
