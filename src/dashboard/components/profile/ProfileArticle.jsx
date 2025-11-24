@@ -3,7 +3,6 @@ import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
-import { EditableField } from "@/dashboard/components/profile/EditableField";
 import { FollowSection } from "@/dashboard/components/profile/FollowSection";
 import { ProfileHeader } from "@/dashboard/components/profile/ProfileHeader";
 import { ProfileViewMore } from "@/dashboard/components/profile/ProfileViewMore";
@@ -12,9 +11,9 @@ import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useProfileEditor } from "@/hooks/useProfileEditor";
 import classNames from "classnames";
-import { useContext, useState } from "react";
+import { memo, useContext, useState } from "react";
 
-export const ProfileArticle = () => {
+export const ProfileArticle = memo(() => {
     const { user, loading, error } = useContext(AuthContext);
     const userId = user?.id || user?._id;
     const { updatedProfile, deleteAccount } = useAuth();
@@ -24,7 +23,7 @@ export const ProfileArticle = () => {
 
     const editorProps = useProfileEditor(user, updatedProfile, setCoverImg);
     const { lang } = useContext(LanguagesContext);
-    const basicFields = getProfileFields(user, lang, coverImg);
+    const basicFields = useMemo(() => getProfileFields(user, lang, coverImg), [user, lang, coverImg]);
 
     const handleDeleteAccount = () => {
         showModal({
@@ -64,7 +63,8 @@ export const ProfileArticle = () => {
                         })}
                     >
                         {basicFields.map((fieldProps, index) => (
-                            <EditableField
+                            <EditableFi
+                                eld
                                 key={`${fieldProps.fieldName}-${index}`}
                                 user={user}
                                 {...fieldProps}
@@ -91,4 +91,4 @@ export const ProfileArticle = () => {
             </div>
         </article>
     );
-};
+});
