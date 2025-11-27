@@ -8,14 +8,10 @@ export const AvatarSelected = ({ className = "" }) => {
 
     const charactersMemoized = useMemo(
         () =>
-            characters.map((character, index) => (
-                <AvatarArticle
-                    key={`${character}-${index}`}
-                    character={character}
-                    selectAvatar={selectAvatar}
-                />
+            characters.map((character) => (
+                <AvatarArticle key={character.name} character={character} selectAvatar={selectAvatar} />
             )),
-        []
+        [selectAvatar]
     );
 
     return (

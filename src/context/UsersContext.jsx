@@ -1,6 +1,6 @@
 import { AuthContext } from "@/context/AuthContext";
 import { getUsersApi } from "@/core/user/user.api";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 export const UsersContext = createContext(null);
 
@@ -32,9 +32,7 @@ export const UsersProvider = ({ children }) => {
         }
     }, [user]);
 
-    return (
-        <UsersContext.Provider value={{ users, setUsers, loading, error, setError }}>
-            {children}
-        </UsersContext.Provider>
-    );
+    const value = useMemo(() => ({ users, setUsers, loading, error, setError }), [users, loading, error]);
+
+    return <UsersContext.Provider value={value}>{children}</UsersContext.Provider>;
 };

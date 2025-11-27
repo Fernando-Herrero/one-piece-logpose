@@ -1,9 +1,9 @@
 import { Button } from "@/components/Button";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
-export const UserItem = ({ user, onUnfollow, canUnfollow, view = true }) => {
+export const UserItem = memo(({ user, onUnfollow, canUnfollow, view = true }) => {
     const { lang } = useContext(LanguagesContext);
     const { id, username, lastName, displayName } = user;
 
@@ -17,4 +17,4 @@ export const UserItem = ({ user, onUnfollow, canUnfollow, view = true }) => {
             )}
         </article>
     );
-};
+});

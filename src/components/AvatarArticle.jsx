@@ -6,7 +6,6 @@ export const AvatarArticle = memo(({ character, selectAvatar }) => {
 
     return (
         <article
-            key={character.name}
             className="flex flex-col items-center justify-center"
             onClick={() => selectAvatar(character.name)}
         >
