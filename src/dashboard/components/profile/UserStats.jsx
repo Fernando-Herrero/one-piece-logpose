@@ -39,7 +39,7 @@ export const UserStats = ({ context = "myProfile", userId, className }) => {
         };
 
         fetchStats();
-    }, [statsUser, loading]);
+    }, []);
 
     const { bookmarkedPosts, commentedPosts, likedPosts, myPosts, totalComments } = stats;
 

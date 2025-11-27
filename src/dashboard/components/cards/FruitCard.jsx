@@ -1,6 +1,6 @@
 import { CardImage } from "@/dashboard/components/cards/CardImageBack";
 
-export const FruitCard = ({ fruit }) => {
+export const FruitCard = memo(({ fruit }) => {
     const typeStyles = {
         Paramecia: {
             gradient: "from-purple-700 via-purple-600 to-purple-700",
@@ -67,4 +67,4 @@ export const FruitCard = ({ fruit }) => {
             </div>
         </div>
     );
-};
+});

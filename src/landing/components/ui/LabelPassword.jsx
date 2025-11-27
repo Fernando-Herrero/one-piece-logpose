@@ -14,7 +14,6 @@ export const LabelPassword = ({
     passwordValue = "",
     className = "",
 }) => {
-    console.log("🔁 Render LabelPassword");
     const password = name === "password";
     const confirmPassword = name === "confirmPassword";
 

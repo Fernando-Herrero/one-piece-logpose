@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 const EMPTY_USER = { email: "", password: "" };
 
 export const LoginForm = () => {
-    console.log("🔁 Render LoginForm");
     const savedForm = session.get("loginInputs");
     const [form, setForm] = useState(savedForm || EMPTY_USER);
     const [isVisible, toggleVisible] = useToggle();

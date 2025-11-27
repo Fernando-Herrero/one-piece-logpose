@@ -4,9 +4,9 @@ import { usePosts } from "@/core/posts/usePosts";
 import { PostForm } from "@/dashboard/components/community/PostForm";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
-export const Post = ({ onCancel }) => {
+export const Post = memo(({ onCancel }) => {
     const { error, setError } = useContext(PostContext);
     const { createPost } = usePosts();
     const { lang } = useContext(LanguagesContext);
@@ -20,7 +20,6 @@ export const Post = ({ onCancel }) => {
 
     const handleCancel = () => {
         setError(null);
-        goTo("/dashboard/community");
         onCancel();
     };
 
@@ -33,4 +32,4 @@ export const Post = ({ onCancel }) => {
             placeholderText={languages[lang].posts.areaTextPost}
         />
     );
-};
+});

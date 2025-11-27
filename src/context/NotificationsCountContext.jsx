@@ -1,6 +1,6 @@
 import { AuthContext } from "@/context/AuthContext";
 import { getNotificationsCountApi } from "@/core/notifications/notifications.api";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 export const NotificationsCountContext = createContext(null);
 
@@ -9,32 +9,28 @@ export const NotificationsCountProvider = ({ children }) => {
     const userId = user?.id || user?._id;
     const [notisCount, setNotisCount] = useState(0);
 
-    useEffect(() => {
-        if (!userId) {
-            setNotisCount(0);
-            return;
-        }
-        fetchNotificationsCount();
-    }, [userId]);
-
-    const fetchNotificationsCount = async () => {
+    const fetchNotificationsCount = useCallback(async () => {
+        if (!userId) return;
         try {
             const data = await getNotificationsCountApi();
             setNotisCount(data.count);
         } catch (error) {
             console.error("Error al obtener el numero de notificaciones", error);
         }
-    };
+    }, [userId]);
 
-    const decrementCount = () => {
+    const decrementCount = useCallback(() => {
         setNotisCount((prev) => Math.max(0, prev - 1));
-    };
+    }, [setNotisCount]);
 
-    return (
-        <NotificationsCountContext.Provider
-            value={{ notisCount, setNotisCount, decrementCount, fetchNotificationsCount }}
-        >
-            {children}
-        </NotificationsCountContext.Provider>
+    useEffect(() => {
+        fetchNotificationsCount();
+    }, [fetchNotificationsCount]);
+
+    const value = useMemo(
+        () => ({ notisCount, setNotisCount, decrementCount, fetchNotificationsCount }),
+        [notisCount, decrementCount, fetchNotificationsCount]
     );
+
+    return <NotificationsCountContext.Provider value={value}>{children}</NotificationsCountContext.Provider>;
 };

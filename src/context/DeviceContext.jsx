@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
 export const DeviceContext = createContext(null);
 
@@ -13,5 +13,7 @@ export const DeviceProvider = ({ children }) => {
         return () => window.removeEventListener("resize", updateWidth);
     }, []);
 
-    return <DeviceContext.Provider value={{ width }}>{children}</DeviceContext.Provider>;
+    const value = useMemo(() => ({ width }), [width]);
+
+    return <DeviceContext.Provider value={value}>{children}</DeviceContext.Provider>;
 };

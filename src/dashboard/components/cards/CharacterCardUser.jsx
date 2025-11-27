@@ -1,6 +1,7 @@
 import { CardImage } from "@/dashboard/components/cards/CardImageBack";
+import { memo } from "react";
 
-export const CharacterCardUser = ({ character }) => {
+export const CharacterCardUser = memo(({ character }) => {
     const cardType = character.type[character.type.length - 1];
 
     const typeStyles = {
@@ -75,4 +76,4 @@ export const CharacterCardUser = ({ character }) => {
             </div>
         </div>
     );
-};
+});

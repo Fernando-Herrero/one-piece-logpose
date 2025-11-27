@@ -1,6 +1,6 @@
 import { CardImage } from "@/dashboard/components/cards/CardImageBack";
 
-export const ItemCard = ({ item }) => {
+export const ItemCard = memo(({ item }) => {
     const typeStyles = {
         common: {
             gradient: "from-slate-700 via-slate-600 to-slate-700",
@@ -71,4 +71,4 @@ export const ItemCard = ({ item }) => {
             </div>
         </div>
     );
-};
+});

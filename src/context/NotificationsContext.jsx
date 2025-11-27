@@ -1,6 +1,6 @@
 import { AuthContext } from "@/context/AuthContext";
 import { getNotificationsApi } from "@/core/notifications/notifications.api";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 export const NotificationsContext = createContext(null);
 
@@ -36,9 +36,10 @@ export const NotificationsProvider = ({ children }) => {
         fetchNotifications();
     }, [userId]);
 
-    return (
-        <NotificationsContext.Provider value={{ notis, setNotis, loading, error }}>
-            {children}
-        </NotificationsContext.Provider>
+    const value = useMemo(
+        () => ({ notis, setNotis, loading, error }),
+        [NotificationsContext, loading, error]
     );
+
+    return <NotificationsContext.Provider value={value}>{children}</NotificationsContext.Provider>;
 };

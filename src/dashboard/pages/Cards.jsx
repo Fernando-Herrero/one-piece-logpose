@@ -9,7 +9,7 @@ import { FruitCard } from "@/dashboard/components/cards/FruitCard";
 import { ItemCard } from "@/dashboard/components/cards/ItemCard";
 import { SwordCard } from "@/dashboard/components/cards/SwordCard";
 import { languages } from "@/helpers/languages";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 export const Cards = () => {
     const { user } = useContext(AuthContext);
@@ -28,17 +28,21 @@ export const Cards = () => {
     useEffect(() => {
         const cards = getUnlockedCards(userId);
         setUnlockedCards(cards);
-    }, []);
+    }, [userId]);
 
     const handleReset = () => {
         showModal({
             message: languages[lang].modal.deleteCards,
             onConfirm: () => {
                 clearUserCards(userId);
+                setUnlockedCards({
+                    characters: [],
+                    items: [],
+                    fruits: [],
+                    swords: [],
+                    boats: [],
+                });
                 hideModal();
-                setTimeout(() => {
-                    window.location.reload();
-                }, 300);
             },
             onCancel: hideModal,
             confirmText: languages[lang].modal.confirmLogOut,
@@ -70,9 +74,9 @@ export const Cards = () => {
         return [];
     };
 
-    const filteredCards = getFilteredCards();
+    const filteredCards = useMemo(() => getFilteredCards(), [unlockedCards, activeFilter]);
+    const totalCards = useMemo(() => getAllCards().length, [unlockedCards]);
 
-    const totalCards = getAllCards().length;
     const counts = {
         characters: unlockedCards.characters.length,
         items: unlockedCards.items.length,
