@@ -1,6 +1,6 @@
 import { AuthContext } from "@/context/AuthContext";
 import { getPostsApi } from "@/core/posts/posts.api";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 export const PostContext = createContext(null);
 
@@ -34,9 +34,7 @@ export const PostProvider = ({ children }) => {
         fetchPosts();
     }, [user]);
 
-    return (
-        <PostContext.Provider value={{ posts, setPosts, loading, error, setError }}>
-            {children}
-        </PostContext.Provider>
-    );
+    const value = useMemo(() => ({ posts, setPosts, loading, error, setError }), [posts, error, loading]);
+
+    return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
 };

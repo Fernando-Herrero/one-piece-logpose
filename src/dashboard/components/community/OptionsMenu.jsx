@@ -9,11 +9,12 @@ import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { usePosts } from "@/core/posts/usePosts";
 import { useUser } from "@/core/user/useUser";
+import { ItemOptionsMenu } from "@/dashboard/components/community/ItemOptionsMenu";
 import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
-import { memo, useContext } from "react";
+import { memo, useCallback, useContext, useMemo } from "react";
 
 export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/community" }) => {
     const { user, isAdmin } = useContext(AuthContext);
@@ -28,30 +29,16 @@ export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/comm
     const amIUser = user?.id === userId?.id || user?._id === userId?.id;
     const alreadyFollow = user?.following?.includes(userId?.id);
 
-    const ItemOptionsMenu = ({ onClick, content, icon }) => {
-        const className = "flex items-center justify-between w-full cursor-pointer drop-item-style group";
-        const subClass = "underline-hover text-gradient";
-
-        const handleClick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onClick();
-        };
-
-        return (
-            <button type="button" onClick={handleClick} className={className}>
-                <p className={subClass}>{content}</p>
-                <img className="w-4" src={icon} alt="Menu icon" />
-            </button>
-        );
-    };
-
-    const buildPostPageUrl = () => {
+    const buildPostPageUrl = useMemo(() => {
         const params = new URLSearchParams();
         params.append("postId", id);
         params.append("userId", userId?.id);
         return `${basePath}/postPage?${params.toString()}`;
-    };
+    }, [id, userId?.id, basePath]);
+
+    const handleFollow = useCallback(() => followUser(userId?.id), [followUser, userId?.id]);
+    const handleUnfollow = useCallback(() => unfollowUser(userId?.id), [unfollowUser, userId?.id]);
+    const handleDelete = useCallback(() => deletePost(id), [deletePost, id]);
 
     return (
         <div className="relative text-xs" ref={menuRef}>
@@ -77,7 +64,7 @@ export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/comm
 
                         {(amIUser || isAdmin) && (
                             <ItemOptionsMenu
-                                onClick={() => deletePost(id)}
+                                onClick={handleDelete}
                                 content={languages[lang].posts.deletePost}
                                 icon={trash}
                             />
@@ -86,13 +73,13 @@ export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/comm
                         {!amIUser &&
                             (alreadyFollow ? (
                                 <ItemOptionsMenu
-                                    onClick={() => unfollowUser(userId?.id)}
+                                    onClick={handleUnfollow}
                                     content={languages[lang].posts.unfollow}
                                     icon={minus}
                                 />
                             ) : (
                                 <ItemOptionsMenu
-                                    onClick={() => followUser(userId?.id)}
+                                    onClick={handleFollow}
                                     content={languages[lang].posts.follow}
                                     icon={plus}
                                 />

@@ -6,12 +6,12 @@ import { UserInfo } from "@/dashboard/components/community/UserInfo";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
-import { memo, useContext } from "react";
+import { memo, useContext, useMemo } from "react";
 
 export const PostCard = memo(({ postId, classSelect = "primary", view = true, basePath, className }) => {
     const { isMobile, isTablet } = useDevice();
     const { posts } = useContext(PostContext);
-    const post = posts?.find((post) => post.id === postId);
+    const post = useMemo(() => posts?.find((post) => post.id === postId), [posts, postId]);
     if (!post) return null;
     const { id, userId, text, images, hashtags } = post;
     if (!userId) return null;

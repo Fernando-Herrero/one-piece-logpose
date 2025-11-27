@@ -9,7 +9,6 @@ import { useContext, useEffect, useMemo, useState } from "react";
 
 export const UserStats = ({ context = "myProfile", userId, className }) => {
     const [stats, setStats] = useState([]);
-    const { bookmarkedPosts, commentedPosts, likedPosts, myPosts, totalComments } = stats;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const { getUserStats } = useAuth();
@@ -17,17 +16,9 @@ export const UserStats = ({ context = "myProfile", userId, className }) => {
     const { lang } = useContext(LanguagesContext);
     const { isMobile, isTablet } = useDevice();
 
-    const statsUser = context === "myProfile" ? getUserStats : () => getStatsUser(userId);
-
-    const statsItems = useMemo(
-        () => [
-            { label: languages[lang].profile.myPosts, value: myPosts },
-            { label: languages[lang].profile.likedPosts, value: likedPosts },
-            { label: languages[lang].profile.bookmarkedPosts, value: bookmarkedPosts },
-            { label: languages[lang].profile.commentedPosts, value: commentedPosts },
-            { label: languages[lang].profile.totalComments, value: totalComments },
-        ],
-        [myPosts, likedPosts, bookmarkedPosts, commentedPosts, totalComments, lang]
+    const statsUser = useMemo(
+        () => (context === "myProfile" ? getUserStats : () => getStatsUser(userId)),
+        [context, userId, getUserStats, getStatsUser]
     );
 
     useEffect(() => {
@@ -48,7 +39,20 @@ export const UserStats = ({ context = "myProfile", userId, className }) => {
         };
 
         fetchStats();
-    }, []);
+    }, [statsUser, loading]);
+
+    const { bookmarkedPosts, commentedPosts, likedPosts, myPosts, totalComments } = stats;
+
+    const statsItems = useMemo(
+        () => [
+            { label: languages[lang].profile.myPosts, value: myPosts },
+            { label: languages[lang].profile.likedPosts, value: likedPosts },
+            { label: languages[lang].profile.bookmarkedPosts, value: bookmarkedPosts },
+            { label: languages[lang].profile.commentedPosts, value: commentedPosts },
+            { label: languages[lang].profile.totalComments, value: totalComments },
+        ],
+        [myPosts, likedPosts, bookmarkedPosts, commentedPosts, totalComments, lang]
+    );
 
     if (stats?.length === 0 && !loading)
         return <p className="text-linePrimary text-center p-10">{languages[lang].profile.noStats}</p>;

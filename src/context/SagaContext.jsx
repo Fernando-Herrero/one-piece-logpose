@@ -18,7 +18,7 @@ export const SagaProvider = ({ children }) => {
         }
     }, [user]);
 
-    const updateProgress = (newSaga, newArc, newEpisode) => {
+    const updateProgress = useCallback((newSaga, newArc, newEpisode) => {
         setSaga((prev) => {
             if (newSaga > prev.saga) {
                 return { saga: newSaga, arc: newArc, episode: newEpisode };
@@ -31,7 +31,7 @@ export const SagaProvider = ({ children }) => {
             }
             return prev;
         });
-    };
+    }, []);
 
     const resetProgress = useCallback(async () => {
         const resetState = { saga: 0, arc: 0, episode: 0 };
