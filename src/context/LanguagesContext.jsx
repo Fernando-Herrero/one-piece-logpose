@@ -1,5 +1,5 @@
 import { local } from "@/helpers/storage";
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 
 export const LanguagesContext = createContext(null);
 
@@ -12,9 +12,6 @@ export const LanguagesProvider = ({ children }) => {
         local.save("lang", value);
     };
 
-    return (
-        <LanguagesContext.Provider value={{ lang, setLang, handleLang }}>
-            {children}
-        </LanguagesContext.Provider>
-    );
+    const value = useMemo(() => ({ lang, setLang, handleLang }), [lang]);
+    return <LanguagesContext.Provider value={value}>{children}</LanguagesContext.Provider>;
 };

@@ -5,7 +5,7 @@ import { UserBarProgress } from "@/dashboard/components/UserBarProgress";
 import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 
 export const UserProgress = () => {
     const { user, loading } = useContext(AuthContext);
@@ -13,11 +13,14 @@ export const UserProgress = () => {
     const { lang } = useContext(LanguagesContext);
     const { isMobile, isTablet } = useDevice();
 
-    const items = [
-        { title: languages[lang].sagaData.saga, value: saga?.saga },
-        { title: languages[lang].sagaData.arc, value: saga?.arc },
-        { title: languages[lang].sagaData.episode, value: saga?.episode },
-    ];
+    const items = useMemo(
+        () => [
+            { title: languages[lang].sagaData.saga, value: saga?.saga },
+            { title: languages[lang].sagaData.arc, value: saga?.arc },
+            { title: languages[lang].sagaData.episode, value: saga?.episode },
+        ],
+        [lang, saga]
+    );
 
     return (
         <>
