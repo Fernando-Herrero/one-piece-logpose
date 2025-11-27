@@ -10,7 +10,7 @@ import {
 import { useContext } from "react";
 
 export const useNotifications = () => {
-    const { notis, setNotis } = useContext(NotificationsContext); // ✅ Agregar notis
+    const { notis, setNotis } = useContext(NotificationsContext);
     const { decrementCount, setNotisCount } = useContext(NotificationsCountContext);
 
     const notification = async (newNotification) => {

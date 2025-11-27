@@ -20,7 +20,7 @@ export const SearchResults = () => {
 
     if (loadingPosts || loadingUsers)
         return (
-            <div className="flex justify-center pt-10">
+            <div className="flex items-center justify-center max-h-screen pt-10">
                 <Spinner />
             </div>
         );
