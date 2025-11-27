@@ -1,41 +1,34 @@
 import { FilterPosts } from "@/dashboard/components/search/FilterPosts";
 import { FilterUsers } from "@/dashboard/components/search/FilterUsers";
-import { useEffect, useState } from "react";
 
 export const useSearchFilter = (query, posts, users) => {
-    const [exactPostsMatches, setExactPostsMatches] = useState([]);
-    const [partialPostsMatches, setPartialPostsMatches] = useState([]);
-    const [exactUserMatches, setExactUserMatches] = useState([]);
-    const [partialUserMatches, setPartialUserMatches] = useState([]);
-
-    useEffect(() => {
-        if (query && posts && users) {
-            const searchLower = query.toLowerCase();
-
-            const exactPosts = FilterPosts(posts, searchLower, true);
-            const partialPosts = FilterPosts(posts, searchLower, false, exactPosts);
-
-            setExactPostsMatches(exactPosts);
-            setPartialPostsMatches(partialPosts);
-
-            const exactUsers = FilterUsers(users, searchLower, true);
-            const partialUsers = FilterUsers(users, searchLower, false, exactUsers);
-
-            setExactUserMatches(exactUsers);
-            setPartialUserMatches(partialUsers);
-        } else {
-            setExactPostsMatches([]);
-            setPartialPostsMatches([]);
-            setExactUserMatches([]);
-            setPartialUserMatches([]);
+    const results = useMemo(() => {
+        if (!query && !posts && !users) {
+            return {
+                exactPostsMatches: [],
+                partialPostsMatches: [],
+                exactUserMatches: [],
+                partialUserMatches: [],
+                totalResults: [],
+            };
         }
+        const searchLower = query.toLowerCase();
+        const exactPosts = FilterPosts(posts, searchLower, true);
+        const partialPosts = FilterPosts(posts, searchLower, false, exactPosts);
+        const exactUsers = FilterUsers(users, searchLower, true);
+        const partialUsers = FilterUsers(users, searchLower, false, exactUsers);
+
+        const totalResults =
+            exactPosts.length + partialPosts.length + exactUsers.length + partialUsers.length;
+
+        return {
+            exactPostsMatches: exactPosts,
+            partialPostsMatches: partialPosts,
+            exactUserMatches: exactUsers,
+            partialUserMatches: partialUsers,
+            totalResults,
+        };
     }, [query, posts, users]);
 
-    const totalResults =
-        exactPostsMatches.length +
-        partialPostsMatches.length +
-        exactUserMatches.length +
-        partialUserMatches.length;
-
-    return { exactPostsMatches, exactUserMatches, partialPostsMatches, partialUserMatches, totalResults };
+    return results;
 };
