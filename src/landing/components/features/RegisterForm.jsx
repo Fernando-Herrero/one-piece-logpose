@@ -15,6 +15,7 @@ import { INITIAL_REGISTER_FORM } from "@/landing/data/INITIAL_REGISTER_FORM";
 import { useContext, useState } from "react";
 
 export const RegisterForm = () => {
+    console.log("🔁 Render RegisterForm");
     const { register } = useAuth();
     const { selectedAvatar, setSelectedAvatar } = useAvatar();
     const { lang } = useContext(LanguagesContext);

@@ -79,7 +79,7 @@ export const PostStats = memo(({ post, view }) => {
     };
 
     const statsConfig = useMemo(
-        [
+        () => [
             {
                 icon: commentIcon,
                 count: commentCountValid,

@@ -3,9 +3,7 @@ import { Button } from "@/components/Button.jsx";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages.js";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useToggle } from "@/hooks/useToggle";
-import { MobileMenu } from "@/landing/components/features/MobileMenu";
-import { ButtonMobileMenu } from "@/landing/components/ui/ButtonMobileMenu";
+import { HeaderMenuController } from "@/landing/components/features/HeaderMenuController";
 import { Container } from "@/landing/components/ui/Container.jsx";
 import { Navbar } from "@/layouts/Navbar";
 import { useContext } from "react";
@@ -13,7 +11,6 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
     const { lang } = useContext(LanguagesContext);
-    const [isOpen, toggleMenu] = useToggle();
     const { goTo } = useGoTo();
 
     return (
@@ -34,9 +31,7 @@ export const Header = () => {
                     </div>
                 </div>
 
-                <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
-
-                <ButtonMobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
+                <HeaderMenuController />
             </Container>
         </header>
     );

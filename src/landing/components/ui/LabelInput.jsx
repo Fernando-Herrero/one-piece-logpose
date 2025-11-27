@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 export const LabelInput = ({ label, type, name, value, placeholder, id, onChange, className = "" }) => {
+    console.log("🔁 Render LabelInput");
     const username = name === "username";
 
     const isValid = username && value.length >= 3;

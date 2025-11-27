@@ -3,6 +3,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
+import { EditableField } from "@/dashboard/components/profile/EditableField";
 import { FollowSection } from "@/dashboard/components/profile/FollowSection";
 import { ProfileHeader } from "@/dashboard/components/profile/ProfileHeader";
 import { ProfileViewMore } from "@/dashboard/components/profile/ProfileViewMore";
@@ -11,7 +12,7 @@ import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useProfileEditor } from "@/hooks/useProfileEditor";
 import classNames from "classnames";
-import { memo, useContext, useState } from "react";
+import { memo, useContext, useMemo, useState } from "react";
 
 export const ProfileArticle = memo(() => {
     const { user, loading, error } = useContext(AuthContext);
@@ -40,8 +41,8 @@ export const ProfileArticle = memo(() => {
     if (!user) return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.noUser}</p>;
     if (loading)
         return (
-            <div className="flex flex-col items-center gap-1">
-                <Spinner className="mx-auto mt-5" />{" "}
+            <div className="flex flex-col items-center justify-center min-h-screen gap-1">
+                <Spinner />{" "}
                 <p className="text-gradient dark:text-black">
                     {languages[lang].profile.loadingProfile}
                     <LoadingDots />
@@ -63,8 +64,7 @@ export const ProfileArticle = memo(() => {
                         })}
                     >
                         {basicFields.map((fieldProps, index) => (
-                            <EditableFi
-                                eld
+                            <EditableField
                                 key={`${fieldProps.fieldName}-${index}`}
                                 user={user}
                                 {...fieldProps}

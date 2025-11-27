@@ -1,6 +1,6 @@
 import { getProfileApi } from "@/core/auth/auth.api";
 import { getTokenFromLocalStorage, saveUserInLocalStorage } from "@/core/auth/auth.service";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
 export const AuthContext = createContext(null);
 
@@ -38,11 +38,10 @@ export const AuthProvider = ({ children }) => {
         fetchProfile();
     }, []);
 
-    return (
-        <AuthContext.Provider
-            value={{ user, setUser, error, setError, loading, isAdmin, isVerified, userPrivacy }}
-        >
-            {children}
-        </AuthContext.Provider>
+    const value = useMemo(
+        () => ({ user, setUser, error, setError, loading, isAdmin, isVerified, userPrivacy }),
+        [user, error, loading]
     );
+
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

@@ -9,6 +9,7 @@ import { getCharacters } from "@/landing/data/getCharacters";
 import { useContext, useMemo, useState } from "react";
 
 export const CharactersPage = () => {
+    console.log("🔁 Render CharactersPage");
     const { lang } = useContext(LanguagesContext);
     const characters = useMemo(() => getCharacters(lang), [lang]);
     const [visibleChars, setVisibleChars] = useState(characters.slice(0, 5));

@@ -5,11 +5,12 @@ import { useDevice } from "@/hooks/useDevice";
 import { BackUpPage } from "@/landing/components/features/BackUpPage";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { memo, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const HomePage = memo(() => {
+export const HomePage = () => {
+    console.log("🔁 Render HomePage");
     const { isMobileXs, isMobile, isTablet, device } = useDevice();
 
     const heroImgRef = useRef(null);
@@ -166,4 +167,4 @@ export const HomePage = memo(() => {
             </section>
         </div>
     );
-});
+};

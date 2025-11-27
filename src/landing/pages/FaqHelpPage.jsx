@@ -49,6 +49,7 @@ const faqData = [
 ];
 
 export const FaqHelpPage = () => {
+    console.log("🔁 Render FaqHelpPage");
     return (
         <Container className="pb-20 space-y-2 max-w-lg">
             {faqData.map(({ title, text }, index) => (

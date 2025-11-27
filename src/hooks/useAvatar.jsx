@@ -14,7 +14,6 @@ export const useAvatar = () => {
 
             setSelectedAvatar(avatarUrl);
             local.save("avatarSelected", avatarUrl);
-            console.log(avatarUrl);
         }
     };
 
