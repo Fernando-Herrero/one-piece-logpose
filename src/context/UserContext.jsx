@@ -1,5 +1,5 @@
 import { getUserApi } from "@/core/posts/posts.api";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const UserContext = createContext(null);
@@ -40,9 +40,7 @@ export const UserProvider = ({ children }) => {
         fetchUser();
     }, [userId]);
 
-    return (
-        <UserContext.Provider value={{ user, setUser, loading, error, userPrivacy }}>
-            {children}
-        </UserContext.Provider>
-    );
+    const value = useMemo(() => ({ user, setUser, loading, error, userPrivacy }), [userId, loading, error]);
+
+    return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

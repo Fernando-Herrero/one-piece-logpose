@@ -30,8 +30,8 @@ export const App = () => {
 
     if (loading)
         return (
-            <div className="flex flex-col items-center gap-1">
-                <Spinner className="mx-auto mt-5" />{" "}
+            <div className="flex flex-col items-center justify-center min-h-screen gap-1">
+                <Spinner />{" "}
                 <p className="text-gradient dark:text-black">
                     {languages[lang].profile.loading}
                     <LoadingDots />

@@ -1,7 +1,7 @@
 import { ModalContext } from "@/context/ModalContext";
 import { useGoTo } from "@/hooks/useGoTo";
 import classNames from "classnames";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 export const Overlay = ({ children, isModal = false }) => {
     const [show, setShow] = useState(false);
@@ -11,7 +11,7 @@ export const Overlay = ({ children, isModal = false }) => {
 
     const { goTo } = useGoTo();
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         if (isClosing) return;
 
         setIsClosing(true);
@@ -24,7 +24,7 @@ export const Overlay = ({ children, isModal = false }) => {
                 goTo("..");
             }
         }, 300);
-    };
+    }, [isClosing, isModalOpen]);
 
     useEffect(() => {
         const timer = setTimeout(() => {

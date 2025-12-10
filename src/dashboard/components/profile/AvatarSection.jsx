@@ -6,9 +6,9 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { languages } from "@/helpers/languages";
 import { useAvatar } from "@/hooks/useAvatar";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
-export const AvatarSection = ({ onCancel }) => {
+export const AvatarSection = memo(({ onCancel }) => {
     const { selectedAvatar, setSelectedAvatar } = useAvatar();
     const { user } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
@@ -36,4 +36,4 @@ export const AvatarSection = ({ onCancel }) => {
             </Button>
         </section>
     );
-};
+});

@@ -5,9 +5,9 @@ import { UsersListContent } from "@/dashboard/components/UsersListContent";
 import { languages } from "@/helpers/languages";
 import { useToggle } from "@/hooks/useToggle";
 import classNames from "classnames";
-import { useContext, useState } from "react";
+import { memo, useContext, useState } from "react";
 
-export const UsersWrapper = () => {
+export const UsersWrapper = memo(() => {
     const { users, loading, error } = useContext(UsersContext);
     const { lang } = useContext(LanguagesContext);
     const [isOpen, toggleBox] = useToggle();
@@ -80,4 +80,4 @@ export const UsersWrapper = () => {
             </div>
         </section>
     );
-};
+});

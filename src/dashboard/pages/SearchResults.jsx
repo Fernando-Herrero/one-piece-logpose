@@ -9,10 +9,10 @@ import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const SearchResults = () => {
-    const [searchParamas] = useSearchParams();
-    const query = searchParamas.get("q") || "";
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get("q") || "";
     const { posts, loading: loadingPosts } = useContext(PostContext);
-    const { users, loading: loadingUsers, fetchUsers } = useContext(UsersContext);
+    const { users, loading: loadingUsers } = useContext(UsersContext);
     const { lang } = useContext(LanguagesContext);
 
     const { exactPostsMatches, partialPostsMatches, exactUserMatches, partialUserMatches, totalResults } =
@@ -20,7 +20,7 @@ export const SearchResults = () => {
 
     if (loadingPosts || loadingUsers)
         return (
-            <div className="flex justify-center pt-10">
+            <div className="flex items-center justify-center max-h-screen pt-10">
                 <Spinner />
             </div>
         );

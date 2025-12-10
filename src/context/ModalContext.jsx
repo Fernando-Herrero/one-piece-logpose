@@ -1,6 +1,6 @@
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
 
 export const ModalContext = createContext(null);
 
@@ -16,25 +16,28 @@ export const ModdalProvider = ({ children, onCancel }) => {
         cancelText: languages[lang].modal.cancelText,
     });
 
-    const showModal = (config) => {
-        setModalData({
-            isOpen: true,
-            message: config.message || "",
-            onConfirm: config.onConfirm || null,
-            onCancel: onCancel,
-            confirmText: config.confirmText,
-            cancelText: config.cancelText,
-        });
-    };
+    const showModal = useCallback(
+        (config) => {
+            setModalData({
+                isOpen: true,
+                message: config.message || "",
+                onConfirm: config.onConfirm || null,
+                onCancel: onCancel,
+                confirmText: config.confirmText,
+                cancelText: config.cancelText,
+            });
+        },
+        [onCancel]
+    );
 
-    const hideModal = () => {
+    const hideModal = useCallback(() => {
         setModalData((prev) => ({
             ...prev,
             isOpen: false,
         }));
-    };
+    }, []);
 
-    return (
-        <ModalContext.Provider value={{ modalData, showModal, hideModal }}>{children}</ModalContext.Provider>
-    );
+    const value = useMemo(() => ({ modalData, showModal, hideModal }), [modalData, showModal, hideModal]);
+
+    return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>;
 };

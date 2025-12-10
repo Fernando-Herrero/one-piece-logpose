@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export const NotFoundPage = () => {
+    console.log("🔁 Render NotFoundPage");
     const { lang } = useContext(LanguagesContext);
     const { user } = useContext(AuthContext);
 

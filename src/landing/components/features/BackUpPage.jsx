@@ -2,7 +2,7 @@ import { Cards } from "@/landing/components/ui/Cards";
 import { Container } from "@/landing/components/ui/Container";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,11 +37,19 @@ export const BackUpPage = () => {
     const cardsRef = useRef([]);
     cardsRef.current = [];
 
-    const addToRefs = (el) => {
+    const addToRefs = useCallback((el) => {
         if (el && !cardsRef.current.includes(el)) {
             cardsRef.current.push(el);
         }
-    };
+    }, []);
+
+    const memoItems = useMemo(
+        () =>
+            items.map(({ title, text }, index) => (
+                <Cards key={`${title}-${index}`} title={title} text={text} ref={addToRefs} />
+            )),
+        [addToRefs]
+    );
 
     useEffect(() => {
         cardsRef.current.forEach((card, index) => {
@@ -66,9 +74,7 @@ export const BackUpPage = () => {
 
     return (
         <Container className="grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-2">
-            {items.map(({ title, text }, index) => (
-                <Cards key={`${title}-${index}`} title={title} text={text} ref={addToRefs} />
-            ))}
+            {memoItems}
         </Container>
     );
 };

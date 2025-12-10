@@ -3,24 +3,30 @@ import { UsersContext } from "@/context/UsersContext";
 import { FollowCard } from "@/dashboard/components/profile/FollowCard";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useContext } from "react";
+import { memo, useContext, useMemo } from "react";
 
-export const FollowSection = ({ user, className = "", basePath = "/dashboard/userProfile" }) => {
+export const FollowSection = memo(({ user, className = "", basePath = "/dashboard/userProfile" }) => {
     const { users } = useContext(UsersContext);
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
 
     const userId = user._id ? user._id : user.id;
 
-    const validFollowers =
-        user.followers?.filter((followerId) =>
-            users.some((u) => u.id === followerId || u._id === followerId)
-        ) || [];
+    const validFollowers = useMemo(() => {
+        return (
+            user.followers?.filter((followerId) =>
+                users.some((u) => u.id === followerId || u._id === followerId)
+            ) || []
+        );
+    }, [user, users]);
 
-    const validFollowing =
-        user.following?.filter((followingId) =>
-            users.some((u) => u.id === followingId || u._id === followingId)
-        ) || [];
+    const validFollowing = useMemo(() => {
+        return (
+            user.following?.filter((followingId) =>
+                users.some((u) => u.id === followingId || u._id === followingId)
+            ) || []
+        );
+    }, [user, users]);
 
     const finalBasePath =
         basePath === "/dashboard/profile" ? basePath : `/dashboard/userProfile?userId=${userId}`;
@@ -45,4 +51,4 @@ export const FollowSection = ({ user, className = "", basePath = "/dashboard/use
             />
         </div>
     );
-};
+});

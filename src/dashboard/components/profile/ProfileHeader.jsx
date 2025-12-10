@@ -2,9 +2,9 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
-export const ProfileHeader = ({ user, setCoverImg }) => {
+export const ProfileHeader = memo(({ user, setCoverImg }) => {
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
 
@@ -46,4 +46,4 @@ export const ProfileHeader = ({ user, setCoverImg }) => {
             </div>
         </div>
     );
-};
+});

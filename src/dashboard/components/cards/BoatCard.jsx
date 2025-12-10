@@ -1,6 +1,7 @@
 import { CardImage } from "@/dashboard/components/cards/CardImageBack";
+import { memo } from "react";
 
-export const BoatCard = ({ boat }) => {
+export const BoatCard = memo(({ boat }) => {
     const typeStyles = {
         common: {
             gradient: "from-slate-700 via-slate-600 to-slate-700",
@@ -70,4 +71,4 @@ export const BoatCard = ({ boat }) => {
             </div>
         </div>
     );
-};
+});

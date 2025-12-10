@@ -2,7 +2,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { saveUserInLocalStorage } from "@/core/auth/auth.service";
 import { useAuth } from "@/core/auth/useAuth";
 import { local } from "@/helpers/storage";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 export const SagaContext = createContext(null);
 
@@ -18,7 +18,7 @@ export const SagaProvider = ({ children }) => {
         }
     }, [user]);
 
-    const updateProgress = (newSaga, newArc, newEpisode) => {
+    const updateProgress = useCallback((newSaga, newArc, newEpisode) => {
         setSaga((prev) => {
             if (newSaga > prev.saga) {
                 return { saga: newSaga, arc: newArc, episode: newEpisode };
@@ -31,9 +31,9 @@ export const SagaProvider = ({ children }) => {
             }
             return prev;
         });
-    };
+    }, []);
 
-    const resetProgress = async () => {
+    const resetProgress = useCallback(async () => {
         const resetState = { saga: 0, arc: 0, episode: 0 };
         setSaga(resetState);
 
@@ -63,11 +63,9 @@ export const SagaProvider = ({ children }) => {
                 console.error("❌ Error al resetear progreso en BD:", error);
             }
         }
-    };
+    }, [user, userId, updatedProfile]);
 
-    return (
-        <SagaContext.Provider value={{ saga, updateProgress, resetProgress }}>
-            {children}
-        </SagaContext.Provider>
-    );
+    const value = useMemo(() => ({ saga, updateProgress, resetProgress }), [saga]);
+
+    return <SagaContext.Provider value={value}>{children}</SagaContext.Provider>;
 };

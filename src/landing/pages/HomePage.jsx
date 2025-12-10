@@ -10,6 +10,7 @@ import { useEffect, useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 export const HomePage = () => {
+    console.log("🔁 Render HomePage");
     const { isMobileXs, isMobile, isTablet, device } = useDevice();
 
     const heroImgRef = useRef(null);

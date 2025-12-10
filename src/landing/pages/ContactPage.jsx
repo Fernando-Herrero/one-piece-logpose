@@ -9,6 +9,7 @@ import { contactFormFields } from "@/landing/data/contactFields";
 import { useContext, useState } from "react";
 
 export const ContactPage = () => {
+    console.log("🔁 Render ContactPage");
     const [form, setFormn] = useState({ name: "", surname: "", subject: "", email: "", textArea: "" });
     const { lang } = useContext(LanguagesContext);
     const { showModal, hideModal } = useContext(ModalContext);

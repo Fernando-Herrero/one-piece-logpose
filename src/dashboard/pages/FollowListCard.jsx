@@ -10,7 +10,7 @@ import { LoadingState } from "@/dashboard/components/followListComponents/Loadin
 import { UserItem } from "@/dashboard/components/followListComponents/UserItem";
 import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const FollowListCard = ({ onCancel, type = "followers", view = true }) => {
@@ -20,7 +20,6 @@ export const FollowListCard = ({ onCancel, type = "followers", view = true }) =>
 
     const userContext = useContext(UserContext);
     const authContext = useContext(AuthContext);
-    console.log("este es el authcontext", authContext);
     const profileUser = userContext?.user || authContext?.user;
 
     const [users, setUsers] = useState(null);
@@ -69,14 +68,31 @@ export const FollowListCard = ({ onCancel, type = "followers", view = true }) =>
         };
     }, [userId, type, fetchFn]);
 
-    const handleUnfollow = async (unfollowedUserId) => {
-        try {
-            await unfollowUser(unfollowedUserId);
-            setUsers((prev) => prev.filter((user) => user.id !== unfollowedUserId));
-        } catch (error) {
-            console.error("Error al dejar de seguir", error);
-        }
-    };
+    const handleUnfollow = useCallback(
+        async (unfollowedUserId) => {
+            try {
+                await unfollowUser(unfollowedUserId);
+                setUsers((prev) => prev.filter((user) => user.id !== unfollowedUserId));
+            } catch (error) {
+                console.error("Error al dejar de seguir", error);
+            }
+        },
+        [unfollowUser]
+    );
+
+    const usersMemoized = useMemo(
+        () =>
+            users.map((user) => (
+                <UserItem
+                    key={`${user.username}-${user.id}`}
+                    user={user}
+                    canUnfollow={profileUser?.following?.includes(user.id)}
+                    onUnfollow={handleUnfollow}
+                    view={view}
+                />
+            )),
+        [users, profileUser?.following, handleUnfollow, view]
+    );
 
     if (!userId) {
         return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.userNotFound}</p>;
@@ -102,23 +118,11 @@ export const FollowListCard = ({ onCancel, type = "followers", view = true }) =>
 
     return (
         <section className="flex flex-col items-center gap-4 w-[80vw] max-w-2xs">
-            <button onClick={() => goTo(from)} className="cursor-pointer">
+            <button onClick={() => goTo(from || "/dashboard/profile")} className="cursor-pointer">
                 <img className="w-8" src={cross} alt="Cross icon" />
             </button>
             <div className="bg-sunny p-1 rounded-xl w-full flex flex-col gap-1">
-                {users?.length > 0 ? (
-                    users.map((user) => (
-                        <UserItem
-                            key={`${user.username}-${user.id}`}
-                            user={user}
-                            canUnfollow={profileUser?.following?.includes(user.id)}
-                            onUnfollow={handleUnfollow}
-                            view={view}
-                        />
-                    ))
-                ) : (
-                    <EmptyState type={type} lang={lang} />
-                )}
+                {users?.length > 0 ? usersMemoized : <EmptyState type={type} lang={lang} />}
             </div>
         </section>
     );

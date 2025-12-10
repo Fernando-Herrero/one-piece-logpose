@@ -34,6 +34,7 @@ const historyOnePiece = (lang) => [
 ];
 
 export const HistoryPage = () => {
+    cconsole.log("🔁 Render HistoryPage");
     const { lang } = useContext(LanguagesContext);
     const history = historyOnePiece(lang);
 

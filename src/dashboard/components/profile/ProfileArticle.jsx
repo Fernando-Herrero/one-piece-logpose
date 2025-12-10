@@ -12,9 +12,9 @@ import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useProfileEditor } from "@/hooks/useProfileEditor";
 import classNames from "classnames";
-import { useContext, useState } from "react";
+import { memo, useContext, useMemo, useState } from "react";
 
-export const ProfileArticle = () => {
+export const ProfileArticle = memo(() => {
     const { user, loading, error } = useContext(AuthContext);
     const userId = user?.id || user?._id;
     const { updatedProfile, deleteAccount } = useAuth();
@@ -24,7 +24,7 @@ export const ProfileArticle = () => {
 
     const editorProps = useProfileEditor(user, updatedProfile, setCoverImg);
     const { lang } = useContext(LanguagesContext);
-    const basicFields = getProfileFields(user, lang, coverImg);
+    const basicFields = useMemo(() => getProfileFields(user, lang, coverImg), [user, lang, coverImg]);
 
     const handleDeleteAccount = () => {
         showModal({
@@ -41,8 +41,8 @@ export const ProfileArticle = () => {
     if (!user) return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.noUser}</p>;
     if (loading)
         return (
-            <div className="flex flex-col items-center gap-1">
-                <Spinner className="mx-auto mt-5" />{" "}
+            <div className="flex flex-col items-center justify-center min-h-screen gap-1">
+                <Spinner />{" "}
                 <p className="text-gradient dark:text-black">
                     {languages[lang].profile.loadingProfile}
                     <LoadingDots />
@@ -91,4 +91,4 @@ export const ProfileArticle = () => {
             </div>
         </article>
     );
-};
+});

@@ -1,10 +1,12 @@
 import { AuthContext } from "@/context/AuthContext";
 import { local } from "@/helpers/storage";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 export const AvatarContext = createContext(null);
 
 export const AvatarProvider = ({ children }) => {
+    console.log("Render AvatarContext");
+
     const { user } = useContext(AuthContext);
     const savedAvatar = local.get("avatarSelected");
     const [selectedAvatar, setSelectedAvatar] = useState((user?.avatar ?? savedAvatar) || null);
@@ -15,9 +17,7 @@ export const AvatarProvider = ({ children }) => {
         }
     }, [user?.avatar, savedAvatar]);
 
-    return (
-        <AvatarContext.Provider value={{ selectedAvatar, setSelectedAvatar }}>
-            {children}
-        </AvatarContext.Provider>
-    );
+    const value = useMemo(() => ({ selectedAvatar, setSelectedAvatar }), [selectedAvatar]);
+
+    return <AvatarContext.Provider value={value}>{children}</AvatarContext.Provider>;
 };

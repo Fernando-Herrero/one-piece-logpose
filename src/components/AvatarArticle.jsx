@@ -1,12 +1,12 @@
 import { AvatarContext } from "@/context/AvatarContext";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
-export const AvatarArticle = ({ character, selectAvatar }) => {
+export const AvatarArticle = memo(({ character, selectAvatar }) => {
+    console.log("Render AvatarArticle");
     const { selectedAvatar } = useContext(AvatarContext);
 
     return (
         <article
-            key={character.name}
             className="flex flex-col items-center justify-center"
             onClick={() => selectAvatar(character.name)}
         >
@@ -39,4 +39,4 @@ export const AvatarArticle = ({ character, selectAvatar }) => {
             <p className="mt-2 font-extrabold text-center text-gradient">{character.name}</p>
         </article>
     );
-};
+});

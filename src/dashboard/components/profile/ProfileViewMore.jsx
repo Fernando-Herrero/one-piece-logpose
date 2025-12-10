@@ -3,16 +3,14 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { EditableField } from "@/dashboard/components/profile/EditableField";
 import { getExtendedProfileFields } from "@/dashboard/data/ProfileData/profileFields";
 import { languages } from "@/helpers/languages";
-import { useDevice } from "@/hooks/useDevice";
 import { useToggle } from "@/hooks/useToggle";
 import classNames from "classnames";
-import { useContext } from "react";
+import { memo, useContext, useMemo } from "react";
 
-export const ProfileViewMore = ({ user, editorProps }) => {
+export const ProfileViewMore = memo(({ user, editorProps }) => {
     const [isOpen, toggleBox] = useToggle();
     const { lang } = useContext(LanguagesContext);
-    const profileFields = getExtendedProfileFields(user, lang);
-    const { isMobile, isTablet } = useDevice();
+    const profileFields = useMemo(() => getExtendedProfileFields(user, lang), [user, lang]);
 
     return (
         <section className="min-w-fit rounded-xl border border-white py-1 px-2 transition">
@@ -45,4 +43,4 @@ export const ProfileViewMore = ({ user, editorProps }) => {
             </div>
         </section>
     );
-};
+});

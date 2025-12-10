@@ -6,11 +6,12 @@ import { languages } from "@/helpers/languages";
 import { CharacterCard } from "@/landing/components/ui/CharacterCard";
 import { Container } from "@/landing/components/ui/Container";
 import { getCharacters } from "@/landing/data/getCharacters";
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 
 export const CharactersPage = () => {
+    console.log("🔁 Render CharactersPage");
     const { lang } = useContext(LanguagesContext);
-    const characters = getCharacters(lang);
+    const characters = useMemo(() => getCharacters(lang), [lang]);
     const [visibleChars, setVisibleChars] = useState(characters.slice(0, 5));
 
     return (

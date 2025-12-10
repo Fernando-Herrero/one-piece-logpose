@@ -1,6 +1,6 @@
 import { getProfileApi } from "@/core/auth/auth.api";
 import { getTokenFromLocalStorage, saveUserInLocalStorage } from "@/core/auth/auth.service";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
 export const AuthContext = createContext(null);
 
@@ -13,36 +13,35 @@ export const AuthProvider = ({ children }) => {
     const isAdmin = user?.role === "admin";
     const isVerified = user?.verified;
 
-    useEffect(() => {
-        const fetchProfile = async () => {
-            try {
-                setError(null);
-                setLoading(true);
+    const fetchProfile = async () => {
+        try {
+            setError(null);
+            setLoading(true);
 
-                const token = getTokenFromLocalStorage();
-                if (!token) return;
+            const token = getTokenFromLocalStorage();
+            if (!token) return;
 
-                const freshUser = await getProfileApi();
-                if (freshUser) {
-                    setUser(freshUser);
-                    saveUserInLocalStorage(freshUser);
-                }
-            } catch (error) {
-                console.error("Error al obtener el usuario, no encontrado", error);
-                setError(error);
-            } finally {
-                setLoading(false);
+            const freshUser = await getProfileApi();
+            if (freshUser) {
+                setUser(freshUser);
+                saveUserInLocalStorage(freshUser);
             }
-        };
+        } catch (error) {
+            console.error("Error al obtener el usuario, no encontrado", error);
+            setError(error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
+    useEffect(() => {
         fetchProfile();
     }, []);
 
-    return (
-        <AuthContext.Provider
-            value={{ user, setUser, error, setError, loading, isAdmin, isVerified, userPrivacy }}
-        >
-            {children}
-        </AuthContext.Provider>
+    const value = useMemo(
+        () => ({ user, setUser, error, setError, loading, isAdmin, isVerified, userPrivacy }),
+        [user, error, loading]
     );
+
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

@@ -7,18 +7,19 @@ import { ArcList } from "@/dashboard/components/serie/ArcsList";
 import { arcs } from "@/dashboard/data/serieData/arcs";
 import { sagas } from "@/dashboard/data/serieData/sagas";
 import { languages } from "@/helpers/languages";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 
 const getArcsBySaga = (firstArc, lastArc) => {
     return arcs.filter((arc) => arc.arc_id >= firstArc && arc.arc_id <= lastArc);
 };
 
 export const Serie = () => {
+    console.log("Render Serie");
     const { lang } = useContext(LanguagesContext);
     const { resetProgress } = useContext(SagaContext);
     const { showModal, hideModal } = useContext(ModalContext);
 
-    const handleReset = () => {
+    const handleReset = useCallback(() => {
         showModal({
             message: languages[lang].modal.deleteProgress,
             onConfirm: () => {
@@ -31,7 +32,7 @@ export const Serie = () => {
             onCancel: hideModal,
             confirmText: languages[lang].modal.confirmLogOut,
         });
-    };
+    }, []);
 
     return (
         <section className="flex flex-col gap-2 p-2 space-y-1 mx-auto max-w-lg mb-40 sm:mb-10 md:p-8 lg:max-w-container">

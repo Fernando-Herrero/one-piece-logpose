@@ -2,7 +2,7 @@ import heartIcon from "@/assets/icons/heart-icon.svg";
 import likeHeart from "@/assets/icons/heart-red-icon.svg";
 import { AuthContext } from "@/context/AuthContext";
 import { usePosts } from "@/core/posts/usePosts";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useMemo, useState } from "react";
 
 export const PostComments = ({ post }) => {
     const { comments } = post;
@@ -13,29 +13,30 @@ export const PostComments = ({ post }) => {
 
     const { likeComment } = usePosts();
     const [isLiking, setIsLiking] = useState({});
-    const isCommentLiked = (comment) => {
-        return comment.liked !== undefined ? comment.liked : comment.likes.includes(userId);
-    };
 
-    const toggleLike = async (id) => {
-        if (isLiking[id]) return;
-        setIsLiking((prev) => ({ ...prev, [id]: true }));
-        try {
-            await likeComment(id);
-        } finally {
-            setIsLiking((prev) => ({ ...prev, [id]: false }));
-        }
-    };
+    const isCommentLiked = useCallback(
+        (comment) => {
+            return comment.liked !== undefined ? comment.liked : comment.likes.includes(userId);
+        },
+        [userId]
+    );
 
-    return (
-        <section
-            className={
-                comments?.length > 0
-                    ? "px-4 py-1 bg-secondary border border-white/30 border-t-0 rounded-bl rounded-br"
-                    : "border border-white/30"
+    const toggleLike = useCallback(
+        async (id) => {
+            if (isLiking[id]) return;
+            setIsLiking((prev) => ({ ...prev, [id]: true }));
+            try {
+                await likeComment(id);
+            } finally {
+                setIsLiking((prev) => ({ ...prev, [id]: false }));
             }
-        >
-            {validComments?.map((comment) => (
+        },
+        [setIsLiking, likeComment]
+    );
+
+    const validCommentsMemoized = useMemo(
+        () =>
+            validComments?.map((comment) => (
                 <article
                     key={comment.id}
                     className="flex items-center justify-between p-1 border-b border-white/30 last:border-0"
@@ -55,7 +56,7 @@ export const PostComments = ({ post }) => {
                     <button
                         className="flex gap-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                         onClick={() => toggleLike(comment.id)}
-                        disabled={isLiking[comment.id]}
+                        disabled={isLiking[comment.id] ?? false}
                     >
                         <img
                             className="w-3"
@@ -65,7 +66,19 @@ export const PostComments = ({ post }) => {
                         <span className="text-gradient text-[10px]">{comment.likesCount}</span>
                     </button>
                 </article>
-            ))}
+            )),
+        [validComments, isLiking, toggleLike, isCommentLiked]
+    );
+
+    return (
+        <section
+            className={
+                comments?.length > 0
+                    ? "px-4 py-1 bg-secondary border border-white/30 border-t-0 rounded-bl rounded-br"
+                    : "border border-white/30"
+            }
+        >
+            {validCommentsMemoized}
         </section>
     );
 };
