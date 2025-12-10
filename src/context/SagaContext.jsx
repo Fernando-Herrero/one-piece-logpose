@@ -63,7 +63,7 @@ export const SagaProvider = ({ children }) => {
                 console.error("❌ Error al resetear progreso en BD:", error);
             }
         }
-    }, [user, userId, updatedProfile, setUser, setSaga]);
+    }, [user, userId, updatedProfile]);
 
     const value = useMemo(() => ({ saga, updateProgress, resetProgress }), [saga]);
 

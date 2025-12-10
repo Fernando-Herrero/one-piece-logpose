@@ -4,7 +4,7 @@ import { NotificationsCountContext } from "@/context/NotificationsCountContext";
 import { local } from "@/helpers/storage";
 import { useAvatar } from "@/hooks/useAvatar";
 import { useGoTo } from "@/hooks/useGoTo";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import {
     deleteAccountApi,
     getMyBookmarkedPostsApi,
@@ -32,7 +32,7 @@ export const useAuth = () => {
     const { setNotisCount } = useContext(NotificationsCountContext);
     const { setSelectedAvatar } = useAvatar();
 
-    const register = async (user) => {
+    const register = useCallback(async (user) => {
         console.log("Registrando usuario", user);
 
         try {
@@ -46,9 +46,9 @@ export const useAuth = () => {
             console.error("Register error", error.message);
             throw error;
         }
-    };
+    }, []);
 
-    const login = async (user) => {
+    const login = useCallback(async (user) => {
         console.log("Iniciando sesión:", user);
 
         try {
@@ -63,9 +63,9 @@ export const useAuth = () => {
             console.error("Login error", error.message);
             throw error;
         }
-    };
+    }, []);
 
-    const logout = async () => {
+    const logout = useCallback(async () => {
         console.log("Cerrando sesión");
         const logoutResponse = await logOutApi();
 
@@ -82,9 +82,9 @@ export const useAuth = () => {
             setNotisCount(0);
             // goTo("/");
         }
-    };
+    }, []);
 
-    const deleteAccount = async (userId) => {
+    const deleteAccount = useCallback(async (userId) => {
         console.log("Eliminando usuario");
         const deleteAccountResponse = await deleteAccountApi(userId);
 
@@ -102,9 +102,9 @@ export const useAuth = () => {
             setNotisCount(0);
             goTo("/");
         }
-    };
+    }, []);
 
-    const getProfile = async () => {
+    const getProfile = useCallback(async () => {
         console.log("Obteniendo perfil del usuario actual");
 
         const { user } = await getProfileApi();
@@ -114,9 +114,9 @@ export const useAuth = () => {
         } else {
             console.log("No hay usuario");
         }
-    };
+    }, []);
 
-    const updatedProfile = async (user, updatedFields) => {
+    const updatedProfile = useCallback(async (user, updatedFields) => {
         console.log("updateProfileApi - user:", user);
         console.log("updateProfileApi - updateFields:", updatedFields);
 
@@ -129,18 +129,18 @@ export const useAuth = () => {
         } catch (error) {
             console.error("Error al actualizar perfil", error);
         }
-    };
+    }, []);
 
-    const getUserStats = async () => {
+    const getUserStats = useCallback(async () => {
         try {
             const dataStats = await getUserStatsApi();
             return dataStats;
         } catch (error) {
             console.error("Error al obtener stats del usuario", error);
         }
-    };
+    }, []);
 
-    const getMyPosts = async () => {
+    const getMyPosts = useCallback(async () => {
         try {
             const dataPosts = await getMyPostsApi();
             console.log("Esta es la data de mis posts", dataPosts);
@@ -148,9 +148,9 @@ export const useAuth = () => {
         } catch (error) {
             console.error("Error al obtener mis posts", error);
         }
-    };
+    }, []);
 
-    const getMyLikedPosts = async () => {
+    const getMyLikedPosts = useCallback(async () => {
         try {
             const dataLikedPosts = await getMyLikedPostsApi();
             console.log("Esta es la data de mis posts", dataLikedPosts);
@@ -158,9 +158,9 @@ export const useAuth = () => {
         } catch (error) {
             console.error("Error al obtener mis liked posts", error);
         }
-    };
+    }, []);
 
-    const getMyBookmarkedPosts = async () => {
+    const getMyBookmarkedPosts = useCallback(async () => {
         try {
             const dataBookmarkedPosts = await getMyBookmarkedPostsApi();
             console.log("Esta es la data de mis posts", dataBookmarkedPosts);
@@ -168,9 +168,9 @@ export const useAuth = () => {
         } catch (error) {
             console.error("Error al obtener mis bookmarked posts", error);
         }
-    };
+    }, []);
 
-    const getMyCommentedPosts = async () => {
+    const getMyCommentedPosts = useCallback(async () => {
         try {
             const dataCommentedPosts = await getMyCommentedPostsApi();
             console.log("Esta es la data de mis posts", dataCommentedPosts);
@@ -178,7 +178,7 @@ export const useAuth = () => {
         } catch (error) {
             console.error("Error al obtener mis commented posts", error);
         }
-    };
+    }, []);
 
     return {
         register,

@@ -12,7 +12,6 @@ import { useContext, useState } from "react";
 
 export const Notifications = () => {
     const { notis, loading, error } = useContext(NotificationsContext);
-    console.log(notis);
     const { markNotificationRead, markAllNotificationsRead, deleteNotification, deleteAllNotifications } =
         useNotifications();
     const { notisCount } = useContext(NotificationsCountContext);

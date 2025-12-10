@@ -1,4 +1,5 @@
 import { CardImage } from "@/dashboard/components/cards/CardImageBack";
+import { memo } from "react";
 
 export const SwordCard = memo(({ sword }) => {
     const typeStyles = {

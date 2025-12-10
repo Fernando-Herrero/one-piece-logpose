@@ -1,9 +1,11 @@
 import { AvatarArticle } from "@/components/AvatarArticle";
 import { characters } from "@/helpers/avatarImages";
 import { useAvatar } from "@/hooks/useAvatar";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 
-export const AvatarSelected = ({ className = "" }) => {
+export const AvatarSelected = memo(({ className = "" }) => {
+    console.log("Render AvatarSelected");
+
     const { selectAvatar } = useAvatar();
 
     const charactersMemoized = useMemo(
@@ -19,4 +21,4 @@ export const AvatarSelected = ({ className = "" }) => {
             {charactersMemoized}
         </section>
     );
-};
+});

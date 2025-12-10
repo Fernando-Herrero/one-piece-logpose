@@ -1,12 +1,14 @@
 import { AvatarContext } from "@/context/AvatarContext";
 import { characters } from "@/helpers/avatarImages";
 import { local } from "@/helpers/storage";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 
 export const useAvatar = () => {
+    console.log("Render useAvatar");
+
     const { selectedAvatar, setSelectedAvatar } = useContext(AvatarContext);
 
-    const selectAvatar = async (avatarName) => {
+    const selectAvatar = useCallback(async (avatarName) => {
         const character = characters.find((char) => char.name === avatarName);
 
         if (character) {
@@ -15,7 +17,7 @@ export const useAvatar = () => {
             setSelectedAvatar(avatarUrl);
             local.save("avatarSelected", avatarUrl);
         }
-    };
+    }, []);
 
     return { selectAvatar, selectedAvatar, setSelectedAvatar };
 };
