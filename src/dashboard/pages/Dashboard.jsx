@@ -1,3 +1,5 @@
+import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary";
+import { PageError } from "@/components/ErrorBoundary/PageError";
 import { Overlay } from "@/components/Overlay";
 import { UserProvider } from "@/context/UserContext";
 import { AppShell } from "@/dashboard/components/AppShell";
@@ -22,99 +24,112 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 export const Dashboard = () => {
     return (
-        <AppShell>
-            <Routes>
-                <Route index element={<Navigate to="/dashboard/profile" replace />} />
+        <ErrorBoundary
+            fallback={
+                <PageError
+                    title="Error en el Dashboard"
+                    message="Ha ocurrido un error mientras cargabas tu panel. Intenta recargar o contacta soporte."
+                    onRetry={() => window.location.reload()}
+                    fullPage
+                />
+            }
+        >
+            <AppShell>
+                <Routes>
+                    <Route index element={<Navigate to="/dashboard/profile" replace />} />
 
-                <Route path="/profile" element={<Profile />}>
+                    <Route path="/profile" element={<Profile />}>
+                        <Route
+                            path="avatar"
+                            element={
+                                <Overlay>{(handleClose) => <AvatarSection onCancel={handleClose} />}</Overlay>
+                            }
+                        />
+                        <Route
+                            path="followers"
+                            element={
+                                <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                            }
+                        />
+                        <Route
+                            path="followings"
+                            element={
+                                <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
+                            }
+                        />
+                        <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
+                    </Route>
+
                     <Route
-                        path="avatar"
+                        path="/community"
                         element={
-                            <Overlay>{(handleClose) => <AvatarSection onCancel={handleClose} />}</Overlay>
+                            // <PostProvider>
+                            <Community />
+                            /* </PostProvider> */
                         }
-                    />
+                    >
+                        <Route
+                            path="post"
+                            element={<Overlay>{(handleClose) => <Post onCancel={handleClose} />}</Overlay>}
+                        />
+                        <Route
+                            path="comment"
+                            element={<Overlay>{(handleClose) => <Comment onCancel={handleClose} />}</Overlay>}
+                        />
+                        <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
+                    </Route>
+
                     <Route
-                        path="followers"
+                        path="/userProfile"
                         element={
-                            <Overlay>{(handleClose) => <FollowersCard onCancel={handleClose} />}</Overlay>
+                            <UserProvider>
+                                <UserProfile />
+                            </UserProvider>
                         }
-                    />
-                    <Route
-                        path="followings"
-                        element={
-                            <Overlay>{(handleClose) => <FollowingCard onCancel={handleClose} />}</Overlay>
-                        }
-                    />
-                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
-                </Route>
+                    >
+                        <Route
+                            path="followers"
+                            element={
+                                <Overlay>
+                                    {(handleClose) => <FollowersCard onCancel={handleClose} view={false} />}
+                                </Overlay>
+                            }
+                        />
+                        <Route
+                            path="followings"
+                            element={
+                                <Overlay>
+                                    {(handleClose) => <FollowingCard onCancel={handleClose} view={false} />}
+                                </Overlay>
+                            }
+                        />
+                        <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
+                    </Route>
 
-                <Route
-                    path="/community"
-                    element={
-                        // <PostProvider>
-                        <Community />
-                        /* </PostProvider> */
-                    }
-                >
-                    <Route
-                        path="post"
-                        element={<Overlay>{(handleClose) => <Post onCancel={handleClose} />}</Overlay>}
-                    />
-                    <Route
-                        path="comment"
-                        element={<Overlay>{(handleClose) => <Comment onCancel={handleClose} />}</Overlay>}
-                    />
-                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
-                </Route>
+                    <Route path="/serie" element={<Serie />} />
 
-                <Route
-                    path="/userProfile"
-                    element={
-                        <UserProvider>
-                            <UserProfile />
-                        </UserProvider>
-                    }
-                >
-                    <Route
-                        path="followers"
-                        element={
-                            <Overlay>
-                                {(handleClose) => <FollowersCard onCancel={handleClose} view={false} />}
-                            </Overlay>
-                        }
-                    />
-                    <Route
-                        path="followings"
-                        element={
-                            <Overlay>
-                                {(handleClose) => <FollowingCard onCancel={handleClose} view={false} />}
-                            </Overlay>
-                        }
-                    />
-                    <Route path="postPage" element={<Overlay>{<PostPage />}</Overlay>} />
-                </Route>
+                    <Route path="/cards" element={<Cards />} />
 
-                <Route path="/serie" element={<Serie />} />
+                    <Route path="/search" element={<SearchResults />} />
 
-                <Route path="/cards" element={<Cards />} />
+                    <Route path="/settings" element={<Settings />}>
+                        <Route
+                            path="premium"
+                            element={
+                                <Overlay>{(handleClose) => <Verified onCancel={handleClose} />}</Overlay>
+                            }
+                        />
+                        <Route
+                            path="privacy"
+                            element={<Overlay>{(handleClose) => <Privacy onCancel={handleClose} />}</Overlay>}
+                        />
+                    </Route>
 
-                <Route path="/search" element={<SearchResults />} />
+                    <Route path="/notifications" element={<Notifications />} />
 
-                <Route path="/settings" element={<Settings />}>
-                    <Route
-                        path="premium"
-                        element={<Overlay>{(handleClose) => <Verified onCancel={handleClose} />}</Overlay>}
-                    />
-                    <Route
-                        path="privacy"
-                        element={<Overlay>{(handleClose) => <Privacy onCancel={handleClose} />}</Overlay>}
-                    />
-                </Route>
-
-                <Route path="/notifications" element={<Notifications />} />
-
-                <Route path="/purchases" element={<Purchases />} />
-            </Routes>
-        </AppShell>
+                    <Route path="/purchases" element={<Purchases />} />
+                </Routes>
+            </AppShell>
+        </ErrorBoundary>
     );
 };
