@@ -38,10 +38,20 @@ export const AuthProvider = ({ children }) => {
         fetchProfile();
     }, []);
 
-    const value = useMemo(
-        () => ({ user, setUser, error, setError, loading, isAdmin, isVerified, userPrivacy }),
+    const contextValue = useMemo(
+        () => ({
+            user,
+            setUser,
+            error,
+            setError,
+            loading,
+            isAdmin,
+            isVerified,
+            userPrivacy,
+            clearError: () => setError(null),
+        }),
         [user, error, loading]
     );
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };
