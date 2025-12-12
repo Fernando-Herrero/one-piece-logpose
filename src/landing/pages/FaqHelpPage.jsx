@@ -48,7 +48,7 @@ const faqData = [
     },
 ];
 
-export const FaqHelpPage = () => {
+const FaqHelpPage = () => {
     console.log("🔁 Render FaqHelpPage");
     return (
         <Container className="pb-20 space-y-2 max-w-lg">
@@ -65,3 +65,5 @@ export const FaqHelpPage = () => {
         </Container>
     );
 };
+
+export default FaqHelpPage;

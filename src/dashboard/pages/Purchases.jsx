@@ -3,7 +3,7 @@ import { LanguagesContext } from "@/context/LanguagesContext";
 import { languages } from "@/helpers/languages";
 import { useContext } from "react";
 
-export const Purchases = () => {
+const Purchases = () => {
     const { isVerified } = useContext(AuthContext);
     const { lang } = useContext(LanguagesContext);
 
@@ -35,3 +35,5 @@ export const Purchases = () => {
         </section>
     );
 };
+
+export default Purchases;

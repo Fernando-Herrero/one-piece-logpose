@@ -10,6 +10,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
+    console.log("Render Header");
+
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
 

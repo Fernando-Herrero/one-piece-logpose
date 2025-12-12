@@ -5,7 +5,7 @@ import { PostComments } from "@/dashboard/components/community/PostComments";
 import { useContext } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-export const PostPage = () => {
+const PostPage = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const postId = searchParams.get("postId");
@@ -32,3 +32,5 @@ export const PostPage = () => {
         </section>
     );
 };
+
+export default PostPage;

@@ -17,7 +17,7 @@ export const AvatarProvider = ({ children }) => {
         }
     }, [user?.avatar, savedAvatar]);
 
-    const value = useMemo(() => ({ selectedAvatar, setSelectedAvatar }), [selectedAvatar]);
+    const contextValue = useMemo(() => ({ selectedAvatar, setSelectedAvatar }), [selectedAvatar]);
 
-    return <AvatarContext.Provider value={value}>{children}</AvatarContext.Provider>;
+    return <AvatarContext.Provider value={contextValue}>{children}</AvatarContext.Provider>;
 };

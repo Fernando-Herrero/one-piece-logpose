@@ -9,7 +9,7 @@ import { useGoTo } from "@/hooks/useGoTo";
 import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export const Comment = ({ onCancel }) => {
+const Comment = ({ onCancel }) => {
     const [searchParams] = useSearchParams();
     const postId = searchParams.get("postId");
 
@@ -55,3 +55,5 @@ export const Comment = ({ onCancel }) => {
         />
     );
 };
+
+export default Comment;

@@ -4,6 +4,8 @@ import { createContext, useCallback, useMemo, useState } from "react";
 export const LanguagesContext = createContext(null);
 
 export const LanguagesProvider = ({ children }) => {
+    console.log("Render LanguagesContext");
+
     const savedLang = local.get("lang");
     const [lang, setLang] = useState(savedLang || "es");
 

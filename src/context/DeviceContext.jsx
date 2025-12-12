@@ -3,6 +3,8 @@ import { createContext, useEffect, useMemo, useState } from "react";
 export const DeviceContext = createContext(null);
 
 export const DeviceProvider = ({ children }) => {
+    console.log("Render DeviceProvider");
+
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {

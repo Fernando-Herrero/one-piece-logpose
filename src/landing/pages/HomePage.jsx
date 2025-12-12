@@ -9,7 +9,7 @@ import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const HomePage = () => {
+const HomePage = () => {
     console.log("🔁 Render HomePage");
     const { isMobileXs, isMobile, isTablet, device } = useDevice();
 
@@ -168,3 +168,5 @@ export const HomePage = () => {
         </div>
     );
 };
+
+export default HomePage;

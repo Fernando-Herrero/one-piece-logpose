@@ -6,7 +6,7 @@ import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { memo, useContext } from "react";
 
-export const Post = memo(({ onCancel }) => {
+const Post = memo(({ onCancel }) => {
     const { error, setError } = useContext(PostContext);
     const { createPost } = usePosts();
     const { lang } = useContext(LanguagesContext);
@@ -33,3 +33,5 @@ export const Post = memo(({ onCancel }) => {
         />
     );
 });
+
+export default Post;

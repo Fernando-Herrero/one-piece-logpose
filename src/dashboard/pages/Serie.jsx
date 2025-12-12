@@ -13,7 +13,7 @@ const getArcsBySaga = (firstArc, lastArc) => {
     return arcs.filter((arc) => arc.arc_id >= firstArc && arc.arc_id <= lastArc);
 };
 
-export const Serie = () => {
+const Serie = () => {
     console.log("Render Serie");
     const { lang } = useContext(LanguagesContext);
     const { resetProgress } = useContext(SagaContext);
@@ -57,3 +57,5 @@ export const Serie = () => {
         </section>
     );
 };
+
+export default Serie;

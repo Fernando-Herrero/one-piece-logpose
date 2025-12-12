@@ -5,6 +5,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 export const NotificationsCountContext = createContext(null);
 
 export const NotificationsCountProvider = ({ children }) => {
+    console.log("Render NotificationsCountProvider");
+
     const { user } = useContext(AuthContext);
     const userId = user?.id || user?._id;
     const [notisCount, setNotisCount] = useState(0);

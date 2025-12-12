@@ -10,7 +10,7 @@ import { languages } from "@/helpers/languages";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { useContext, useState } from "react";
 
-export const Notifications = () => {
+const Notifications = () => {
     const { notis, loading, error } = useContext(NotificationsContext);
     const { markNotificationRead, markAllNotificationsRead, deleteNotification, deleteAllNotifications } =
         useNotifications();
@@ -115,3 +115,5 @@ export const Notifications = () => {
         </section>
     );
 };
+
+export default Notifications;

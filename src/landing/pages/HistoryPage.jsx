@@ -33,8 +33,8 @@ const historyOnePiece = (lang) => [
     },
 ];
 
-export const HistoryPage = () => {
-    cconsole.log("🔁 Render HistoryPage");
+const HistoryPage = () => {
+    console.log("🔁 Render HistoryPage");
     const { lang } = useContext(LanguagesContext);
     const history = historyOnePiece(lang);
 
@@ -78,3 +78,5 @@ export const HistoryPage = () => {
         </Container>
     );
 };
+
+export default HistoryPage;

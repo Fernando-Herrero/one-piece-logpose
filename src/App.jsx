@@ -1,29 +1,20 @@
+import { PageSpinner } from "@/components/PageSpinner";
 import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext.jsx";
-import { Spinner } from "@/dashboard/components/community/Spinner";
 import { languages } from "@/helpers/languages";
-import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { DashboardRouter } from "@/router/DashboardRouter";
 import { PublicRouter } from "@/router/PublicRouter";
 import { useContext } from "react";
 
 export const App = () => {
-    const { modalData } = useContext(ModalContext);
-    const { isOpen } = modalData;
+    console.log("Render App");
     const { user, loading, error, clearError } = useContext(AuthContext);
     const { lang } = useContext(LanguagesContext);
+    const { modalData } = useContext(ModalContext);
+    const { isOpen } = modalData;
 
-    if (loading)
-        return (
-            <div className="flex flex-col items-center justify-center min-h-screen gap-1">
-                <Spinner />{" "}
-                <p className="text-gradient dark:text-black">
-                    {languages[lang].profile.loading}
-                    <LoadingDots />
-                </p>
-            </div>
-        );
+    if (loading) return <PageSpinner message={languages[lang].profile.loading} fullPage showDots />;
 
     if (error) {
         return (
@@ -33,5 +24,13 @@ export const App = () => {
         );
     }
 
-    return <>{user ? <DashboardRouter /> : <PublicRouter />}</>;
+    return (
+        <>
+            {user ? (
+                <DashboardRouter isOpen={isOpen} modalData={modalData} lang={lang} />
+            ) : (
+                <PublicRouter isOpen={isOpen} modalData={modalData} lang={lang} />
+            )}
+        </>
+    );
 };

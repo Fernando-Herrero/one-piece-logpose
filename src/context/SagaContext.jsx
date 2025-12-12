@@ -7,6 +7,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 export const SagaContext = createContext(null);
 
 export const SagaProvider = ({ children }) => {
+    console.log("Render SagaProvider");
+
     const { user, setUser } = useContext(AuthContext);
     const userId = user?.id || user?._id;
     const [saga, setSaga] = useState({ saga: 0, arc: 0, episode: 0 });
