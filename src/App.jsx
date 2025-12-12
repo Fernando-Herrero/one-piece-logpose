@@ -9,10 +9,10 @@ import { useContext } from "react";
 
 export const App = () => {
     console.log("Render App");
-    const { user, loading, error, clearError } = useContext(AuthContext);
     const { lang } = useContext(LanguagesContext);
     const { modalData } = useContext(ModalContext);
     const { isOpen } = modalData;
+    const { user, loading, error, clearError } = useContext(AuthContext);
 
     if (loading) return <PageSpinner message={languages[lang].profile.loading} fullPage showDots />;
 

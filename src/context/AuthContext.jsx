@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
     console.log("Render AuthProvider");
 
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const userPrivacy = user?.privacy;

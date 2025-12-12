@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HomePage = () => {
     console.log("🔁 Render HomePage");
+
     const { isMobileXs, isMobile, isTablet, device } = useDevice();
 
     const heroImgRef = useRef(null);
