@@ -8,7 +8,7 @@ import { useSearchFilter } from "@/hooks/useSearchFilter";
 import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export const SearchResults = () => {
+const SearchResults = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get("q") || "";
     const { posts, loading: loadingPosts } = useContext(PostContext);
@@ -83,3 +83,5 @@ export const SearchResults = () => {
         </div>
     );
 };
+
+export default SearchResults;

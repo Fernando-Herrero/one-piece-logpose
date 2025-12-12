@@ -3,7 +3,7 @@ import { PrivacySelection } from "@/dashboard/components/Privacy/PrivacySelectio
 import { languages } from "@/helpers/languages";
 import { useContext } from "react";
 
-export const Privacy = ({ onCancel }) => {
+const Privacy = ({ onCancel }) => {
     const { lang } = useContext(LanguagesContext);
     return (
         <div className="bg-sunny rounded-xl p-8 max-w-[80vw] flex flex-col items-center gap-4 text-center sm:max-w-lg">
@@ -18,3 +18,5 @@ export const Privacy = ({ onCancel }) => {
         </div>
     );
 };
+
+export default Privacy;

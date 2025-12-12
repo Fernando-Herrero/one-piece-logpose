@@ -2,6 +2,8 @@ import { useToggle } from "@/hooks/useToggle";
 import { useState } from "react";
 
 export const useProfileEditor = (user, updatedProfileFunction, setChangeCoverImg) => {
+    console.log("Render useProfileEditor");
+
     const [isEditing, toggleEditing] = useToggle();
     const [field, setField] = useState("");
     const [editingField, setEditingField] = useState(null);

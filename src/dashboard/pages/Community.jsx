@@ -4,7 +4,7 @@ import { UsersList } from "@/dashboard/components/UsersList";
 import { useGoTo } from "@/hooks/useGoTo";
 import { Outlet } from "react-router-dom";
 
-export const Community = () => {
+const Community = () => {
     const { goTo } = useGoTo();
 
     const handleCreatePost = () => {
@@ -22,3 +22,5 @@ export const Community = () => {
         </div>
     );
 };
+
+export default Community;

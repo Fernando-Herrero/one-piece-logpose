@@ -5,6 +5,8 @@ import { createContext, useEffect, useMemo, useState } from "react";
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
+    console.log("Render AuthProvider");
+
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -38,10 +40,20 @@ export const AuthProvider = ({ children }) => {
         fetchProfile();
     }, []);
 
-    const value = useMemo(
-        () => ({ user, setUser, error, setError, loading, isAdmin, isVerified, userPrivacy }),
+    const contextValue = useMemo(
+        () => ({
+            user,
+            setUser,
+            error,
+            setError,
+            loading,
+            isAdmin,
+            isVerified,
+            userPrivacy,
+            clearError: () => setError(null),
+        }),
         [user, error, loading]
     );
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };

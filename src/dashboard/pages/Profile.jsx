@@ -8,7 +8,7 @@ import { UsersList } from "@/dashboard/components/UsersList";
 import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 
-export const Profile = () => {
+const Profile = () => {
     const { isAdmin, userPrivacy } = useContext(AuthContext);
 
     return (
@@ -27,3 +27,5 @@ export const Profile = () => {
         </div>
     );
 };
+
+export default Profile;

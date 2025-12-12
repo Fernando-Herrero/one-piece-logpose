@@ -27,6 +27,8 @@ export const useEpisodeCheck = (
     isLastArcOfSaga,
     achievements
 ) => {
+    console.log("Render useEpisodeCheck");
+
     const { user, setUser } = useContext(AuthContext);
     const userId = user?.id || user?._id;
     const { updateProgress } = useContext(SagaContext);

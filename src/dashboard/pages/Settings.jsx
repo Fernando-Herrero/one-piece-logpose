@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 
-export const Settings = () => {
+const Settings = () => {
     const { isTablet } = useDevice();
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
@@ -44,3 +44,5 @@ export const Settings = () => {
         </>
     );
 };
+
+export default Settings;

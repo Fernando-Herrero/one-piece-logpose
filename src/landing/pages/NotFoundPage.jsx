@@ -10,7 +10,7 @@ import { Container } from "@/landing/components/ui/Container";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
     console.log("🔁 Render NotFoundPage");
     const { lang } = useContext(LanguagesContext);
     const { user } = useContext(AuthContext);
@@ -66,3 +66,5 @@ export const NotFoundPage = () => {
         </div>
     );
 };
+
+export default NotFoundPage;

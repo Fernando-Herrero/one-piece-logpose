@@ -5,6 +5,8 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 export const UsersContext = createContext(null);
 
 export const UsersProvider = ({ children }) => {
+    console.log("Render UsersProvider");
+
     const { user } = useContext(AuthContext);
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);

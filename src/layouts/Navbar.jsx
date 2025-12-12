@@ -35,6 +35,8 @@ const navItems = [
 ];
 
 export const Navbar = ({ toggleMenu }) => {
+    console.log("Render Navbar");
+
     const { lang } = useContext(LanguagesContext);
     const { user } = useContext(AuthContext);
     const chooseLang = languages[lang].navbar;

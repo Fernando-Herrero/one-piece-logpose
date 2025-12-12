@@ -7,7 +7,7 @@ import { VerifiedForm } from "@/dashboard/components/verified/VerifiedForm";
 import { languages } from "@/helpers/languages";
 import { useContext, useState } from "react";
 
-export const Verified = ({ onCancel }) => {
+const Verified = ({ onCancel }) => {
     const { user } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
     const { isVerified } = useContext(AuthContext);
@@ -55,3 +55,5 @@ export const Verified = ({ onCancel }) => {
         </div>
     );
 };
+
+export default Verified;

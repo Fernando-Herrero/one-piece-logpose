@@ -11,7 +11,7 @@ import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { useContext } from "react";
 import { Outlet, useSearchParams } from "react-router-dom";
 
-export const UserProfile = () => {
+const UserProfile = () => {
     const [searchParams] = useSearchParams();
     const userId = searchParams.get("userId");
     const { lang } = useContext(LanguagesContext);
@@ -67,3 +67,5 @@ export const UserProfile = () => {
         </div>
     );
 };
+
+export default UserProfile;

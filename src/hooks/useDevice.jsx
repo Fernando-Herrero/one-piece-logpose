@@ -2,6 +2,8 @@ import { DeviceContext } from "@/context/DeviceContext";
 import { useContext } from "react";
 
 export const useDevice = () => {
+    console.log("Render useDevice");
+
     const { width } = useContext(DeviceContext);
 
     if (width === null) throw new Error("useDevice debe ser usado dentro de un DeviceProvider");

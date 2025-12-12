@@ -5,6 +5,8 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 export const NotificationsContext = createContext(null);
 
 export const NotificationsProvider = ({ children }) => {
+    console.log("Render NotificationsProvider");
+
     const { user } = useContext(AuthContext);
     const userId = user?.id || user?._id;
     const [notis, setNotis] = useState([]);

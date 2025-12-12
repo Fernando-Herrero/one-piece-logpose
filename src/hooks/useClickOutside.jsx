@@ -7,6 +7,8 @@ import { useEffect, useRef } from "react";
  * @returns {Object} - Ref que debe ser asignado al elemento
  */
 export const useClickOutside = (callback, isActive = true) => {
+    console.log("Render useClickOutside");
+
     const ref = useRef(null);
 
     useEffect(() => {

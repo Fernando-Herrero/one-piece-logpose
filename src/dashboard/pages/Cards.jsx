@@ -11,7 +11,7 @@ import { SwordCard } from "@/dashboard/components/cards/SwordCard";
 import { languages } from "@/helpers/languages";
 import { useContext, useEffect, useMemo, useState } from "react";
 
-export const Cards = () => {
+const Cards = () => {
     const { user } = useContext(AuthContext);
     const userId = user?.id || user?._id;
     const { lang } = useContext(LanguagesContext);
@@ -156,3 +156,5 @@ export const Cards = () => {
         </div>
     );
 };
+
+export default Cards;

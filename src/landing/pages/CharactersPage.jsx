@@ -8,7 +8,7 @@ import { Container } from "@/landing/components/ui/Container";
 import { getCharacters } from "@/landing/data/getCharacters";
 import { useContext, useMemo, useState } from "react";
 
-export const CharactersPage = () => {
+const CharactersPage = () => {
     console.log("🔁 Render CharactersPage");
     const { lang } = useContext(LanguagesContext);
     const characters = useMemo(() => getCharacters(lang), [lang]);
@@ -44,3 +44,5 @@ export const CharactersPage = () => {
         </Container>
     );
 };
+
+export default CharactersPage;

@@ -8,16 +8,19 @@ export const useAvatar = () => {
 
     const { selectedAvatar, setSelectedAvatar } = useContext(AvatarContext);
 
-    const selectAvatar = useCallback(async (avatarName) => {
-        const character = characters.find((char) => char.name === avatarName);
+    const selectAvatar = useCallback(
+        async (avatarName) => {
+            const character = characters.find((char) => char.name === avatarName);
 
-        if (character) {
-            const avatarUrl = character.happy;
+            if (character) {
+                const avatarUrl = character.happy;
 
-            setSelectedAvatar(avatarUrl);
-            local.save("avatarSelected", avatarUrl);
-        }
-    }, []);
+                setSelectedAvatar(avatarUrl);
+                local.save("avatarSelected", avatarUrl);
+            }
+        },
+        [setSelectedAvatar]
+    );
 
     return { selectAvatar, selectedAvatar, setSelectedAvatar };
 };
