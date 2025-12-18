@@ -1,6 +1,5 @@
 import cross from "@/assets/icons/cross-close.svg";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { UserContext } from "@/context/UserContext";
 import { useUser } from "@/core/user/useUser";
 import { EmptyState } from "@/dashboard/components/followListComponents/EmptyState";
@@ -8,8 +7,8 @@ import { ErrorState } from "@/dashboard/components/followListComponents/ErrorSta
 import { FOLLOW_CONFIG } from "@/dashboard/components/followListComponents/FOLLOW_CONFIG";
 import { LoadingState } from "@/dashboard/components/followListComponents/LoadingState";
 import { UserItem } from "@/dashboard/components/followListComponents/UserItem";
-import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
+import { useTranslate } from "@/translations/useTranslate";
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -26,7 +25,7 @@ export const FollowListCard = ({ onCancel, type = "followers", view = true }) =>
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { goTo } = useGoTo();
     const { unfollowUser } = useUser();
 
@@ -95,7 +94,7 @@ export const FollowListCard = ({ onCancel, type = "followers", view = true }) =>
     );
 
     if (!userId) {
-        return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.userNotFound}</p>;
+        return <p className="text-linePrimary text-center pt-10">{t("profile.user_not_found")}</p>;
     }
 
     if (error) {
@@ -103,17 +102,13 @@ export const FollowListCard = ({ onCancel, type = "followers", view = true }) =>
             <ErrorState
                 error={error}
                 onRetry={() => window.location.reload()}
-                errorText={languages[lang].profile.userError}
+                errorText={t("profile.user_error")}
             />
         );
     }
 
     if (loading) {
-        return (
-            <LoadingState
-                text={languages[lang].profile[`loading${type.charAt(0).toUpperCase() + type.slice(1)}`]}
-            />
-        );
+        return <LoadingState text={t(`profile.loading_${type}`)} />;
     }
 
     return (
@@ -122,7 +117,7 @@ export const FollowListCard = ({ onCancel, type = "followers", view = true }) =>
                 <img className="w-8" src={cross} alt="Cross icon" />
             </button>
             <div className="bg-sunny p-1 rounded-xl w-full flex flex-col gap-1">
-                {users?.length > 0 ? usersMemoized : <EmptyState type={type} lang={lang} />}
+                {users?.length > 0 ? usersMemoized : <EmptyState type={type} lang={t} />}
             </div>
         </section>
     );

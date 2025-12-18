@@ -2,17 +2,16 @@ import cross from "@/assets/icons/cross-close.svg";
 import { AvatarSelected } from "@/components/AvatarSelected";
 import { Button } from "@/components/Button";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
-import { languages } from "@/helpers/languages";
 import { useAvatar } from "@/hooks/useAvatar";
+import { useTranslate } from "@/translations/useTranslate";
 import { memo, useContext } from "react";
 
 const AvatarSection = memo(({ onCancel }) => {
     const { selectedAvatar, setSelectedAvatar } = useAvatar();
     const { user } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
 
     const saveAvatarProfile = async () => {
         if (selectedAvatar && user) {
@@ -32,7 +31,7 @@ const AvatarSection = memo(({ onCancel }) => {
             </button>
             <AvatarSelected className="bg-sunny p-2 rounded-xl w-[90vw] max-w-fit" />
             <Button type="submit" onClick={saveAvatarProfile}>
-                {languages[lang].profile.changeAvatar}
+                {t("profile.change_avatar")}
             </Button>
         </section>
     );
