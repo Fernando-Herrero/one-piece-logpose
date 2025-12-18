@@ -1,14 +1,13 @@
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { ToggleSwitch } from "@/dashboard/components/Privacy/ToggleSwitch";
-import { languages } from "@/helpers/languages";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext, useEffect, useState } from "react";
 
 export const PrivacySelection = () => {
     const { user } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const [privacy, setPrivacy] = useState({
         showPosts: true,
         showLikes: true,
@@ -19,9 +18,9 @@ export const PrivacySelection = () => {
 
     const toggleItems = [
         { key: "showPosts", label: "Posts" },
-        { key: "showLikes", label: languages[lang].profile.likes },
-        { key: "showBookmarked", label: languages[lang].profile.bookmarks },
-        { key: "showComments", label: languages[lang].profile.comments },
+        { key: "showLikes", label: t("profile.likes") },
+        { key: "showBookmarked", label: t("profile.bookmarks") },
+        { key: "showComments", label: t("profile.comments") },
     ];
 
     const handleToggle = async (key) => {
