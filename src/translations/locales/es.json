@@ -285,9 +285,12 @@
     "characters": "Personajes",
     "boats": "Barcos",
     "fruits": "Frutas",
+    "items": "Items",
     "collection": "Colección",
     "no_cards": "No tienes cartas desbloqueadas aún",
-    "unlock_cards": "¡Completa episodios para desbloquearlas!"
+    "unlock_cards": "¡Completa episodios para desbloquearlas!",
+    "all": "Todas",
+    "swords": "Espadas"
   },
   "settings": {
     "title_security": "Seguridad y acceso a la cuenta",

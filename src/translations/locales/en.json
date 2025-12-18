@@ -287,7 +287,10 @@
     "fruits": "Fruits",
     "collection": "Collection",
     "no_cards": "You don't have any unlocked cards yet",
-    "unlock_cards": "Complete episodes to unlock them!"
+    "unlock_cards": "Complete episodes to unlock them!",
+    "all": "All",
+    "items": "Items",
+    "swords": "Swords"
   },
   "settings": {
     "title_security": "Security and account access",

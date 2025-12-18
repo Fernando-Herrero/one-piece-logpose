@@ -1,6 +1,5 @@
 import { Button } from "@/components/Button";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { clearUserCards, getUnlockedCards } from "@/core/achievements/achievementsStorage";
 import { BoatCard } from "@/dashboard/components/cards/BoatCard";
@@ -8,13 +7,13 @@ import { CharacterCardUser } from "@/dashboard/components/cards/CharacterCardUse
 import { FruitCard } from "@/dashboard/components/cards/FruitCard";
 import { ItemCard } from "@/dashboard/components/cards/ItemCard";
 import { SwordCard } from "@/dashboard/components/cards/SwordCard";
-import { languages } from "@/helpers/languages";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext, useEffect, useMemo, useState } from "react";
 
 const Cards = () => {
     const { user } = useContext(AuthContext);
     const userId = user?.id || user?._id;
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { showModal, hideModal } = useContext(ModalContext);
     const [unlockedCards, setUnlockedCards] = useState({
         characters: [],
@@ -32,7 +31,7 @@ const Cards = () => {
 
     const handleReset = () => {
         showModal({
-            message: languages[lang].modal.deleteCards,
+            message: t("modal.delete_cards"),
             onConfirm: () => {
                 clearUserCards(userId);
                 setUnlockedCards({
@@ -45,7 +44,7 @@ const Cards = () => {
                 hideModal();
             },
             onCancel: hideModal,
-            confirmText: languages[lang].modal.confirmLogOut,
+            confirmText: t("modal.confirm_logout"),
         });
     };
 
@@ -86,24 +85,24 @@ const Cards = () => {
     };
 
     const filters = [
-        { key: "all", label: languages[lang].cards.all || "All", count: totalCards },
+        { key: "all", label: t("cards.all") || "All", count: totalCards },
         {
             key: "characters",
-            label: languages[lang].cards.characters || "Characters",
+            label: t("cards.characters") || "Characters",
             count: counts.characters,
         },
-        { key: "items", label: languages[lang].cards.items || "Items", count: counts.items },
-        { key: "fruits", label: languages[lang].cards.fruits || "Fruits", count: counts.fruits },
-        { key: "swords", label: languages[lang].cards.swords || "Swords", count: counts.swords },
-        { key: "boats", label: languages[lang].cards.boats || "Boats", count: counts.boats },
+        { key: "items", label: t("cards.items") || "Items", count: counts.items },
+        { key: "fruits", label: t("cards.fruits") || "Fruits", count: counts.fruits },
+        { key: "swords", label: t("cards.swords") || "Swords", count: counts.swords },
+        { key: "boats", label: t("cards.boats") || "Boats", count: counts.boats },
     ];
 
     return (
         <div className="p-2 md:p-8">
             <div className="flex justify-between flex-wrap items-center mb-6">
-                <h1 className="text-3xl font-bold text-primary">{languages[lang].cards.collection}</h1>
+                <h1 className="text-3xl font-bold text-primary">{t("cards.collection")}</h1>
                 <Button variant="danger" onClick={handleReset}>
-                    🗑️ {languages[lang].cards.deleteCards}
+                    🗑️ {t("cards.delete_cards")}
                 </Button>
             </div>
 
@@ -149,8 +148,8 @@ const Cards = () => {
 
             {filteredCards.length === 0 && (
                 <div className="text-center py-20 text-white/50">
-                    <p className="text-xl">{languages[lang].cards.noCards}</p>
-                    <p className="text-sm mt-2">{languages[lang].cards.unlockCards}</p>
+                    <p className="text-xl">{t("cards.no_cards")}</p>
+                    <p className="text-sm mt-2">{t("cards.unlock_cards")}</p>
                 </div>
             )}
         </div>

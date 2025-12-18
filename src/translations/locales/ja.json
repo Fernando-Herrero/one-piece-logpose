@@ -287,7 +287,10 @@
     "fruits": "フルーツ",
     "collection": "コレクション",
     "no_cards": "まだアンロックされたカードがありません",
-    "unlock_cards": "エピソードを完了してアンロックしよう！"
+    "unlock_cards": "エピソードを完了してアンロックしよう！",
+    "all": "すべて",
+    "items": "アイテム",
+    "swords": "スペード"
   },
   "settings": {
     "title_security": "セキュリティとアカウントアクセス",
