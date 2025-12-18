@@ -1,16 +1,15 @@
-import { languages } from "@/helpers/languages";
 import { useState } from "react";
 
 export const useLoginValidation = () => {
     const [error, setError] = useState(null);
 
-    const validateLoginForm = (form, lang) => {
+    const validateLoginForm = (form, t) => {
         if (!form.email) {
-            setError(languages[lang].errorMessage.email);
+            setError(t("error_message.email"));
             return false;
         }
         if (!form.password) {
-            setError(languages[lang].errorMessage.password);
+            setError(t("error_message.password"));
             return false;
         }
         return true;

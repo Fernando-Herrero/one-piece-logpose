@@ -1,14 +1,13 @@
 import { Button } from "@/components/Button";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
-import { languages } from "@/helpers/languages";
 import { session } from "@/helpers/storage";
 import { useLoginValidation } from "@/hooks/useLoginValidation";
 import { useToggle } from "@/hooks/useToggle";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
 import { LabelPassword } from "@/landing/components/ui/LabelPassword";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -18,7 +17,7 @@ export const LoginForm = () => {
     const savedForm = session.get("loginInputs");
     const [form, setForm] = useState(savedForm || EMPTY_USER);
     const [isVisible, toggleVisible] = useToggle();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { showModal, hideModal } = useContext(ModalContext);
     const { login } = useAuth();
     const { error, setError, validateLoginForm } = useLoginValidation();
@@ -38,7 +37,7 @@ export const LoginForm = () => {
 
         setIsLogin(true);
         try {
-            const isValid = validateLoginForm(form, lang);
+            const isValid = validateLoginForm(form, t);
             if (!isValid) return;
 
             await login(form);
@@ -47,11 +46,11 @@ export const LoginForm = () => {
             setForm(EMPTY_USER);
 
             showModal({
-                message: languages[lang].modal.loginMessage,
+                message: t("modal.login_message"),
                 onConfirm: hideModal,
             });
         } catch (error) {
-            let translateError = languages[lang].errorMessage.incorrectLogin;
+            let translateError = t("error_message.incorrect_login");
 
             if (error.message === "Invalid credentials") {
                 setError(translateError);
@@ -76,17 +75,17 @@ export const LoginForm = () => {
                         type="email"
                         name="email"
                         autoComplete="off"
-                        placeholder={languages[lang].login.registerEmailMessage}
+                        placeholder={t("login.register_email_placeholder")}
                         value={form.email}
                         onChange={handleInputForm}
                     />
 
                     <LabelPassword
-                        label={languages[lang].login.password}
+                        label={t("login.password")}
                         isVisible={isVisible}
                         name="password"
                         autoComplete="off"
-                        placeholder={languages[lang].login.passwordMessage}
+                        placeholder={t("login.password_message")}
                         value={form.password}
                         onChange={handleInputForm}
                         toggleVisible={toggleVisible}
@@ -94,12 +93,12 @@ export const LoginForm = () => {
                 </div>
 
                 <p className="flex flex-wrap flex-col items-center gap-1">
-                    {languages[lang].login.notRegistered}
+                    {t("login.not_registered")}
                     <Link
                         className="underline text-secondary inline-block transition hover:-translate-y-0.5"
                         to="/register"
                     >
-                        {languages[lang].login.registered}
+                        {t("login.register")}
                     </Link>
                 </p>
 
