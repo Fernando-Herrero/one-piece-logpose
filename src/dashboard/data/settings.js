@@ -1,46 +1,44 @@
-import { languages } from "@/helpers/languages";
-
-export const settingsMenu = (lang, goTo) => [
+export const settingsMenu = (t, goTo) => [
     {
         emoji: "🔒",
-        title: languages[lang].settings.titleSecurity,
-        text: languages[lang].settings.textSecurity,
+        title: t("settings.title_security"),
+        text: t("settings.text_security"),
     },
     {
         emoji: "💰",
-        title: languages[lang].settings.titleMonetisation,
-        text: languages[lang].settings.textMonetisation,
+        title: t("settings.title_monetisation"),
+        text: t("settings.text_monetisation"),
     },
     {
         emoji: "⭐",
-        title: languages[lang].settings.titlePremium,
-        text: languages[lang].settings.textPremium,
+        title: t("settings.title_premium"),
+        text: t("settings.text_premium"),
         onClick: () => goTo("/dashboard/settings/premium"),
     },
     {
         emoji: "🕒",
-        title: languages[lang].settings.titleTimeline,
-        text: languages[lang].settings.textTimeline,
+        title: t("settings.title_timeline"),
+        text: t("settings.text_timeline"),
     },
     {
         emoji: "🛡️",
-        title: languages[lang].settings.titlePrivacy,
-        text: languages[lang].settings.textPrivacy,
+        title: t("settings.title_privacy"),
+        text: t("settings.text_privacy"),
         onClick: () => goTo("/dashboard/settings/privacy"),
     },
     {
         emoji: "🔔",
-        title: languages[lang].settings.titleNotifications,
-        text: languages[lang].settings.textNotifications,
+        title: t("settings.title_notifications"),
+        text: t("settings.text_notifications"),
     },
     {
         emoji: "♿",
-        title: languages[lang].settings.titleAccessibility,
-        text: languages[lang].settings.textAccessibility,
+        title: t("settings.title_accessibility"),
+        text: t("settings.text_accessibility"),
     },
     {
         emoji: "📚",
-        title: languages[lang].settings.titleResources,
-        text: languages[lang].settings.textResources,
+        title: t("settings.title_resources"),
+        text: t("settings.text_resources"),
     },
 ];

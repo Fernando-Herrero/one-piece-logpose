@@ -1,16 +1,15 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { settingsMenu } from "@/dashboard/data/settings";
 import { useDevice } from "@/hooks/useDevice";
 import { useGoTo } from "@/hooks/useGoTo";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 
 const Settings = () => {
     const { isTablet } = useDevice();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { goTo } = useGoTo();
-    const fields = settingsMenu(lang, goTo);
+    const fields = settingsMenu(t, goTo);
 
     return (
         <>
