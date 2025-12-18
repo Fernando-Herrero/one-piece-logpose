@@ -1,9 +1,7 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { AchievementsPanel } from "@/dashboard/components/serie/AchievementsPanel";
-import { languages } from "@/helpers/languages";
 import { useEpisodeCheck } from "@/hooks/useEpisodeCheck";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { useContext } from "react";
 
 export const EpisodeItem = ({
     episode_id,
@@ -16,7 +14,7 @@ export const EpisodeItem = ({
     isLastEpisodeOfArc,
     isLastArcOfSaga,
 }) => {
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const achievementTypes = ["characters", "items", "fruits", "swords", "boats"];
 
     const { inputCheck, isLoading, handleToggleCheck } = useEpisodeCheck(
@@ -51,7 +49,7 @@ export const EpisodeItem = ({
                 </label>
 
                 <div className="opacity-0 bg-sunny text-primary rounded-xl p-2 absolute z-20 bottom-0 right-3 transition duration-300 group-hover:opacity-100 pointer-events-none">
-                    <p>{languages[lang].sagaData.viewedChapter}</p>
+                    <p>{t("saga_data.viewed_chapter")}</p>
                 </div>
             </div>
 
@@ -60,7 +58,7 @@ export const EpisodeItem = ({
                 achievementTypes={achievementTypes}
                 achievements={achievements}
                 experience={experience}
-                lang={lang}
+                t={t}
             />
         </li>
     );

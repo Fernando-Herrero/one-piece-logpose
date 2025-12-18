@@ -1,8 +1,7 @@
 import { AchievementList } from "@/dashboard/components/serie/AchievementsList";
-import { languages } from "@/helpers/languages";
 import classNames from "classnames";
 
-export const AchievementsPanel = ({ inputCheck, achievementTypes, achievements, experience, lang }) => (
+export const AchievementsPanel = ({ inputCheck, achievementTypes, achievements, experience, t }) => (
     <div
         className={classNames("text-xs grid rounded-xl bg-black/20 transition-all duration-300 ease-out", {
             "[grid-template-rows:1fr] gap-1 p-2 opacity-100": inputCheck,
@@ -10,15 +9,15 @@ export const AchievementsPanel = ({ inputCheck, achievementTypes, achievements, 
         })}
     >
         <div className="min-h-0 overflow-hidden">
-            <h5 className="text-primary underline">{languages[lang].sagaData.achievements}</h5>
+            <h5 className="text-primary underline">{t("saga_data.achievements")}</h5>
 
             {achievementTypes.map((type) => (
-                <AchievementList key={type} labelKey={type} items={achievements?.[type]} lang={lang} />
+                <AchievementList key={type} labelKey={type} items={achievements?.[type]} t={t} />
             ))}
 
             {experience && (
                 <p className="text-gradient flex items-center gap-1">
-                    {languages[lang].sagaData.experience}
+                    {t("saga_data.experience")}
                     <span>+{experience}</span>
                 </p>
             )}

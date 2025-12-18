@@ -4,9 +4,8 @@ import { characters } from "@/dashboard/data/serieData/characters";
 import { fruits } from "@/dashboard/data/serieData/fruits";
 import { items } from "@/dashboard/data/serieData/items";
 import { swords } from "@/dashboard/data/serieData/swords";
-import { languages } from "@/helpers/languages";
 
-export const AchievementList = ({ labelKey, items: itemIds, lang }) => {
+export const AchievementList = ({ labelKey, items: itemIds, t }) => {
     if (!itemIds?.length) return null;
 
     const dataMap = {
@@ -30,7 +29,7 @@ export const AchievementList = ({ labelKey, items: itemIds, lang }) => {
 
     return (
         <div className="flex items-center gap-1 flex-wrap">
-            <p className="text-primary">{languages[lang].sagaData[labelKey]}</p>
+            <p className="text-primary">{t(`saga_data.${labelKey}`)}</p>
             <img className="w-2" src={arrow} alt="Right arrow icon" />
             {itemIds.map((itemId, index) => {
                 const foundItem = dataSource?.find((element) => element[idKey] === itemId);

@@ -1,13 +1,11 @@
 import { ToggleButton } from "@/components/ToggleButton";
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
 import { useToggle } from "@/hooks/useToggle";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { useContext } from "react";
 
 export const AccordionSerie = ({ className, type, name, text, episodes, children }) => {
     const [isOpen, toggleBox] = useToggle();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
 
     const Tag = type === "saga" ? "article" : "ul";
 
@@ -42,7 +40,7 @@ export const AccordionSerie = ({ className, type, name, text, episodes, children
                         <p className={`font-family-pirate text-primary  ${stylesTitle[type]}`}>{name}</p>
                         <div className={`flex items-center gap-1 pt-2 text-muted ${stylesSubTitle[type]}`}>
                             <span>{episodes}</span>
-                            <p>{languages[lang].sagaData.episodes}</p>
+                            <p>{t("saga_data.episodes")}</p>
                         </div>
                     </div>
 

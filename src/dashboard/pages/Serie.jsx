@@ -1,12 +1,11 @@
 import { Button } from "@/components/Button";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { SagaContext } from "@/context/SagaContext";
 import { AccordionSerie } from "@/dashboard/components/serie/AccordionSerie";
 import { ArcList } from "@/dashboard/components/serie/ArcsList";
 import { arcs } from "@/dashboard/data/serieData/arcs";
 import { sagas } from "@/dashboard/data/serieData/sagas";
-import { languages } from "@/helpers/languages";
+import { useTranslate } from "@/translations/useTranslate";
 import { useCallback, useContext } from "react";
 
 const getArcsBySaga = (firstArc, lastArc) => {
@@ -14,14 +13,13 @@ const getArcsBySaga = (firstArc, lastArc) => {
 };
 
 const Serie = () => {
-    console.log("Render Serie");
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { resetProgress } = useContext(SagaContext);
     const { showModal, hideModal } = useContext(ModalContext);
 
     const handleReset = useCallback(() => {
         showModal({
-            message: languages[lang].modal.deleteProgress,
+            message: this("modal.delete_progress"),
             onConfirm: () => {
                 resetProgress();
                 hideModal();
@@ -30,14 +28,14 @@ const Serie = () => {
                 }, 300);
             },
             onCancel: hideModal,
-            confirmText: languages[lang].modal.confirmLogOut,
+            confirmText: this("modal.confirm_logout"),
         });
     }, []);
 
     return (
         <section className="flex flex-col gap-2 p-2 space-y-1 mx-auto max-w-lg mb-40 sm:mb-10 md:p-8 lg:max-w-container">
             <Button variant="danger" onClick={handleReset} className="ml-auto">
-                {languages[lang].sagaData.resetProgress}
+                {t("saga_data.reset_progress")}
             </Button>
             {sagas.map(({ name, saga_id, japaneseName, total_episodes, first_arc, last_arc }) => {
                 const arcsInSaga = getArcsBySaga(first_arc, last_arc);
