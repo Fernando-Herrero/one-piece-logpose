@@ -1,49 +1,46 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
 import { Container } from "@/landing/components/ui/Container";
-import { useContext } from "react";
+import { useTranslate } from "@/translations/useTranslate";
 import { Link } from "react-router-dom";
 
-const historyOnePiece = (lang) => [
+const historyOnePiece = (t) => [
     {
-        section: languages[lang].history.secIntro,
-        content: languages[lang].history.contentIntro,
+        section: t("history.section_intro"),
+        content: t("history.content_intro"),
     },
     {
-        section: languages[lang].history.secSynopsis,
-        content: languages[lang].history.contentSynopsis,
+        section: t("history.section_synopsis"),
+        content: t("history.content_synopsis"),
     },
     {
-        section: languages[lang].history.secCharacters,
+        section: t("history.section_characters"),
     },
     {
-        section: languages[lang].history.secArcs,
-        content: languages[lang].history.contentArcs,
-        subContent: languages[lang].history.subContentArcs,
+        section: t("history.section_arcs"),
+        content: t("history.content_arcs"),
+        subContent: t("history.sub_content_arcs"),
     },
     {
-        section: languages[lang].history.secWorld,
-        content: languages[lang].history.contentWorld,
-        subContent: languages[lang].history.subContentWorld,
+        section: t("history.section_world"),
+        content: t("history.content_world"),
+        subContent: t("history.sub_content_world"),
     },
     {
-        section: languages[lang].history.secFun,
-        content: languages[lang].history.contentFun,
-        subContent: languages[lang].history.subContentFun,
+        section: t("history.section_fun"),
+        content: t("history.content_fun"),
+        subContent: t("history.sub_content_fun"),
     },
 ];
 
 const HistoryPage = () => {
-    console.log("🔁 Render HistoryPage");
-    const { lang } = useContext(LanguagesContext);
-    const history = historyOnePiece(lang);
+    const { t } = useTranslate();
+    const history = historyOnePiece(t);
 
     return (
         <Container className="flex flex-col gap-4 pb-10 mb-10 relativerelative p-6 relative rounded-xl border-4 border-yellow-800 border-dashed shadow-lg bg-amber-50 filter contrast-150">
             <div className="absolute top-2 left-2">⚔️</div>
             <div className="absolute bottom-2 right-2">⚓</div>
             {history.map(({ section, content, subContent }, index) => {
-                const charactersSec = section === languages[lang].history.secCharacters;
+                const charactersSec = section === t("history.section_characters");
 
                 return (
                     <section key={`${section}-${index}`} className="flex flex-col gap-2 pt-5">
@@ -54,7 +51,7 @@ const HistoryPage = () => {
                                 to="/characters"
                             >
                                 <span className="transition-transform group-hover:translate-x-1">→</span>
-                                <p className="underline">{languages[lang].history.secCharacters}</p>
+                                <p className="underline">{t("history.section_characters")}</p>
                                 <span className="transition-transform group-hover:-translate-x-1">←</span>
                             </Link>
                         ) : (
