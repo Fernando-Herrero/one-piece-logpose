@@ -1,17 +1,14 @@
 import logo from "@/assets/images/one-piece-logo.webp";
 import { Button } from "@/components/Button.jsx";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { useGoTo } from "@/hooks/useGoTo";
 import { HeaderMenuController } from "@/landing/components/features/HeaderMenuController";
 import { Container } from "@/landing/components/ui/Container.jsx";
 import { Navbar } from "@/layouts/Navbar";
 import { useTranslate } from "@/translations/useTranslate";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
     const { t } = useTranslate();
-    const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
 
     return (

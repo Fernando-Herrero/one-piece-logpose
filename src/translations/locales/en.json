@@ -55,7 +55,11 @@
     "delete_account": "⚠️ Are you sure? This action will delete all your data permanently.",
     "delete_all_notifications": "⚠️ Are you sure? This will delete all your notifications.",
     "cancel_premium": "⚠️ Are you sure you want to cancel the verification process? You can resume it anytime you want.",
-    "delete_user_message": "⚠️ Are you sure? This action will permanently delete the user's account and all associated data."
+    "delete_user_message": "⚠️ Are you sure? This action will permanently delete the user's account and all associated data.",
+    "default_confirm_text": "OK",
+    "default": {
+      "cancel_text": "Cancel"
+    }
   },
   "characters": {
     "luffy_text": "The fearless captain with a huge heart and an even bigger dream: to become the Pirate King. His rubber powers allow him to stretch and withstand blows that would be fatal to anyone else. Always optimistic and brave.",
@@ -372,5 +376,27 @@
     },
     "retry_text": "Retry",
     "default_title": "Error loading data"
+  },
+  "page_spinner": {
+    "default_message": "Charging..."
+  },
+  "items_back_up": {
+    "title_what": "⭐️ What are we?",
+    "text_what": "A complete website where users can follow their favorite series, unlock rewards, and connect with other fans in real time through an integrated social network. Additionally, they can view all their profile statistics in real time and compare them with other users.",
+    
+    "title_dashboard": "🎯 Personal Dashboard",
+    "text_dashboard": "Each user has a personalized dashboard where they can see all the important aspects they need: real-time notifications from what will become their favorite social network, the last episode watched, and the progress of their favorite series. Additionally, they can check total app time and recent activity, as well as access unlocked rewards such as character cards, ships, weapons, or exclusive items. This personal control center encourages participation and user loyalty.",
+    
+    "title_social": "💬 Integrated Social Network Inspired by Twitter",
+    "text_social": "The app allows users to: Post comments, analyses, and opinions. Interact with other fans through likes, comments, and reposts. Follow other users and discover interesting content. This makes the app an active community where users participate and share experiences.",
+    
+    "title_content": "📚 Organized Content",
+    "text_content": "Access to chapters and arcs in a structured and chronological manner. Gradual unlocking of content as they progress. Constant incentives to consume more content and collect rewards.",
+    
+    "title_gamification": "🏆 Gamification and Rankings",
+    "text_gamification": "Progress is rewarded with an experience and level system: Each watched chapter generates experience points. Users ascend through hierarchical levels according to their progress. Collectible rewards motivate users to continue consuming content. Global rankings encourage competitiveness and interaction among users.",
+    
+    "title_mobile": "📱 Mobile-First Experience",
+    "text_mobile": "Designed to be fully accessible from mobile devices, ensuring smooth and fast navigation. Optimized experience for any screen size. High user retention thanks to its intuitive design."
   }
 }

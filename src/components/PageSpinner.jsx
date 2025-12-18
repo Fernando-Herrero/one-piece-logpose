@@ -1,9 +1,10 @@
 import { Text } from "@/components/ErrorBoundary/Text";
 import { Spinner } from "@/dashboard/components/community/Spinner";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
+import { useTranslate } from "@/translations/useTranslate";
 
 export const PageSpinner = ({
-    message = "Cargando...",
+    message,
     size = "xl",
     color = "primary",
     className = "",
@@ -11,6 +12,7 @@ export const PageSpinner = ({
     containerClassName = "",
     showDots = false,
 }) => {
+    const { t } = useTranslate();
     const baseContainerClasses = "flex items-center justify-center";
 
     const containerClasses = fullPage
@@ -23,7 +25,7 @@ export const PageSpinner = ({
                 <Spinner size={size} color={color} className={`mx-auto ${className}`} />
                 {message && (
                     <Text weight="medium" color="muted" className="mt-4">
-                        {message} {showDots && <LoadingDots />}
+                        {message || t("page_spinner.default_message")} {showDots && <LoadingDots />}
                     </Text>
                 )}
             </div>

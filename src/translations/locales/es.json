@@ -55,7 +55,11 @@
     "delete_account": "⚠️ ¿Seguro? Esta acción eliminará todos tus datos permanentemente.",
     "delete_all_notifications": "⚠️ ¿Estás seguro? Esto eliminará todas tus notificaciones.",
     "cancel_premium": "⚠️ ¿Seguro que deseas cancelar el proceso de verificación? Podrás retomarlo más adelante cuando quieras.",
-    "delete_user_message": "⚠️ ¿Estás seguro? Esto eliminará permanentemente al usuario y todos sus tesoros (datos) del sistema."
+    "delete_user_message": "⚠️ ¿Estás seguro? Esto eliminará permanentemente al usuario y todos sus tesoros (datos) del sistema.",
+    "default_confirm_text": "OK",
+    "default": {
+      "cancel_text": "Cancelar"
+    }
   },
   "characters": {
     "luffy_text": "El intrépido capitán con un corazón enorme y un sueño gigante: convertirse en el Rey de los Piratas. Su poder de goma le permite estirarse y resistir golpes que serían mortales para cualquier otro. Siempre optimista y valiente.",
@@ -372,5 +376,27 @@
       "onRetry": "Recargar"
     },
     "default_title": "Error al cargar los datos"
+  },
+  "page_spinner": {
+    "default_message": "Cargando..."
+  },
+  "items_back_up": {
+    "title_what": "⭐️ ¿Qué somos?",
+    "text_what": "Una web completa donde los usuarios podrán seguir su serie favorita, desbloquear recompensas y conectar con otros fans en tiempo real a través de una red social integrada. Además, podrán consultar todas las estadísticas de su perfil en tiempo real y compararlas con las de otros usuarios.",
+    
+    "title_dashboard": "🎯 Dashboard Personal",
+    "text_dashboard": "Cada usuario cuenta con un panel personalizado donde podrá ver todos los aspectos importantes que necesite: notificaciones en tiempo real de la que se convertirá en su red social favorita, el último capítulo visto, y el progreso de su serie favorita. Además, podrá consultar el tiempo total en la app y su actividad reciente, así como acceder a recompensas desbloqueadas, como cartas de personajes, barcos, armas o ítems exclusivos. Este centro de control personal incentiva la participación y fideliza al usuario.",
+    
+    "title_social": "💬 Red Social Integrada Inspirada en Twitter",
+    "text_social": "La app permite a los usuarios: Publicar comentarios, análisis y opiniones. Interactuar con otros fans mediante likes, comentarios y reposts. Seguir a otros usuarios y descubrir contenido interesante. Esto convierte la app en una comunidad activa, donde los usuarios participan y comparten experiencias.",
+    
+    "title_content": "📚 Contenido Organizado",
+    "text_content": "Acceso a capítulos y arcos de manera estructurada y cronológica. Desbloqueo gradual de contenido a medida que avanzan. Incentivos constantes para consumir más contenido y coleccionar recompensas.",
+    
+    "title_gamification": "🏆 Gamificación y Rankings",
+    "text_gamification": "El progreso se recompensa con un sistema de experiencia y niveles: Cada capítulo visto genera puntos de experiencia. Los usuarios ascienden a niveles jerárquicos según su avance. Recompensas coleccionables que motivan a continuar viendo contenido. Rankings globales que fomentan la competitividad y la interacción entre usuarios.",
+    
+    "title_mobile": "📱 Mobile-First Experience",
+    "text_mobile": "Diseñada para ser totalmente accesible desde dispositivos móviles, garantizando: Navegación fluida y rápida. Experiencia optimizada para cualquier tamaño de pantalla. Alta retención de usuarios gracias a su diseño intuitivo."
   }
 }

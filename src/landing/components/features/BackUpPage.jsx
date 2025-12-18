@@ -1,39 +1,42 @@
 import { Cards } from "@/landing/components/ui/Cards";
 import { Container } from "@/landing/components/ui/Container";
+import { useTranslate } from "@/translations/useTranslate";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const items = [
-    {
-        title: "⭐️ ¿Qué somos?",
-        text: "Una web completa donde los usuarios podrán seguir su serie favorita, desbloquear recompensas y conectar con otros fans en tiempo real a través de una red social integrada. Además, podrán consultar todas las estadísticas de su perfil en tiempo real y compararlas con las de otros usuarios.",
-    },
-    {
-        title: "🎯 Dashboard Personal",
-        text: "Cada usuario cuenta con un panel personalizado donde podrá ver todos los aspectos importantes que necesite: notificaciones en tiempo real de la que se convertirá en su red social favorita, el último capítulo visto, y el progreso de su serie favorita. Además, podrá consultar el tiempo total en la app y su actividad reciente, así como acceder a recompensas desbloqueadas, como cartas de personajes, barcos, armas o ítems exclusivos. Este centro de control personal incentiva la participación y fideliza al usuario.",
-    },
-    {
-        title: "💬 Red Social Integrada Inspirada en Twitter",
-        text: "La app permite a los usuarios: Publicar comentarios, análisis y opiniones. Interactuar con otros fans mediante likes, comentarios y reposts. Seguir a otros usuarios y descubrir contenido interesante. Esto convierte la app en una comunidad activa, donde los usuarios participan y comparten experiencias.",
-    },
-    {
-        title: "📚 Contenido Organizado",
-        text: "Acceso a capítulos y arcos de manera estructurada y cronológica. Desbloqueo gradual de contenido a medida que avanzan. Incentivos constantes para consumir más contenido y coleccionar recompensas.",
-    },
-    {
-        title: "🏆 Gamificación y Rankings",
-        text: "El progreso se recompensa con un sistema de experiencia y niveles: Cada capítulo visto genera puntos de experiencia. Los usuarios ascienden a niveles jerárquicos según su avance. Recompensas coleccionables que motivan a continuar viendo contenido. Rankings globales que fomentan la competitividad y la interacción entre usuarios.",
-    },
-    {
-        title: "📱 Mobile-First Experience",
-        text: "Diseñada para ser totalmente accesible desde dispositivos móviles, garantizando: Navegación fluida y rápida. Experiencia optimizada para cualquier tamaño de pantalla. Alta retención de usuarios gracias a su diseño intuitivo.",
-    },
-];
-
 export const BackUpPage = () => {
+    const { t } = useTranslate();
+
+    const items = [
+        {
+            title: t("items_back_up.title_what"),
+            text: t("items_back_up.text_what"),
+        },
+        {
+            title: t("items_back_up.title_dashboard"),
+            text: t("items_back_up.text_dashboard"),
+        },
+        {
+            title: t("items_back_up.title_social"),
+            text: t("items_back_up.text_social"),
+        },
+        {
+            title: t("items_back_up.title_content"),
+            text: t("items_back_up.text_content"),
+        },
+        {
+            title: t("items_back_up.title_gamification"),
+            text: t("items_back_up.text_gamification"),
+        },
+        {
+            title: t("items_back_up.title_mobile"),
+            text: t("items_back_up.text_mobile"),
+        },
+    ];
+
     const cardsRef = useRef([]);
     cardsRef.current = [];
 

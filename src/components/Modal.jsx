@@ -4,33 +4,32 @@ import sanji from "@/assets/images/ModalImgs/sanji-modal.webp";
 import usopp from "@/assets/images/ModalImgs/usopp-modal.webp";
 import zoro from "@/assets/images/ModalImgs/zoro-modal.webp";
 import { Button } from "@/components/Button";
+import { useTranslate } from "@/translations/useTranslate";
 import { useEffect, useState } from "react";
 
 const images = [luffy, zoro, sanji, nami, usopp];
 
-export const Modal = ({ message, onConfirm, onCancel, confirmText = "Ok", cancelText = "Cancel" }) => {
+export const Modal = ({ message, onConfirm, onCancel, confirmText, cancelText }) => {
     const [image, setImage] = useState();
+    const { t } = useTranslate();
 
     useEffect(() => {
         const index = Math.floor(Math.random() * images.length);
         setImage(images[index]);
     }, []);
 
-    const defaultMessage =
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa eligendi labore, consequatur quis vero ipsum. Minima, consequatur praesentium! Saepe dolore unde ullam nulla deserunt ex? Cumque adipisci minus earum rerum!";
-
     return (
         <div>
             <div className="relative flex flex-col m-1 sm:m-0">
                 <div className="flex flex-col gap-5 bg-white rounded-2xl border-2 border-gray-800 px-6 py-4 shadow-lg max-w-sm">
-                    <p>{message || defaultMessage}</p>
+                    <p>{message}</p>
                     <div className="self-center flex gap-1">
                         <Button onClick={onConfirm} className="bg-accent hover:bg-accentHover">
-                            {confirmText}
+                            {confirmText || t("modal.default_confirm_text")}
                         </Button>
                         {onCancel && (
                             <Button onClick={onCancel} variant="danger">
-                                {cancelText}
+                                {cancelText || t("modal.default.cancel_text")}
                             </Button>
                         )}
                     </div>
