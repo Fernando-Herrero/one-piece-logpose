@@ -1,10 +1,14 @@
 import plusIcon from "@/assets/icons/plus-icon.svg";
+import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary";
+import { PageError } from "@/components/ErrorBoundary/PageError";
 import { PostsSection } from "@/dashboard/components/community/PostsSection";
 import { UsersList } from "@/dashboard/components/UsersList";
 import { useGoTo } from "@/hooks/useGoTo";
+import { useTranslate } from "@/translations/useTranslate";
 import { Outlet } from "react-router-dom";
 
 const Community = () => {
+    const { t } = useTranslate();
     const { goTo } = useGoTo();
 
     const handleCreatePost = () => {
@@ -17,7 +21,18 @@ const Community = () => {
             <button className="floating-btn bg-secondary" onClick={handleCreatePost}>
                 <img className="w-8 h-8" src={plusIcon} alt="Plus icon" />
             </button>
-            <UsersList />
+            <ErrorBoundary
+                fallback={
+                    <PageError
+                        title={t("pageError.users_list.title")}
+                        message={t("pageError.users_list.message")}
+                        onRetry={() => window.location.reload()}
+                        noCenter={true}
+                    />
+                }
+            >
+                <UsersList />
+            </ErrorBoundary>
             <Outlet />
         </div>
     );

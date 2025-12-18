@@ -2,8 +2,6 @@ import { languages } from "@/helpers/languages";
 import { useState } from "react";
 
 export const useLoginValidation = () => {
-    console.log("Render useLoginValidation");
-
     const [error, setError] = useState(null);
 
     const validateLoginForm = (form, lang) => {

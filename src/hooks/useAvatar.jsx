@@ -4,8 +4,6 @@ import { local } from "@/helpers/storage";
 import { useCallback, useContext } from "react";
 
 export const useAvatar = () => {
-    console.log("Render useAvatar");
-
     const { selectedAvatar, setSelectedAvatar } = useContext(AvatarContext);
 
     const selectAvatar = useCallback(

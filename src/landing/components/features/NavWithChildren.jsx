@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 
-export const NavWithChildren = ({ item, chooseLang, toggleMenu }) => {
+export const NavWithChildren = ({ item, t, toggleMenu }) => {
     const [open, toggleBox] = useToggle(false);
     const containRef = useRef(null);
 
@@ -31,7 +31,7 @@ export const NavWithChildren = ({ item, chooseLang, toggleMenu }) => {
             })}
         >
             <header className="flex items-center justify-between cursor-pointer md:gap-1" onClick={toggleBox}>
-                <p className="font-bold">{chooseLang[item.label]}</p>
+                <p className="font-bold">{t(`navbar.${item.label}`)}</p>
                 <ToggleButton isOpen={open} />
             </header>
 
@@ -53,7 +53,7 @@ export const NavWithChildren = ({ item, chooseLang, toggleMenu }) => {
                             onClick={toggleMenu}
                         >
                             <p className="relative md:after:block md:after:absolute md:after:left-0 md:after:bottom-0 md:after:h-[2px] md:after:w-0 md:after:bg-orangeAce/30 after:transition-all after:duration-300 group-hover:after:w-full">
-                                {chooseLang[child.label]}
+                                {t(`navbar.${child.label}`)}
                             </p>
                             <img className="w-4 md:hidden" src={rightArrow} alt="Right arrow icon" />
                         </NavLink>

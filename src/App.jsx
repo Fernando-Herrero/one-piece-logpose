@@ -5,10 +5,11 @@ import { ModalContext } from "@/context/ModalContext.jsx";
 import { languages } from "@/helpers/languages";
 import { DashboardRouter } from "@/router/DashboardRouter";
 import { PublicRouter } from "@/router/PublicRouter";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext } from "react";
 
 export const App = () => {
-    console.log("Render App");
+    const { t } = useTranslate();
     const { lang } = useContext(LanguagesContext);
     const { modalData } = useContext(ModalContext);
     const { isOpen } = modalData;
@@ -27,9 +28,9 @@ export const App = () => {
     return (
         <>
             {user ? (
-                <DashboardRouter isOpen={isOpen} modalData={modalData} lang={lang} />
+                <DashboardRouter isOpen={isOpen} modalData={modalData} t={t} />
             ) : (
-                <PublicRouter isOpen={isOpen} modalData={modalData} lang={lang} />
+                <PublicRouter isOpen={isOpen} modalData={modalData} t={t} />
             )}
         </>
     );

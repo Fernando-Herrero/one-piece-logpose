@@ -21,8 +21,6 @@ const luhnCheck = (num) => {
 };
 
 export const useCardValidation = () => {
-    console.log("Render useCardVlidation");
-
     const { lang } = useContext(LanguagesContext);
 
     const validators = {

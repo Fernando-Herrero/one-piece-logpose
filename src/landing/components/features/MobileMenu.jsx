@@ -1,14 +1,12 @@
 import { Button } from "@/components/Button";
-import { LanguageSelect } from "@/components/LanguageSelect";
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
 import { Navbar } from "@/layouts/Navbar";
+import { LanguageSelector } from "@/translations/LanguageSelector";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { useContext } from "react";
 
 export const MobileMenu = ({ isOpen, toggleMenu }) => {
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { goTo } = useGoTo();
 
     return (
@@ -26,7 +24,7 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
         >
             <div className="flex flex-col min-w-0 pt-10 px-2 space-y-5">
                 <div className="ml-auto">
-                    <LanguageSelect placement="bottom" align="right" />
+                    <LanguageSelector placement="bottom" align="right" />
                 </div>
 
                 <Navbar toggleMenu={toggleMenu} />
@@ -39,7 +37,7 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
                             goTo("/login");
                         }}
                     >
-                        {languages[lang].navbar.signIn}
+                        {t("navbar.sign_in")}
                     </Button>
                     <Button
                         className="w-1/2"
@@ -48,7 +46,7 @@ export const MobileMenu = ({ isOpen, toggleMenu }) => {
                             goTo("/register");
                         }}
                     >
-                        {languages[lang].navbar.signUp}
+                        {t("navbar.sign_up")}
                     </Button>
                 </div>
             </div>

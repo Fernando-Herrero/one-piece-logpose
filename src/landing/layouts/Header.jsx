@@ -1,17 +1,16 @@
 import logo from "@/assets/images/one-piece-logo.webp";
 import { Button } from "@/components/Button.jsx";
 import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages.js";
 import { useGoTo } from "@/hooks/useGoTo";
 import { HeaderMenuController } from "@/landing/components/features/HeaderMenuController";
 import { Container } from "@/landing/components/ui/Container.jsx";
 import { Navbar } from "@/layouts/Navbar";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-    console.log("Render Header");
-
+    const { t } = useTranslate();
     const { lang } = useContext(LanguagesContext);
     const { goTo } = useGoTo();
 
@@ -28,8 +27,8 @@ export const Header = () => {
                     </div>
 
                     <div className="hidden md:flex gap-2">
-                        <Button onClick={() => goTo("/login")}>{languages[lang].navbar.signIn}</Button>
-                        <Button onClick={() => goTo("/register")}>{languages[lang].navbar.signUp}</Button>
+                        <Button onClick={() => goTo("/login")}>{t("navbar.sign_in")}</Button>
+                        <Button onClick={() => goTo("/register")}>{t("navbar.sign_up")}</Button>
                     </div>
                 </div>
 

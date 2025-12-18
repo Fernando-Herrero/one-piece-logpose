@@ -352,5 +352,25 @@
     "title": "Privacidad",
     "text": "Selecciona qué contenido quieres que los demás usuarios puedan ver en tu perfil.",
     "cancel": "Cerrar"
+  },
+  "pageError": {
+    "back_to_home": "Volver al incio",
+    "retry_text": "Reintentar",
+    "public": {
+      "title": "Oops! Algo salió mal",
+      "message": "Ha ocurrido un error en la sección pública. Recarga la página o inténtalo más tarde.",
+      "onRetry": "Recargar"
+    },
+    "dashboard": {
+      "title": "Error en el Dashboard",
+      "message": "Ha ocurrido un error mientras cargabas tu panel. Intenta recargar o contacta soporte.",
+      "onRetry": "Recargar"
+    },
+    "users_list": {
+      "title": "Error en la lista de usuarios",
+      "message": "Ha ocurrido un error mientras cargabas la lista de usuarios. Intenta recargar o contacta soporte.",
+      "onRetry": "Recargar"
+    },
+    "default_title": "Error al cargar los datos"
   }
 }

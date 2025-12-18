@@ -5,8 +5,6 @@ import { useSearchParams } from "react-router-dom";
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-    console.log("Render UserProvider");
-
     const [searchParams] = useSearchParams();
     const userId = searchParams.get("userId");
 

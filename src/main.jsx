@@ -14,6 +14,7 @@ import { LanguagesProvider } from "./context/LanguagesContext.jsx";
 import { ModdalProvider } from "./context/ModalContext.jsx";
 import { SagaProvider } from "./context/SagaContext.jsx";
 import "./index.css";
+import "./translations/i18n.js";
 
 createRoot(document.getElementById("root")).render(
     <ErrorBoundary

@@ -2,8 +2,6 @@ import { FilterPosts } from "@/dashboard/components/search/FilterPosts";
 import { FilterUsers } from "@/dashboard/components/search/FilterUsers";
 
 export const useSearchFilter = (query, posts, users) => {
-    console.log("Render useSearchFilter");
-
     const results = useMemo(() => {
         if (!query && !posts && !users) {
             return {

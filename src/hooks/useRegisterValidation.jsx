@@ -4,8 +4,6 @@ import { storage } from "@/helpers/storage";
 import { useContext, useState } from "react";
 
 export const useRegisterValidation = () => {
-    console.log("Render useRegisterValidation");
-
     const [error, setError] = useState(null);
     const { selectedAvatar } = useContext(AvatarContext);
 

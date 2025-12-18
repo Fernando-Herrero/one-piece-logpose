@@ -3,7 +3,6 @@ import { PageError } from "@/components/ErrorBoundary/PageError";
 import { Modal } from "@/components/Modal";
 import { Overlay } from "@/components/Overlay";
 import { PageSpinner } from "@/components/PageSpinner";
-import { languages } from "@/helpers/languages";
 import { Footer } from "@/landing/components/features/Footer";
 import { Header } from "@/landing/layouts/Header";
 import { lazy, Suspense } from "react";
@@ -19,9 +18,7 @@ const NotFoundPage = lazy(() => import("@/landing/pages/NotFoundPage"));
 const FaqHelpPage = lazy(() => import("@/landing/pages/FaqHelpPage"));
 const MapSection = lazy(() => import("@/landing/components/features/MapSection"));
 
-export const PublicRouter = ({ isOpen, modalData, lang }) => {
-    console.log("Render PublicRouter");
-
+export const PublicRouter = ({ isOpen, modalData, t }) => {
     return (
         <div className="min-h-dvh grid grid-rows-[1fr_auto] font-family-body text-sm overflow-x-hidden overflow-y-auto">
             <Header />
@@ -29,16 +26,14 @@ export const PublicRouter = ({ isOpen, modalData, lang }) => {
                 <ErrorBoundary
                     fallback={
                         <PageError
-                            title="Oops! Algo salió mal"
-                            message="Ha ocurrido un error en la sección pública. Recarga la página o inténtalo más tarde."
+                            title={t("pageError.public.title")}
+                            message={t("pageError.public.message")}
                             onRetry={() => window.location.reload()}
                             fullPage
                         />
                     }
                 >
-                    <Suspense
-                        fallback={<PageSpinner message={languages[lang].profile.loading} fullPage showDots />}
-                    >
+                    <Suspense fallback={<PageSpinner message={t("profile.loading")} fullPage showDots />}>
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/home" element={<HomePage />} />

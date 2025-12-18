@@ -5,8 +5,6 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 export const AvatarContext = createContext(null);
 
 export const AvatarProvider = ({ children }) => {
-    console.log("Render AvatarContext");
-
     const { user } = useContext(AuthContext);
     const savedAvatar = local.get("avatarSelected");
     const [selectedAvatar, setSelectedAvatar] = useState((user?.avatar ?? savedAvatar) || null);

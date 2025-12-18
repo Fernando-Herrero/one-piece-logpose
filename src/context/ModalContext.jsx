@@ -5,8 +5,6 @@ import { createContext, useCallback, useContext, useMemo, useState } from "react
 export const ModalContext = createContext(null);
 
 export const ModdalProvider = ({ children, onCancel }) => {
-    console.log("Render ModalProvider");
-
     const { lang } = useContext(LanguagesContext);
 
     const [modalData, setModalData] = useState({

@@ -3,9 +3,8 @@ import profileIcon from "@/assets/icons/home-icon.svg";
 import serieIcon from "@/assets/icons/serie-icon.svg";
 import socialIcon from "@/assets/icons/social-icon.svg";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
 import { NavbarItems } from "@/landing/components/features/NavbarItems";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
@@ -35,11 +34,8 @@ const navItems = [
 ];
 
 export const Navbar = ({ toggleMenu }) => {
-    console.log("Render Navbar");
-
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { user } = useContext(AuthContext);
-    const chooseLang = languages[lang].navbar;
 
     const privateItems = navItems.filter((item) => item.isPrivate && user);
 
@@ -50,7 +46,7 @@ export const Navbar = ({ toggleMenu }) => {
                 "md:flex-row md:gap-4": !user,
             })}
         >
-            {!user && <NavbarItems chooseLang={chooseLang} navItems={navItems} toggleMenu={toggleMenu} />}
+            {!user && <NavbarItems t={t} navItems={navItems} toggleMenu={toggleMenu} />}
 
             {user &&
                 privateItems.map(({ path, label, icon }, index) => (
@@ -58,7 +54,7 @@ export const Navbar = ({ toggleMenu }) => {
                         key={`${label}-${index}`}
                         to={path}
                         onClick={toggleMenu}
-                        title={chooseLang[label] || label}
+                        title={t(`navbar.${label}`)}
                         className={({ isActive }) =>
                             classNames(
                                 "flex items-center gap-1 p-2 rounded-xl transition-all duration-300 md:text-base",
@@ -71,10 +67,10 @@ export const Navbar = ({ toggleMenu }) => {
                     >
                         <img
                             src={icon}
-                            alt={`${chooseLang[label] || label} icon`}
+                            alt={`${t(`navbar.${label}`)} icon`}
                             className="w-6 h-6 transition-transform group-hover:scale-105 md:w-4 md:h-4"
                         />
-                        <span className="hidden text-gradient md:block">{chooseLang[label]}</span>
+                        <span className="hidden text-gradient md:block">{t(`navbar.${label}`)}</span>
                     </NavLink>
                 ))}
         </nav>

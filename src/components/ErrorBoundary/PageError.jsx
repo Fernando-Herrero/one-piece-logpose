@@ -1,21 +1,24 @@
 import { ButtonSec } from "@/components/ErrorBoundary/ButtonSec";
 import { Heading } from "@/components/ErrorBoundary/Heading";
 import { Text } from "@/components/ErrorBoundary/Text";
+import { useTranslate } from "@/translations/useTranslate";
 import { memo, useMemo } from "react";
 
 export const PageError = memo(
     ({
-        title = "Error al cargar los datos",
+        title,
         message,
         icon = "⚠️",
         onRetry,
-        retryText = "Reintentar",
+        noCenter,
+        retryText,
         className = "",
         containerClassName = "",
         fullPage = false,
     }) => {
+        const { t } = useTranslate();
         const containerClasses = useMemo(() => {
-            const baseContainerClasses = "flex items-center justify-center";
+            const baseContainerClasses = noCenter ? "flex" : "flex items-center justify-center";
             return fullPage
                 ? `${baseContainerClasses} min-h-screen ${containerClassName}`
                 : `${baseContainerClasses} py-12 ${containerClassName}`;
@@ -29,7 +32,7 @@ export const PageError = memo(
                     </Text>
 
                     <Heading level={3} size="lg" color="danger" className="mb-2">
-                        {title}
+                        {title || t("pageError.default_title")}
                     </Heading>
 
                     {message && (
@@ -40,7 +43,7 @@ export const PageError = memo(
 
                     {onRetry && (
                         <ButtonSec variant="danger" onClick={onRetry}>
-                            {retryText}
+                            {retryText || t("pageError.retry_text")}
                         </ButtonSec>
                     )}
 
@@ -49,7 +52,7 @@ export const PageError = memo(
                         className="mt-4"
                         onClick={() => (window.location.href = "/")}
                     >
-                        Volver al inicio
+                        {t("pageError.back_to_home")}
                     </ButtonSec>
                 </div>
             </div>

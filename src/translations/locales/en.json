@@ -34,7 +34,7 @@
     "help": "Help",
     "faq": "FAQ",
     "contact": "Contact",
-    "sign_in": "Sign In",
+    "sign_in": "Login",
     "sign_up": "Sign Up",
     "logout": "Logout",
     "reset": "Delete Account",
@@ -352,5 +352,25 @@
     "title": "Privacy",
     "text": "Select which content you want other users to be able to see on your profile.",
     "cancel": "Close"
+  },
+  "pageError": {
+    "back_to_home": "Back to home",
+    "public": {
+      "title": "Oops! Something went wrong",
+      "message": "An error occurred in the public section. Reload the page or try again later.",
+      "onRetry": "Reload"
+    },
+    "dashboard": {
+      "title": "Dashboard error",
+      "message": "An error occurred while loading your dashboard. Try reloading or contact support.",
+      "onRetry": "Reload"
+    },
+    "users_list": {
+      "title": "Error in users list",
+      "message": "An error occurred while loading the users list. Try reloading or contact support.",
+      "onRetry": "Reload"
+    },
+    "retry_text": "Retry",
+    "default_title": "Error loading data"
   }
 }
