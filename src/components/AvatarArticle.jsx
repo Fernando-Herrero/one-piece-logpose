@@ -2,7 +2,6 @@ import { AvatarContext } from "@/context/AvatarContext";
 import { memo, useContext } from "react";
 
 export const AvatarArticle = memo(({ character, selectAvatar }) => {
-    console.log("Render AvatarArticle");
     const { selectedAvatar } = useContext(AvatarContext);
 
     return (

@@ -1,5 +1,4 @@
 import { AvatarContext } from "@/context/AvatarContext";
-import { languages } from "@/helpers/languages";
 import { storage } from "@/helpers/storage";
 import { useContext, useState } from "react";
 
@@ -27,65 +26,59 @@ export const useRegisterValidation = () => {
         }
     };
 
-    const validateEmptyField = (value, fieldName, lang) => {
+    const validateEmptyField = (value, fieldName, t) => {
         if (!value || value.trim() === "") {
-            setError(languages[lang].errorMessage[fieldName] || `${fieldName} is required`);
+            setError(t(`error_message.${fieldName}`) || `${fieldName} is required`);
             return true;
         }
         return false;
     };
 
-    const validateFieldLength = (value, fieldName, length, lang) => {
+    const validateFieldLength = (value, fieldName, length, t) => {
         if (value.trim().length < length) {
-            setError(
-                languages[lang].errorMessage[fieldName] ||
-                    `${fieldName} has a minimum of ${length} characters`
-            );
+            setError(t(`error_message.${fieldName}`) || `${fieldName} has a minimum of ${length} characters`);
             return true;
         }
         return false;
     };
 
-    const validateRegisterForm = (form, lang) => {
-        if (validateEmptyField(form.name, "name", lang)) return true;
-        if (validateEmptyField(form.lastName, "lastName", lang)) return true;
-        if (validateEmptyField(form.email, "email", lang)) return true;
-        if (validateEmptyField(form.username, "registerUsername", lang)) return true;
-        if (validateEmptyField(form.password, "registerPassword", lang)) return true;
-        if (validateEmptyField(form.confirmPassword, "confirmPassword", lang)) return true;
+    const validateRegisterForm = (form, t) => {
+        if (validateEmptyField(form.name, "name", t)) return true;
+        if (validateEmptyField(form.lastName, "lastName", t)) return true;
+        if (validateEmptyField(form.email, "email", t)) return true;
+        if (validateEmptyField(form.username, "registerUsername", t)) return true;
+        if (validateEmptyField(form.password, "registerPassword", t)) return true;
+        if (validateEmptyField(form.confirmPassword, "confirmPassword", t)) return true;
 
-        if (validateFieldLength(form.name, "nameLength", 2, lang)) return true;
-        if (validateFieldLength(form.lastName, "lastNameLength", 2, lang)) return true;
-        if (validateFieldLength(form.username, "usernameLength", 3, lang)) return true;
-        if (validateFieldLength(form.password, "passwordLength", 6, lang)) return true;
+        if (validateFieldLength(form.name, "nameLength", 2, t)) return true;
+        if (validateFieldLength(form.lastName, "lastNameLength", 2, t)) return true;
+        if (validateFieldLength(form.username, "usernameLength", 3, t)) return true;
+        if (validateFieldLength(form.password, "passwordLength", 6, t)) return true;
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(form.email.trim())) {
-            setError(languages[lang].errorMessage.emailFormat || "Please enter a valid email address");
+            setError(t("error_message.email_format") || "Please enter a valid email address");
             return true;
         }
 
         if (isEmailRegistered(form.email.trim())) {
-            setError(languages[lang].errorMessage.emailExists || "This email is already registered");
+            setError(t("error_message.email_exists") || "This email is already registered");
             return true;
         }
 
         if (form.password !== form.confirmPassword) {
-            setError(languages[lang].errorMessage.passwordMatch || "Passwords do not match");
+            setError(t("error_message.password_match") || "Passwords do not match");
             return true;
         }
 
         const existingUser = storage.get(`user_${form.username}`);
         if (existingUser) {
-            setError(
-                languages[lang].errorMessage.userExists ||
-                    "Username already exists. Please choose another one."
-            );
+            setError(t("error_message.user_exists") || "Username already exists. Please choose another one.");
             return true;
         }
 
         if (!selectedAvatar) {
-            setError(languages[lang].errorMessage.selectedAvatar);
+            setError(t("error_message.selected_avatar"));
             return true;
         }
 

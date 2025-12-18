@@ -3,14 +3,14 @@ import { passwordFields } from "@/landing/data/passwordFields";
 
 export const PasswordFields = ({
     form,
-    lang,
+    t,
     isVisible,
     toggleVisible,
     isConfirmVisible,
     toggleConfirmVisible,
     onChange,
 }) => {
-    const passwordFieldsData = passwordFields(lang, form, isVisible, isConfirmVisible);
+    const passwordFieldsData = passwordFields(t, form, isVisible, isConfirmVisible);
 
     return (
         <>

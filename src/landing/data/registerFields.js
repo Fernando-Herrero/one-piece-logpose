@@ -1,28 +1,26 @@
-import { languages } from "@/helpers/languages";
-
-export const registerFields = (lang, form) => [
+export const registerFields = (t, form) => [
     {
-        label: "📝 " + languages[lang].login.registerName + ":",
+        label: "📝 " + t("login.register_name") + ":",
         type: "text",
         name: "name",
         id: "name",
-        placeholder: languages[lang].login.registerNameMessage,
+        placeholder: t("login.register_name_placeholder"),
         value: form.name,
     },
     {
-        label: "📝 " + languages[lang].login.registerSurname + ":",
+        label: "📝 " + t("login.register_surname") + ":",
         type: "text",
         name: "lastName",
         id: "lastName",
-        placeholder: languages[lang].login.registerSurnameMessage,
+        placeholder: t("login.register_surname_placeholder"),
         value: form.lastName,
     },
     {
-        label: "✉️ " + languages[lang].login.registerEmail + ":",
+        label: "✉️ " + t("login.register_email") + ":",
         type: "email",
         name: "email",
         id: "email",
-        placeholder: languages[lang].login.registerEmailMessage,
+        placeholder: t("login.register_email_placeholder"),
         value: form.email,
     },
     {
@@ -30,7 +28,7 @@ export const registerFields = (lang, form) => [
         type: "text",
         name: "username",
         id: "username",
-        placeholder: languages[lang].login.registerUsername,
+        placeholder: t("login.register_username_placeholder"),
         value: form.username,
     },
 ];

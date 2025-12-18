@@ -4,8 +4,6 @@ import { useAvatar } from "@/hooks/useAvatar";
 import { memo, useMemo } from "react";
 
 export const AvatarSelected = memo(({ className = "" }) => {
-    console.log("Render AvatarSelected");
-
     const { selectAvatar } = useAvatar();
 
     const charactersMemoized = useMemo(

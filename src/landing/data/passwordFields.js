@@ -1,12 +1,11 @@
 // src/data/passwordFields.js
-import { languages } from "@/helpers/languages";
 
-export const passwordFields = (lang, form, isVisible, isConfirmVisible) => [
+export const passwordFields = (t, form, isVisible, isConfirmVisible) => [
     {
         id: "password",
         name: "password",
-        label: "🔒 " + languages[lang].login.password,
-        placeholder: languages[lang].login.registerPassword,
+        label: "🔒 " + t("login.password"),
+        placeholder: t("login.register_password"),
         value: form.password,
         isVisible: isVisible,
         toggleType: "password",
@@ -14,8 +13,8 @@ export const passwordFields = (lang, form, isVisible, isConfirmVisible) => [
     {
         id: "confirmPassword",
         name: "confirmPassword",
-        label: "🔒 " + languages[lang].login.confirmPassword,
-        placeholder: languages[lang].login.registerConfirm,
+        label: "🔒 " + t("login.confirm_password"),
+        placeholder: t("login.register_confirm"),
         value: form.confirmPassword,
         isVisible: isConfirmVisible,
         toggleType: "confirmPassword",

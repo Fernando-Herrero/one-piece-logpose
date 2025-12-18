@@ -1,9 +1,7 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
-import { useContext } from "react";
+import { useTranslate } from "@/translations/useTranslate";
 
 export const TermsCheckbox = ({ isChecked, setIsChecked }) => {
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
 
     return (
         <label className="flex flex-col gap-1">
@@ -15,9 +13,9 @@ export const TermsCheckbox = ({ isChecked, setIsChecked }) => {
                     checked={isChecked}
                     onChange={(event) => setIsChecked(event.target.checked)}
                 />
-                <p className="text-xs">{languages[lang].login.registerAcceptTerms}</p>
+                <p className="text-xs">{t("login.register_accept_terms")}</p>
             </div>
-            <span className="text-xs">{languages[lang].login.registerTerms}</span>
+            <span className="text-xs">{t("login.register_terms")}</span>
         </label>
     );
 };

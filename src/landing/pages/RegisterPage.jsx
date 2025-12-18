@@ -3,8 +3,6 @@ import { RegisterForm } from "@/landing/components/features/RegisterForm";
 import { Container } from "@/landing/components/ui/Container";
 
 const RegisterPage = () => {
-    console.log("Render RegisterPage");
-
     return (
         <section className="flex flex-col items-center gap-4 pb-8">
             <Container>
