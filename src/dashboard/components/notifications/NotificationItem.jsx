@@ -1,6 +1,4 @@
-import { languages } from "@/helpers/languages";
-
-export const NotificationItem = ({ noti, lang, handleCheck, handleDelete }) => {
+export const NotificationItem = ({ noti, t, handleCheck, handleDelete }) => {
     return (
         <div
             className={`flex items-center justify-between p-3 rounded-lg shadow-sm transition-transform hover:-translate-0.5 relative ${
@@ -10,10 +8,10 @@ export const NotificationItem = ({ noti, lang, handleCheck, handleDelete }) => {
             <div className="flex-1 pr-1">
                 <p className="text-sm text-primary">
                     <strong>{noti.from.displayName || noti.from.username}</strong>{" "}
-                    {noti.type === "like" && languages[lang].notifications.liked}
-                    {noti.type === "follow" && languages[lang].notifications.followed}
-                    {noti.type === "bookmark" && languages[lang].notifications.bookmarked}
-                    {noti.type === "comment" && languages[lang].notifications.comment}
+                    {noti.type === "like" && t("notifications.liked")}
+                    {noti.type === "follow" && t("notifications.followed")}
+                    {noti.type === "bookmark" && t("notifications.bookmarked")}
+                    {noti.type === "comment" && t("notifications.comment")}
                 </p>
                 {noti.postId && (
                     <p className="text-xs text-muted mt-1 italic">
@@ -36,7 +34,7 @@ export const NotificationItem = ({ noti, lang, handleCheck, handleDelete }) => {
                             aria-label="Marcar como leído"
                         />
                         <span className="absolute -bottom-6 right-0 bg-sunny text-primary text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            {languages[lang].notifications.markAsRead}
+                            {t("notifications.mark_as_read")}
                         </span>
                     </div>
                 )}
