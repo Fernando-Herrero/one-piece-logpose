@@ -43,52 +43,50 @@ import jimbeMobile700 from "@/assets/images/avatars/jimbe/jimbe-preskip-700.webp
 import jimbeDesktop from "@/assets/images/ModalImgs/jimbe-modal.webp";
 const jimbeMobile400 = "/jimbe-preskip-400.webp";
 
-import { languages } from "@/helpers/languages";
-
-export const getCharacters = (lang) => [
+export const getCharacters = (t) => [
     {
         name: "Monkey D. Luffy",
-        text: languages[lang].characters.luffyText,
+        text: t("characters.luffy_text"),
         images: [luffyMobile400, luffyMobile700, luffyDesktop],
     },
     {
         name: "Roronoa Zoro",
-        text: languages[lang].characters.zoroText,
+        text: t("characters.zoro_text"),
         images: [zoroMobile400, zoroMobile700, zoroDesktop],
     },
     {
         name: "Sanji",
-        text: languages[lang].characters.sanjiText,
+        text: t("characters.sanji_text"),
         images: [sanjiMobile400, sanjiMobile700, sanjiDesktop],
     },
     {
         name: "Nami",
-        text: languages[lang].characters.namiText,
+        text: t("characters.nami_text"),
         images: [namiMobile400, namiMobile700, namiDesktop],
     },
     {
         name: "Usopp",
-        text: languages[lang].characters.usoppText,
+        text: t("characters.usopp_text"),
         images: [usoppMobile400, usoppMobile700, usoppDesktop],
     },
     {
         name: "Tony Chopper",
-        text: languages[lang].characters.chopperText,
+        text: t("characters.chopper_text"),
         images: [chopperMobile400, chopperMobile700, chopperDesktop],
     },
     {
         name: "Nico Robin",
-        text: languages[lang].characters.robinText,
+        text: t("characters.robin_text"),
         images: [robinMobile400, robinMobile700, robinDesktop],
     },
     {
         name: "Brook",
-        text: languages[lang].characters.brookText,
+        text: t("characters.brook_text"),
         images: [brookMobile400, brookMobile700, brookDesktop],
     },
     {
         name: "Jimbe",
-        text: languages[lang].characters.jimbeText,
+        text: t("characters.jimbe_text"),
         images: [jimbeMobile400, jimbeMobile700, jimbeDesktop],
     },
 ];

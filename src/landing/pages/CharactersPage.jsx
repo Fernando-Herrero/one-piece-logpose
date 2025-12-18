@@ -1,17 +1,15 @@
 import luffyLies from "@/assets/images/luffy-lies-main.webp";
 import lettersBg from "@/assets/images/onepiece-japanese.webp";
 import { Button } from "@/components/Button";
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
 import { CharacterCard } from "@/landing/components/ui/CharacterCard";
 import { Container } from "@/landing/components/ui/Container";
 import { getCharacters } from "@/landing/data/getCharacters";
-import { useContext, useMemo, useState } from "react";
+import { useTranslate } from "@/translations/useTranslate";
+import { useMemo, useState } from "react";
 
 const CharactersPage = () => {
-    console.log("🔁 Render CharactersPage");
-    const { lang } = useContext(LanguagesContext);
-    const characters = useMemo(() => getCharacters(lang), [lang]);
+    const { t } = useTranslate;
+    const characters = useMemo(() => getCharacters(t), [t]);
     const [visibleChars, setVisibleChars] = useState(characters.slice(0, 5));
 
     return (
@@ -33,11 +31,11 @@ const CharactersPage = () => {
                 </div>
 
                 <div className="flex flex-col items-center gap-2 text-center rounded-xl bg-secondary backdrop-blur-sm p-6">
-                    <p className="text-gradient-secondary">{languages[lang].characters.finalText}</p>
+                    <p className="text-gradient-secondary">{t("characters.final_text")}</p>
                     <img className="w-30 shadow-default rounded-2xl" src={luffyLies} alt="Luffy face lying" />
-                    <p className="text-gradient-secondary">{languages[lang].characters.finalTextTwo}</p>
+                    <p className="text-gradient-secondary">{t("characters.final_text_two")}</p>
                     <Button variant="danger" onClick={() => setVisibleChars(characters)}>
-                        Ver
+                        {t("characters.view_more")}
                     </Button>
                 </div>
             </section>
