@@ -1,11 +1,10 @@
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { PostContext } from "@/context/PostContext";
 import { useNotifications } from "@/core/notifications/useNotifications";
 import { usePosts } from "@/core/posts/usePosts";
 import { PostForm } from "@/dashboard/components/community/PostForm";
-import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -19,7 +18,7 @@ const Comment = ({ onCancel }) => {
     const { replyPost } = usePosts();
     const { notification } = useNotifications();
     const { setError, error } = useContext(PostContext);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { goTo } = useGoTo();
 
     const postFromUser = posts.find((post) => post.id === postId);
@@ -50,8 +49,8 @@ const Comment = ({ onCancel }) => {
             onCancel={handleCancel}
             error={error}
             onErrorChange={setError}
-            submitButtonText={languages[lang].contact.button}
-            placeholderText={languages[lang].posts.areaTextPost}
+            submitButtonText={t("contact.button")}
+            placeholderText={t("posts.area_text_post")}
         />
     );
 };

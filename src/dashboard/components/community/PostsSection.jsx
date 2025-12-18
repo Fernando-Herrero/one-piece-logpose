@@ -1,21 +1,21 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { PostContext } from "@/context/PostContext";
 import { PostCard } from "@/dashboard/components/community/PostCard";
 import { Spinner } from "@/dashboard/components/community/Spinner";
 import { languages } from "@/helpers/languages";
 import { LoadingDots } from "@/landing/components/ui/LoadingDots";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext } from "react";
 
 export const PostsSection = () => {
     const { posts, loading, error } = useContext(PostContext);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     if (!posts) return <p>{languages[lang].posts.noPosts}</p>;
     if (loading)
         return (
             <div className="flex flex-col items-center justify-center max-h-screen mx-auto gap-1">
                 <Spinner />{" "}
                 <p className="text-gradient dark:text-black">
-                    {languages[lang].posts.loadingPosts}
+                    {t("posts.loading_posts")}
                     <LoadingDots />
                 </p>
             </div>

@@ -1,7 +1,6 @@
 import { Button } from "@/components/Button";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext, useState } from "react";
 
 export const PostForm = ({
@@ -9,12 +8,11 @@ export const PostForm = ({
     onCancel,
     error,
     onErrorChange,
-
     placeholderText,
     initialData = { text: "", image: "" },
 }) => {
     const { isVerified } = useContext(AuthContext);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const [formData, setFormData] = useState(initialData);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -25,7 +23,7 @@ export const PostForm = ({
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!formData.text.trim()) return onErrorChange(languages[lang].posts.textError);
+        if (!formData.text.trim()) return onErrorChange(t("posts.text_error"));
 
         setIsLoading(true);
 
@@ -91,10 +89,10 @@ export const PostForm = ({
 
                 <div className="flex items-center gap-1">
                     <Button type="button" variant="danger" onClick={handleCancel}>
-                        {languages[lang].modal.cancelText}
+                        {t("modal.cancel_text")}
                     </Button>
                     <Button type="submit" variant="submit" disabled={isLoading}>
-                        {isLoading ? languages[lang].posts.sending : languages[lang].posts.send}
+                        {isLoading ? t("posts.sending") : t("posts.send")}
                     </Button>
                 </div>
             </form>
