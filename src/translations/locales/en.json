@@ -111,7 +111,8 @@
     "title": "Contact",
     "subject": "Subject",
     "area_message": "Write the message for the crew...",
-    "button": "Send"
+    "button": "Send",
+    "message": "Message"
   },
   "footer": {
     "disclaimer": "LogPose is a fan app for tracking One Piece progress. Content is for personal use only, no commercial purposes.",
@@ -383,20 +384,39 @@
   "items_back_up": {
     "title_what": "⭐️ What are we?",
     "text_what": "A complete website where users can follow their favorite series, unlock rewards, and connect with other fans in real time through an integrated social network. Additionally, they can view all their profile statistics in real time and compare them with other users.",
-    
     "title_dashboard": "🎯 Personal Dashboard",
     "text_dashboard": "Each user has a personalized dashboard where they can see all the important aspects they need: real-time notifications from what will become their favorite social network, the last episode watched, and the progress of their favorite series. Additionally, they can check total app time and recent activity, as well as access unlocked rewards such as character cards, ships, weapons, or exclusive items. This personal control center encourages participation and user loyalty.",
-    
     "title_social": "💬 Integrated Social Network Inspired by Twitter",
     "text_social": "The app allows users to: Post comments, analyses, and opinions. Interact with other fans through likes, comments, and reposts. Follow other users and discover interesting content. This makes the app an active community where users participate and share experiences.",
-    
     "title_content": "📚 Organized Content",
     "text_content": "Access to chapters and arcs in a structured and chronological manner. Gradual unlocking of content as they progress. Constant incentives to consume more content and collect rewards.",
-    
     "title_gamification": "🏆 Gamification and Rankings",
     "text_gamification": "Progress is rewarded with an experience and level system: Each watched chapter generates experience points. Users ascend through hierarchical levels according to their progress. Collectible rewards motivate users to continue consuming content. Global rankings encourage competitiveness and interaction among users.",
-    
     "title_mobile": "📱 Mobile-First Experience",
     "text_mobile": "Designed to be fully accessible from mobile devices, ensuring smooth and fast navigation. Optimized experience for any screen size. High user retention thanks to its intuitive design."
+  },
+  "faq": {
+    "title_what_is": "What is this One Piece app?",
+    "text_what_is": "It is a social network inspired by Twitter, but set in the world of One Piece. You can follow chapters, unlock characters, ships, and items, and manage everything from your own Dashboard.",
+    "title_how_create_profile": "How do I create my profile?",
+    "text_how_create_profile": "From the Dashboard, go to the 'Profile' section. There you can customize your avatar, username, and pirate biography.",
+    "title_how_unlock_characters": "How do I unlock characters?",
+    "text_how_unlock_characters": "Characters are unlocked by following chapters of the series or completing challenges within the app. Each story progress gives you access to new nakamas.",
+    "title_what_are_items": "What are items?",
+    "text_what_are_items": "Items are collectible objects inspired by the world of One Piece, such as Devil Fruits or treasures. They allow you to personalize your experience and improve your profile.",
+    "title_can_interact_users": "Can I interact with other users?",
+    "text_can_interact_users": "Yes! You can follow other pirates, like their posts, comment, and share theories about One Piece.",
+    "title_what_is_dashboard": "What is the Dashboard?",
+    "text_what_is_dashboard": "The Dashboard is your personal base. From there you manage your profile, see your unlocked characters, ships, items, series cards, and track your progress.",
+    "title_what_are_series_cards": "What are series cards?",
+    "text_what_are_series_cards": "They are collectible representations of chapters, scenes, and characters. As you progress in the story, you unlock new cards for your collection.",
+    "title_need_to_pay": "Do I need to pay to use the app?",
+    "text_need_to_pay": "The app is free. Some additional features or premium collectibles may be available as optional purchases.",
+    "title_how_report_bug": "How do I report a problem or bug?",
+    "text_how_report_bug": "In the Dashboard, you'll find the 'Help' section. From there you can report errors or suggest improvements.",
+    "title_use_without_seen": "Can I use the app without having seen One Piece?",
+    "text_use_without_seen": "Of course! Although it is designed for fans, it can also serve as a fun guide to follow the series and discover its characters gradually.",
+    "title_special_events": "Will there be special events?",
+    "text_special_events": "Yes. Periodically we launch themed events (like the One Piece anniversary or highlighted sagas) that allow you to unlock unique content."
   }
 }

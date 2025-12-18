@@ -1,17 +1,15 @@
 import { Button } from "@/components/Button";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
-import { languages } from "@/helpers/languages";
 import { storage } from "@/helpers/storage";
 import { Container } from "@/landing/components/ui/Container";
 import { LabelInput } from "@/landing/components/ui/LabelInput";
 import { contactFormFields } from "@/landing/data/contactFields";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext, useState } from "react";
 
 const ContactPage = () => {
-    console.log("🔁 Render ContactPage");
     const [form, setFormn] = useState({ name: "", surname: "", subject: "", email: "", textArea: "" });
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { showModal, hideModal } = useContext(ModalContext);
 
     const handleInput = ({ target: { name, value } }) => {
@@ -25,24 +23,22 @@ const ContactPage = () => {
         setFormn({ name: "", surname: "", subject: "", email: "", textArea: "" });
 
         showModal({
-            message: languages[lang].modal.contactMessage,
+            message: t("modal.contact_message"),
             onConfirm: hideModal,
-            confirmText: languages[lang].modal.confirmText,
+            confirmText: t("modal.confirm_text"),
         });
     };
 
-    const fields = contactFormFields(form, lang);
+    const fields = contactFormFields(form, t);
     return (
         <Container className="flex flex-col items-center gap-5 mb-10">
-            <p className="text-center text-lg max-w-sm text-gradient">
-                {languages[lang].contact.messageTitle}
-            </p>
+            <p className="text-center text-lg max-w-sm text-gradient">{t("contact.message_title")}</p>
             <form
                 className="flex flex-col gap-2 p-4 w-full bg-gradient-card rounded shadow-default max-w-md sm:min-w-sm"
                 onSubmit={handleSubmit}
             >
                 <h2 className="text-bold text-2xl self-center font-family-pirate text-primary">
-                    {languages[lang].contact.title}
+                    {t("contact.title")}
                 </h2>
                 {fields.map(({ label, type, name, value, id, placeholder }, index) => (
                     <LabelInput
@@ -59,18 +55,18 @@ const ContactPage = () => {
                 ))}
 
                 <label>
-                    <span className="font-bold text-lg text-primary">Mensaje:</span>
+                    <span className="font-bold text-lg text-primary">{t("contact.message")}:</span>
                     <textarea
                         className="bg-white w-full rounded p-2 no-focus"
                         name="message"
                         id="message"
                         value={form.message}
-                        placeholder={languages[lang].contact.areaMessage}
+                        placeholder={t("contact.area_message")}
                         rows={5}
                     />
                 </label>
 
-                <Button variant="submit">{languages[lang].contact.button}</Button>
+                <Button variant="submit">{t("contact.button")}</Button>
             </form>
         </Container>
     );

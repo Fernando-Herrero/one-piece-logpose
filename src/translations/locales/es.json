@@ -111,7 +111,8 @@
     "title": "Contacto",
     "subject": "Asunto",
     "area_message": "Escribe tu mensaje para la tripulación...",
-    "button": "Enviar"
+    "button": "Enviar",
+    "message": "Mensaje"
   },
   "footer": {
     "disclaimer": "LogPose es una app de fans para el seguimiento de progreso de One Piece. Contenido para uso personal, sin fines comerciales.",
@@ -383,20 +384,39 @@
   "items_back_up": {
     "title_what": "⭐️ ¿Qué somos?",
     "text_what": "Una web completa donde los usuarios podrán seguir su serie favorita, desbloquear recompensas y conectar con otros fans en tiempo real a través de una red social integrada. Además, podrán consultar todas las estadísticas de su perfil en tiempo real y compararlas con las de otros usuarios.",
-    
     "title_dashboard": "🎯 Dashboard Personal",
     "text_dashboard": "Cada usuario cuenta con un panel personalizado donde podrá ver todos los aspectos importantes que necesite: notificaciones en tiempo real de la que se convertirá en su red social favorita, el último capítulo visto, y el progreso de su serie favorita. Además, podrá consultar el tiempo total en la app y su actividad reciente, así como acceder a recompensas desbloqueadas, como cartas de personajes, barcos, armas o ítems exclusivos. Este centro de control personal incentiva la participación y fideliza al usuario.",
-    
     "title_social": "💬 Red Social Integrada Inspirada en Twitter",
     "text_social": "La app permite a los usuarios: Publicar comentarios, análisis y opiniones. Interactuar con otros fans mediante likes, comentarios y reposts. Seguir a otros usuarios y descubrir contenido interesante. Esto convierte la app en una comunidad activa, donde los usuarios participan y comparten experiencias.",
-    
     "title_content": "📚 Contenido Organizado",
     "text_content": "Acceso a capítulos y arcos de manera estructurada y cronológica. Desbloqueo gradual de contenido a medida que avanzan. Incentivos constantes para consumir más contenido y coleccionar recompensas.",
-    
     "title_gamification": "🏆 Gamificación y Rankings",
     "text_gamification": "El progreso se recompensa con un sistema de experiencia y niveles: Cada capítulo visto genera puntos de experiencia. Los usuarios ascienden a niveles jerárquicos según su avance. Recompensas coleccionables que motivan a continuar viendo contenido. Rankings globales que fomentan la competitividad y la interacción entre usuarios.",
-    
     "title_mobile": "📱 Mobile-First Experience",
     "text_mobile": "Diseñada para ser totalmente accesible desde dispositivos móviles, garantizando: Navegación fluida y rápida. Experiencia optimizada para cualquier tamaño de pantalla. Alta retención de usuarios gracias a su diseño intuitivo."
+  },
+  "faq": {
+    "title_what_is": "¿Qué es esta app de One Piece?",
+    "text_what_is": "Es una red social inspirada en Twitter, pero ambientada en el mundo de One Piece. Puedes seguir los capítulos, desbloquear personajes, barcos e ítems, y gestionar todo desde tu propio Dashboard.",
+    "title_how_create_profile": "¿Cómo creo mi perfil?",
+    "text_how_create_profile": "Desde el Dashboard, ve a la sección 'Perfil'. Allí puedes personalizar tu avatar, nombre de usuario y biografía pirata.",
+    "title_how_unlock_characters": "¿Cómo desbloqueo personajes?",
+    "text_how_unlock_characters": "Los personajes se desbloquean siguiendo capítulos de la serie o completando retos dentro de la app. Cada avance en la historia te dará acceso a nuevos nakamas.",
+    "title_what_are_items": "¿Qué son los ítems?",
+    "text_what_are_items": "Los ítems son objetos coleccionables inspirados en el mundo de One Piece, como Frutas del Diablo o tesoros. Te permiten personalizar tu experiencia y mejorar tu perfil.",
+    "title_can_interact_users": "¿Puedo interactuar con otros usuarios?",
+    "text_can_interact_users": "¡Sí! Puedes seguir a otros piratas, dar 'me gusta' a sus publicaciones, comentar y compartir teorías sobre One Piece.",
+    "title_what_is_dashboard": "¿Qué es el Dashboard?",
+    "text_what_is_dashboard": "El Dashboard es tu base personal. Desde allí manejas tu perfil, ves tus personajes desbloqueados, barcos, ítems, cartas de la serie y controlas tu progreso.",
+    "title_what_are_series_cards": "¿Qué son las cartas de la serie?",
+    "text_what_are_series_cards": "Son representaciones coleccionables de capítulos, escenas y personajes. Al avanzar en la historia, desbloqueas nuevas cartas para tu colección.",
+    "title_need_to_pay": "¿Necesito pagar para usar la app?",
+    "text_need_to_pay": "La app es gratuita. Algunas funciones adicionales o coleccionables premium pueden estar disponibles como compras opcionales.",
+    "title_how_report_bug": "¿Cómo reporto un problema o bug?",
+    "text_how_report_bug": "En el Dashboard encontrarás la sección 'Ayuda'. Desde ahí puedes reportar errores o sugerir mejoras.",
+    "title_use_without_seen": "¿Puedo usar la app sin haber visto One Piece?",
+    "text_use_without_seen": "¡Claro! Aunque está diseñada para fans, también puede servirte como una guía divertida para seguir la serie y descubrir sus personajes poco a poco.",
+    "title_special_events": "¿Habrá eventos especiales?",
+    "text_special_events": "Sí. Periódicamente lanzamos eventos temáticos (como el aniversario de One Piece o sagas destacadas) que permiten desbloquear contenido único."
   }
 }

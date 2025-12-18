@@ -1,8 +1,6 @@
-import { languages } from "@/helpers/languages";
-
-export const contactFormFields = (form, lang) => [
+export const contactFormFields = (form, t) => [
     {
-        label: languages[lang].login.registerName + ":",
+        label: t("login.register_name") + ":",
         type: "text",
         name: "name",
         id: "name",
@@ -10,7 +8,7 @@ export const contactFormFields = (form, lang) => [
         value: form.name,
     },
     {
-        label: languages[lang].login.registerSurname + ":",
+        label: t("login.register_surname") + ":",
         type: "text",
         name: "surname",
         id: "surname",
@@ -18,7 +16,7 @@ export const contactFormFields = (form, lang) => [
         value: form.surname,
     },
     {
-        label: languages[lang].login.registerEmail + ":",
+        label: t("login.register_email") + ":",
         type: "email",
         name: "email",
         id: "email",
@@ -26,7 +24,7 @@ export const contactFormFields = (form, lang) => [
         value: form.email,
     },
     {
-        label: languages[lang].contact.subject,
+        label: t("contact.subject"),
         type: "text",
         name: "subject",
         id: "subject",
