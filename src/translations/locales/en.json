@@ -212,7 +212,10 @@
     "private_content": "This content is marked as private",
     "private_likes": "Your liked posts are marked as private",
     "private_bookmarks": "Your bookmarked posts are marked as private",
-    "private_comments": "Your comments are marked as private"
+    "private_comments": "Your comments are marked as private",
+    "image_set": "Established image",
+    "no_info": "No information",
+    "empty_placeholder": "Add value"
   },
   "posts": {
     "no_posts": "There isn't any post yet",
@@ -419,5 +422,8 @@
     "text_use_without_seen": "Of course! Although it is designed for fans, it can also serve as a fun guide to follow the series and discover its characters gradually.",
     "title_special_events": "Will there be special events?",
     "text_special_events": "Yes. Periodically we launch themed events (like the One Piece anniversary or highlighted sagas) that allow you to unlock unique content."
+  },
+  "error_boundary": {
+    "occurred": "An error has occurred in this section."
   }
 }

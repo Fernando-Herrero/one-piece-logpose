@@ -1,11 +1,9 @@
-import { languages } from "@/helpers/languages";
-
-export const getProfileFields = (user, lang, coverImg) => [
+export const getProfileFields = (user, t, coverImg) => [
     {
         value: user?.displayName,
         fieldName: "displayName",
-        placeholder: languages[lang].profile.inputDIsplayname,
-        emptyText: languages[lang].profile.emptyDisplayName,
+        placeholder: t("profile.input_displayname"),
+        emptyText: t("profile.empty_displayname"),
     },
     {
         value: user?.username ? `@${user.username}` : "",
@@ -15,19 +13,19 @@ export const getProfileFields = (user, lang, coverImg) => [
     {
         value: user?.bio,
         fieldName: "bio",
-        placeholder: languages[lang].profile.inputBio,
-        emptyText: languages[lang].profile.emptyBio,
+        placeholder: t("profile.input_bio"),
+        emptyText: t("profile.empty_bio"),
     },
     {
         value: user?.coverImage,
         fieldName: "coverImage",
-        placeholder: languages[lang].profile.inputCoverImage,
-        emptyText: languages[lang].profile.emptyCoverImage,
+        placeholder: t("profile.input_cover_image"),
+        emptyText: t("profile.empty_cover_image"),
         changeCoverImg: coverImg,
     },
 ];
 
-export const getExtendedProfileFields = (user, lang) => [
+export const getExtendedProfileFields = (user, t) => [
     {
         label: "👤",
         value: `${user?.name ?? ""} ${user?.lastName ?? ""}`,
@@ -41,23 +39,23 @@ export const getExtendedProfileFields = (user, lang) => [
         label: "📧",
         value: user?.email,
         fieldName: "email",
-        emptyText: languages[lang].profile.emptyEmail,
+        emptyText: t("profile.empty_email"),
         readOnly: true,
     },
     {
         label: "🏠",
         value: user?.address,
         fieldName: "address",
-        placeholder: languages[lang].profile.inputAddress,
-        emptyText: languages[lang].profile.inputAddress,
+        placeholder: t("profile.input_address"),
+        emptyText: t("profile.input_address"),
     },
     {
         label: "📞",
         value: user?.phoneNumber,
         fieldName: "phoneNumber",
         type: "tel",
-        placeholder: languages[lang].profile.phone,
-        emptyText: languages[lang].profile.phone,
+        placeholder: t("profile.phone"),
+        emptyText: t("profile.phone"),
     },
     {
         label: `🛡️ Role:`,
@@ -67,7 +65,7 @@ export const getExtendedProfileFields = (user, lang) => [
         readOnly: true,
     },
     {
-        label: `📅 ${languages[lang].profile.createdAt}:`,
+        label: `📅 ${t("profile.created_at")}:`,
         value: user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : null,
         fieldName: "createdAt",
         emptyText: "",

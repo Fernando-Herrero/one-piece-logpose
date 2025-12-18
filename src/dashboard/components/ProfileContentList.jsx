@@ -1,19 +1,13 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { PostCard } from "@/dashboard/components/community/PostCard";
 import { SkeletonCard } from "@/dashboard/components/Skeleton";
-import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useFetchData } from "@/hooks/useFecthData";
-import { useContext, useMemo } from "react";
+import { useTranslate } from "@/translations/useTranslate";
+import { useMemo } from "react";
 
-export const ProfileContentList = ({
-    fetchFunction,
-    emptyMessageKey,
-    basePath = "/dashboard/profile",
-    isMyProfile,
-}) => {
+export const ProfileContentList = ({ fetchFunction, emptyMessageKey, basePath = "/dashboard/profile" }) => {
     const { data, loading, error } = useFetchData(fetchFunction);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { isMobileXs, isMobile } = useDevice();
 
     const skeletonNum = isMobileXs || isMobile ? 1 : 2;
@@ -29,9 +23,7 @@ export const ProfileContentList = ({
     );
 
     if (!data) {
-        return (
-            <p className="text-linePrimary text-center pt-10">{languages[lang].profile[emptyMessageKey]}</p>
-        );
+        return <p className="text-linePrimary text-center pt-10">{t(`profile${emptyMessageKey}`)}</p>;
     }
 
     if (error) {
@@ -51,9 +43,7 @@ export const ProfileContentList = ({
         return (
             <div className="flex gap-1 overflow-y-auto snap-y snap-mandatory scroll-smooth p-1 w-full custom-scrollbar">
                 <div className="w-full flex justify-center">
-                    <p className="text-linePrimary pt-10 text-center">
-                        {languages[lang].profile.emptyMessagePosts}
-                    </p>
+                    <p className="text-linePrimary pt-10 text-center">{t("profile.empty_message_posts")}</p>
                 </div>
             </div>
         );

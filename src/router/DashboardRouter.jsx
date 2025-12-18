@@ -11,6 +11,7 @@ export const DashboardRouter = ({ isOpen, modalData, t }) => {
         <div className="min-h-screen overflow-y-auto">
             <main>
                 <ErrorBoundary
+                    t={t}
                     fallback={
                         <PageError
                             title={t("pageError.dashboard.title")}

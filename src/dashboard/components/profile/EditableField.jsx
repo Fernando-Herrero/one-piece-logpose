@@ -1,10 +1,9 @@
 import cross from "@/assets/icons/cross-button-icon.svg";
 import notVerified from "@/assets/icons/not-verified-icon.svg";
 import verified from "@/assets/icons/verified-icon.svg";
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { memo, useContext, useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 
 export const EditableField = memo(
     ({
@@ -12,8 +11,8 @@ export const EditableField = memo(
         label,
         value,
         fieldName,
-        placeholder = "Agregar valor",
-        emptyText = "Sin información",
+        placeholder,
+        emptyText,
         type = "text",
         readOnly = false,
         isEditing,
@@ -26,7 +25,7 @@ export const EditableField = memo(
         cancelEditing,
         changeCoverImg,
     }) => {
-        const { lang } = useContext(LanguagesContext);
+        const { t } = useTranslate();
         const isCurrentlyEditing = isEditing && editingField === fieldName;
         const ref = useRef(null);
 
@@ -57,19 +56,19 @@ export const EditableField = memo(
 
         const getDisplayValue = () => {
             if (fieldName === "coverImage" && changeCoverImg) {
-                return <span className="italic text-muted">{languages[lang].profile.changeCoverImg}</span>;
+                return <span className="italic text-muted">{t("profile.change_cover_img")}</span>;
             }
             if (fieldName === "coverImage" && value) {
-                return <span className="italic text-muted">Imagen establecida</span>;
+                return <span className="italic text-muted">{t("profile.image_set")}</span>;
             }
             return value;
         };
 
         const getEmptyText = () => {
             if (fieldName === "coverImage") {
-                return !value && changeCoverImg ? languages[lang].profile.changeCoverImg : "";
+                return !value && changeCoverImg ? t("profile.change_cover_img") : "";
             }
-            return emptyText;
+            return emptyText || t("profile.no_info");
         };
 
         const getValueStyles = () =>
@@ -88,7 +87,7 @@ export const EditableField = memo(
                             onChange={(event) => setField(event.target.value)}
                             onKeyDown={handleKeyDown}
                             className="px-1 py-0.5 rounded-xl text-xs no-focus text-muted sm:text-sm"
-                            placeholder={placeholder}
+                            placeholder={placeholder || t("profile.empty_placeholder")}
                             autoFocus
                         />
                         <button
@@ -96,7 +95,7 @@ export const EditableField = memo(
                             onClick={handleSave}
                             type="button"
                         >
-                            <span className="text-primary">{languages[lang].profile.saveButton}</span>
+                            <span className="text-primary">{t("profile.save_button")}</span>
                         </button>
                         <button onClick={cancelEditing} className="cursor-pointer transition hover:scale-110">
                             <img className="w-3" src={cross} alt="Cross icon" />

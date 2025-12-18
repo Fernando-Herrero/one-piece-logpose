@@ -1,4 +1,3 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { MyBookmarkedPosts } from "@/dashboard/components/MyBookmarkedPosts";
 import { MyCommentedPosts } from "@/dashboard/components/MyCommentedPosts";
 import { MyLikedPosts } from "@/dashboard/components/MyLikedPosts";
@@ -6,24 +5,25 @@ import { MyPosts } from "@/dashboard/components/MyPosts";
 import { tabsContent } from "@/dashboard/data/contentProfileTabs";
 import { getPrivacyMessageContentProfile } from "@/dashboard/data/getPrivacyMessageContentPorfile";
 import { useDevice } from "@/hooks/useDevice";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 export const ContentProfile = ({ context = "myProfile", userId, basePath, userPrivacy }) => {
     const [activeTab, setActiveTab] = useState("posts");
     const { isMobileXs } = useDevice();
     const isMyProfile = context === "myProfile";
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { showBookmarked, showComments, showLikes, showPosts } = userPrivacy;
 
-    const tabs = tabsContent(lang, showPosts, showLikes, showBookmarked, showComments);
+    const tabs = tabsContent(t, showPosts, showLikes, showBookmarked, showComments);
     const privacyMessage = getPrivacyMessageContentProfile(
         showPosts,
         showLikes,
         showBookmarked,
         showComments,
         activeTab,
-        lang
+        t
     );
 
     return (

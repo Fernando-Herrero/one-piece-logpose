@@ -1,11 +1,10 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { useUser } from "@/core/user/useUser";
 import { SkeletonText } from "@/dashboard/components/Skeleton";
-import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const UserStats = ({ context = "myProfile", userId, className }) => {
     const [stats, setStats] = useState([]);
@@ -13,7 +12,7 @@ export const UserStats = ({ context = "myProfile", userId, className }) => {
     const [error, setError] = useState(null);
     const { getUserStats } = useAuth();
     const { getStatsUser } = useUser();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { isMobile, isTablet } = useDevice();
 
     const statsUser = useMemo(
@@ -45,17 +44,17 @@ export const UserStats = ({ context = "myProfile", userId, className }) => {
 
     const statsItems = useMemo(
         () => [
-            { label: languages[lang].profile.myPosts, value: myPosts },
-            { label: languages[lang].profile.likedPosts, value: likedPosts },
-            { label: languages[lang].profile.bookmarkedPosts, value: bookmarkedPosts },
-            { label: languages[lang].profile.commentedPosts, value: commentedPosts },
-            { label: languages[lang].profile.totalComments, value: totalComments },
+            { label: t("profile.my_posts"), value: myPosts },
+            { label: t("profile.liked_posts"), value: likedPosts },
+            { label: t("profile.bookmarked_posts"), value: bookmarkedPosts },
+            { label: t("profile.commented_posts"), value: commentedPosts },
+            { label: t("profile.total_comments"), value: totalComments },
         ],
-        [myPosts, likedPosts, bookmarkedPosts, commentedPosts, totalComments, lang]
+        [myPosts, likedPosts, bookmarkedPosts, commentedPosts, totalComments, t]
     );
 
     if (stats?.length === 0 && !loading)
-        return <p className="text-linePrimary text-center p-10">{languages[lang].profile.noStats}</p>;
+        return <p className="text-linePrimary text-center p-10">{t("profile.no_stats")}</p>;
 
     if (error) return <p className="text-linePrimary text-center p-10">{error}</p>;
 
@@ -74,7 +73,7 @@ export const UserStats = ({ context = "myProfile", userId, className }) => {
                     )}
                 >
                     <h5 className="font-bold text-lg text-primary underline sm:text-xl">
-                        {languages[lang].profile.myStats}
+                        {t("profile.my_stats")}
                     </h5>
                     <div className="p-1 flex flex-col gap-1 w-full rounded-xl text-sm">
                         {statsItems.map((stat, index) => (

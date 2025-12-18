@@ -212,7 +212,10 @@
     "private_content": "Este contenido está marcado como privado",
     "private_likes": "Tus likes están marcados como privados",
     "private_bookmarks": "Tus favoritos están marcados como privados",
-    "private_comments": "Tus comentarios están marcados como privados"
+    "private_comments": "Tus comentarios están marcados como privados",
+    "image_set": "Imagen establecida",
+    "no_info": "Sin información",
+    "empty_placeholder": "Agregar valor"
   },
   "posts": {
     "no_posts": "No hay ningún post todavía",
@@ -419,5 +422,8 @@
     "text_use_without_seen": "¡Claro! Aunque está diseñada para fans, también puede servirte como una guía divertida para seguir la serie y descubrir sus personajes poco a poco.",
     "title_special_events": "¿Habrá eventos especiales?",
     "text_special_events": "Sí. Periódicamente lanzamos eventos temáticos (como el aniversario de One Piece o sagas destacadas) que permiten desbloquear contenido único."
+  },
+  "error_boundary": {
+    "occurred": "Ha ocurrido un error en esta sección."
   }
 }

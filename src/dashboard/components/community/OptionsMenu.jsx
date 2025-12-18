@@ -6,20 +6,19 @@ import trash from "@/assets/icons/trash-icon.svg";
 import viewPost from "@/assets/icons/view-post-icon.svg";
 import { DropDown } from "@/components/Dropdown";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { usePosts } from "@/core/posts/usePosts";
 import { useUser } from "@/core/user/useUser";
 import { ItemOptionsMenu } from "@/dashboard/components/community/ItemOptionsMenu";
-import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
+import { useTranslate } from "@/translations/useTranslate";
 import { memo, useCallback, useContext, useMemo } from "react";
 
 export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/community" }) => {
     const { user, isAdmin } = useContext(AuthContext);
     const [isOpen, toggleMenu, closeMenu] = useToggle();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { deletePost } = usePosts();
     const { followUser, unfollowUser } = useUser();
     const { goTo } = useGoTo();
@@ -57,7 +56,7 @@ export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/comm
                         {!amIUser && (
                             <ItemOptionsMenu
                                 onClick={() => goTo(`/dashboard/userProfile?userId=${userId?.id}`)}
-                                content={languages[lang].posts.viewProfile}
+                                content={t("posts.view_profile")}
                                 icon={profileIcon}
                             />
                         )}
@@ -65,7 +64,7 @@ export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/comm
                         {(amIUser || isAdmin) && (
                             <ItemOptionsMenu
                                 onClick={handleDelete}
-                                content={languages[lang].posts.deletePost}
+                                content={t("posts.delete_post")}
                                 icon={trash}
                             />
                         )}
@@ -74,13 +73,13 @@ export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/comm
                             (alreadyFollow ? (
                                 <ItemOptionsMenu
                                     onClick={handleUnfollow}
-                                    content={languages[lang].posts.unfollow}
+                                    content={t("posts.unfollow")}
                                     icon={minus}
                                 />
                             ) : (
                                 <ItemOptionsMenu
                                     onClick={handleFollow}
-                                    content={languages[lang].posts.follow}
+                                    content={t("posts.follow")}
                                     icon={plus}
                                 />
                             ))}
@@ -91,7 +90,7 @@ export const OptionsMenu = memo(({ id, userId, view, basePath = "/dashboard/comm
                                     toggleMenu();
                                     goTo(buildPostPageUrl());
                                 }}
-                                content={languages[lang].posts.viewPost}
+                                content={t("posts.view_post")}
                                 icon={viewPost}
                                 view={view}
                             />

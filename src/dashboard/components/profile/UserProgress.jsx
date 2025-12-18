@@ -1,25 +1,24 @@
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { SagaContext } from "@/context/SagaContext";
 import { UserBarProgress } from "@/dashboard/components/UserBarProgress";
-import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
 import { useContext, useMemo } from "react";
 
 export const UserProgress = () => {
     const { user, loading } = useContext(AuthContext);
     const { saga } = useContext(SagaContext);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { isMobile, isTablet } = useDevice();
 
     const items = useMemo(
         () => [
-            { title: languages[lang].sagaData.saga, value: saga?.saga },
-            { title: languages[lang].sagaData.arc, value: saga?.arc },
-            { title: languages[lang].sagaData.episode, value: saga?.episode },
+            { title: t("saga_data.saga"), value: saga?.saga },
+            { title: t("saga_data.arc"), value: saga?.arc },
+            { title: t("saga_data.episode"), value: saga?.episode },
         ],
-        [lang, saga]
+        [t, saga]
     );
 
     return (
@@ -50,9 +49,7 @@ export const UserProgress = () => {
                     <div className="flex flex-col text-sm sm:text-base">
                         <UserBarProgress experience={user?.experience} className="h-4" />
                         <div className="flex gap-1">
-                            <p className="text-primary font-semibold">
-                                {languages[lang].sagaData.experience}:
-                            </p>
+                            <p className="text-primary font-semibold">{t("saga_data.experience")}:</p>
                             <span className="text-gradient font-normal">{user?.experience}</span>
                         </div>
                     </div>

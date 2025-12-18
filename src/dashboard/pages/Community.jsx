@@ -22,6 +22,7 @@ const Community = () => {
                 <img className="w-8 h-8" src={plusIcon} alt="Plus icon" />
             </button>
             <ErrorBoundary
+                t={t}
                 fallback={
                     <PageError
                         title={t("pageError.users_list.title")}

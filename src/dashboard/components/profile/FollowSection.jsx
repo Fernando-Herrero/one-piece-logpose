@@ -1,13 +1,12 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { UsersContext } from "@/context/UsersContext";
 import { FollowCard } from "@/dashboard/components/profile/FollowCard";
-import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
+import { useTranslate } from "@/translations/useTranslate";
 import { memo, useContext, useMemo } from "react";
 
 export const FollowSection = memo(({ user, className = "", basePath = "/dashboard/userProfile" }) => {
     const { users } = useContext(UsersContext);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { goTo } = useGoTo();
 
     const userId = user._id ? user._id : user.id;
@@ -34,20 +33,20 @@ export const FollowSection = memo(({ user, className = "", basePath = "/dashboar
     return (
         <div className={`flex flex-col gap-1 sm:flex-1 ${className}`}>
             <FollowCard
-                title={languages[lang].profile.followers}
+                title={t("profile.followers")}
                 content={validFollowers.length}
                 onClick={() =>
                     goTo(`${basePath}/followers?userId=${userId}&from=${encodeURIComponent(finalBasePath)}`)
                 }
-                noFollow={languages[lang].profile.notFollowersYet}
+                noFollow={t("profile.not_followers_yet")}
             />
             <FollowCard
-                title={languages[lang].profile.following}
+                title={t("profile.following")}
                 content={validFollowing.length}
                 onClick={() =>
                     goTo(`${basePath}/followings?userId=${userId}&from=${encodeURIComponent(finalBasePath)}`)
                 }
-                noFollow={languages[lang].profile.notFollowingYet}
+                noFollow={t("profile.not_following_yet")}
             />
         </div>
     );

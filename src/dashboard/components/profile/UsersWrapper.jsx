@@ -2,14 +2,13 @@ import { ToggleButton } from "@/components/ToggleButton";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { UsersContext } from "@/context/UsersContext";
 import { UsersListContent } from "@/dashboard/components/UsersListContent";
-import { languages } from "@/helpers/languages";
 import { useToggle } from "@/hooks/useToggle";
 import classNames from "classnames";
 import { memo, useContext, useState } from "react";
 
 export const UsersWrapper = memo(() => {
     const { users, loading, error } = useContext(UsersContext);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useContext(LanguagesContext);
     const [isOpen, toggleBox] = useToggle();
     const [headerExpanded, setHeaderExpanded] = useState(false);
 
@@ -44,7 +43,7 @@ export const UsersWrapper = memo(() => {
                 )}
             >
                 <div onClick={handleOpen} className="flex items-center gap-4 justify-between w-full">
-                    <p className="whitespace-nowrap">{languages[lang].profile.viewUsers}</p>
+                    <p className="whitespace-nowrap">{t("profile.view_users")}</p>
                     <ToggleButton isOpen={isOpen} />
                 </div>
             </header>
@@ -63,14 +62,12 @@ export const UsersWrapper = memo(() => {
                         {error ? (
                             <p className="text-linePrimary text-center p-4">{error}</p>
                         ) : users?.length === 0 && !loading ? (
-                            <p className="text-linePrimary text-center p-4">
-                                {languages[lang].profile.noUsers}
-                            </p>
+                            <p className="text-linePrimary text-center p-4">{t("profile.no_users")}</p>
                         ) : (
                             <UsersListContent
                                 users={users}
                                 loading={loading}
-                                createdAtLabel={languages[lang].profile.createdAt}
+                                createdAtLabel={t("profile.created_at")}
                                 skeletonCount={8}
                                 limit={20}
                             />

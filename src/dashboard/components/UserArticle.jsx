@@ -2,13 +2,12 @@ import cross from "@/assets/icons/cross-close.svg";
 import notVerifiedIcon from "@/assets/icons/not-verified-icon.svg";
 import verifiedIcon from "@/assets/icons/verified-icon.svg";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useUser } from "@/core/user/useUser";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { UserBarProgress } from "@/dashboard/components/UserBarProgress";
-import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
+import { useTranslate } from "@/translations/useTranslate";
 import { memo, useCallback, useContext } from "react";
 
 export const UserArticle = memo(
@@ -28,7 +27,7 @@ export const UserArticle = memo(
         const { isAdmin } = useContext(AuthContext);
         const { deleteUser } = useUser();
         const { isMobileXs, isMobile, isTablet, isTabletXl, isDesktop } = useDevice();
-        const { lang } = useContext(LanguagesContext);
+        const { t } = useTranslate();
         const { showModal, hideModal } = useContext(ModalContext);
 
         const avatarSizes = useCallback(() => {
@@ -40,13 +39,13 @@ export const UserArticle = memo(
         const handleDeleteUser = useCallback(
             (userId) => {
                 showModal({
-                    message: languages[lang].modal.deleteUserMessage,
+                    message: t("modal.delete_user_message"),
                     onConfirm: async () => {
                         await deleteUser(userId);
                         hideModal();
                     },
                     onCancel: hideModal,
-                    confirmText: languages[lang].modal.confirmLogOut,
+                    confirmText: t("modal.confirm_logout"),
                 });
             },
             [lang, deleteUser, hideModal, showModal]
@@ -98,7 +97,7 @@ export const UserArticle = memo(
                             <img className="w-2 h-2" src={cross} alt="Cross icon" />
                         </button>
                         <p className="absolute -top-12 right-0 bg-sunny text-primary px-2 py-1 text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-                            {languages[lang].profile.deleteUser}
+                            {t("profile.delete_user")}
                         </p>
                     </div>
                 )}

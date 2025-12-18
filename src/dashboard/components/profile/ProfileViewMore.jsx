@@ -1,23 +1,22 @@
 import { ToggleButton } from "@/components/ToggleButton";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { EditableField } from "@/dashboard/components/profile/EditableField";
 import { getExtendedProfileFields } from "@/dashboard/data/ProfileData/profileFields";
-import { languages } from "@/helpers/languages";
 import { useToggle } from "@/hooks/useToggle";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { memo, useContext, useMemo } from "react";
+import { memo, useMemo } from "react";
 
 export const ProfileViewMore = memo(({ user, editorProps }) => {
     const [isOpen, toggleBox] = useToggle();
-    const { lang } = useContext(LanguagesContext);
-    const profileFields = useMemo(() => getExtendedProfileFields(user, lang), [user, lang]);
+    const { t } = useTranslate();
+    const profileFields = useMemo(() => getExtendedProfileFields(user, t), [user, t]);
 
     return (
         <section className="min-w-fit rounded-xl border border-white py-1 px-2 transition">
             <header className="flex items-center justify-between cursor-pointer" onClick={toggleBox}>
                 <p className="text-primary font-semibold sm:text-base">
                     {" "}
-                    {isOpen ? languages[lang].profile.viewLess : languages[lang].profile.viewMore}
+                    {isOpen ? t("profile.view_less") : t("profile.view_more")}
                 </p>
                 <ToggleButton isOpen={isOpen} />
             </header>

@@ -4,15 +4,13 @@ import backgroundImg700 from "@/assets/images/backgrounds/not-found-bg/backgroun
 import logo from "@/assets/images/one-piece-logo.webp";
 import crewImg from "@/assets/images/sombrero-first-crew.png";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
 import { Container } from "@/landing/components/ui/Container";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
-    console.log("🔁 Render NotFoundPage");
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { user } = useContext(AuthContext);
 
     const redirectPath = user ? "/dashboard" : "/home";
@@ -36,7 +34,7 @@ const NotFoundPage = () => {
                 <div className="flex flex-col items-center relative text-white">
                     <img src={logo} alt="One Piece logo" />
                     <h1 className="text-5xl md:text-title">404 Page Not Found</h1>
-                    <p className="text-lg md:text-2xl">{languages[lang].errorMessage.notFoundMessage}</p>
+                    <p className="text-lg md:text-2xl">{t("error_message.not_found_message")}</p>
                 </div>
 
                 <div className="flex flex-col items-center gap-4 relative">
@@ -47,7 +45,7 @@ const NotFoundPage = () => {
                         className="text-xl text-link underline rounded p-1 bg-white/30 hover:bg-white/50"
                         to={redirectPath}
                     >
-                        {languages[lang].notFoundPage.inicio}
+                        {t("not_found_page.inicio")}
                     </Link>
                 </div>
             </Container>

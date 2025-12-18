@@ -1,6 +1,5 @@
 import { Button } from "@/components/Button";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { EditableField } from "@/dashboard/components/profile/EditableField";
@@ -8,9 +7,9 @@ import { FollowSection } from "@/dashboard/components/profile/FollowSection";
 import { ProfileHeader } from "@/dashboard/components/profile/ProfileHeader";
 import { ProfileViewMore } from "@/dashboard/components/profile/ProfileViewMore";
 import { getProfileFields } from "@/dashboard/data/ProfileData/profileFields";
-import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { useProfileEditor } from "@/hooks/useProfileEditor";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
 import { memo, useContext, useMemo, useState } from "react";
 
@@ -23,28 +22,28 @@ export const ProfileArticle = memo(() => {
     const { showModal, hideModal } = useContext(ModalContext);
 
     const editorProps = useProfileEditor(user, updatedProfile, setCoverImg);
-    const { lang } = useContext(LanguagesContext);
-    const basicFields = useMemo(() => getProfileFields(user, lang, coverImg), [user, lang, coverImg]);
+    const { t } = useTranslate();
+    const basicFields = useMemo(() => getProfileFields(user, t, coverImg), [user, t, coverImg]);
 
     const handleDeleteAccount = () => {
         showModal({
-            message: languages[lang].modal.deleteAccount,
+            message: t("modal.delete_account"),
             onConfirm: async () => {
                 await deleteAccount(userId);
                 hideModal();
             },
             onCancel: hideModal,
-            confirmText: languages[lang].modal.confirmLogOut,
+            confirmText: t("modal.confirm_logout"),
         });
     };
 
-    if (!user) return <p className="text-linePrimary text-center pt-10">{languages[lang].profile.noUser}</p>;
+    if (!user) return <p className="text-linePrimary text-center pt-10">{t("profile.no_user")}</p>;
     if (loading)
         return (
             <div className="flex flex-col items-center justify-center min-h-screen gap-1">
                 <Spinner />{" "}
                 <p className="text-gradient dark:text-black">
-                    {languages[lang].profile.loadingProfile}
+                    {t("profile.loading_profile")}
                     <LoadingDots />
                 </p>
             </div>
@@ -85,7 +84,7 @@ export const ProfileArticle = memo(() => {
                     <FollowSection user={user} basePath="/dashboard/profile" />
 
                     <Button variant="danger" className="mb-4" onClick={handleDeleteAccount}>
-                        {languages[lang].profile.deleteAccount}
+                        {t("profile.delete_account")}
                     </Button>
                 </div>
             </div>

@@ -24,6 +24,7 @@ const Profile = () => {
                 <ContentProfile userPrivacy={userPrivacy} />
             </div>
             <ErrorBoundary
+                t={t}
                 fallback={
                     <PageError
                         title={t("pageError.users_list.title")}

@@ -2,7 +2,6 @@ import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { UsersContext } from "@/context/UsersContext";
 import { UsersListContent } from "@/dashboard/components/UsersListContent";
-import { languages } from "@/helpers/languages";
 import { useDevice } from "@/hooks/useDevice";
 import { memo, useContext, useMemo } from "react";
 
@@ -10,27 +9,27 @@ export const UsersList = memo(({ className }) => {
     const { users, loading, error } = useContext(UsersContext);
     const { isTabletXl, isDesktop } = useDevice();
     const { isAdmin } = useContext(AuthContext);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useContext(LanguagesContext);
 
     const itemsAdmin = useMemo(
         () => [
-            { title: languages[lang].profile.totalUsers, value: users.length },
+            { title: t("profile.total_users"), value: users.length },
             {
-                title: languages[lang].profile.usersOnline,
+                title: t("profile.users_online"),
                 value: users.filter((user) => user.isActive).length,
             },
             {
-                title: languages[lang].profile.usersOffline,
+                title: t("profile.users_offline"),
                 value: users.filter((user) => user.isActive === false).length,
             },
         ],
-        [users, lang]
+        [users, t]
     );
 
     if (!isTabletXl && !isDesktop) return null;
 
     if (users?.length === 0 && !loading)
-        return <p className="text-linePrimary text-center p-10">{languages[lang].profile.noUsers}</p>;
+        return <p className="text-linePrimary text-center p-10">{t("profile.no_users")}</p>;
 
     if (error) return <p className="text-linePrimary text-center p-10">{error}</p>;
 
@@ -55,7 +54,7 @@ export const UsersList = memo(({ className }) => {
             <UsersListContent
                 users={users}
                 loading={loading}
-                createdAtLabel={languages[lang].profile.createdAt}
+                createdAtLabel={t("profile.created_at")}
                 skeletonCount={8}
                 limit={20}
             />

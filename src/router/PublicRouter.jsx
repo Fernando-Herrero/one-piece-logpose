@@ -24,6 +24,7 @@ export const PublicRouter = ({ isOpen, modalData, t }) => {
             <Header />
             <main className="flex flex-col justify-center pt-24">
                 <ErrorBoundary
+                    t={t}
                     fallback={
                         <PageError
                             title={t("pageError.public.title")}

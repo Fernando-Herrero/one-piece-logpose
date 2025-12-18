@@ -29,7 +29,7 @@ export class ErrorBoundary extends React.Component {
                 return fallback;
             }
 
-            return <p>Ha ocurrido un error en esta sección.</p>;
+            return <p>{t ? t("error_boundary.occurred") : "Ha ocurrido un error en esta sección."}</p>;
         }
 
         return children;
