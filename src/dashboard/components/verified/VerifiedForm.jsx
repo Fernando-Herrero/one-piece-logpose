@@ -2,7 +2,6 @@ import { AuthContext } from "@/context/AuthContext";
 import { LanguagesContext } from "@/context/LanguagesContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { InputCard } from "@/dashboard/components/verified/InputCard";
-import { languages } from "@/helpers/languages";
 import { useCardValidation } from "@/hooks/useCardValidation";
 import classNames from "classnames";
 import { useContext, useState } from "react";
@@ -11,7 +10,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
     const { user } = useContext(AuthContext);
     const { updatedProfile } = useAuth();
     const { validateAll, validateField, isValid, errors } = useCardValidation();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useContext(LanguagesContext);
 
     const [form, setForm] = useState({
         name: "",
@@ -102,7 +101,7 @@ export const VerifiedForm = ({ onSuccess, onCancel }) => {
                     loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
                 )}
             >
-                {loading ? languages[lang].premium.loading : `${languages[lang].premium.payVerify} 💳`}
+                {loading ? t("premium.loading") : `${t("premium.pay_verify")} 💳`}
             </button>
         </div>
     );
