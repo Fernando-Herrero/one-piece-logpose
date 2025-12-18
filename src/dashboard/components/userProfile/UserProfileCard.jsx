@@ -11,7 +11,7 @@ import { useDevice } from "@/hooks/useDevice";
 import classNames from "classnames";
 import { useContext } from "react";
 
-export const UserProfileCard = ({ user, lang, verified, notVerified, languages }) => {
+export const UserProfileCard = ({ user, t, verified, notVerified, languages }) => {
     const { followUser, unfollowUser } = useUser();
     const { notification } = useNotifications();
     const { user: authUser } = useContext(AuthContext);
@@ -54,13 +54,7 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
         <section className="bg-gradient-card shadow-lg rounded-xl text-sm w-full mx-auto z-0 border border-white/30 card-content">
             <div className="flex flex-col items-center gap-2">
                 <UserCoverAndAvatar user={user} />
-                <UserBasicInfo
-                    user={user}
-                    lang={lang}
-                    verified={verified}
-                    notVerified={notVerified}
-                    languages={languages}
-                />
+                <UserBasicInfo user={user} t={t} verified={verified} notVerified={notVerified} />
             </div>
 
             <div
@@ -69,7 +63,7 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
                     "px-8": isTablet,
                 })}
             >
-                <UserAdditionalInfo user={user} lang={lang} languages={languages} />
+                <UserAdditionalInfo user={user} t={t} languages={languages} />
 
                 <div className="flex flex-col gap-2 justify-between sm:flex-2">
                     <FollowSection user={user} />
@@ -77,9 +71,7 @@ export const UserProfileCard = ({ user, lang, verified, notVerified, languages }
                         className="mb-4 mx-auto text-center sm:mb-8 lg:mb-4"
                         onClick={() => handleFollow(profileUserId)}
                     >
-                        {imAlreadyFollowing
-                            ? languages[lang].profile.unfollowUser
-                            : languages[lang].profile.followUser}
+                        {imAlreadyFollowing ? t("profile.unfollow_user") : t("profile.follow_user")}
                     </Button>
                 </div>
             </div>

@@ -1,9 +1,6 @@
 import { UserInfoItem } from "@/dashboard/components/userProfile/UserInforItem";
-import { useDevice } from "@/hooks/useDevice";
 
-export const UserAdditionalInfo = ({ user, lang, languages }) => {
-    const { isMobile, isTablet } = useDevice();
-
+export const UserAdditionalInfo = ({ user, t, languages }) => {
     return (
         <div className="flex flex-col gap-2 text-left w-full sm:flex-1">
             {user.phoneNumber && <UserInfoItem icon="📞" value={user.phoneNumber} />}
@@ -12,7 +9,7 @@ export const UserAdditionalInfo = ({ user, lang, languages }) => {
             <UserInfoItem icon="👤" label="Role" value={user.role} showLabel={true} />
             <UserInfoItem
                 icon="🌐"
-                label={languages[lang].profile.active}
+                label={t("profile.active")}
                 value={user.isActive ? "Online" : "Offline"}
                 showLabel={true}
             />

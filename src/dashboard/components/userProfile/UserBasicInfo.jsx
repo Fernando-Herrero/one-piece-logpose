@@ -1,4 +1,4 @@
-export const UserBasicInfo = ({ user, lang, verified, notVerified, languages }) => (
+export const UserBasicInfo = ({ user, t, verified, notVerified }) => (
     <div className="text-center p-2 sm:flex-1 sm:p-2">
         <p className="flex items-center justify-center gap-1 text-lg font-semibold text-primary sm:text-xl">
             {user.displayName ?? user.name}
@@ -11,7 +11,7 @@ export const UserBasicInfo = ({ user, lang, verified, notVerified, languages }) 
 
         <p className="text-xs text-muted mt-1 sm:text-sm">@{user.username}</p>
         <p className="text-xs text-muted sm:text-sm">
-            {languages[lang].profile.createdAt}: {new Date(user.createdAt).toLocaleDateString()}
+            {t("profile.created_at")}: {new Date(user.createdAt).toLocaleDateString()}
         </p>
 
         {user.bio ? (
