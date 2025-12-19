@@ -1,11 +1,10 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
-import { languages } from "@/helpers/languages";
 import { useGoTo } from "@/hooks/useGoTo";
-import { memo, useContext } from "react";
+import { useTranslate } from "@/translations/useTranslate";
+import { memo } from "react";
 
 export const ProfileHeader = memo(({ user, setCoverImg }) => {
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { goTo } = useGoTo();
 
     return (
@@ -13,7 +12,7 @@ export const ProfileHeader = memo(({ user, setCoverImg }) => {
             <button
                 type="button"
                 onClick={() => setCoverImg(true)}
-                aria-label={languages[lang].profile.setCoverImg}
+                aria-label={t("profile.set_cover_img")}
                 className="relative group max-h-52 w-full overflow-hidden border-none bg-transparent p-0 cursor-pointer"
             >
                 {user?.coverImage ? (
@@ -24,7 +23,7 @@ export const ProfileHeader = memo(({ user, setCoverImg }) => {
                     />
                 ) : (
                     <div className="flex items-center justify-center h-full pt-5 text-gray-500 italic">
-                        {languages[lang].profile.setCoverImg}
+                        {t("profile.set_cover_img")}
                     </div>
                 )}
             </button>
@@ -33,7 +32,7 @@ export const ProfileHeader = memo(({ user, setCoverImg }) => {
                 <button
                     type="button"
                     onClick={() => goTo("/dashboard/profile/avatar")}
-                    aria-label={languages[lang].profile.changeAvatar}
+                    aria-label={t("profile.change_avatar")}
                     className="relative group border-none bg-transparent p-0 cursor-pointer rounded-full"
                 >
                     <UserAvatar

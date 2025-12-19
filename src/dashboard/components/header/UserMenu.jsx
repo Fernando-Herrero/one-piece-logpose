@@ -1,16 +1,15 @@
 import { DropDown } from "@/components/Dropdown";
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useAuth } from "@/core/auth/useAuth";
 import { MenuItem } from "@/dashboard/components/header/MenuItem";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { UserBarProgress } from "@/dashboard/components/UserBarProgress";
-import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useDevice } from "@/hooks/useDevice";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
+import { useTranslate } from "@/translations/useTranslate";
 import { useContext } from "react";
 
 export const UserMenu = () => {
@@ -18,7 +17,7 @@ export const UserMenu = () => {
     const { logout } = useAuth();
     const { user } = useContext(AuthContext);
     const menuRef = useClickOutside(toggleMenu, isOpen);
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const { showModal, hideModal } = useContext(ModalContext);
     const { goTo } = useGoTo();
     const { isMobileXs, isMobile, isTablet } = useDevice();
@@ -26,13 +25,13 @@ export const UserMenu = () => {
     const handleLogOut = () => {
         closeMenu();
         showModal({
-            message: languages[lang].modal.logOutMessage,
+            message: t("modal.logout_message"),
             onConfirm: () => {
                 logout();
                 hideModal();
             },
             onCancel: hideModal,
-            confirmText: languages[lang].modal.confirmLogOut,
+            confirmText: t("modal.confirm_logout"),
         });
     };
 
@@ -63,18 +62,14 @@ export const UserMenu = () => {
                     <MenuItem
                         as="link"
                         to={"/dashboard/profile"}
-                        children={languages[lang].navbar.profile}
+                        children={t("navbar.profile")}
                         onClose={toggleMenu}
                     />
-                    <MenuItem
-                        onClick={handleLogOut}
-                        children={languages[lang].navbar.logout}
-                        onClose={toggleMenu}
-                    />
-                    <MenuItem as="a" children={languages[lang].navbar.help} onClose={toggleMenu} />
+                    <MenuItem onClick={handleLogOut} children={t("navbar.logout")} onClose={toggleMenu} />
+                    <MenuItem as="a" children={t("navbar.help")} onClose={toggleMenu} />
                     <MenuItem
                         onClick={() => goTo("/dashboard/settings")}
-                        children={languages[lang].navbar.settings}
+                        children={t("navbar.settings")}
                         onClose={toggleMenu}
                     />
                 </div>

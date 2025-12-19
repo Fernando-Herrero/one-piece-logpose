@@ -215,7 +215,9 @@
     "private_comments": "Your comments are marked as private",
     "image_set": "Established image",
     "no_info": "No information",
-    "empty_placeholder": "Add value"
+    "empty_placeholder": "Add value",
+    "posts": "Posts",
+    "role": "Role"
   },
   "posts": {
     "no_posts": "There isn't any post yet",

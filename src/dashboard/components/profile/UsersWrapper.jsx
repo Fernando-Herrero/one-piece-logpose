@@ -1,14 +1,14 @@
 import { ToggleButton } from "@/components/ToggleButton";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { UsersContext } from "@/context/UsersContext";
 import { UsersListContent } from "@/dashboard/components/UsersListContent";
 import { useToggle } from "@/hooks/useToggle";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
 import { memo, useContext, useState } from "react";
 
 export const UsersWrapper = memo(() => {
     const { users, loading, error } = useContext(UsersContext);
-    const { t } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const [isOpen, toggleBox] = useToggle();
     const [headerExpanded, setHeaderExpanded] = useState(false);
 

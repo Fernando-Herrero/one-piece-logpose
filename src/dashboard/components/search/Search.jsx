@@ -1,15 +1,14 @@
 import lens from "@/assets/icons/lens-icon.svg";
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useToggle } from "@/hooks/useToggle";
+import { useTranslate } from "@/translations/useTranslate";
 import classNames from "classnames";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 export const Search = () => {
     const [isOpen, toggleSearch, closeSearch] = useToggle();
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
     const [search, setSearch] = useState("");
     const { goTo } = useGoTo();
     const searchref = useClickOutside(toggleSearch, isOpen);
@@ -41,7 +40,7 @@ export const Search = () => {
     return (
         <div ref={searchref} className="flex items-center bg-sunny rounded-2xl px-2 py-1">
             <label className="flex items-center flex-1" htmlFor="search">
-                <span className="sr-only">{languages[lang].navbar.search}</span>
+                <span className="sr-only">{t("navbar.search")}</span>
                 <input
                     type="search"
                     name="search"
@@ -54,12 +53,12 @@ export const Search = () => {
                             "w-0 opacity-0 px-0": !isOpen,
                         }
                     )}
-                    placeholder={isOpen ? languages[lang].navbar.search : ""}
+                    placeholder={isOpen ? t("navbar.search") : ""}
                     onClick={handleInputClick}
                     onChange={(event) => setSearch(event.target.value)}
                     onKeyDown={handleKeyDown}
                     aria-expanded={isOpen}
-                    aria-label={languages[lang].navbar.search}
+                    aria-label={t("navbar.search")}
                 />
             </label>
             <button

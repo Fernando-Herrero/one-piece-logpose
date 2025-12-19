@@ -58,7 +58,7 @@ export const getExtendedProfileFields = (user, t) => [
         emptyText: t("profile.phone"),
     },
     {
-        label: `🛡️ Role:`,
+        label: `🛡️ ${t("profile.role")}:`,
         value: user?.role,
         fieldName: "role",
         emptyText: "",

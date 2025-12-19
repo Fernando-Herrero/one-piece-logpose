@@ -1,19 +1,18 @@
-import { LanguagesContext } from "@/context/LanguagesContext";
-import { languages } from "@/helpers/languages";
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { useTranslate } from "@/translations/useTranslate";
+import { createContext, useCallback, useMemo, useState } from "react";
 
 export const ModalContext = createContext(null);
 
 export const ModdalProvider = ({ children, onCancel }) => {
-    const { lang } = useContext(LanguagesContext);
+    const { t } = useTranslate();
 
     const [modalData, setModalData] = useState({
         isOpen: false,
         message: "",
         onConfirm: null,
         onCancel: null,
-        confirmText: languages[lang].modal.confirmText,
-        cancelText: languages[lang].modal.cancelText,
+        confirmText: t("modal.confirm_text"),
+        cancelText: t("modal.cancel_text"),
     });
 
     const showModal = useCallback(

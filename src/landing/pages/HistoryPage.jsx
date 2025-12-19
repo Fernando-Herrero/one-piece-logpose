@@ -57,7 +57,7 @@ const HistoryPage = () => {
                         ) : (
                             <p className="text-muted">{content}</p>
                         )}
-                        {subContent && (
+                        {subContent && Array.isArray(subContent) && (
                             <ul>
                                 {subContent.map((item, subIndex) => (
                                     <li

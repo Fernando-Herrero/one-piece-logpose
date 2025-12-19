@@ -1,4 +1,5 @@
 import { DropDown } from "@/components/Dropdown";
+import { local } from "@/helpers/storage";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { useToggle } from "@/hooks/useToggle";
 import { useTranslation } from "react-i18next";
@@ -17,6 +18,7 @@ export const LanguageSelector = ({ placement, align }) => {
 
     const handleLanguage = (language) => {
         i18n.changeLanguage(language);
+        local.save("lang", language);
         toggleMenu();
     };
 

@@ -11,7 +11,7 @@
     "register_surname": "姓",
     "register_surname_placeholder": "山田",
     "register_email": "メール",
-    "register_email_placeholder": "mail@gmail.com",
+    "register_email_placeholder": "メール@gmail.com",
     "register_lang": "言語",
     "register_select_lang": "言語を選択",
     "register_username_placeholder": "taro123",
@@ -215,7 +215,9 @@
     "private_comments": "あなたのコメントは非公開としてマークされています",
     "image_set": "確立されたイメージ",
     "no_info": "情報なし",
-    "empty_placeholder": "付加価値"
+    "empty_placeholder": "付加価値",
+    "posts": "投稿",
+    "role": "役割"
   },
   "posts": {
     "no_posts": "まだ投稿がありません",

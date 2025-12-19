@@ -48,7 +48,7 @@ export const UserArticle = memo(
                     confirmText: t("modal.confirm_logout"),
                 });
             },
-            [lang, deleteUser, hideModal, showModal]
+            [t, deleteUser, hideModal, showModal]
         );
 
         return (

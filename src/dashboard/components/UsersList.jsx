@@ -1,15 +1,15 @@
 import { AuthContext } from "@/context/AuthContext";
-import { LanguagesContext } from "@/context/LanguagesContext";
 import { UsersContext } from "@/context/UsersContext";
 import { UsersListContent } from "@/dashboard/components/UsersListContent";
 import { useDevice } from "@/hooks/useDevice";
+import { useTranslate } from "@/translations/useTranslate";
 import { memo, useContext, useMemo } from "react";
 
 export const UsersList = memo(({ className }) => {
     const { users, loading, error } = useContext(UsersContext);
     const { isTabletXl, isDesktop } = useDevice();
     const { isAdmin } = useContext(AuthContext);
-    const { t } = useContext(LanguagesContext);
+    const { t } = useTranslate();
 
     const itemsAdmin = useMemo(
         () => [

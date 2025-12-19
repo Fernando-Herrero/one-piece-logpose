@@ -8,7 +8,7 @@ import { useTranslate } from "@/translations/useTranslate";
 import { useMemo, useState } from "react";
 
 const CharactersPage = () => {
-    const { t } = useTranslate;
+    const { t } = useTranslate();
     const characters = useMemo(() => getCharacters(t), [t]);
     const [visibleChars, setVisibleChars] = useState(characters.slice(0, 5));
 
