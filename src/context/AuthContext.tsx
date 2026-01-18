@@ -1,14 +1,15 @@
 import { getProfileApi } from "@/core/auth/auth.api";
 import { getTokenFromLocalStorage, saveUserInLocalStorage } from "@/core/auth/auth.service";
 import { createContext, useEffect, useMemo, useState } from "react";
+import { type AuthContextProps, type AuthContextValue, type User } from "../types/auth.types";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext<AuthContextValue | null>(null);
 
-export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+export const AuthProvider = ({ children }: AuthContextProps) => {
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-
+    const [error, setError] = useState<string | null>(null);
+    console.log(user);
     const userPrivacy = user?.privacy;
     const isAdmin = user?.role === "admin";
     const isVerified = user?.verified;
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }) => {
             }
         } catch (error) {
             console.error("Error al obtener el usuario, no encontrado", error);
-            setError(error);
+            setError(error instanceof Error ? error.message : String(error));
         } finally {
             setLoading(false);
         }
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }) => {
         fetchProfile();
     }, []);
 
-    const contextValue = useMemo(
+    const contextValue: AuthContextValue = useMemo(
         () => ({
             user,
             setUser,
