@@ -1,6 +1,6 @@
-import { getProfileApi } from "@/core/auth/auth.api";
-import { getTokenFromLocalStorage, saveUserInLocalStorage } from "@/core/auth/auth.service";
 import { createContext, useEffect, useMemo, useState } from "react";
+import { getProfileApi } from "../core/auth/auth.api";
+import { getTokenFromLocalStorage, saveUserInLocalStorage } from "../core/auth/auth.service";
 import { type AuthContextProps, type AuthContextValue, type User } from "../types/auth.types";
 
 export const AuthContext = createContext<AuthContextValue | null>(null);

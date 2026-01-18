@@ -1,10 +1,10 @@
 import { PageSpinner } from "@/components/PageSpinner";
-import { AuthContext } from "@/context/AuthContext";
 import { ModalContext } from "@/context/ModalContext.jsx";
 import { DashboardRouter } from "@/router/DashboardRouter";
 import { PublicRouter } from "@/router/PublicRouter";
 import { useTranslate } from "@/translations/useTranslate";
 import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 export const App = () => {
     const { t } = useTranslate();
