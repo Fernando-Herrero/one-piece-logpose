@@ -34,7 +34,7 @@ export interface User {
     role: "admin" | "user";
     privacy: Privacy;
     bookings: string[];
-    followeers: string[];
+    followers: string[];
     following: string[];
     orders: string[];
     serieProgress: SerieProgress;
@@ -44,9 +44,9 @@ export type AuthContextValue = {
     user: User | null;
     loading: boolean;
     error: string | null;
-    isAdmin: boolean | undefined;
-    isVerified: boolean | undefined;
-    userPrivacy: Privacy | undefined;
+    isAdmin: boolean;
+    isVerified: boolean;
+    userPrivacy?: Privacy;
     clearError: () => void;
 };
 

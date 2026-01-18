@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
     console.log(user);
     const userPrivacy = user?.privacy;
     const isAdmin = user?.role === "admin";
-    const isVerified = user?.verified;
+    const isVerified = !!user?.verified;
 
     const fetchProfile = async () => {
         try {
