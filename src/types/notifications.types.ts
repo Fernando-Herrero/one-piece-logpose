@@ -15,7 +15,7 @@ export type NotificationsCountType = {
     notisCount: number;
     setNotisCount: React.Dispatch<React.SetStateAction<number>>;
     decrementCount: () => void;
-    fetchNotificationsCount: Promise<void>;
+    fetchNotificationsCount: () => Promise<void>;
 };
 
 export type NotificationType = "like" | "bookmark" | "comment";
@@ -39,7 +39,7 @@ export type NotificationUser = {
 };
 
 export type NotificationPost = {
-    id: string;
+    id?: string;
     _id?: string;
     text: string;
     images: string[];

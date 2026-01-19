@@ -1,4 +1,15 @@
-export const registerFields = (t, form) => [
+import type { RegisterForm } from "./INITIAL_REGISTER_FORM";
+
+export interface RegisterField {
+    label: string;
+    type: string;
+    name: keyof RegisterForm; // solo acepta los nombres del form
+    id: string;
+    placeholder: string;
+    value: string;
+}
+
+export const registerFields = (t: (key: string) => string, form: RegisterForm): RegisterField[] => [
     {
         label: "📝 " + t("login.register_name") + ":",
         type: "text",

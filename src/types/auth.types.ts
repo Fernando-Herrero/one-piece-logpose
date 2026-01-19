@@ -140,3 +140,19 @@ export interface PostResponse {
 }
 
 export type PostsResponse = PostResponse[];
+
+export type RegisterPayload = {
+    name: string;
+    username: string;
+    email: string;
+    password: string;
+    firstName?: string;
+    lastName: string;
+    role: "user" | "admin";
+    avatar: string;
+};
+
+export type LoginPayload = {
+    email: string;
+    password: string;
+};

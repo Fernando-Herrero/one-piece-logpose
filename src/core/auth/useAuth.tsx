@@ -1,10 +1,11 @@
-import { NotificationsContext } from "@/context/NotificationsContext";
-import { NotificationsCountContext } from "@/context/NotificationsCountContext";
-import { local } from "@/helpers/storage";
-import { useAvatar } from "@/hooks/useAvatar";
-import { useGoTo } from "@/hooks/useGoTo";
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
+import { local } from "../../helpers/storage";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useAvatar } from "../../hooks/useAvatar";
+import { useGoTo } from "../../hooks/useGoTo";
+import { useNotificationsCountontext } from "../../hooks/useNotificationCountContext";
+import { useNotificationsContext } from "../../hooks/useNotificationsContext";
+import type { LoginPayload, RegisterPayload, User } from "../../types/auth.types";
 import {
     deleteAccountApi,
     getMyBookmarkedPostsApi,
@@ -28,11 +29,11 @@ import {
 export const useAuth = () => {
     const { setUser } = useAuthContext();
     const { goTo } = useGoTo();
-    const { setNotis } = useContext(NotificationsContext);
-    const { setNotisCount } = useContext(NotificationsCountContext);
+    const { setNotis } = useNotificationsContext();
+    const { setNotisCount } = useNotificationsCountontext();
     const { setSelectedAvatar } = useAvatar();
 
-    const register = useCallback(async (user) => {
+    const register = useCallback(async (user: RegisterPayload) => {
         console.log("Registrando usuario", user);
 
         try {
@@ -42,13 +43,14 @@ export const useAuth = () => {
             saveUserInLocalStorage(authData.user);
             setUser(authData.user);
             goTo("/");
-        } catch (error) {
-            console.error("Register error", error.message);
-            throw error;
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
+            console.error("Register error", message);
+            throw new Error(message);
         }
     }, []);
 
-    const login = useCallback(async (user) => {
+    const login = useCallback(async (user: LoginPayload) => {
         console.log("Iniciando sesión:", user);
 
         try {
@@ -59,9 +61,10 @@ export const useAuth = () => {
             saveUserInLocalStorage(authData.user);
             setUser(authData.user);
             goTo("/");
-        } catch (error) {
-            console.error("Login error", error.message);
-            throw error;
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
+            console.error("No se pudo hacer login", message);
+            throw new Error(message);
         }
     }, []);
 
@@ -84,7 +87,7 @@ export const useAuth = () => {
         }
     }, []);
 
-    const deleteAccount = useCallback(async (userId) => {
+    const deleteAccount = useCallback(async (userId: string) => {
         console.log("Eliminando usuario");
         const deleteAccountResponse = await deleteAccountApi(userId);
 
@@ -107,7 +110,7 @@ export const useAuth = () => {
     const getProfile = useCallback(async () => {
         console.log("Obteniendo perfil del usuario actual");
 
-        const { user } = await getProfileApi();
+        const user = await getProfileApi();
 
         if (user) {
             console.log("La api dice que hay usuario", user);
@@ -116,7 +119,7 @@ export const useAuth = () => {
         }
     }, []);
 
-    const updatedProfile = useCallback(async (user, updatedFields) => {
+    const updatedProfile = useCallback(async (user: User, updatedFields: Partial<User>) => {
         console.log("updateProfileApi - user:", user);
         console.log("updateProfileApi - updateFields:", updatedFields);
 
@@ -126,8 +129,10 @@ export const useAuth = () => {
             setUser(updatedUser);
             saveUserInLocalStorage(updatedUser);
             console.log("Perfil actualizado", updatedUser);
-        } catch (error) {
-            console.error("Error al actualizar perfil", error);
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
+            console.error("No se pudo actualizar el user", message);
+            throw new Error(message);
         }
     }, []);
 
@@ -135,8 +140,10 @@ export const useAuth = () => {
         try {
             const dataStats = await getUserStatsApi();
             return dataStats;
-        } catch (error) {
-            console.error("Error al obtener stats del usuario", error);
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
+            console.error("Error al obtener stats del usuario", message);
+            return undefined;
         }
     }, []);
 
@@ -145,8 +152,10 @@ export const useAuth = () => {
             const dataPosts = await getMyPostsApi();
             console.log("Esta es la data de mis posts", dataPosts);
             return dataPosts;
-        } catch (error) {
-            console.error("Error al obtener mis posts", error);
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
+            console.error("Error al obtener mis posts", message);
+            return undefined;
         }
     }, []);
 
@@ -155,8 +164,10 @@ export const useAuth = () => {
             const dataLikedPosts = await getMyLikedPostsApi();
             console.log("Esta es la data de mis posts", dataLikedPosts);
             return dataLikedPosts;
-        } catch (error) {
-            console.error("Error al obtener mis liked posts", error);
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
+            console.error("Error al obtener mis liked posts", message);
+            return undefined;
         }
     }, []);
 
@@ -165,8 +176,10 @@ export const useAuth = () => {
             const dataBookmarkedPosts = await getMyBookmarkedPostsApi();
             console.log("Esta es la data de mis posts", dataBookmarkedPosts);
             return dataBookmarkedPosts;
-        } catch (error) {
-            console.error("Error al obtener mis bookmarked posts", error);
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
+            console.error("Error al obtener mis bookmarked posts", message);
+            return undefined;
         }
     }, []);
 
@@ -175,8 +188,10 @@ export const useAuth = () => {
             const dataCommentedPosts = await getMyCommentedPostsApi();
             console.log("Esta es la data de mis posts", dataCommentedPosts);
             return dataCommentedPosts;
-        } catch (error) {
-            console.error("Error al obtener mis commented posts", error);
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : String(error);
+            console.error("Error al obtener mis commented posts", message);
+            return undefined;
         }
     }, []);
 

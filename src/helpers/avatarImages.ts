@@ -1,3 +1,4 @@
+import type { Character } from "./../types/avatar.types";
 // Luffy
 import luffyS400 from "@/assets/images/avatars/luffy/luffy-serious-400.webp";
 const luffyH400 = "/luffy-happy-400.webp";
@@ -19,7 +20,7 @@ import usoppS400 from "@/assets/images/avatars/usopp/usopp-serious-400.webp";
 const usoppH400 = "/usopp-happy-400.webp";
 
 // Array de personajes
-export const characters = [
+export const characters: Character[] = [
     { name: "Luffy", serious: luffyS400, happy: luffyH400 },
     { name: "Zoro", serious: zoroS400, happy: zoroH400 },
     { name: "Nami", serious: namiS400, happy: namiH400 },

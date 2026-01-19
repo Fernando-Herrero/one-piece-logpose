@@ -3,13 +3,15 @@ import { api } from "../http/axios";
 import type {
     AuthResponse,
     DeleteResponse,
+    LoginPayload,
     LogoutResponse,
     PostsResponse,
+    RegisterPayload,
     StatsResponse,
     User,
 } from "./../../types/auth.types";
 
-export const registerApi = async (user: User): Promise<AuthResponse> => {
+export const registerApi = async (user: RegisterPayload): Promise<AuthResponse> => {
     try {
         console.log("registerApi:", user);
         const response = await api.post<AuthResponse>("/auth/register", user);
@@ -34,7 +36,7 @@ export const registerApi = async (user: User): Promise<AuthResponse> => {
     }
 };
 
-export const loginApi = async (user: User): Promise<AuthResponse> => {
+export const loginApi = async (user: LoginPayload): Promise<AuthResponse> => {
     try {
         console.log("loginApi:", user);
         const response = await api.post<AuthResponse>("/auth/login", user);
@@ -48,9 +50,9 @@ export const loginApi = async (user: User): Promise<AuthResponse> => {
     }
 };
 
-export const logOutApi = async (user: User): Promise<LogoutResponse> => {
+export const logOutApi = async (): Promise<LogoutResponse> => {
     try {
-        console.log("logoutApi:", user);
+        console.log(" ");
         const response = await api.post<LogoutResponse>("/auth/logout");
         console.log("Respuesta de la api la logout:", response);
 
@@ -61,7 +63,7 @@ export const logOutApi = async (user: User): Promise<LogoutResponse> => {
     }
 };
 
-export const deleteAccountApi = async (userId: Partial<User>): Promise<DeleteResponse> => {
+export const deleteAccountApi = async (userId: string): Promise<DeleteResponse> => {
     try {
         console.log("Eliminando usuario", userId);
         const response = await api.delete<DeleteResponse>(`/users/${userId}`);
