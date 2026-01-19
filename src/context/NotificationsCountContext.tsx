@@ -1,13 +1,14 @@
-import { AuthContext } from "@/context/AuthContext";
-import { getNotificationsCountApi } from "@/core/notifications/notifications.api";
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { getNotificationsCountApi } from "../core/notifications/notifications.api";
+import { useAuthContext } from "../hooks/useAuthContext";
+import type { NotificacionsContextProps, NotificationsCountType } from "../types/notifications.types";
 
-export const NotificationsCountContext = createContext(null);
+export const NotificationsCountContext = createContext<NotificationsCountType | null>(null);
 
-export const NotificationsCountProvider = ({ children }) => {
-    const { user } = useContext(AuthContext);
+export const NotificationsCountProvider = ({ children }: NotificacionsContextProps) => {
+    const { user } = useAuthContext();
     const userId = user?.id || user?._id;
-    const [notisCount, setNotisCount] = useState(0);
+    const [notisCount, setNotisCount] = useState<number>(0);
 
     const fetchNotificationsCount = useCallback(async () => {
         if (!userId) return;

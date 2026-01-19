@@ -11,6 +11,13 @@ export type NotificationsContextType = {
     error: string | null;
 };
 
+export type NotificationsCountType = {
+    notisCount: number;
+    setNotisCount: React.Dispatch<React.SetStateAction<number>>;
+    decrementCount: () => void;
+    fetchNotificationsCount: Promise<void>;
+};
+
 export type NotificationType = "like" | "bookmark" | "comment";
 
 export type CreateNotificationData = {
