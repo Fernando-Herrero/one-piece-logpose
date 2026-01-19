@@ -31,7 +31,7 @@ const Comment = ({ onCancel }) => {
         };
 
         await replyPost(newComment);
-        await notification({ type: "bookmark", to: userIdFromPost, from: userAuthId, postId: postId });
+        await notification({ type: "comment", to: userIdFromPost, from: userAuthId, postId: postId });
 
         setError(null);
         onCancel();

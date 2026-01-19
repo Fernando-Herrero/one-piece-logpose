@@ -1,10 +1,10 @@
-import { AuthContext } from "@/context/AuthContext";
 import { NotificationsContext } from "@/context/NotificationsContext";
 import { NotificationsCountContext } from "@/context/NotificationsCountContext";
 import { local } from "@/helpers/storage";
 import { useAvatar } from "@/hooks/useAvatar";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useCallback, useContext } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import {
     deleteAccountApi,
     getMyBookmarkedPostsApi,
@@ -26,7 +26,7 @@ import {
 } from "./auth.service";
 
 export const useAuth = () => {
-    const { setUser } = useContext(AuthContext);
+    const { setUser } = useAuthContext();
     const { goTo } = useGoTo();
     const { setNotis } = useContext(NotificationsContext);
     const { setNotisCount } = useContext(NotificationsCountContext);

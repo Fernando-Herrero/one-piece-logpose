@@ -43,6 +43,7 @@ export interface User {
 
 export type AuthContextValue = {
     user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
     loading: boolean;
     error: string | null;
     isAdmin: boolean;

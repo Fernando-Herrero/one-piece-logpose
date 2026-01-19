@@ -1,9 +1,17 @@
-import { api } from "@/core/http/axios";
+import type {
+    AllNotificationsRead,
+    CreateNotificationData,
+    DeleteAllNotifications,
+    DeletedNotification,
+    Notification,
+    NotificationCount,
+} from "../../types/notifications.types";
+import { api } from "../http/axios";
 
-export const notificationApi = async (newNotification) => {
+export const notificationApi = async (newNotification: CreateNotificationData): Promise<Notification> => {
     try {
         console.log("Notificando una accion", newNotification);
-        const response = await api.post("/notifications", newNotification);
+        const response = await api.post<Notification>("/notifications", newNotification);
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -13,10 +21,10 @@ export const notificationApi = async (newNotification) => {
     }
 };
 
-export const getNotificationsCountApi = async () => {
+export const getNotificationsCountApi = async (): Promise<NotificationCount> => {
     try {
         console.log("Obteniendo numero de notificaciones");
-        const response = await api.get("/notifications/unread-count");
+        const response = await api.get<NotificationCount>("/notifications/unread-count");
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -26,10 +34,10 @@ export const getNotificationsCountApi = async () => {
     }
 };
 
-export const getNotificationsApi = async () => {
+export const getNotificationsApi = async (): Promise<Notification> => {
     try {
         console.log("Obteniendo notificaciones");
-        const response = await api.get("/notifications");
+        const response = await api.get<Notification>("/notifications");
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -39,10 +47,10 @@ export const getNotificationsApi = async () => {
     }
 };
 
-export const markNotificationReadApi = async (notifyId) => {
+export const markNotificationReadApi = async (notifyId: string): Promise<Notification> => {
     try {
         console.log("Marcando notificacion como leida con id", notifyId);
-        const response = await api.put(`/notifications/${notifyId}/read`);
+        const response = await api.put<Notification>(`/notifications/${notifyId}/read`);
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -52,10 +60,10 @@ export const markNotificationReadApi = async (notifyId) => {
     }
 };
 
-export const markAllNotificationsReadApi = async () => {
+export const markAllNotificationsReadApi = async (): Promise<AllNotificationsRead> => {
     try {
         console.log("Marcando notificaciones como leidas");
-        const response = await api.put("/notifications/mark-all-read");
+        const response = await api.put<AllNotificationsRead>("/notifications/mark-all-read");
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -65,10 +73,10 @@ export const markAllNotificationsReadApi = async () => {
     }
 };
 
-export const deleteNotificationApi = async (notifyId) => {
+export const deleteNotificationApi = async (notifyId: string): Promise<DeletedNotification> => {
     try {
         console.log("Eliminando notificacion con id", notifyId);
-        const response = await api.delete(`/notifications/${notifyId}`);
+        const response = await api.delete<DeletedNotification>(`/notifications/${notifyId}`);
         console.log("Respuesta de la api", response);
 
         return response.data;
@@ -78,10 +86,10 @@ export const deleteNotificationApi = async (notifyId) => {
     }
 };
 
-export const deleteAllNotificationsApi = async () => {
+export const deleteAllNotificationsApi = async (): Promise<DeleteAllNotifications> => {
     try {
         console.log("Eliminando todas las notificaciones");
-        const response = await api.delete("/notifications");
+        const response = await api.delete<DeleteAllNotifications>("/notifications");
         console.log("Respuesta de la api", response);
 
         return response.data;

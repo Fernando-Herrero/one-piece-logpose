@@ -2,11 +2,10 @@ import { createContext, useEffect, useMemo, useState, type ReactNode } from "rea
 
 export const DeviceContext = createContext<DeviceContextType | null>(null);
 
-export type DeviceContextType = {
+type DeviceContextType = {
     width: number;
 };
-
-export interface DeviceContextProps {
+interface DeviceContextProps {
     children: ReactNode;
 }
 
