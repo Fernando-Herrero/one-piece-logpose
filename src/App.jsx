@@ -1,3 +1,4 @@
+import { AuthError } from "@/components/AuthError";
 import { PageSpinner } from "@/components/PageSpinner";
 import { AuthContext } from "@/context/AuthContext";
 import { ModalContext } from "@/context/ModalContext.jsx";

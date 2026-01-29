@@ -1,5 +1,11 @@
 import { getProfileApi } from "@/core/auth/auth.api";
-import { getTokenFromLocalStorage, saveUserInLocalStorage } from "@/core/auth/auth.service";
+import {
+    getTokenFromLocalStorage,
+    removeTokenFromLocalStorage,
+    removeUserFromLocalStorage,
+    saveUserInLocalStorage,
+} from "@/core/auth/auth.service";
+import { useGoTo } from "@/hooks/useGoTo";
 import { createContext, useEffect, useMemo, useState } from "react";
 
 export const AuthContext = createContext(null);
@@ -8,10 +14,19 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { goTo } = useGoTo();
 
     const userPrivacy = user?.privacy;
     const isAdmin = user?.role === "admin";
     const isVerified = user?.verified;
+
+    const handleUnauthenticated = () => {
+        removeTokenFromLocalStorage();
+        removeUserFromLocalStorage();
+        setUser(null);
+        setError(null); // opcional
+        goTo("/"); // redirige a la página pública o login
+    };
 
     const fetchProfile = async () => {
         try {
@@ -25,10 +40,17 @@ export const AuthProvider = ({ children }) => {
             if (freshUser) {
                 setUser(freshUser);
                 saveUserInLocalStorage(freshUser);
+            } else {
+                // Token inválido o expirado
+                handleUnauthenticated();
             }
         } catch (error) {
-            console.error("Error al obtener el usuario, no encontrado", error);
-            setError(error);
+            if (error.response?.status === 401) {
+                handleUnauthenticated();
+            } else {
+                console.error("Error al obtener el usuario, no encontrado", error);
+                setError(error);
+            }
         } finally {
             setLoading(false);
         }

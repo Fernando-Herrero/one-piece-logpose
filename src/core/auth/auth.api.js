@@ -83,7 +83,7 @@ export const getUserStatsApi = async () => {
     try {
         console.log("Obteniendo stats del user");
         const response = await api.get("/users/me/stats");
-        console.log("Respuesta de la api"), response;
+        (console.log("Respuesta de la api"), response);
 
         return response.data;
     } catch (error) {
