@@ -17,7 +17,7 @@ export const Search = () => {
         if (event.key === "Escape" && isOpen) {
             closeSearch();
         }
-        if (event.key === "Enter" && search.trim()) {
+        if (event.key === "Enter") {
             handleSearch();
         }
     };
@@ -30,11 +30,9 @@ export const Search = () => {
     };
 
     const handleSearch = () => {
-        if (search.trim()) {
-            goTo(`/dashboard/search?q=${encodeURIComponent(search)}`);
-            closeSearch();
-            setSearch("");
-        }
+        goTo(`/dashboard/search?q=${encodeURIComponent(search.trim())}`);
+        closeSearch();
+        setSearch("");
     };
 
     return (

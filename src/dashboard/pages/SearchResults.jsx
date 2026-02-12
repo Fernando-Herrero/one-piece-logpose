@@ -9,7 +9,7 @@ import { useSearchParams } from "react-router-dom";
 
 const SearchResults = () => {
     const [searchParams] = useSearchParams();
-    const query = searchParams.get("q") || "";
+    const query = (searchParams.get("q") ?? "").trim();
     const { posts, loading: loadingPosts } = useContext(PostContext);
     const { users, loading: loadingUsers } = useContext(UsersContext);
     const { t } = useTranslate();
@@ -31,17 +31,15 @@ const SearchResults = () => {
                 {t("search.searching")}: <span className="font-semibold">"{query}"</span>
             </p>
 
-            {!query ? (
-                <p className="text-muted text-center mt-8">{t("search.write_some")}</p>
-            ) : totalResults === 0 ? (
-                <p className="text-muted text-center mt-8">{t("search.not_found")}</p>
-            ) : (
-                <>
-                    <p className="text-sm text-muted mb-6">
-                        {totalResults} {t("search.result")}
-                        {totalResults !== 1 ? "s" : ""}
-                    </p>
+            {!query && <p className="text-muted text-center mt-8">{t("search.write_some")}</p>}
+            {totalResults === 0 && <p className="text-muted text-center mt-8">{t("search.not_found")}</p>}
 
+            <p className="text-sm text-muted mb-6">
+                {totalResults} {t("search.result")}
+                {totalResults !== 1 ? "s" : ""}
+            </p>
+            {query && totalResults > 0 && (
+                <>
                     <SearchResultSection
                         title="exactMatches"
                         items={exactPostsMatches}
