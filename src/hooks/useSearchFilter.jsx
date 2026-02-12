@@ -1,15 +1,16 @@
 import { FilterPosts } from "@/dashboard/components/search/FilterPosts";
 import { FilterUsers } from "@/dashboard/components/search/FilterUsers";
+import { useMemo } from "react";
 
 export const useSearchFilter = (query, posts, users) => {
     const results = useMemo(() => {
-        if (!query && !posts && !users) {
+        if (!query) {
             return {
                 exactPostsMatches: [],
                 partialPostsMatches: [],
                 exactUserMatches: [],
                 partialUserMatches: [],
-                totalResults: [],
+                totalResults: 0,
             };
         }
         const searchLower = query.toLowerCase();
