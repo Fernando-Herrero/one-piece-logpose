@@ -1,3 +1,4 @@
+import fallback from "@/assets/images/backgrounds/fallback-profile-header.jpg";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useTranslate } from "@/translations/useTranslate";
@@ -18,13 +19,15 @@ export const ProfileHeader = memo(({ user, setCoverImg }) => {
                 {user?.coverImage ? (
                     <img
                         src={user.coverImage}
-                        alt=""
+                        alt="background profile image"
                         className="w-full h-full object-cover brightness-50 rounded-tl-xl rounded-tr-xl"
                     />
                 ) : (
-                    <div className="flex items-center justify-center h-full pt-5 text-gray-500 italic">
-                        {t("profile.set_cover_img")}
-                    </div>
+                    <img
+                        src={fallback}
+                        alt="One piece background"
+                        className="w-full h-full object-cover brightness-50 rounded-tl-xl rounded-tr-xl"
+                    />
                 )}
             </button>
 

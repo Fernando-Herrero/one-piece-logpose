@@ -5,6 +5,7 @@ import { session } from "@/helpers/storage";
 import { useAvatar } from "@/hooks/useAvatar";
 import { useRegisterValidation } from "@/hooks/useRegisterValidation";
 import { useToggle } from "@/hooks/useToggle";
+import { LoadingDots } from "@/landing/components/ui/LoadingDots";
 import { PasswordFields } from "@/landing/components/ui/PasswordFields";
 import { RegisterFields } from "@/landing/components/ui/RegisterFields";
 import { RoleSelect } from "@/landing/components/ui/RoleSelect";
