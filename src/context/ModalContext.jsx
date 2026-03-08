@@ -30,10 +30,14 @@ export const ModdalProvider = ({ children, onCancel }) => {
     );
 
     const hideModal = useCallback(() => {
-        setModalData((prev) => ({
-            ...prev,
+        setModalData({
             isOpen: false,
-        }));
+            message: "",
+            onConfirm: null,
+            onCancel: null,
+            confirmText: undefined,
+            cancelText: undefined,
+        });
     }, []);
 
     const value = useMemo(() => ({ modalData, showModal, hideModal }), [modalData, showModal, hideModal]);
