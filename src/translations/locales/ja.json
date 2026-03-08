@@ -59,7 +59,8 @@
     "default_confirm_text": "わかりました",
     "default": {
       "cancel_text": "キャンセル"
-    }
+    },
+    "error_background_image_profile": "背景画像にエラーがあったようです、nakama。"
   },
   "characters": {
     "luffy_text": "巨大な心と夢を持つ勇敢な船長：海賊王になること。ゴムの力で伸び、他の誰にとっても致命的な打撃に耐えることができます。常に楽観的で勇敢。",

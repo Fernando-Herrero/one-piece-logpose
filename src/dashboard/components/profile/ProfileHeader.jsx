@@ -24,6 +24,11 @@ export const ProfileHeader = memo(({ user, setCoverImg }) => {
                         onError={(e) => {
                             e.target.onerror = null;
                             e.target.src = fallback;
+
+                            showModal({
+                                message: t("modal.error_background_image_profile"),
+                                confirmText: t("modal.default_confirm_text"),
+                            });
                         }}
                     />
                 ) : (

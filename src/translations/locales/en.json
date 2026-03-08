@@ -59,7 +59,8 @@
     "default_confirm_text": "OK",
     "default": {
       "cancel_text": "Cancel"
-    }
+    },
+    "error_background_image_profile": "It seems there has been an error with your background image, nakama."
   },
   "characters": {
     "luffy_text": "The fearless captain with a huge heart and an even bigger dream: to become the Pirate King. His rubber powers allow him to stretch and withstand blows that would be fatal to anyone else. Always optimistic and brave.",

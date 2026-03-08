@@ -59,7 +59,8 @@
     "default_confirm_text": "OK",
     "default": {
       "cancel_text": "Cancelar"
-    }
+    },
+    "error_background_image_profile": "Parece que ha habido un error con tu imagen de background, nakama."
   },
   "characters": {
     "luffy_text": "El intrépido capitán con un corazón enorme y un sueño gigante: convertirse en el Rey de los Piratas. Su poder de goma le permite estirarse y resistir golpes que serían mortales para cualquier otro. Siempre optimista y valiente.",
