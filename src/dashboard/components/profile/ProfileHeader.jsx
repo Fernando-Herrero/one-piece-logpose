@@ -21,6 +21,10 @@ export const ProfileHeader = memo(({ user, setCoverImg }) => {
                         src={user.coverImage}
                         alt="background profile image"
                         className="w-full h-full object-cover brightness-50 rounded-tl-xl rounded-tr-xl"
+                        onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = fallback;
+                        }}
                     />
                 ) : (
                     <img
