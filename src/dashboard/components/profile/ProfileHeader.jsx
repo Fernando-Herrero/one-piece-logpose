@@ -29,6 +29,9 @@ export const ProfileHeader = memo(({ user, setCoverImg }) => {
 
                             showModal({
                                 message: t("modal.error_background_image_profile"),
+                                onConfirm: async () => {
+                                    hideModal();
+                                },
                                 confirmText: t("modal.default_confirm_text"),
                             });
                         }}

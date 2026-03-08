@@ -21,7 +21,7 @@ export const ModdalProvider = ({ children, onCancel }) => {
                 isOpen: true,
                 message: config.message || "",
                 onConfirm: config.onConfirm || null,
-                onCancel: onCancel,
+                onCancel: onCancel ?? null,
                 confirmText: config.confirmText,
                 cancelText: config.cancelText,
             });
