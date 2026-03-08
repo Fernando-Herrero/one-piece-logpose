@@ -8,7 +8,7 @@ import { memo, useContext } from "react";
 export const ProfileHeader = memo(({ user, setCoverImg }) => {
     const { t } = useTranslate();
     const { goTo } = useGoTo();
-    const { showModal } = useContext(ModalContext);
+    const { showModal, hideModal } = useContext(ModalContext);
 
     return (
         <div className="relative w-full flex flex-col items-center">
