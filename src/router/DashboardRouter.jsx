@@ -31,7 +31,13 @@ export const DashboardRouter = ({ isOpen, modalData, t }) => {
                 </ErrorBoundary>
             </main>
 
-            {isOpen && <Overlay>{(handleClose) => <Modal {...modalData} onCancel={handleClose} />}</Overlay>}
+            {isOpen && (
+                <Overlay>
+                    {(handleClose) => (
+                        <Modal {...modalData} onCancel={modalData.onCancel ? handleClose : undefined} />
+                    )}
+                </Overlay>
+            )}
         </div>
     );
 };
