@@ -1,12 +1,14 @@
 import fallback from "@/assets/images/backgrounds/fallback-profile-header.jpg";
+import { ModalContext } from "@/context/ModalContext";
 import { UserAvatar } from "@/dashboard/components/UserAvatar";
 import { useGoTo } from "@/hooks/useGoTo";
 import { useTranslate } from "@/translations/useTranslate";
-import { memo } from "react";
+import { memo, useContext } from "react";
 
 export const ProfileHeader = memo(({ user, setCoverImg }) => {
     const { t } = useTranslate();
     const { goTo } = useGoTo();
+    const { showModal } = useContext(ModalContext);
 
     return (
         <div className="relative w-full flex flex-col items-center">
