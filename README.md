@@ -1,5 +1,14 @@
 # One Piece LogPose - Aplicación Web Interactiva
 
+## 🏴‍☠️ ¿Quieres explorar la web sin registrarte?
+
+Aunque te recomendamos crear tu propia cuenta para una experiencia completa, puedes usar este usuario de prueba:
+
+- **Email:** monkeydluffy@gmail.com
+- **Password:** 123456
+
+> La landing page es solo el punto de partida. La verdadera aventura comienza una vez dentro: accede a tu dashboard personalizado, escribe y comparte posts con la comunidad, sigue la serie capítulo a capítulo y desbloquea recompensas únicas por cada uno — cartas coleccionables de tus personajes favoritos, items exclusivos y mucho más. Todo está esperándote al otro lado. 🍖
+
 ## Descripción
 
 **One Piece LogPose** es una aplicación web completa y funcional diseñada para fans de One Piece que desean seguir su progreso en la serie, interactuar con otros fans y coleccionar cartas exclusivas de cada capítulo. La aplicación combina elementos de red social, sistema de gamificación y seguimiento de progreso, ofreciendo una experiencia única e inmersiva en el universo de One Piece.
@@ -17,10 +26,16 @@ Enlace a GitHub: [Live Preview](https://github.com/Fernando-Herrero/one-piece-lo
 - **HTML5** - Estructura semántica y accesible para todas las secciones.
 - **CSS3 (Flexbox, Grid, Animations)** - Diseño responsive, transiciones suaves y efectos visuales temáticos.
 - **JavaScript (ES6+)** - Lógica de aplicación, manejo de estado, y funcionalidades interactivas.
-- **Local Storage / Session Storage** - Persistencia de datos de usuario y preferencias.
-- **Google Fonts** - Tipografías personalizadas estilo manga/anime.
-- **CSS Variables** - Sistema de tematización con modo claro/oscuro.
+- **React 18** - Librería principal para construcción de UI con componentes reutilizables y hooks.
+- **React Router v6** - Navegación SPA con rutas privadas y anidadas.
+- **Context API** - Gestión de estado global (modales, traducciones, autenticación).
+- **React Hooks** - Uso extensivo de hooks nativos (`useState`, `useEffect`, `useContext`, `useCallback`, `useMemo`, `memo`) y hooks personalizados (`useTranslate`, `useGoTo`) para lógica reutilizable y optimización de rendimiento.
 - **Tailwind CSS** - Utilidades para maquetación rápida, estilos consistentes y sistema de diseño escalable.
+- **CSS Variables** - Sistema de tematización con modo claro/oscuro.
+- **Google Fonts** - Tipografías personalizadas estilo manga/anime.
+- **classnames** - Gestión dinámica y condicional de clases CSS.
+- **Vite** - Bundler y servidor de desarrollo con soporte para alias de rutas (`@/`).
+- **Local Storage / Session Storage** - Persistencia de datos de usuario y preferencias.
 
 ## Buenas Prácticas Aplicadas
 
