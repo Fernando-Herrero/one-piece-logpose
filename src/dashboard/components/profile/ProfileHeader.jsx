@@ -34,6 +34,8 @@ export const ProfileHeader = memo(({ user, setCoverImg }) => {
                                 },
                                 confirmText: t("modal.default_confirm_text"),
                             });
+
+                            console.log(showModal);
                         }}
                     />
                 ) : (

@@ -29,7 +29,7 @@ export const Modal = ({ message, onConfirm, onCancel, confirmText, cancelText })
                         </Button>
                         {onCancel && (
                             <Button onClick={onCancel} variant="danger">
-                                {cancelText}
+                                {cancelText || t("modal.default.cancel_text")}
                             </Button>
                         )}
                     </div>
